@@ -1,0 +1,20 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/px340"
+    android:layout_height="@dimen/px332">
+
+    <ImageView
+        android:id="@+id/video_item_iv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY" />
+
+    <TextView
+        android:id="@+id/video_item_tv"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/px64"
+        android:layout_alignParentBottom="true"
+        android:background="@color/text_bg"
+        android:gravity="center"
+        android:text="标题"
+        android:textSize="15sp" />
+</RelativeLayout>
