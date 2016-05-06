@@ -6,7 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.example.newsclient.Model.bean.ImageJsonBean;
-import com.example.newsclient.Model.bean.ImageMainTpyeBean;
+import com.example.newsclient.Model.bean.ImageMainTypeBean;
 import com.example.newsclient.Model.bean.ImageTpyeBean;
 import com.example.newsclient.R;
 import com.example.newsclient.presenter.ImageClassifyPresenter;
@@ -28,7 +28,7 @@ import butterknife.ButterKnife;
  */
 public class ImageClassifyFragment extends BaseFragment<ImageClassifyPresenter> implements IImageClassifyViewImpl {
 
-    private ImageMainTpyeBean mImageType;
+    private ImageMainTypeBean mImageType;
     private List<ImageJsonBean> mImageData;
     private ImageClassifyAdapter mAdapter;
 

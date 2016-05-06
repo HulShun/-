@@ -20,8 +20,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.newsclient.Configuration;
-import com.example.newsclient.Model.bean.ImageMainTpyeBean;
+import com.example.newsclient.Model.bean.ImageMainTypeBean;
 import com.example.newsclient.Model.utils.AppUtil;
 import com.example.newsclient.R;
 import com.example.newsclient.presenter.MainViewPresenter;
@@ -141,23 +140,21 @@ public class MainActivity extends BaseActivity<MainViewPresenter> implements IMa
                 switch (id) {
                     //新闻
                     case R.id.nav_news:
-                        if (nowMenuItemId == id) {
-                            mainDrawer.closeDrawers();
-                        } else {
+                        mainDrawer.closeDrawers();
+                        if (nowMenuItemId != id) {
                             onNewsTabs();
                         }
                         break;
                     //图片
                     case R.id.nav_image:
-                        if (nowMenuItemId == id) {
-                            mainDrawer.closeDrawers();
-                        } else {
+                        mainDrawer.closeDrawers();
+                        if (nowMenuItemId != id) {
                             if (mPresenter.getmImageTpyes() == null) {
-                                mPresenter.getImageTabs(Configuration.IMAGE_TYPE_URL);
+                                //去加载tabs
+                                mPresenter.getImagesTabsFromLocal(0);
                             } else {
                                 onImageTabs(mPresenter.getmImageTpyes());
                             }
-
                         }
                         break;
 
@@ -190,7 +187,11 @@ public class MainActivity extends BaseActivity<MainViewPresenter> implements IMa
 
 
     @Override
-    public void onImageTabs(List<ImageMainTpyeBean> tabs) {
+    public void onImageTabs(List<ImageMainTypeBean> tabs) {
+        if (tabs.size() == 0) {
+            showFaild("tab获取失败");
+            return;
+        }
         mFragmentAdapter = new MyFragmentAdapter(mFragmentManager, tabs, ImageClassifyFragment.class);
         setViewpagerAndTablayout();
     }
@@ -205,9 +206,7 @@ public class MainActivity extends BaseActivity<MainViewPresenter> implements IMa
     }
 
     public void setViewpagerAndTablayout() {
-        if (mainDrawer.isDrawerOpen(mainNavi)) {
-            mainDrawer.closeDrawer(mainNavi);
-        }
+        // mainDrawer.closeDrawers();
         List<Fragment> fragments = mFragmentManager.getFragments();
         if (fragments != null && !fragments.isEmpty()) {
             fragments.clear();

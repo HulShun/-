@@ -34,7 +34,7 @@ public class NewsDBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String sql = "create table " +
                 Configuration.NEWS_TABLE_NAME + "(" +
-                _ID + " int identity(1,1) primary key, " +
+                _ID + " INTEGER  primary key AUTOINCREMENT , " +
                 TITLE + " varchar(50), " +
                 ABSTRACTX + " varchar(100), " +
                 URL + " varchar(100), " +

@@ -50,7 +50,7 @@ public class AutoRecyclerView extends RecyclerView {
                 if (!isLoadingMore && dy >= 0 && lastPositon == itemCount - 2) {
                     isLoadingMore = true;
                     loadMore();
-                } else if (dy < 10) {
+                } else if (dy <= 10) {
                     firstPosition = ((LinearLayoutManager) manager).findFirstVisibleItemPosition();
                     resumeLoadImg(firstPosition, lastPositon);
                 } else {

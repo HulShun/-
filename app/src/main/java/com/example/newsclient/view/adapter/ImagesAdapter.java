@@ -51,7 +51,7 @@ public class ImagesAdapter extends BaseRecyclerViewAdapter<ImageContentBean, Ima
     protected void onBindItemViewHolder(final ImageViewHolder holder, int position) {
         holder.textView.setText(getData().get(position).getTitle());
         //用相册中第一张图片作为该相册的封面图
-        final String s = getData().get(position).getList().get(0).getMiddle();
+        final String s = getData().get(position).getList().get(0).getSmall();
         ImageView imageView = holder.imageView;
         if (!TextUtils.isEmpty(s)) {
             imageView.setTag(s);

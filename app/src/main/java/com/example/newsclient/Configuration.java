@@ -15,7 +15,8 @@ public class Configuration {
     public static final String NEWS_TABLE_NAME = "news";
 
     public static final String IMAGE_TYPE_DB_NAEM = "image_type.db";
-    public static final String IMAGE_TYPE_TABLE_NAEM = "image_type.db";
+    public static final String IMAGE_MAIN_TYPE_TABLE_NAEM = "image_main_type";
+    public static final String IMAGE_TYPE_TABLE_NAEM = "image_type";
 
     public static final String YOUKU_KEYWORD = "f3a5372f0293848d";
     public static final String YOUKU_SECRET = "52814a350fb11005df8440835488fef9";

@@ -8,5 +8,7 @@ import rx.Observer;
  * Created by Administrator on 2016-05-05.
  */
 public interface MainViewModelImpl extends BaseModelImpl {
-    void getImageTabs(String url, Observer<ImageTypeJsonBean> os);
+    void getImageTabsFromNet(String url);
+
+    void getImageTabsFromLocal(Observer<ImageTypeJsonBean> os);
 }

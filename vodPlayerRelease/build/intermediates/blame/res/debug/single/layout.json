@@ -100,12 +100,12 @@
         "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\src\\main\\res\\layout\\layout_floating_top_full.xml"
     },
     {
-        "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_item_layout.xml",
-        "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_action_menu_item_layout.xml"
-    },
-    {
         "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media.xml",
         "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\notification_template_media.xml"
+    },
+    {
+        "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_item_layout.xml",
+        "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_action_menu_item_layout.xml"
     },
     {
         "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_multichoice_material.xml",

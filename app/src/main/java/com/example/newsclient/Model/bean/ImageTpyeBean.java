@@ -11,6 +11,9 @@ public class ImageTpyeBean implements Parcelable {
     private int id;
     private String name;
 
+    public ImageTpyeBean() {
+    }
+
     protected ImageTpyeBean(Parcel in) {
         id = in.readInt();
         name = in.readString();

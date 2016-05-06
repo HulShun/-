@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by Administrator on 2016-05-05.
  */
-public class ImageMainTpyeBean implements Parcelable {
+public class ImageMainTypeBean implements Parcelable {
     private String name;
     /**
      * id : 1001
@@ -17,20 +17,24 @@ public class ImageMainTpyeBean implements Parcelable {
 
     private List<ImageTpyeBean> list;
 
-    protected ImageMainTpyeBean(Parcel in) {
+    public ImageMainTypeBean() {
+
+    }
+
+    protected ImageMainTypeBean(Parcel in) {
         name = in.readString();
         list = in.createTypedArrayList(ImageTpyeBean.CREATOR);
     }
 
-    public static final Creator<ImageMainTpyeBean> CREATOR = new Creator<ImageMainTpyeBean>() {
+    public static final Creator<ImageMainTypeBean> CREATOR = new Creator<ImageMainTypeBean>() {
         @Override
-        public ImageMainTpyeBean createFromParcel(Parcel in) {
-            return new ImageMainTpyeBean(in);
+        public ImageMainTypeBean createFromParcel(Parcel in) {
+            return new ImageMainTypeBean(in);
         }
 
         @Override
-        public ImageMainTpyeBean[] newArray(int size) {
-            return new ImageMainTpyeBean[size];
+        public ImageMainTypeBean[] newArray(int size) {
+            return new ImageMainTypeBean[size];
         }
     };
 

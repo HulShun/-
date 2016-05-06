@@ -54,7 +54,7 @@ public class ImageTypeJsonBean {
          * name : 绀句細鐧炬��
          */
 
-        private List<ImageMainTpyeBean> list;
+        private List<ImageMainTypeBean> list;
 
         public int getRet_code() {
             return ret_code;
@@ -64,11 +64,11 @@ public class ImageTypeJsonBean {
             this.ret_code = ret_code;
         }
 
-        public List<ImageMainTpyeBean> getList() {
+        public List<ImageMainTypeBean> getList() {
             return list;
         }
 
-        public void setList(List<ImageMainTpyeBean> list) {
+        public void setList(List<ImageMainTypeBean> list) {
             this.list = list;
         }
 

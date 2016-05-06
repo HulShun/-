@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import com.example.newsclient.Configuration;
 import com.example.newsclient.Model.LogUtil;
-import com.example.newsclient.Model.bean.ImageMainTpyeBean;
+import com.example.newsclient.Model.bean.ImageMainTypeBean;
 import com.example.newsclient.Model.bean.ImageTpyeBean;
 import com.example.newsclient.view.fragment.ImageClassifyFragment;
 import com.example.newsclient.view.fragment.ImagesFramgent;
@@ -47,10 +47,10 @@ public class MyFragmentAdapter extends FragmentPagerAdapter {
             bundle.putString(Configuration.KEYWORD, title);
         } else if (mCz.getName().contentEquals(IMAGES_CLASSNAME)) {
             fragment = new ImagesFramgent();
-            bundle.putParcelable("type", (ImageMainTpyeBean) datas.get(position));
+            bundle.putParcelable("type", (ImageMainTypeBean) datas.get(position));
         } else if (mCz.getName().contentEquals(IMAGECLASSIFY)) {
             fragment = new ImageClassifyFragment();
-            bundle.putParcelable("type", (ImageMainTpyeBean) datas.get(position));
+            bundle.putParcelable("type", (ImageMainTypeBean) datas.get(position));
         }
         if (fragment != null) {
             fragment.setArguments(bundle);
@@ -72,7 +72,7 @@ public class MyFragmentAdapter extends FragmentPagerAdapter {
         } else if (mCz.getName().contentEquals(IMAGES_CLASSNAME)) {
             title = ((ImageTpyeBean) o).getName();
         } else if (mCz.getName().contentEquals(IMAGECLASSIFY)) {
-            title = ((ImageMainTpyeBean) o).getName();
+            title = ((ImageMainTypeBean) o).getName();
         }
         LogUtil.d("type", "tab文字：" + title);
         return title;

@@ -45,10 +45,6 @@ public class NewsFragment extends BaseFragment<NewsListPresenter> implements IFr
     private NewsAdapter mAdapter;
     private NewsListBean newsList;
 
-    /**
-     * 第一次刷新标记
-     */
-    private boolean isFirstRefresh = true;
 
 
     @Bind(R.id.fragment_refresh)

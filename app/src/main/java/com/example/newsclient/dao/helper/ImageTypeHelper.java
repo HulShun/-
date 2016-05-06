@@ -12,7 +12,10 @@ import com.example.newsclient.Configuration;
  */
 public class ImageTypeHelper extends SQLiteOpenHelper {
     public static final String _ID = "_id";
+    public static final String MAINNAME = "mainName";
     public static final String NAME = "name";
+    public static final String ID = "id";
+
 
     public ImageTypeHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
@@ -25,15 +28,26 @@ public class ImageTypeHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String sql = "create table " +
-                Configuration.IMAGE_TYPE_TABLE_NAEM + "(" +
-                _ID + " int identity(1,1) primary key, " +
-                NAME + " varchar(50) " +
+                Configuration.IMAGE_MAIN_TYPE_TABLE_NAEM + " ( " +
+                _ID + " INTEGER  primary key AUTOINCREMENT, " +
+                MAINNAME + " varchar(50) " +
                 ")";
         db.execSQL(sql);
+
+        String sql2 = "create table " +
+                Configuration.IMAGE_TYPE_TABLE_NAEM + " ( " +
+                _ID + " INTEGER  primary key AUTOINCREMENT, " +
+                ID + " INTEGER, " +
+                NAME + " varchar(50), " +
+                MAINNAME + " varchar(50) " +
+                ")";
+        db.execSQL(sql2);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        db.execSQL("delete table " + Configuration.IMAGE_MAIN_TYPE_TABLE_NAEM);
+        db.execSQL("delete table " + Configuration.IMAGE_TYPE_TABLE_NAEM);
+        onCreate(db);
     }
 }
