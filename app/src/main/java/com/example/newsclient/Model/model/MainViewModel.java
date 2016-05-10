@@ -120,7 +120,7 @@ public class MainViewModel implements MainViewModelImpl {
             @Override
             public void call(Subscriber<? super VideoTypeBean> subscriber) {
                 VideoTypeDao dao = VideoTypeDao.getInstance();
-                List<VideoTypeBean.VideoMainTypeBean> mainTypeBeans = dao.query();
+                List<VideoTypeBean.VideoCategoriesBean> mainTypeBeans = dao.query();
                 VideoTypeBean bean = new VideoTypeBean();
                 bean.setCategories(mainTypeBeans);
                 subscriber.onNext(bean);

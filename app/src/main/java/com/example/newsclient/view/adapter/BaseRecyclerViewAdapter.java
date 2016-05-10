@@ -32,7 +32,6 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
 
     private List<T> datas;
 
-
     private View.OnClickListener listener;
     private RecyclerView.ViewHolder footerVH;
 
@@ -48,6 +47,7 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
         //一些需要context的初始化工作
         if (imageLoader == null) {
             context = parent.getContext();
@@ -65,10 +65,14 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
         RecyclerView.ViewHolder holder;
         View view = null;
         if (viewType == VIEWTYPE_FOOTER) {
+
             view = LayoutInflater.from(parent.getContext()).inflate(getFooterLayoutId(), null);
+
         }
         if (viewType == VIEWTYPE_ITEM) {
+
             view = LayoutInflater.from(parent.getContext()).inflate(getItemLayoutId(), parent, false);
+
         }
         holder = onCreateMyViewHolder(view, viewType);
         view.setTag(holder);
@@ -170,6 +174,9 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
 
 
     public void clearData() {
+        if (datas == null) {
+            datas = initdatas();
+        }
         datas.clear();
         notifyDataSetChanged();
     }
@@ -184,9 +191,6 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
         itemClickListener = l;
     }
 
-    public void reomveAllData() {
-        datas.clear();
-    }
 
     public void pauseLoading(boolean b) {
         pauseLoading = b;

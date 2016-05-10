@@ -11,7 +11,7 @@ import java.util.List;
 public interface IMainViewImpl extends IBaseViewImpl {
     void onImageTabs(List<ImageMainTypeBean> tabs);
 
-    void onVideoTabs(List<VideoTypeBean.VideoMainTypeBean> tabs);
+    void onVideoTabs(List<VideoTypeBean.VideoCategoriesBean> tabs);
 
     void onNewsTabs(List<String> tabs);
 

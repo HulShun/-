@@ -1,6 +1,5 @@
 package com.example.newsclient.presenter;
 
-import com.android.volley.toolbox.ImageLoader;
 import com.example.newsclient.Model.LogUtil;
 import com.example.newsclient.Model.ModelMode;
 import com.example.newsclient.Model.bean.ImageJsonBean;
@@ -112,9 +111,5 @@ public class ImageClassifyPresenter extends BasePresenter<IImageClassifyViewImpl
         });
     }
 
-    public void getBitmap(String url, ImageLoader.ImageListener l) {
-        getModel().onLoadBitmap(url, l);
-
-    }
 }
 

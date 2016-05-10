@@ -49,7 +49,7 @@ public class VideoTypeDao {
      * @param mainTypeBean
      * @return
      */
-    private ContentValues getTypeValues(VideoTypeBean.VideoMainTypeBean mainTypeBean) {
+    private ContentValues getTypeValues(VideoTypeBean.VideoCategoriesBean mainTypeBean) {
         ContentValues cv = new ContentValues();
         cv.put(VideoTypeDBHelper.TERM, mainTypeBean.getTerm());
         cv.put(VideoTypeDBHelper.LABEL, mainTypeBean.getLabel());
@@ -64,7 +64,7 @@ public class VideoTypeDao {
      * @param typeBean
      * @return
      */
-    private ContentValues getTypeValues(String mainName, VideoTypeBean.VideoMainTypeBean.VideoSubtitleBean typeBean) {
+    private ContentValues getTypeValues(String mainName, VideoTypeBean.VideoCategoriesBean.VideoGenresBean typeBean) {
         ContentValues cv = new ContentValues();
         cv.put(VideoTypeDBHelper.KEY, mainName);
         cv.put(VideoTypeDBHelper.TERM, typeBean.getTerm());
@@ -73,27 +73,28 @@ public class VideoTypeDao {
         return cv;
     }
 
-    public synchronized void insert(VideoTypeBean.VideoMainTypeBean mainTpyeBean) {
+    public synchronized void insert(VideoTypeBean.VideoCategoriesBean mainTpyeBean) {
         mdb = getDatabase();
         mdb.insert(Configuration.VIDEO_TYPE_TABLE_NAEM, null, getTypeValues(mainTpyeBean));
-        for (VideoTypeBean.VideoMainTypeBean.VideoSubtitleBean bean : mainTpyeBean.getGenre()) {
-            mdb.insert(Configuration.VIDEO_TYPE_SUBTITLE_TABLE_NAEM, null, getTypeValues(mainTpyeBean.getLabel(), bean));
+        if (mainTpyeBean.getGenres() != null || !mainTpyeBean.getGenres().isEmpty()) {
+            for (VideoTypeBean.VideoCategoriesBean.VideoGenresBean bean : mainTpyeBean.getGenres()) {
+                mdb.insert(Configuration.VIDEO_TYPE_SUBTITLE_TABLE_NAEM, null, getTypeValues(mainTpyeBean.getLabel(), bean));
+            }
         }
-
         closeDatabase();
     }
 
-    public synchronized void insert(List<VideoTypeBean.VideoMainTypeBean> list) {
+    public synchronized void insert(List<VideoTypeBean.VideoCategoriesBean> list) {
         if (list == null) {
             return;
         }
-        for (VideoTypeBean.VideoMainTypeBean bean : list) {
+        for (VideoTypeBean.VideoCategoriesBean bean : list) {
             insert(bean);
         }
         closeDatabase();
     }
 
-    public synchronized List<VideoTypeBean.VideoMainTypeBean> query() {
+    public synchronized List<VideoTypeBean.VideoCategoriesBean> query() {
         mdb = getDatabase();
         String[] columns = {
                 VideoTypeDBHelper._ID,
@@ -111,7 +112,7 @@ public class VideoTypeDao {
                 null,
                 VideoTypeDBHelper._ID);
 
-        List<VideoTypeBean.VideoMainTypeBean> beans = new ArrayList<>();
+        List<VideoTypeBean.VideoCategoriesBean> beans = new ArrayList<>();
 
         String selection2 = VideoTypeDBHelper.KEY + " = ? ";
         String[] columns2 = {
@@ -121,7 +122,7 @@ public class VideoTypeDao {
         };
 
         while (c.moveToNext()) {
-            VideoTypeBean.VideoMainTypeBean mainbean = new VideoTypeBean.VideoMainTypeBean();
+            VideoTypeBean.VideoCategoriesBean mainbean = new VideoTypeBean.VideoCategoriesBean();
             mainbean.setTerm(c.getString(1));
             mainbean.setLabel(c.getString(2));
             mainbean.setLang(c.getString(3));
@@ -133,15 +134,15 @@ public class VideoTypeDao {
                     null,
                     null,
                     null);
-            List<VideoTypeBean.VideoMainTypeBean.VideoSubtitleBean> typeList = new ArrayList<>();
+            List<VideoTypeBean.VideoCategoriesBean.VideoGenresBean> typeList = new ArrayList<>();
             while (c1.moveToNext()) {
-                VideoTypeBean.VideoMainTypeBean.VideoSubtitleBean typeBean = new VideoTypeBean.VideoMainTypeBean.VideoSubtitleBean();
+                VideoTypeBean.VideoCategoriesBean.VideoGenresBean typeBean = new VideoTypeBean.VideoCategoriesBean.VideoGenresBean();
                 typeBean.setTerm(c1.getString(0));
                 typeBean.setLabel(c1.getString(1));
                 typeBean.setLang(c1.getString(2));
                 typeList.add(typeBean);
             }
-            mainbean.setGenre(typeList);
+            mainbean.setGenres(typeList);
             beans.add(mainbean);
         }
         c.close();
@@ -160,6 +161,9 @@ public class VideoTypeDao {
 
 
     private synchronized SQLiteDatabase getDatabase() {
+        if (atomicInteger.get() < 0) {
+            atomicInteger.set(0);
+        }
         //如果是自加之后才是1，就说明之前db没有被占用
         if (atomicInteger.incrementAndGet() <= 1) {
             mdb = mHelper.getWritableDatabase();

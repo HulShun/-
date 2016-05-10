@@ -22,7 +22,7 @@ import rx.Observer;
 public class MainViewPresenter extends BasePresenter<IMainViewImpl, MainViewModelImpl> {
 
     private List<ImageMainTypeBean> mImageTpyes;
-    private List<VideoTypeBean.VideoMainTypeBean> mVideoTypes;
+    private List<VideoTypeBean.VideoCategoriesBean> mVideoTypes;
     private List<String> mNewsTabs;
 
     public MainViewPresenter() {
@@ -58,13 +58,13 @@ public class MainViewPresenter extends BasePresenter<IMainViewImpl, MainViewMode
 
     public void loadNewsType(Context c) {
         if (mNewsTabs == null) {
-            getNewsTabFromLocal(c, 0);
+            getNewsTabFromLocal(c);
         } else {
             getView().onNewsTabs(mNewsTabs);
         }
     }
 
-    private void getNewsTabFromLocal(Context c, int flag) {
+    private void getNewsTabFromLocal(Context c) {
         String[] list = c.getResources().getStringArray(R.array.news_tab);
         mNewsTabs = Arrays.asList(list);
         getView().onNewsTabs(mNewsTabs);

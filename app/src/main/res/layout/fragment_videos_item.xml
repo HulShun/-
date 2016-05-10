@@ -1,6 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/px332">
+    android:layout_height="@dimen/px332"
+    android:layout_marginBottom="@dimen/px14"
+    android:layout_marginTop="@dimen/px14">
 
     <ImageView
         android:id="@+id/video_item_iv"

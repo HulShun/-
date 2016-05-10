@@ -10,19 +10,30 @@ import java.util.List;
  */
 public class VideoTypeBean implements Parcelable {
 
+
     /**
-     * term : Movies
-     * label : 鐢靛奖
+     * id : 85
+     * term : Variety
+     * label : 缁艰壓
      * lang : zh_CN
-     * genre : [{"term":"drama","label":"鍓ф儏","lang":"zh_CN"},{"term":"comedy","label":"鍠滃墽","lang":"zh_CN"},{"term":"romance","label":"鐖辨儏","lang":"zh_CN"},{"term":"action","label":"鍔ㄤ綔","lang":"zh_CN"},{"term":"thriller","label":"鎯婃倸","lang":"zh_CN"},{"term":"documentary","label":"绾綍鐗�","lang":"zh_CN"},{"term":"crime","label":"鐘姜","lang":"zh_CN"},{"term":"horror","label":"鎭愭��","lang":"zh_CN"},{"term":"animation","label":"鍔ㄧ敾","lang":"zh_CN"},{"term":"fantasy","label":"濂囧够","lang":"zh_CN"},{"term":"adventure","label":"鍐掗櫓","lang":"zh_CN"},{"term":"mystery","label":"鎮枒","lang":"zh_CN"},{"term":"science-fiction","label":"绉戝够","lang":"zh_CN"},{"term":"musical","label":"姝岃垶","lang":"zh_CN"},{"term":"war","label":"鎴樹簤","lang":"zh_CN"},{"term":"western","label":"瑗块儴","lang":"zh_CN"},{"term":"biography","label":"浼犺","lang":"zh_CN"},{"term":"history","label":"鍘嗗彶","lang":"zh_CN"},{"term":"opera","label":"鎴忔洸","lang":"zh_CN"},{"term":"martial","label":"姝︿緺","lang":"zh_CN"},{"term":"children","label":"鍎跨","lang":"zh_CN"},{"term":"short","label":"鐭墖","lang":"zh_CN"},{"term":"police-drama","label":"璀﹀尓","lang":"zh_CN"},{"term":"sports","label":"杩愬姩","lang":"zh_CN"},{"term":"youku-original","label":"浼橀叿鍑哄搧","lang":"zh_CN"}]
+     * genres : [{"term":"crosstalk","label":"鐩稿０","lang":"zh_CN"},{"term":"sketch","label":"灏忓搧","lang":"zh_CN"}]
      */
 
-    private List<VideoMainTypeBean> categories;
+    private List<VideoCategoriesBean> categories;
 
     public VideoTypeBean() {
     }
 
     protected VideoTypeBean(Parcel in) {
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public static final Creator<VideoTypeBean> CREATOR = new Creator<VideoTypeBean>() {
@@ -37,55 +48,69 @@ public class VideoTypeBean implements Parcelable {
         }
     };
 
-    public List<VideoMainTypeBean> getCategories() {
+    public List<VideoCategoriesBean> getCategories() {
         return categories;
     }
 
-    public void setCategories(List<VideoMainTypeBean> categories) {
+    public void setCategories(List<VideoCategoriesBean> categories) {
         this.categories = categories;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-    }
-
-    public static class VideoMainTypeBean implements Parcelable {
+    public static class VideoCategoriesBean implements Parcelable {
+        private int id;
         private String term;
         private String label;
         private String lang;
         /**
-         * term : drama
-         * label : 鍓ф儏
+         * term : crosstalk
+         * label : 鐩稿０
          * lang : zh_CN
          */
 
-        private List<VideoSubtitleBean> genre;
+        private List<VideoGenresBean> genres;
 
-        public VideoMainTypeBean() {
+        public VideoCategoriesBean() {
         }
 
-        protected VideoMainTypeBean(Parcel in) {
+        protected VideoCategoriesBean(Parcel in) {
+            id = in.readInt();
             term = in.readString();
             label = in.readString();
             lang = in.readString();
         }
 
-        public static final Creator<VideoMainTypeBean> CREATOR = new Creator<VideoMainTypeBean>() {
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            dest.writeInt(id);
+            dest.writeString(term);
+            dest.writeString(label);
+            dest.writeString(lang);
+        }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        public static final Creator<VideoCategoriesBean> CREATOR = new Creator<VideoCategoriesBean>() {
             @Override
-            public VideoMainTypeBean createFromParcel(Parcel in) {
-                return new VideoMainTypeBean(in);
+            public VideoCategoriesBean createFromParcel(Parcel in) {
+                return new VideoCategoriesBean(in);
             }
 
             @Override
-            public VideoMainTypeBean[] newArray(int size) {
-                return new VideoMainTypeBean[size];
+            public VideoCategoriesBean[] newArray(int size) {
+                return new VideoCategoriesBean[size];
             }
         };
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
 
         public String getTerm() {
             return term;
@@ -111,49 +136,49 @@ public class VideoTypeBean implements Parcelable {
             this.lang = lang;
         }
 
-        public List<VideoSubtitleBean> getGenre() {
-            return genre;
+        public List<VideoGenresBean> getGenres() {
+            return genres;
         }
 
-        public void setGenre(List<VideoSubtitleBean> genre) {
-            this.genre = genre;
+        public void setGenres(List<VideoGenresBean> genres) {
+            this.genres = genres;
         }
 
-        @Override
-        public int describeContents() {
-            return 0;
-        }
-
-        @Override
-        public void writeToParcel(Parcel dest, int flags) {
-            dest.writeString(term);
-            dest.writeString(label);
-            dest.writeString(lang);
-        }
-
-        public static class VideoSubtitleBean implements Parcelable {
+        public static class VideoGenresBean implements Parcelable {
             private String term;
             private String label;
             private String lang;
 
-            public VideoSubtitleBean() {
+            public VideoGenresBean() {
             }
 
-            protected VideoSubtitleBean(Parcel in) {
+            protected VideoGenresBean(Parcel in) {
                 term = in.readString();
                 label = in.readString();
                 lang = in.readString();
             }
 
-            public static final Creator<VideoSubtitleBean> CREATOR = new Creator<VideoSubtitleBean>() {
+            @Override
+            public void writeToParcel(Parcel dest, int flags) {
+                dest.writeString(term);
+                dest.writeString(label);
+                dest.writeString(lang);
+            }
+
+            @Override
+            public int describeContents() {
+                return 0;
+            }
+
+            public static final Creator<VideoGenresBean> CREATOR = new Creator<VideoGenresBean>() {
                 @Override
-                public VideoSubtitleBean createFromParcel(Parcel in) {
-                    return new VideoSubtitleBean(in);
+                public VideoGenresBean createFromParcel(Parcel in) {
+                    return new VideoGenresBean(in);
                 }
 
                 @Override
-                public VideoSubtitleBean[] newArray(int size) {
-                    return new VideoSubtitleBean[size];
+                public VideoGenresBean[] newArray(int size) {
+                    return new VideoGenresBean[size];
                 }
             };
 
@@ -179,18 +204,6 @@ public class VideoTypeBean implements Parcelable {
 
             public void setLang(String lang) {
                 this.lang = lang;
-            }
-
-            @Override
-            public int describeContents() {
-                return 0;
-            }
-
-            @Override
-            public void writeToParcel(Parcel dest, int flags) {
-                dest.writeString(term);
-                dest.writeString(label);
-                dest.writeString(lang);
             }
         }
     }

@@ -139,7 +139,7 @@ public class MainActivity extends BaseActivity<MainViewPresenter> implements IMa
                     case R.id.nav_news:
                         mainDrawer.closeDrawers();
                         if (nowMenuItemId != id) {
-                           mPresenter.loadNewsType(MainActivity.this);
+                            mPresenter.loadNewsType(MainActivity.this);
                         }
                         break;
                     //图片
@@ -192,11 +192,12 @@ public class MainActivity extends BaseActivity<MainViewPresenter> implements IMa
     }
 
     @Override
-    public void onVideoTabs(List<VideoTypeBean.VideoMainTypeBean> tabs) {
+    public void onVideoTabs(List<VideoTypeBean.VideoCategoriesBean> tabs) {
         if (tabs.size() == 0) {
             showFaild("tab获取失败");
             return;
         }
+
         mFragmentAdapter = new MyFragmentAdapter(mFragmentManager, tabs, VideoClassifyFramgent.class);
         setViewpagerAndTablayout();
     }

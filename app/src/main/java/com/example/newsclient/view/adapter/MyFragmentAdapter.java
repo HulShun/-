@@ -62,7 +62,7 @@ public class MyFragmentAdapter extends FragmentPagerAdapter {
             bundle.putParcelable("type", (ImageMainTypeBean) datas.get(position));
         }//视频列表
         else if (mCz.getName().contentEquals(VIDEOCLASSIFY)) {
-            bundle.putParcelable("type", (VideoTypeBean.VideoMainTypeBean) (datas.get(position)));
+            bundle.putParcelable("type", (VideoTypeBean.VideoCategoriesBean) (datas.get(position)));
         }
         if (fragment != null) {
             fragment.setArguments(bundle);
@@ -84,7 +84,7 @@ public class MyFragmentAdapter extends FragmentPagerAdapter {
         } else if (mCz.getName().contentEquals(IMAGECLASSIFY)) {
             title = ((ImageMainTypeBean) o).getName();
         } else if (mCz.getName().contentEquals(VIDEOCLASSIFY)) {
-            title = ((VideoTypeBean.VideoMainTypeBean) o).getLabel();
+            title = ((VideoTypeBean.VideoCategoriesBean) o).getLabel();
         }
         //   LogUtil.d("type", "tab文字：" + title);
         return title;

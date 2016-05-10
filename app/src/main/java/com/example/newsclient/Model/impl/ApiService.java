@@ -5,6 +5,7 @@ import com.example.newsclient.Model.bean.ImageTypeJsonBean;
 import com.example.newsclient.Model.bean.NewsListBean;
 import com.example.newsclient.Model.bean.VideoListBean;
 import com.example.newsclient.Model.bean.VideoTypeBean;
+import com.example.newsclient.Model.bean.VideosInFormBean;
 
 import retrofit.http.GET;
 import retrofit.http.Query;
@@ -33,7 +34,7 @@ public interface ApiService {
      *
      * @return
      */
-    @GET("v2/schemas/show/category.json")
+    @GET("v2/schemas/video/category.json")
     Observable<VideoTypeBean> loadVideoType();
 
 
@@ -52,6 +53,23 @@ public interface ApiService {
                                          @Query("fd") String field,
                                          @Query("cl") String caller);
 
+
+    @GET("v2/videos/by_category.json")
+    Observable<VideosInFormBean> loadVideosInform(@Query("client_id") String client_id,   //应用key
+                                                  @Query("category") String category,    //分类（label）
+                                                  @Query("genre") String genre,          //子分类
+                                                  @Query("period") String period,        //时间范围
+                                                  @Query("orderby") String orderby,       //排序方式
+                                                  @Query("page") String page,
+                                                  @Query("count") String count);
+
+    @GET("v2/videos/by_category.json")
+    Observable<VideosInFormBean> loadVideosInform(@Query("client_id") String client_id,
+                                                  @Query("category") String category,
+                                                  @Query("period") String period,
+                                                  @Query("orderby") String orderby,
+                                                  @Query("page") String page,
+                                                  @Query("count") String count);
 
     /**
      * 美图大全api

@@ -180,7 +180,7 @@ public class ImagesFramgent extends BaseFragment<ImageListPresenter> implements 
     @Override
     public void onRefreshed(ImageJsonBean data) {
         //清空原来的数据
-        mAdapter.reomveAllData();
+        mAdapter.clearData();
         List<ImageContentBean> imageConents = data.getShowapi_res_body().getPagebean().getContentlist();
         mAdapter.addData(imageConents);
     }
