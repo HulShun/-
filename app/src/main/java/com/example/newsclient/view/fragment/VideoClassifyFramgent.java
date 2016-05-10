@@ -92,6 +92,24 @@ public class VideoClassifyFramgent extends BaseFragment<VideoClassifyPresenter> 
                 //点击跳转
             }
         });
+
+        fragmentVideoRc.addOnScrollListener(new AutoRecyclerView.AutoLoadMoreListener() {
+            @Override
+            protected void loadMore() {
+                nowPage++;
+                getPresenter().loadVideoTypeList(mVideoTypeBean.getLabel(), null, nowPage);
+            }
+
+            @Override
+            protected void pauseLoadImg() {
+
+            }
+
+            @Override
+            protected void resumeLoadImg(int firstPosition, int lastPositon) {
+
+            }
+        });
         fragmentVideoRc.setAdapter(mAdapter);
     }
 
@@ -117,6 +135,8 @@ public class VideoClassifyFramgent extends BaseFragment<VideoClassifyPresenter> 
 
     @Override
     public void onloadMoreVideos(VideosInFormBean date) {
+        fragmentVideoRc.loadMoreCompleted();
+
         mAdapter.addData(date.getVideos());
     }
 

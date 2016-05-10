@@ -1,22 +1,35 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/px332"
     android:layout_marginBottom="@dimen/px14"
     android:layout_marginTop="@dimen/px14">
 
-    <ImageView
-        android:id="@+id/video_item_iv"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop" />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/video_item_tv"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/px64"
-        android:layout_alignParentBottom="true"
-        android:background="@color/text_bg"
-        android:gravity="center"
-        android:text="标题"
-        android:textSize="15sp" />
-</RelativeLayout>
+        <ImageView
+            android:id="@+id/video_item_iv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/video_item_tv"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/px100"
+            android:layout_alignParentBottom="true"
+            android:background="@color/text_bg"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="2"
+            android:text="标题"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/videos_item_play" />
+</FrameLayout>
