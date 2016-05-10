@@ -9,8 +9,6 @@ public interface IImageClassifyViewImpl extends IBaseViewImpl {
 
     void onLoadData(ImageJsonBean data);
 
-
-
     void onCompleted();
 
     void showNoNetWork();

@@ -4,6 +4,7 @@ import com.example.newsclient.Model.bean.ImageJsonBean;
 import com.example.newsclient.Model.bean.ImageTypeJsonBean;
 import com.example.newsclient.Model.bean.NewsListBean;
 import com.example.newsclient.Model.bean.VideoListBean;
+import com.example.newsclient.Model.bean.VideoTypeBean;
 
 import retrofit.http.GET;
 import retrofit.http.Query;
@@ -28,6 +29,15 @@ public interface ApiService {
 
 
     /**
+     * 优酷 节目分类信息
+     *
+     * @return
+     */
+    @GET("v2/schemas/show/category.json")
+    Observable<VideoTypeBean> loadVideoType();
+
+
+    /**
      * 优酷 多条视频基本信息 api
      *
      * @param params
@@ -41,6 +51,7 @@ public interface ApiService {
                                          @Query("q") String query,
                                          @Query("fd") String field,
                                          @Query("cl") String caller);
+
 
     /**
      * 美图大全api

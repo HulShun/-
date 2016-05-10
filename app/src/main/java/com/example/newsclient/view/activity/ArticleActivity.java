@@ -118,8 +118,9 @@ public class ArticleActivity extends BaseActivity  {
         return R.layout.activity_article;
     }
 
+
     @Override
-    protected BasePresenter getPresenter() {
+    protected BasePresenter initPresenter() {
         return null;
     }
 

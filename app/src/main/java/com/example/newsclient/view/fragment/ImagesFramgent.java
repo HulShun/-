@@ -11,7 +11,7 @@ import android.widget.Toast;
 import com.example.newsclient.Model.ModelMode;
 import com.example.newsclient.Model.bean.ImageContentBean;
 import com.example.newsclient.Model.bean.ImageJsonBean;
-import com.example.newsclient.Model.bean.ImageTpyeBean;
+import com.example.newsclient.Model.bean.ImageTypeBean;
 import com.example.newsclient.Model.utils.AppUtil;
 import com.example.newsclient.R;
 import com.example.newsclient.presenter.ImageListPresenter;
@@ -40,18 +40,18 @@ public class ImagesFramgent extends BaseFragment<ImageListPresenter> implements 
     @Bind(R.id.fragment_image_refresh)
     SwipeRefreshLayout fragmentImageRefresh;
 
-    private ImageTpyeBean mImageType;
+    private boolean isloadingMore;
+
+    private ImageTypeBean mImageType;
     private int nowPage;
 
     private ImagesAdapter mAdapter;
 
     @Override
-    protected ImageListPresenter getPresenter() {
-        if (mPresenter == null) {
-            mPresenter = new ImageListPresenter();
-        }
-        return mPresenter;
+    protected ImageListPresenter initPresenter() {
+        return new ImageListPresenter();
     }
+
 
     @Override
     protected void initLoading() {
@@ -93,6 +93,7 @@ public class ImagesFramgent extends BaseFragment<ImageListPresenter> implements 
             mAdapter.setOnFooterListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    isloadingMore = true;
                     getMore();
                 }
             });
@@ -136,7 +137,7 @@ public class ImagesFramgent extends BaseFragment<ImageListPresenter> implements 
         nowPage += 1;
         params.put("page", String.valueOf(nowPage));
 
-        mPresenter.getImageDatas(ModelMode.REFRESH, params);
+        getPresenter().getImageDatas(ModelMode.REFRESH, params);
     }
 
     private void update() {
@@ -145,7 +146,7 @@ public class ImagesFramgent extends BaseFragment<ImageListPresenter> implements 
         nowPage = 1;
         params.put("page", String.valueOf(nowPage));
 
-        mPresenter.getImageDatas(ModelMode.REFRESH, params);
+        getPresenter().getImageDatas(ModelMode.REFRESH, params);
     }
 
     @Override
@@ -165,6 +166,7 @@ public class ImagesFramgent extends BaseFragment<ImageListPresenter> implements 
 
     @Override
     public void showFaild(String msg) {
+        super.showFaild(msg);
         Toast.makeText(getActivity().getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
     }
 
@@ -185,6 +187,7 @@ public class ImagesFramgent extends BaseFragment<ImageListPresenter> implements 
 
     @Override
     public void onLoadMore(ImageJsonBean data) {
+        isloadingMore = false;
         mAdapter.addData(data.getShowapi_res_body().getPagebean().getContentlist());
     }
 
@@ -197,6 +200,7 @@ public class ImagesFramgent extends BaseFragment<ImageListPresenter> implements 
 
     @Override
     public void showNoNetWork() {
+        super.showNoNetWork();
         mAdapter.setFooterText("网络粗故障了...");
     }
 

@@ -3,16 +3,23 @@
     android:layout_height="wrap_content"
     android:background="@color/white">
 
-    <com.example.newsclient.widget.AutoRecyclerView
-        android:id="@+id/fragment_imageclassify_rc"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/imageclassify_refresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/px14"
         android:layout_marginRight="@dimen/px14"
-        android:layout_marginTop="@dimen/px12"
-        android:overScrollMode="never">
+        android:layout_marginTop="@dimen/px12">
 
-    </com.example.newsclient.widget.AutoRecyclerView>
+        <com.example.newsclient.widget.AutoRecyclerView
+            android:id="@+id/fragment_imageclassify_rc"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never">
+
+        </com.example.newsclient.widget.AutoRecyclerView>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 
 </RelativeLayout>

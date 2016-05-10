@@ -139,11 +139,7 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
         }
         int size = datas.size();
         datas.addAll(list);
-       /* if (footershow) {
-            notifyItemRangeInserted(size - 1, list.size());
-        } else {
-            notifyItemRangeInserted(size, list.size());
-        }*/
+
         if (size == 0) {
             notifyDataSetChanged();
         } else {
@@ -158,18 +154,24 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
         if (data == null) {
             return;
         }
-
+        if (datas == null) {
+            datas = initdatas();
+        }
+        int size = datas.size();
         datas.add(data);
         if (footershow) {
-            notifyItemRangeInserted(datas.size() - 1, 1);
+            notifyItemRangeInserted(size - 1, 1);
         } else {
-            notifyItemRangeInserted(datas.size(), 1);
+            notifyItemRangeInserted(size, 1);
         }
+        //添加后就立即开启获取图片
+        pauseLoading(false);
     }
 
 
     public void clearData() {
         datas.clear();
+        notifyDataSetChanged();
     }
 
     /**

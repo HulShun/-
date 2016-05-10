@@ -3,15 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:orientation="vertical">
 
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/article_toorbar"
         android:layout_width="match_parent"
-        android:layout_height="72dp"
+        android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary"
-        android:fitsSystemWindows="true"
+        android:clipToPadding="false"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:titleTextColor="@color/white">
 
@@ -23,10 +24,10 @@
         android:layout_height="match_parent">
 
         <WebView
-            android:overScrollMode="never"
             android:id="@+id/article_webview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:overScrollMode="never" />
 
         <ProgressBar
             android:id="@+id/article_progressbar"

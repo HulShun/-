@@ -8,7 +8,6 @@ import android.view.View;
 import com.example.newsclient.Model.bean.VideoListBean;
 import com.example.newsclient.R;
 import com.example.newsclient.presenter.BasePresenter;
-import com.example.newsclient.presenter.VideoListPresenter;
 import com.example.newsclient.view.impl.IVideoViewImpl;
 import com.example.newsclient.widget.AutoRecyclerView;
 
@@ -26,12 +25,11 @@ public class VideosFragment extends BaseFragment implements IVideoViewImpl {
 
 
     @Override
-    protected BasePresenter getPresenter() {
-        if (mPresenter == null) {
-            mPresenter = new VideoListPresenter();
-        }
-        return mPresenter;
+    protected BasePresenter initPresenter() {
+        return null;
     }
+
+
 
     @Override
     protected void initLoading() {
@@ -46,9 +44,6 @@ public class VideosFragment extends BaseFragment implements IVideoViewImpl {
     @Override
     protected void initViews(View view) {
         ButterKnife.bind(this, view);
-
-
-
         initRecyclerView();
     }
 
@@ -86,10 +81,7 @@ public class VideosFragment extends BaseFragment implements IVideoViewImpl {
 
     }
 
-    @Override
-    public void showSuccess() {
 
-    }
 
 
     @Override

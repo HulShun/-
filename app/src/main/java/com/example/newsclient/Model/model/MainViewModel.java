@@ -4,10 +4,12 @@ import com.example.newsclient.Configuration;
 import com.example.newsclient.Model.LogUtil;
 import com.example.newsclient.Model.bean.ImageMainTypeBean;
 import com.example.newsclient.Model.bean.ImageTypeJsonBean;
+import com.example.newsclient.Model.bean.VideoTypeBean;
 import com.example.newsclient.Model.impl.ApiService;
 import com.example.newsclient.Model.impl.MainViewModelImpl;
 import com.example.newsclient.Model.utils.RetrofitUtil;
-import com.example.newsclient.dao.ImageTypeDao;
+import com.example.newsclient.dao.ImagesDao;
+import com.example.newsclient.dao.helper.VideoTypeDao;
 
 import java.util.List;
 
@@ -50,10 +52,10 @@ public class MainViewModel implements MainViewModelImpl {
                     @Override
                     public void onNext(ImageTypeJsonBean imageTypeJsonBean) {
                         //Type的dao包
-                        ImageTypeDao typeDao = ImageTypeDao.getInstance();
+                        ImagesDao typeDao = ImagesDao.getInstance();
                         typeDao.deleteAll();
                         //将数据放入数据库中
-                        typeDao.insert(imageTypeJsonBean.getShowapi_res_body().getList());
+                        typeDao.insertMainType(imageTypeJsonBean.getShowapi_res_body().getList());
                     }
                 });
     }
@@ -64,9 +66,9 @@ public class MainViewModel implements MainViewModelImpl {
             @Override
             public void call(Subscriber<? super ImageTypeJsonBean> subscriber) {
                 //Type的dao包
-                ImageTypeDao typeDao = ImageTypeDao.getInstance();
+                ImagesDao typeDao = ImagesDao.getInstance();
                 //数据库中获取所有的type
-                List<ImageMainTypeBean> maintypes = typeDao.query();
+                List<ImageMainTypeBean> maintypes = typeDao.queryMainType();
                 //放到ImageTpyeJsonBean中
                 ImageTypeJsonBean bean = new ImageTypeJsonBean();
                 ImageTypeJsonBean.ShowapiResBodyBean body = new ImageTypeJsonBean.ShowapiResBodyBean();
@@ -78,6 +80,53 @@ public class MainViewModel implements MainViewModelImpl {
             }
         }).observeOn(Schedulers.newThread())
                 .subscribeOn(AndroidSchedulers.mainThread())
+                .subscribe(os);
+    }
+
+    @Override
+    public void getVideoTabsFromNet(String url) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .build();
+        ApiService service = retrofit.create(ApiService.class);
+        service.loadVideoType()
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(Schedulers.immediate())
+                .subscribe(new Observer<VideoTypeBean>() {
+                    @Override
+                    public void onCompleted() {
+                        LogUtil.d("type", "videosTab数据放入数据库成功");
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        LogUtil.d("type", "videosTab数据放入数据库失败:" + e.getMessage());
+                    }
+
+                    @Override
+                    public void onNext(VideoTypeBean videoTypeBean) {
+                        VideoTypeDao dao = VideoTypeDao.getInstance();
+                        dao.deleteAll();
+                        dao.insert(videoTypeBean.getCategories());
+                    }
+                });
+    }
+
+    @Override
+    public void getVideoTabsFromLocal(Observer<VideoTypeBean> os) {
+        Observable.create(new Observable.OnSubscribe<VideoTypeBean>() {
+            @Override
+            public void call(Subscriber<? super VideoTypeBean> subscriber) {
+                VideoTypeDao dao = VideoTypeDao.getInstance();
+                List<VideoTypeBean.VideoMainTypeBean> mainTypeBeans = dao.query();
+                VideoTypeBean bean = new VideoTypeBean();
+                bean.setCategories(mainTypeBeans);
+                subscriber.onNext(bean);
+            }
+        }).subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(os);
     }
 

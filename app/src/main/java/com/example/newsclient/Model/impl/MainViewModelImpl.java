@@ -1,6 +1,7 @@
 package com.example.newsclient.Model.impl;
 
 import com.example.newsclient.Model.bean.ImageTypeJsonBean;
+import com.example.newsclient.Model.bean.VideoTypeBean;
 
 import rx.Observer;
 
@@ -11,4 +12,8 @@ public interface MainViewModelImpl extends BaseModelImpl {
     void getImageTabsFromNet(String url);
 
     void getImageTabsFromLocal(Observer<ImageTypeJsonBean> os);
+
+    void getVideoTabsFromNet(String url);
+
+    void getVideoTabsFromLocal(Observer<VideoTypeBean> os);
 }

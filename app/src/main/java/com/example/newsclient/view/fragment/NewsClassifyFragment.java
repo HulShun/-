@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.newsclient.Configuration;
-import com.example.newsclient.Model.LogUtil;
 import com.example.newsclient.Model.ModelMode;
 import com.example.newsclient.Model.bean.NewsBean;
 import com.example.newsclient.Model.bean.NewsListBean;
@@ -33,7 +32,7 @@ import butterknife.ButterKnife;
 /**
  * Created by Administrator on 2016-04-11.
  */
-public class NewsFragment extends BaseFragment<NewsListPresenter> implements IFragmentViewImpl {
+public class NewsClassifyFragment extends BaseFragment<NewsListPresenter> implements IFragmentViewImpl {
 
 
     private String mKeyWord;
@@ -45,21 +44,16 @@ public class NewsFragment extends BaseFragment<NewsListPresenter> implements IFr
     private NewsAdapter mAdapter;
     private NewsListBean newsList;
 
-
-
+    private boolean isloadingMore;
     @Bind(R.id.fragment_refresh)
     SwipeRefreshLayout fragmentRefresh;
 
 
     @Override
-    protected NewsListPresenter getPresenter() {
-        if (mPresenter == null) {
-            NewsListPresenter presenter = new NewsListPresenter();
-            return presenter;
-        } else {
-            return mPresenter;
-        }
+    protected NewsListPresenter initPresenter() {
+        return new NewsListPresenter();
     }
+
 
     @Override
     protected void initLoading() {
@@ -69,6 +63,7 @@ public class NewsFragment extends BaseFragment<NewsListPresenter> implements IFr
         getLoadingView().setOnBtnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                getLoadingView().showLoading();
                 updateDatas(ModelMode.LOCAL);
             }
         });
@@ -100,7 +95,7 @@ public class NewsFragment extends BaseFragment<NewsListPresenter> implements IFr
 
     private void getMore() {
         if (newsList != null && newsList.getRetData().getHas_more() == 0) {
-            Toast.makeText(NewsFragment.this.getContext(), "已全部加载...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(NewsClassifyFragment.this.getContext(), "已全部加载...", Toast.LENGTH_SHORT).show();
         } else {
             Map<String, String> map = new HashMap<>();
             map.put("keyword", mKeyWord);
@@ -113,11 +108,11 @@ public class NewsFragment extends BaseFragment<NewsListPresenter> implements IFr
 
     private void initRecyclerView() {
         newsRc.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(NewsFragment.this.getContext());
+        mLayoutManager = new LinearLayoutManager(NewsClassifyFragment.this.getContext());
         newsRc.setItemAnimator(new DefaultItemAnimator());
         newsRc.setLayoutManager(mLayoutManager);
-        if (mAdapter == null && mPresenter != null) {
-            mAdapter = new NewsAdapter(mPresenter);
+        if (mAdapter == null) {
+            mAdapter = new NewsAdapter(getPresenter());
             mAdapter.setFooterShow(true);
             mAdapter.setOnFooterListener(new View.OnClickListener() {
                 @Override
@@ -131,7 +126,7 @@ public class NewsFragment extends BaseFragment<NewsListPresenter> implements IFr
                 public void onClick(NewsViewHolder viewHolder, int position) {
                     NewsBean bean = (NewsBean) viewHolder.itemView.getTag();
                     Intent intent = new Intent();
-                    intent.setClass(NewsFragment.this.getContext(), ArticleActivity.class);
+                    intent.setClass(NewsClassifyFragment.this.getContext(), ArticleActivity.class);
                     Bundle bundle = new Bundle();
                     bundle.putString("key", mKeyWord);
                     bundle.putString("title", bean.getTitle());
@@ -172,7 +167,6 @@ public class NewsFragment extends BaseFragment<NewsListPresenter> implements IFr
     private void updateDatas(int mode) {
         Map<String, String> map = new HashMap<>();
         map.put("keyword", mKeyWord);
-        LogUtil.d(LogUtil.TAG_DB, "当前页面：" + mKeyWord);
         nextPage = 1;
         map.put("page", String.valueOf(nextPage));
         map.put("count", "20");
@@ -183,7 +177,7 @@ public class NewsFragment extends BaseFragment<NewsListPresenter> implements IFr
         if (mAdapter != null) {
             mAdapter.clearData();
         }
-        mPresenter.getNewsList(mode, map);
+        getPresenter().getNewsList(mode, map);
     }
 
     @Override
@@ -199,13 +193,12 @@ public class NewsFragment extends BaseFragment<NewsListPresenter> implements IFr
 
     @Override
     public void onRefreshOrLoadMore(NewsListBean datas) {
+        isloadingMore = false;
         if (getLoadingView().isloading()) {
             getLoadingView().showSuccess();
         }
         newsList = datas;
         List<NewsBean> list = datas.getRetData().getData();
-        LogUtil.d(LogUtil.TAG_DB, "当前页数：" + nextPage);
-        LogUtil.d(LogUtil.TAG_DB, "是否有下一页：" + datas.getRetData().getHas_more());
         if (datas.getRetData().getHas_more() == 0) {
             //最后加载完数据，隐藏加载更多标识
             mAdapter.setFooterShow(false);
@@ -232,12 +225,6 @@ public class NewsFragment extends BaseFragment<NewsListPresenter> implements IFr
             fragmentRefresh = (SwipeRefreshLayout) rootView.findViewById(R.id.fragment_refresh);
         }
         fragmentRefresh.setRefreshing(false);
-    }
-
-
-    @Override
-    public void showSuccess() {
-
     }
 
 

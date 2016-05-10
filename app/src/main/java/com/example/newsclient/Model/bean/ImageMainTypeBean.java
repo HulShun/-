@@ -15,7 +15,7 @@ public class ImageMainTypeBean implements Parcelable {
      * name : 绀句細鏂伴椈
      */
 
-    private List<ImageTpyeBean> list;
+    private List<ImageTypeBean> list;
 
     public ImageMainTypeBean() {
 
@@ -23,7 +23,7 @@ public class ImageMainTypeBean implements Parcelable {
 
     protected ImageMainTypeBean(Parcel in) {
         name = in.readString();
-        list = in.createTypedArrayList(ImageTpyeBean.CREATOR);
+        list = in.createTypedArrayList(ImageTypeBean.CREATOR);
     }
 
     public static final Creator<ImageMainTypeBean> CREATOR = new Creator<ImageMainTypeBean>() {
@@ -46,11 +46,11 @@ public class ImageMainTypeBean implements Parcelable {
         this.name = name;
     }
 
-    public List<ImageTpyeBean> getList() {
+    public List<ImageTypeBean> getList() {
         return list;
     }
 
-    public void setList(List<ImageTpyeBean> list) {
+    public void setList(List<ImageTypeBean> list) {
         this.list = list;
     }
 

@@ -6,28 +6,28 @@ import android.os.Parcelable;
 /**
  * Created by Administrator on 2016-05-04.
  */
-public class ImageTpyeBean implements Parcelable {
+public class ImageTypeBean implements Parcelable {
 
     private int id;
     private String name;
 
-    public ImageTpyeBean() {
+    public ImageTypeBean() {
     }
 
-    protected ImageTpyeBean(Parcel in) {
+    protected ImageTypeBean(Parcel in) {
         id = in.readInt();
         name = in.readString();
     }
 
-    public static final Creator<ImageTpyeBean> CREATOR = new Creator<ImageTpyeBean>() {
+    public static final Creator<ImageTypeBean> CREATOR = new Creator<ImageTypeBean>() {
         @Override
-        public ImageTpyeBean createFromParcel(Parcel in) {
-            return new ImageTpyeBean(in);
+        public ImageTypeBean createFromParcel(Parcel in) {
+            return new ImageTypeBean(in);
         }
 
         @Override
-        public ImageTpyeBean[] newArray(int size) {
-            return new ImageTpyeBean[size];
+        public ImageTypeBean[] newArray(int size) {
+            return new ImageTypeBean[size];
         }
     };
 

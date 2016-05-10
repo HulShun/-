@@ -1,12 +1,8 @@
 package com.example.newsclient;
 
-import com.example.newsclient.Model.bean.NewsBean;
-import com.example.newsclient.dao.NewsDao;
+import com.example.newsclient.Model.model.MainViewModel;
 
 import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -20,19 +16,9 @@ public class ExampleUnitTest {
     }
 
 
-    public void testDB() {
-        List<NewsBean> list = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            NewsBean bean = new NewsBean();
-            bean.setTitle("1111");
-            bean.setAbstractX("11111");
-            bean.setDatetime("111111");
-            bean.setImg_url("111");
-            bean.setImg_url("1111");
-            list.add(bean);
-        }
 
-        NewsDao dao = NewsDao.getInstance();
-        //dao.insert(list);
+    @Test
+    public void textDB2() {
+        new MainViewModel().getVideoTabsFromNet(Configuration.VIDEO_TYPE_URL);
     }
 }

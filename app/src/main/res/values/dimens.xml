@@ -19,6 +19,7 @@
     <dimen name="px100">50dp</dimen>
     <dimen name="px120">60dp</dimen>
     <dimen name="px130">65dp</dimen>
+    <dimen name="px148">74dp</dimen>
     <dimen name="px180">90dp</dimen>
     <dimen name="px18">9dp</dimen>
     <dimen name="px14">7dp</dimen>

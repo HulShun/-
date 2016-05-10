@@ -25,10 +25,11 @@ public class LaunchAcitivity extends AppCompatActivity {
             }
         }, 2000);
 
-
+        MainViewModel model = new MainViewModel();
         if (AppUtil.getInstance().isNetWorkConnected()) {
             //加载各个模块的标签页tab
-            new MainViewModel().getImageTabsFromNet(Configuration.IMAGE_TYPE_URL);
+            model.getImageTabsFromNet(Configuration.IMAGE_TYPE_URL);
+            model.getVideoTabsFromNet(Configuration.VIDEO_TYPE_URL);
         }
 
     }

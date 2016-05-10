@@ -1,6 +1,7 @@
 package com.example.newsclient.view.impl;
 
 import com.example.newsclient.Model.bean.ImageMainTypeBean;
+import com.example.newsclient.Model.bean.VideoTypeBean;
 
 import java.util.List;
 
@@ -9,6 +10,11 @@ import java.util.List;
  */
 public interface IMainViewImpl extends IBaseViewImpl {
     void onImageTabs(List<ImageMainTypeBean> tabs);
+
+    void onVideoTabs(List<VideoTypeBean.VideoMainTypeBean> tabs);
+
+    void onNewsTabs(List<String> tabs);
+
     void onCompleted();
 
     void showNoNetWork();

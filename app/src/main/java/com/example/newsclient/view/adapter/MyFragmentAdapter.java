@@ -6,22 +6,23 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.example.newsclient.Configuration;
-import com.example.newsclient.Model.LogUtil;
 import com.example.newsclient.Model.bean.ImageMainTypeBean;
-import com.example.newsclient.Model.bean.ImageTpyeBean;
+import com.example.newsclient.Model.bean.VideoTypeBean;
 import com.example.newsclient.view.fragment.ImageClassifyFragment;
-import com.example.newsclient.view.fragment.ImagesFramgent;
-import com.example.newsclient.view.fragment.NewsFragment;
+import com.example.newsclient.view.fragment.NewsClassifyFragment;
+import com.example.newsclient.view.fragment.VideoClassifyFramgent;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 /**
  * Created by Administrator on 2016-04-11.
  */
 public class MyFragmentAdapter extends FragmentPagerAdapter {
-    private static String NEWS_CLASSNAME = NewsFragment.class.getName();
-    private static String IMAGES_CLASSNAME = ImagesFramgent.class.getName();
+    private static String NEWS_CLASSNAME = NewsClassifyFragment.class.getName();
+    // private static String IMAGES_CLASSNAME = ImagesFramgent.class.getName();
     private static String IMAGECLASSIFY = ImageClassifyFragment.class.getName();
+    private static String VIDEOCLASSIFY = VideoClassifyFramgent.class.getName();
     private List datas;
     private Class mCz;
 
@@ -40,17 +41,28 @@ public class MyFragmentAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         String title = null;
         Fragment fragment = null;
+        try {
+            fragment = (Fragment) mCz.getConstructor().newInstance();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        }
         Bundle bundle = new Bundle();
+        //新闻列表
         if (mCz.getName().contentEquals(NEWS_CLASSNAME)) {
             title = (String) datas.get(position);
-            fragment = new NewsFragment();
             bundle.putString(Configuration.KEYWORD, title);
-        } else if (mCz.getName().contentEquals(IMAGES_CLASSNAME)) {
-            fragment = new ImagesFramgent();
-            bundle.putParcelable("type", (ImageMainTypeBean) datas.get(position));
+            //图片列表
         } else if (mCz.getName().contentEquals(IMAGECLASSIFY)) {
-            fragment = new ImageClassifyFragment();
             bundle.putParcelable("type", (ImageMainTypeBean) datas.get(position));
+        }//视频列表
+        else if (mCz.getName().contentEquals(VIDEOCLASSIFY)) {
+            bundle.putParcelable("type", (VideoTypeBean.VideoMainTypeBean) (datas.get(position)));
         }
         if (fragment != null) {
             fragment.setArguments(bundle);
@@ -69,12 +81,12 @@ public class MyFragmentAdapter extends FragmentPagerAdapter {
         String title = null;
         if (mCz.getName().contentEquals(NEWS_CLASSNAME)) {
             title = (String) o;
-        } else if (mCz.getName().contentEquals(IMAGES_CLASSNAME)) {
-            title = ((ImageTpyeBean) o).getName();
         } else if (mCz.getName().contentEquals(IMAGECLASSIFY)) {
             title = ((ImageMainTypeBean) o).getName();
+        } else if (mCz.getName().contentEquals(VIDEOCLASSIFY)) {
+            title = ((VideoTypeBean.VideoMainTypeBean) o).getLabel();
         }
-        LogUtil.d("type", "tab文字：" + title);
+        //   LogUtil.d("type", "tab文字：" + title);
         return title;
     }
 }

@@ -17,6 +17,9 @@ public class ImageJsonBean implements Parcelable {
 
     private ShowapiResBodyBean showapi_res_body;
 
+    public ImageJsonBean() {
+    }
+
     protected ImageJsonBean(Parcel in) {
         showapi_res_code = in.readInt();
         showapi_res_error = in.readString();
@@ -75,6 +78,9 @@ public class ImageJsonBean implements Parcelable {
         private PagebeanBean pagebean;
         private int ret_code;
 
+        public ShowapiResBodyBean() {
+        }
+
         protected ShowapiResBodyBean(Parcel in) {
             ret_code = in.readInt();
         }
@@ -124,6 +130,9 @@ public class ImageJsonBean implements Parcelable {
             private int maxResult;
 
             private List<ImageContentBean> contentlist;
+
+            public PagebeanBean() {
+            }
 
             protected PagebeanBean(Parcel in) {
                 allNum = in.readInt();

@@ -20,20 +20,21 @@ import com.example.newsclient.R;
 public abstract class LoadingFrameLayout extends FrameLayout {
     private View view;
     private Context context;
-    private ImageView imageView;
+    private ImageView gifImageView, imageView;
     private Button button;
     private TextView textView;
     private int layoutId;
 
     private boolean isloading;
-    private Bitmap loaingBiemap;
+    private Bitmap loaingstateBiemap;
 
     public LoadingFrameLayout(Context context, int loadingLayoutId, int layoutId) {
         super(context);
         this.context = context;
         this.layoutId = layoutId;
         view = LayoutInflater.from(context).inflate(loadingLayoutId, null, false);
-        imageView = (ImageView) view.findViewById(R.id.loading_img);
+        imageView = (ImageView) view.findViewById(R.id.loading_state_img);
+        gifImageView = (ImageView) view.findViewById(R.id.loading_img);
         button = (Button) view.findViewById(R.id.loading_btm);
         textView = (TextView) view.findViewById(R.id.loading_tv);
 
@@ -50,19 +51,19 @@ public abstract class LoadingFrameLayout extends FrameLayout {
 
     public void showLoading() {
         isloading = true;
-       /* if (loaingBiemap == null) {
-            loaingBiemap = BitmapFactory.decodeResource(context.getResources(), R.drawable.loading_nonet);
-        }*/
+        gifImageView.setVisibility(VISIBLE);
+        imageView.setVisibility(INVISIBLE);
         textView.setVisibility(VISIBLE);
         textView.setText("正在加载中...");
         button.setVisibility(INVISIBLE);
-        // imageView.setImageBitmap(loaingBiemap);
+
         loading();
     }
 
     public abstract void loading();
 
     public void showNoNetWork() {
+        gifImageView.setVisibility(INVISIBLE);
         textView.setVisibility(VISIBLE);
         textView.setText("网络连接失败...");
         button.setVisibility(VISIBLE);
@@ -71,6 +72,8 @@ public abstract class LoadingFrameLayout extends FrameLayout {
     }
 
     public void showFailed() {
+        imageView.setVisibility(VISIBLE);
+        gifImageView.setVisibility(INVISIBLE);
         textView.setVisibility(VISIBLE);
         button.setVisibility(VISIBLE);
         textView.setText("加载失败");
@@ -80,6 +83,7 @@ public abstract class LoadingFrameLayout extends FrameLayout {
 
     public void showSuccess() {
         isloading = false;
+        gifImageView.setVisibility(GONE);
         imageView.setVisibility(GONE);
         textView.setVisibility(GONE);
         button.setVisibility(GONE);

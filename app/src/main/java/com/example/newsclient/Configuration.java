@@ -17,7 +17,15 @@ public class Configuration {
     public static final String IMAGE_TYPE_DB_NAEM = "image_type.db";
     public static final String IMAGE_MAIN_TYPE_TABLE_NAEM = "image_main_type";
     public static final String IMAGE_TYPE_TABLE_NAEM = "image_type";
+    public static final String IMAGE_INFORM_TABLE_NAEM = "image_inform";
+    public static final String IMAGE_TABLE_NAEM = "images";
 
     public static final String YOUKU_KEYWORD = "f3a5372f0293848d";
     public static final String YOUKU_SECRET = "52814a350fb11005df8440835488fef9";
+
+    public final static String VIDEO_TYPE_URL = "https://openapi.youku.com/";
+    public static final String VIDEO_TYPE_DB_NAEM = "videos.db";
+    public static final String VIDEO_TYPE_TABLE_NAEM = "video_type";
+    public static final String VIDEO_TYPE_SUBTITLE_TABLE_NAEM = "video_subtitle_type";
+
 }

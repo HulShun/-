@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.WindowManager;
 
 import com.example.newsclient.Model.utils.AppUtil;
+import com.example.newsclient.R;
 import com.example.newsclient.presenter.BasePresenter;
 import com.example.newsclient.view.impl.IBaseViewImpl;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
@@ -30,11 +31,11 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         setContentView(view);
         mToolBar = (Toolbar) findViewById(getToolBarId());
         setSupportActionBar(mToolBar);
-        init();
         mPresenter = getPresenter();
         if (mPresenter != null) {
             mPresenter.bindView(this);
         }
+        init();
     }
 
 
@@ -44,7 +45,14 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
 
     protected abstract int getLayoutId();
 
-    protected abstract T getPresenter();
+    public T getPresenter() {
+        if (mPresenter == null) {
+            mPresenter = initPresenter();
+        }
+        return mPresenter;
+    }
+
+    protected abstract T initPresenter();
 
 
     public Toolbar getToolBar() {
@@ -60,6 +68,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
             tintManager = new SystemBarTintManager(this);
             tintManager.setStatusBarTintEnabled(true);
             tintManager.setNavigationBarTintEnabled(true);
+            tintManager.setStatusBarTintResource(R.color.colorPrimary);
         }
 
     }
@@ -76,6 +85,12 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
 
     @Override
     public boolean isVisiable() {
-        return false;
+        return !this.isFinishing();
+    }
+
+
+    @Override
+    public void showSuccess() {
+
     }
 }

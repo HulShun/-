@@ -2,7 +2,9 @@ package com.example.newsclient.Model.impl;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.example.newsclient.Model.bean.ImageJsonBean;
+import com.example.newsclient.Model.bean.ImageTypeBean;
 
+import java.util.List;
 import java.util.Map;
 
 import rx.Observer;
@@ -13,5 +15,9 @@ import rx.Observer;
 public interface ImageClassifyModelImpl extends BaseModelImpl {
     void onLoadBitmap(String url, ImageLoader.ImageListener l);
 
-    void getImageDatas(Map<String, String> params, Observer<ImageJsonBean> os);
+    void getImageDatas(int mode, List<ImageTypeBean> typeBeans, Observer<ImageJsonBean> os);
+
+    void saveIntoDB(ImageJsonBean jsonBean);
+
+    void deleteDataInDB(Map<String, String> map);
 }

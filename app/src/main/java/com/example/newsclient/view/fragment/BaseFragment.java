@@ -17,7 +17,7 @@ import com.example.newsclient.widget.LoadingFrameLayout;
  * Created by Administrator on 2016-04-11.
  */
 public abstract class BaseFragment<T extends BasePresenter> extends Fragment implements IBaseViewImpl {
-    public T mPresenter;
+    private T mPresenter;
     public View rootView;
 
     public LoadingFrameLayout loadingFrameLayoutPager;
@@ -28,8 +28,14 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
 
     }
 
-    protected abstract T getPresenter();
+    protected abstract T initPresenter();
 
+    public T getPresenter() {
+        if (mPresenter == null) {
+            mPresenter = initPresenter();
+        }
+        return mPresenter;
+    }
 
     @Nullable
     @Override
@@ -96,6 +102,11 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
         if (getLoadingView().isloading()) {
             getLoadingView().showFailed();
         }
+    }
+
+    @Override
+    public void showSuccess() {
+
     }
 
     @CallSuper

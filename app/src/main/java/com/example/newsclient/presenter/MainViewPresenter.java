@@ -1,11 +1,17 @@
 package com.example.newsclient.presenter;
 
+import android.content.Context;
+
+import com.example.newsclient.Configuration;
 import com.example.newsclient.Model.bean.ImageMainTypeBean;
 import com.example.newsclient.Model.bean.ImageTypeJsonBean;
+import com.example.newsclient.Model.bean.VideoTypeBean;
 import com.example.newsclient.Model.impl.MainViewModelImpl;
 import com.example.newsclient.Model.model.MainViewModel;
+import com.example.newsclient.R;
 import com.example.newsclient.view.impl.IMainViewImpl;
 
+import java.util.Arrays;
 import java.util.List;
 
 import rx.Observer;
@@ -16,11 +22,13 @@ import rx.Observer;
 public class MainViewPresenter extends BasePresenter<IMainViewImpl, MainViewModelImpl> {
 
     private List<ImageMainTypeBean> mImageTpyes;
-
+    private List<VideoTypeBean.VideoMainTypeBean> mVideoTypes;
+    private List<String> mNewsTabs;
 
     public MainViewPresenter() {
         //参数 1 ：表示不刷新ui
         getImagesTabsFromLocal(1);
+        getVideoTabsFromLocal(1);
     }
 
     @Override
@@ -28,7 +36,86 @@ public class MainViewPresenter extends BasePresenter<IMainViewImpl, MainViewMode
         return new MainViewModel();
     }
 
-    public void getImageTabsFromNet(String url) {
+
+    public void loadImageTpyes() {
+        if (mImageTpyes == null) {
+            getImageTabsFromNet(Configuration.IMAGE_TYPE_URL);
+        } else {
+            getView().onImageTabs(mImageTpyes);
+        }
+
+    }
+
+    public void loadVideoTypes() {
+        if (mVideoTypes == null) {
+            getVideoTabsFromNet(Configuration.VIDEO_TYPE_URL);
+        } else {
+            getView().onVideoTabs(mVideoTypes);
+        }
+
+    }
+
+
+    public void loadNewsType(Context c) {
+        if (mNewsTabs == null) {
+            getNewsTabFromLocal(c, 0);
+        } else {
+            getView().onNewsTabs(mNewsTabs);
+        }
+    }
+
+    private void getNewsTabFromLocal(Context c, int flag) {
+        String[] list = c.getResources().getStringArray(R.array.news_tab);
+        mNewsTabs = Arrays.asList(list);
+        getView().onNewsTabs(mNewsTabs);
+    }
+
+
+    private void getVideoTabsFromNet(String url) {
+        if (!getView().checkNetWork()) {
+            getView().onCompleted();
+            getView().showNoNetWork();
+            return;
+        }
+        getModel().getVideoTabsFromNet(url);
+
+        getVideoTabsFromLocal(0);
+    }
+
+    /**
+     * @param flag 0，1： 0表示刷新ui，1表示不刷新ui
+     */
+    private void getVideoTabsFromLocal(final int flag) {
+        getModel().getVideoTabsFromLocal(new Observer<VideoTypeBean>() {
+            @Override
+            public void onCompleted() {
+                if (getView().isVisiable()) {
+                    getView().onCompleted();
+                    getView().showSuccess();
+                }
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                if (getView().isVisiable()) {
+                    getView().onCompleted();
+                    getView().showFaild(e.getMessage());
+                }
+            }
+
+            @Override
+            public void onNext(VideoTypeBean videoTypeBean) {
+                if (getView().isVisiable()) {
+                    mVideoTypes = videoTypeBean.getCategories();
+                    if (flag == 0) {
+                        getView().onVideoTabs(mVideoTypes);
+                    }
+                }
+            }
+        });
+    }
+
+    private void getImageTabsFromNet(String url) {
         if (!getView().checkNetWork()) {
             getView().onCompleted();
             getView().showNoNetWork();
@@ -42,7 +129,7 @@ public class MainViewPresenter extends BasePresenter<IMainViewImpl, MainViewMode
     /**
      * @param flag 0，1： 0表示刷新ui，1表示不刷新ui
      */
-    public void getImagesTabsFromLocal(final int flag) {
+    private void getImagesTabsFromLocal(final int flag) {
 
         getModel().getImageTabsFromLocal(new Observer<ImageTypeJsonBean>() {
             @Override
@@ -68,13 +155,8 @@ public class MainViewPresenter extends BasePresenter<IMainViewImpl, MainViewMode
                     if (flag == 0) {
                         getView().onImageTabs(mImageTpyes);
                     }
-
                 }
             }
         });
-    }
-
-    public List<ImageMainTypeBean> getmImageTpyes() {
-        return mImageTpyes;
     }
 }

@@ -45,12 +45,11 @@ public class ImageListActivity extends BaseActivity<ImageListPresenter> implemen
         return R.layout.activity_imagelist;
     }
 
+
+
     @Override
-    protected ImageListPresenter getPresenter() {
-        if (mPresenter == null) {
-            mPresenter = new ImageListPresenter();
-        }
-        return mPresenter;
+    protected ImageListPresenter initPresenter() {
+        return new ImageListPresenter();
     }
 
     @Override

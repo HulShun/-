@@ -9,15 +9,29 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_gravity="center_horizontal"
         android:orientation="vertical">
 
-        <pl.droidsonroids.gif.GifImageView
-            android:id="@+id/loading_img"
+        <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:scaleType="fitCenter"
-            android:src="@drawable/loading_anim" />
+            android:layout_marginTop="@dimen/px148">
+
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/loading_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="fitCenter"
+                android:src="@drawable/loading_anim" />
+
+            <ImageView
+                android:id="@+id/loading_state_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="fitCenter" />
+
+        </FrameLayout>
+
 
         <TextView
             android:id="@+id/loading_tv"

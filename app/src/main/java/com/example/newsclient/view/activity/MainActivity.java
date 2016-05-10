@@ -21,17 +21,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.newsclient.Model.bean.ImageMainTypeBean;
+import com.example.newsclient.Model.bean.VideoTypeBean;
 import com.example.newsclient.Model.utils.AppUtil;
 import com.example.newsclient.R;
 import com.example.newsclient.presenter.MainViewPresenter;
 import com.example.newsclient.view.Constant;
 import com.example.newsclient.view.adapter.MyFragmentAdapter;
 import com.example.newsclient.view.fragment.ImageClassifyFragment;
-import com.example.newsclient.view.fragment.NewsFragment;
+import com.example.newsclient.view.fragment.NewsClassifyFragment;
+import com.example.newsclient.view.fragment.VideoClassifyFramgent;
 import com.example.newsclient.view.impl.IMainViewImpl;
 import com.example.newsclient.view.service.NetWorkBroadcastReceiver;
 
-import java.util.Arrays;
 import java.util.List;
 
 import butterknife.Bind;
@@ -94,21 +95,17 @@ public class MainActivity extends BaseActivity<MainViewPresenter> implements IMa
         return R.id.main_toolbar;
     }
 
-
     @Override
-    protected MainViewPresenter getPresenter() {
-        if (mPresenter == null) {
-            mPresenter = new MainViewPresenter();
-        }
-        return mPresenter;
+    protected MainViewPresenter initPresenter() {
+        return new MainViewPresenter();
     }
 
     private void initDatas() {
-
+        mFragmentManager = getSupportFragmentManager();
         loadingBitmap = BitmapFactory.decodeResource(this.getResources(), R.drawable.ic_loading);
         nowMenuItemId = R.id.nav_news;
         mainNavi.setCheckedItem(nowMenuItemId);
-        onNewsTabs();
+        mPresenter.loadNewsType(this);
     }
 
     private void initViews() {
@@ -142,19 +139,21 @@ public class MainActivity extends BaseActivity<MainViewPresenter> implements IMa
                     case R.id.nav_news:
                         mainDrawer.closeDrawers();
                         if (nowMenuItemId != id) {
-                            onNewsTabs();
+                           mPresenter.loadNewsType(MainActivity.this);
                         }
                         break;
                     //图片
                     case R.id.nav_image:
                         mainDrawer.closeDrawers();
                         if (nowMenuItemId != id) {
-                            if (mPresenter.getmImageTpyes() == null) {
-                                //去加载tabs
-                                mPresenter.getImagesTabsFromLocal(0);
-                            } else {
-                                onImageTabs(mPresenter.getmImageTpyes());
-                            }
+                            mPresenter.loadImageTpyes();
+                        }
+                        break;
+                    //视频
+                    case R.id.nav_video:
+                        mainDrawer.closeDrawers();
+                        if (nowMenuItemId != id) {
+                            mPresenter.loadVideoTypes();
                         }
                         break;
 
@@ -165,10 +164,6 @@ public class MainActivity extends BaseActivity<MainViewPresenter> implements IMa
         });
     }
 
-    @Override
-    public void showSuccess() {
-
-    }
 
     @Override
     public void showFaild(String msg) {
@@ -196,23 +191,30 @@ public class MainActivity extends BaseActivity<MainViewPresenter> implements IMa
         setViewpagerAndTablayout();
     }
 
-    public void onNewsTabs() {
-        //默认的tab列表为新闻
-        String[] list = this.getResources().getStringArray(R.array.news_tab);
-        mTab_list = Arrays.asList(list);
-        mFragmentManager = getSupportFragmentManager();
-        mFragmentAdapter = new MyFragmentAdapter(mFragmentManager, mTab_list, NewsFragment.class);
+    @Override
+    public void onVideoTabs(List<VideoTypeBean.VideoMainTypeBean> tabs) {
+        if (tabs.size() == 0) {
+            showFaild("tab获取失败");
+            return;
+        }
+        mFragmentAdapter = new MyFragmentAdapter(mFragmentManager, tabs, VideoClassifyFramgent.class);
         setViewpagerAndTablayout();
     }
 
+    @Override
+    public void onNewsTabs(List<String> tabs) {
+        mFragmentAdapter = new MyFragmentAdapter(mFragmentManager, tabs, NewsClassifyFragment.class);
+        setViewpagerAndTablayout();
+    }
+
+
     public void setViewpagerAndTablayout() {
-        // mainDrawer.closeDrawers();
+
         List<Fragment> fragments = mFragmentManager.getFragments();
         if (fragments != null && !fragments.isEmpty()) {
             fragments.clear();
         }
         mainViewpager.setAdapter(mFragmentAdapter);
-
         tablayout.setupWithViewPager(mainViewpager);
 
     }
