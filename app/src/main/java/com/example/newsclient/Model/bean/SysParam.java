@@ -17,6 +17,15 @@ public class SysParam {
     /*对API调用参数（除sign外）的md5加密值。详情见签名方法*/
     private String sign;
 
+    private String access_token;
+
+    public String getAccess_token() {
+        return access_token;
+    }
+
+    public void setAccess_token(String access_token) {
+        this.access_token = access_token;
+    }
 
     public String getAction() {
         return action;

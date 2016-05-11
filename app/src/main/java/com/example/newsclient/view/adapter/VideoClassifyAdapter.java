@@ -36,8 +36,12 @@ public class VideoClassifyAdapter extends BaseRecyclerViewAdapter<VideosInFormBe
 
     @Override
     protected void onBindItemViewHolder(VideoViewHolder holder, int position) {
-        holder.textView.setText(getData().get(position).getTitle());
+        holder.title_textView.setText(getData().get(position).getTitle());
+        holder.count_textView.setText("播放量：" + getData().get(position).getView_count());
         String img_url = getData().get(position).getBigThumbnail();
+
+        holder.title_textView.setTag(getData().get(position).getId());
+
         Picasso.with(getContext())
                 .load(img_url)
                 .placeholder(R.drawable.ic_loading)

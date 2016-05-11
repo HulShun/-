@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#15b091</color>
     <color name="colorAccent">#FF4081</color>
 
-    <color name="text_bg">#78646464</color>
+    <color name="text_bg">#A0646464</color>
     <color name="tab_unselect">#ececec</color>
     <color name="tab_selected">#ffffff</color>
     <color name="white">#ffffff</color>

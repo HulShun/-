@@ -34,4 +34,5 @@ public abstract class BasePresenter<V extends IBaseViewImpl, M extends BaseModel
     protected abstract M instanceModel();
 
 
+
 }

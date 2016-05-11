@@ -38,7 +38,7 @@ public class VideoTypeDBHelper extends SQLiteOpenHelper {
         db.execSQL(sql1);
 
         String sql2 = "create table " + Configuration.VIDEO_TYPE_SUBTITLE_TABLE_NAEM + " ( " +
-                KEY + " char(10) primary key, " +
+                KEY + " char(10) , " +
                 TERM + " char(10), " +
                 LABEL + " char(10), " +
                 LANG + " char(10) " +

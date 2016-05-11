@@ -14,6 +14,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -125,6 +126,13 @@ public class MainActivity extends BaseActivity<MainViewPresenter> implements IMa
             @Override
             public void onClick(View v) {
                 myHandler.sendEmptyMessage(Constant.UPDATE_NETWORK);
+            }
+        });
+
+        getToolBar().setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainDrawer.openDrawer(Gravity.LEFT);
             }
         });
 

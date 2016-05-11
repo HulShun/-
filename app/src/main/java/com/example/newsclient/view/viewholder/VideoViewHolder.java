@@ -14,7 +14,8 @@ import com.example.newsclient.view.adapter.BaseRecyclerViewAdapter;
  */
 public class VideoViewHolder extends RecyclerView.ViewHolder {
     public ImageView imageView;
-    public TextView textView;
+    public TextView title_textView, count_textView;
+
 
     public Button loadmoreBtn;
 
@@ -22,7 +23,8 @@ public class VideoViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
         if (viewType == BaseRecyclerViewAdapter.VIEWTYPE_ITEM) {
             imageView = (ImageView) itemView.findViewById(R.id.video_item_iv);
-            textView = (TextView) itemView.findViewById(R.id.video_item_tv);
+            title_textView = (TextView) itemView.findViewById(R.id.video_item_tv_title);
+            count_textView = (TextView) itemView.findViewById(R.id.video_item_tv_count);
         } else {
             loadmoreBtn = (Button) itemView.findViewById(R.id.footer_btn);
         }

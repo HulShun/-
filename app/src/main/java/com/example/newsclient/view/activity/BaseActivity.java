@@ -28,6 +28,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         initWindow();
         View view = LayoutInflater.from(this).inflate(getLayoutId(), null);
         ButterKnife.bind(this, view);
+        onCreateBeforView();
         setContentView(view);
         mToolBar = (Toolbar) findViewById(getToolBarId());
         setSupportActionBar(mToolBar);
@@ -36,6 +37,9 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
             mPresenter.bindView(this);
         }
         init();
+    }
+
+    protected void onCreateBeforView() {
     }
 
 
@@ -91,6 +95,11 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
 
     @Override
     public void showSuccess() {
+
+    }
+
+    @Override
+    public void showFaild(String msg) {
 
     }
 }

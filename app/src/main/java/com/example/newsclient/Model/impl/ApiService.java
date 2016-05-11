@@ -3,6 +3,7 @@ package com.example.newsclient.Model.impl;
 import com.example.newsclient.Model.bean.ImageJsonBean;
 import com.example.newsclient.Model.bean.ImageTypeJsonBean;
 import com.example.newsclient.Model.bean.NewsListBean;
+import com.example.newsclient.Model.bean.VideoItemBean;
 import com.example.newsclient.Model.bean.VideoListBean;
 import com.example.newsclient.Model.bean.VideoTypeBean;
 import com.example.newsclient.Model.bean.VideosInFormBean;
@@ -70,6 +71,16 @@ public interface ApiService {
                                                   @Query("orderby") String orderby,
                                                   @Query("page") String page,
                                                   @Query("count") String count);
+
+    @GET("v2/videos/show.json")
+    Observable<VideoItemBean> loadVideoItem(@Query("client_id") String client_id,
+                                            @Query("video_id") String video_id,
+                                            @Query("ext") String ext);
+
+
+    @GET("router/rest.json")
+    Observable<String> loadVideoM8u3(@Query("opensysparams") String opensysparams,
+                                     @Query("_id") String _id);
 
     /**
      * 美图大全api

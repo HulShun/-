@@ -1,5 +1,6 @@
 package com.example.newsclient.view.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,9 +11,11 @@ import com.example.newsclient.Model.bean.VideoTypeBean;
 import com.example.newsclient.Model.bean.VideosInFormBean;
 import com.example.newsclient.R;
 import com.example.newsclient.presenter.VideoClassifyPresenter;
+import com.example.newsclient.view.activity.VideoItemActivity;
 import com.example.newsclient.view.adapter.VideoClassifyAdapter;
 import com.example.newsclient.view.impl.IVideoClassifyViewIpml;
 import com.example.newsclient.view.impl.OnItemClickListener;
+import com.example.newsclient.view.viewholder.VideoViewHolder;
 import com.example.newsclient.widget.AutoRecyclerView;
 
 import butterknife.Bind;
@@ -90,6 +93,12 @@ public class VideoClassifyFramgent extends BaseFragment<VideoClassifyPresenter> 
             @Override
             public void onClick(RecyclerView.ViewHolder viewHolder, int position) {
                 //点击跳转
+                VideoViewHolder holder = (VideoViewHolder) viewHolder;
+                String id = (String) holder.title_textView.getTag();
+                Intent intent = new Intent(getContext(), VideoItemActivity.class);
+                intent.putExtra("id", id);
+                intent.putExtra("title", holder.title_textView.getText().toString());
+                getContext().startActivity(intent);
             }
         });
 
@@ -136,7 +145,6 @@ public class VideoClassifyFramgent extends BaseFragment<VideoClassifyPresenter> 
     @Override
     public void onloadMoreVideos(VideosInFormBean date) {
         fragmentVideoRc.loadMoreCompleted();
-
         mAdapter.addData(date.getVideos());
     }
 
@@ -153,5 +161,13 @@ public class VideoClassifyFramgent extends BaseFragment<VideoClassifyPresenter> 
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
+    }
+
+    @Override
+    public void showFaild(String msg) {
+        super.showFaild(msg);
+        if (!getLoadingView().isloading()) {
+            mAdapter.setFooterText("点击加载更多");
+        }
     }
 }

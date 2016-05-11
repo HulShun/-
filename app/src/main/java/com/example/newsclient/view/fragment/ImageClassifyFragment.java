@@ -26,7 +26,7 @@ public class ImageClassifyFragment extends BaseFragment<ImageClassifyPresenter> 
 
     private ImageMainTypeBean mImageType;
     private ImageClassifyAdapter mAdapter;
-
+    int cout;
     @Bind(R.id.fragment_imageclassify_rc)
     AutoRecyclerView fragmentImageRc;
     @Bind(R.id.imageclassify_refresh)
@@ -112,7 +112,11 @@ public class ImageClassifyFragment extends BaseFragment<ImageClassifyPresenter> 
 
     @Override
     public void onLoadData(ImageJsonBean data) {
+        cout++;
         if (data.getShowapi_res_body().getPagebean().getContentlist().isEmpty()) {
+            if (cout >= mImageType.getList().size()) {
+                getPresenter().getImageData(ModelMode.INTERNET, mImageType.getList());
+            }
             return;
         }
         if (getLoadingView().isloading()) {
