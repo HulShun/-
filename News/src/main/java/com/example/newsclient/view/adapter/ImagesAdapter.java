@@ -8,7 +8,7 @@ import android.widget.ImageView;
 
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
-import com.example.newsclient.Model.bean.ImageContentBean;
+import com.example.newsclient.Model.bean.image.ImageContentBean;
 import com.example.newsclient.R;
 import com.example.newsclient.presenter.ImageListPresenter;
 import com.example.newsclient.view.viewholder.ImageViewHolder;

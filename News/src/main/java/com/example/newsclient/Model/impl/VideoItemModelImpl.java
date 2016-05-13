@@ -1,6 +1,6 @@
 package com.example.newsclient.Model.impl;
 
-import com.example.newsclient.Model.bean.VideoItemBean;
+import com.example.newsclient.Model.bean.video.VideoItemBean;
 
 import rx.Observer;
 

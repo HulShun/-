@@ -1,12 +1,14 @@
 package com.example.newsclient.Model.impl;
 
-import com.example.newsclient.Model.bean.ImageJsonBean;
-import com.example.newsclient.Model.bean.ImageTypeJsonBean;
+import com.example.newsclient.Model.bean.image.ImageJsonBean;
+import com.example.newsclient.Model.bean.image.ImageTypeJsonBean;
 import com.example.newsclient.Model.bean.NewsListBean;
-import com.example.newsclient.Model.bean.VideoItemBean;
-import com.example.newsclient.Model.bean.VideoListBean;
-import com.example.newsclient.Model.bean.VideoTypeBean;
-import com.example.newsclient.Model.bean.VideosInFormBean;
+import com.example.newsclient.Model.bean.video.CommentsBean;
+import com.example.newsclient.Model.bean.video.VideoItemBean;
+import com.example.newsclient.Model.bean.video.VideoListBean;
+import com.example.newsclient.Model.bean.video.VideoShowBean;
+import com.example.newsclient.Model.bean.video.VideoTypeBean;
+import com.example.newsclient.Model.bean.video.VideosInFormBean;
 
 import retrofit.http.GET;
 import retrofit.http.Query;
@@ -56,15 +58,6 @@ public interface ApiService {
 
 
     @GET("v2/videos/by_category.json")
-    Observable<VideosInFormBean> loadVideosInform(@Query("client_id") String client_id,   //应用key
-                                                  @Query("category") String category,    //分类（label）
-                                                  @Query("genre") String genre,          //子分类
-                                                  @Query("period") String period,        //时间范围
-                                                  @Query("orderby") String orderby,       //排序方式
-                                                  @Query("page") String page,
-                                                  @Query("count") String count);
-
-    @GET("v2/videos/by_category.json")
     Observable<VideosInFormBean> loadVideosInform(@Query("client_id") String client_id,
                                                   @Query("category") String category,
                                                   @Query("period") String period,
@@ -72,15 +65,35 @@ public interface ApiService {
                                                   @Query("page") String page,
                                                   @Query("count") String count);
 
+    /**
+     * youku单条视频详细信息
+     *
+     * @param client_id
+     * @param video_id
+     * @param ext
+     * @return
+     */
     @GET("v2/videos/show.json")
     Observable<VideoItemBean> loadVideoItem(@Query("client_id") String client_id,
                                             @Query("video_id") String video_id,
                                             @Query("ext") String ext);
 
 
-    @GET("router/rest.json")
-    Observable<String> loadVideoM8u3(@Query("opensysparams") String opensysparams,
-                                     @Query("_id") String _id);
+    /**
+     * 相关节目(shows/by_related)
+     *
+     * @param client_id
+     * @param show_id
+     * @return
+     */
+    @GET("v2/shows/by_related.json")
+    Observable<VideoShowBean> loadVideoShows(@Query("client_id") String client_id,
+                                             @Query("show_id") String show_id);
+
+
+    @GET("v2/comments/by_video.json")
+    Observable<CommentsBean> loadVideoComments(@Query("client_id") String client_id,
+                                               @Query("video_id") String video_id);
 
     /**
      * 美图大全api

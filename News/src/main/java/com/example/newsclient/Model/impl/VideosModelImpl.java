@@ -1,6 +1,6 @@
 package com.example.newsclient.Model.impl;
 
-import com.example.newsclient.Model.bean.VideoListBean;
+import com.example.newsclient.Model.bean.video.VideoListBean;
 
 import java.util.Map;
 

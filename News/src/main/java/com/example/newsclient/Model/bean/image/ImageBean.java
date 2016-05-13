@@ -1,4 +1,4 @@
-package com.example.newsclient.Model.bean;
+package com.example.newsclient.Model.bean.image;
 
 /**
  * Created by Administrator on 2016-05-04.

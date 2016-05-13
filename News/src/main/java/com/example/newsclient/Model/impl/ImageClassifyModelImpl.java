@@ -1,8 +1,8 @@
 package com.example.newsclient.Model.impl;
 
 import com.android.volley.toolbox.ImageLoader;
-import com.example.newsclient.Model.bean.ImageJsonBean;
-import com.example.newsclient.Model.bean.ImageTypeBean;
+import com.example.newsclient.Model.bean.image.ImageJsonBean;
+import com.example.newsclient.Model.bean.image.ImageTypeBean;
 
 import java.util.List;
 import java.util.Map;

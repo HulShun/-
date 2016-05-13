@@ -6,8 +6,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.example.newsclient.Configuration;
-import com.example.newsclient.Model.bean.ImageMainTypeBean;
-import com.example.newsclient.Model.bean.VideoTypeBean;
+import com.example.newsclient.Model.bean.image.ImageMainTypeBean;
+import com.example.newsclient.Model.bean.video.VideoTypeBean;
 import com.example.newsclient.view.fragment.ImageClassifyFragment;
 import com.example.newsclient.view.fragment.NewsClassifyFragment;
 import com.example.newsclient.view.fragment.VideoClassifyFramgent;

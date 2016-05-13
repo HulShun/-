@@ -1,4 +1,4 @@
-package com.example.newsclient.Model.bean;
+package com.example.newsclient.Model.bean.image;
 
 import android.os.Parcel;
 import android.os.Parcelable;

@@ -7,8 +7,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.example.newsclient.Model.bean.VideoTypeBean;
-import com.example.newsclient.Model.bean.VideosInFormBean;
+import com.example.newsclient.Model.bean.video.VideoTypeBean;
+import com.example.newsclient.Model.bean.video.VideosInFormBean;
 import com.example.newsclient.R;
 import com.example.newsclient.presenter.VideoClassifyPresenter;
 import com.example.newsclient.view.activity.VideoItemActivity;

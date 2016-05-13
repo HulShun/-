@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.newsclient.Configuration;
-import com.example.newsclient.Model.bean.VideoTypeBean;
+import com.example.newsclient.Model.bean.video.VideoTypeBean;
 import com.example.newsclient.MyApplication;
 
 import java.util.ArrayList;

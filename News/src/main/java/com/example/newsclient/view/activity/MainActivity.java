@@ -21,8 +21,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.newsclient.Model.bean.ImageMainTypeBean;
-import com.example.newsclient.Model.bean.VideoTypeBean;
+import com.example.newsclient.Model.bean.image.ImageMainTypeBean;
+import com.example.newsclient.Model.bean.video.VideoTypeBean;
 import com.example.newsclient.Model.utils.AppUtil;
 import com.example.newsclient.R;
 import com.example.newsclient.presenter.MainViewPresenter;

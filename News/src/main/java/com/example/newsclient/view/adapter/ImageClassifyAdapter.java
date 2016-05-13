@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.text.TextUtils;
 import android.view.View;
 
-import com.example.newsclient.Model.bean.ImageJsonBean;
+import com.example.newsclient.Model.bean.image.ImageJsonBean;
 import com.example.newsclient.R;
 import com.example.newsclient.presenter.ImageClassifyPresenter;
 import com.example.newsclient.view.viewholder.ImageClassifyViewHolder;

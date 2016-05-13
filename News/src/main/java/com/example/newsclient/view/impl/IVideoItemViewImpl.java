@@ -1,6 +1,6 @@
 package com.example.newsclient.view.impl;
 
-import com.example.newsclient.Model.bean.VideoItemBean;
+import com.example.newsclient.Model.bean.video.VideoItemBean;
 
 /**
  * Created by Administrator on 2016-05-11.

@@ -2,7 +2,7 @@ package com.example.newsclient.presenter;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.example.newsclient.Model.ModelMode;
-import com.example.newsclient.Model.bean.ImageJsonBean;
+import com.example.newsclient.Model.bean.image.ImageJsonBean;
 import com.example.newsclient.Model.impl.ImageListModelImpl;
 import com.example.newsclient.Model.model.ImageListModel;
 import com.example.newsclient.view.impl.IImageListViewImpl;

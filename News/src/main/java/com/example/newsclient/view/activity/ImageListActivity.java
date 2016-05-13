@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.Toolbar;
 
-import com.example.newsclient.Model.bean.ImageJsonBean;
+import com.example.newsclient.Model.bean.image.ImageJsonBean;
 import com.example.newsclient.R;
 import com.example.newsclient.presenter.ImageListPresenter;
 import com.example.newsclient.view.impl.IImageListViewImpl;

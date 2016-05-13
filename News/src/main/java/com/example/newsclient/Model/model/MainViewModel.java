@@ -2,9 +2,9 @@ package com.example.newsclient.Model.model;
 
 import com.example.newsclient.Configuration;
 import com.example.newsclient.Model.LogUtil;
-import com.example.newsclient.Model.bean.ImageMainTypeBean;
-import com.example.newsclient.Model.bean.ImageTypeJsonBean;
-import com.example.newsclient.Model.bean.VideoTypeBean;
+import com.example.newsclient.Model.bean.image.ImageMainTypeBean;
+import com.example.newsclient.Model.bean.image.ImageTypeJsonBean;
+import com.example.newsclient.Model.bean.video.VideoTypeBean;
 import com.example.newsclient.Model.impl.ApiService;
 import com.example.newsclient.Model.impl.MainViewModelImpl;
 import com.example.newsclient.Model.utils.RetrofitUtil;

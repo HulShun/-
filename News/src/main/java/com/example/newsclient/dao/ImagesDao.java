@@ -7,11 +7,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.NonNull;
 
 import com.example.newsclient.Configuration;
-import com.example.newsclient.Model.bean.ImageBean;
-import com.example.newsclient.Model.bean.ImageContentBean;
-import com.example.newsclient.Model.bean.ImageJsonBean;
-import com.example.newsclient.Model.bean.ImageMainTypeBean;
-import com.example.newsclient.Model.bean.ImageTypeBean;
+import com.example.newsclient.Model.bean.image.ImageBean;
+import com.example.newsclient.Model.bean.image.ImageContentBean;
+import com.example.newsclient.Model.bean.image.ImageJsonBean;
+import com.example.newsclient.Model.bean.image.ImageMainTypeBean;
+import com.example.newsclient.Model.bean.image.ImageTypeBean;
 import com.example.newsclient.MyApplication;
 import com.example.newsclient.dao.helper.ImagesHelper;
 

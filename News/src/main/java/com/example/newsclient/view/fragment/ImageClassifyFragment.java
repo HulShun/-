@@ -7,8 +7,8 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
 import com.example.newsclient.Model.ModelMode;
-import com.example.newsclient.Model.bean.ImageJsonBean;
-import com.example.newsclient.Model.bean.ImageMainTypeBean;
+import com.example.newsclient.Model.bean.image.ImageJsonBean;
+import com.example.newsclient.Model.bean.image.ImageMainTypeBean;
 import com.example.newsclient.R;
 import com.example.newsclient.presenter.ImageClassifyPresenter;
 import com.example.newsclient.view.adapter.ImageClassifyAdapter;

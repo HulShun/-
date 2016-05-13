@@ -9,9 +9,9 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.newsclient.Model.ModelMode;
-import com.example.newsclient.Model.bean.ImageContentBean;
-import com.example.newsclient.Model.bean.ImageJsonBean;
-import com.example.newsclient.Model.bean.ImageTypeBean;
+import com.example.newsclient.Model.bean.image.ImageContentBean;
+import com.example.newsclient.Model.bean.image.ImageJsonBean;
+import com.example.newsclient.Model.bean.image.ImageTypeBean;
 import com.example.newsclient.Model.utils.AppUtil;
 import com.example.newsclient.R;
 import com.example.newsclient.presenter.ImageListPresenter;

@@ -2,8 +2,8 @@ package com.example.newsclient.presenter;
 
 import com.example.newsclient.Model.LogUtil;
 import com.example.newsclient.Model.ModelMode;
-import com.example.newsclient.Model.bean.ImageJsonBean;
-import com.example.newsclient.Model.bean.ImageTypeBean;
+import com.example.newsclient.Model.bean.image.ImageJsonBean;
+import com.example.newsclient.Model.bean.image.ImageTypeBean;
 import com.example.newsclient.Model.impl.ImageClassifyModelImpl;
 import com.example.newsclient.Model.model.ImageClassifyModel;
 import com.example.newsclient.view.impl.IImageClassifyViewImpl;

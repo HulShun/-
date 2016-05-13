@@ -1,6 +1,6 @@
 package com.example.newsclient.view.impl;
 
-import com.example.newsclient.Model.bean.ImageJsonBean;
+import com.example.newsclient.Model.bean.image.ImageJsonBean;
 
 /**
  * Created by Administrator on 2016-05-04.

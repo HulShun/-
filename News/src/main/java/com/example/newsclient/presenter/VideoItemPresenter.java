@@ -1,7 +1,7 @@
 package com.example.newsclient.presenter;
 
 import com.example.newsclient.Model.LogUtil;
-import com.example.newsclient.Model.bean.VideoItemBean;
+import com.example.newsclient.Model.bean.video.VideoItemBean;
 import com.example.newsclient.Model.impl.VideoItemModelImpl;
 import com.example.newsclient.Model.model.VideoItemModel;
 import com.example.newsclient.view.impl.IVideoItemViewImpl;

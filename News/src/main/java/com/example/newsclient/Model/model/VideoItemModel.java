@@ -2,7 +2,7 @@ package com.example.newsclient.Model.model;
 
 import com.example.newsclient.Configuration;
 import com.example.newsclient.Model.bean.SysParam;
-import com.example.newsclient.Model.bean.VideoItemBean;
+import com.example.newsclient.Model.bean.video.VideoItemBean;
 import com.example.newsclient.Model.impl.ApiService;
 import com.example.newsclient.Model.impl.VideoItemModelImpl;
 import com.example.newsclient.Model.utils.YouKuUtil;

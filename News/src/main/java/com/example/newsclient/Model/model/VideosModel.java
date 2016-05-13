@@ -1,6 +1,6 @@
 package com.example.newsclient.Model.model;
 
-import com.example.newsclient.Model.bean.VideoListBean;
+import com.example.newsclient.Model.bean.video.VideoListBean;
 import com.example.newsclient.Model.impl.ApiService;
 import com.example.newsclient.Model.impl.VideosModelImpl;
 

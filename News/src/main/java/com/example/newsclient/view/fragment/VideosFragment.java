@@ -5,7 +5,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.view.View;
 
-import com.example.newsclient.Model.bean.VideoListBean;
+import com.example.newsclient.Model.bean.video.VideoListBean;
 import com.example.newsclient.R;
 import com.example.newsclient.presenter.BasePresenter;
 import com.example.newsclient.view.impl.IVideoViewImpl;

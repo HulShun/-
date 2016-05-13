@@ -2,7 +2,7 @@ package com.example.newsclient.view.adapter;
 
 import android.view.View;
 
-import com.example.newsclient.Model.bean.VideoBean;
+import com.example.newsclient.Model.bean.video.VideoBean;
 import com.example.newsclient.R;
 import com.example.newsclient.view.viewholder.VideoViewHolder;
 

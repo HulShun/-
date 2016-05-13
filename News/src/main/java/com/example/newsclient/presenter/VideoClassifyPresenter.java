@@ -2,7 +2,7 @@ package com.example.newsclient.presenter;
 
 import com.example.newsclient.Configuration;
 import com.example.newsclient.Model.LogUtil;
-import com.example.newsclient.Model.bean.VideosInFormBean;
+import com.example.newsclient.Model.bean.video.VideosInFormBean;
 import com.example.newsclient.Model.impl.VideoClassifyModelImpl;
 import com.example.newsclient.Model.model.VideoClassifyModel;
 import com.example.newsclient.view.impl.IVideoClassifyViewIpml;

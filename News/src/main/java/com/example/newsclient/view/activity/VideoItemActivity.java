@@ -10,7 +10,7 @@ import android.support.v4.view.ViewPager;
 import android.view.KeyEvent;
 import android.widget.LinearLayout;
 
-import com.example.newsclient.Model.bean.VideoItemBean;
+import com.example.newsclient.Model.bean.video.VideoItemBean;
 import com.example.newsclient.R;
 import com.example.newsclient.presenter.VideoItemPresenter;
 import com.example.newsclient.view.fragment.CommentsFramgent;

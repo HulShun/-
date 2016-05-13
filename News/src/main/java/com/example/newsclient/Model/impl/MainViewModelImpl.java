@@ -1,7 +1,7 @@
 package com.example.newsclient.Model.impl;
 
-import com.example.newsclient.Model.bean.ImageTypeJsonBean;
-import com.example.newsclient.Model.bean.VideoTypeBean;
+import com.example.newsclient.Model.bean.image.ImageTypeJsonBean;
+import com.example.newsclient.Model.bean.video.VideoTypeBean;
 
 import rx.Observer;
 

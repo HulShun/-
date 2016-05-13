@@ -3,9 +3,9 @@ package com.example.newsclient.presenter;
 import android.content.Context;
 
 import com.example.newsclient.Configuration;
-import com.example.newsclient.Model.bean.ImageMainTypeBean;
-import com.example.newsclient.Model.bean.ImageTypeJsonBean;
-import com.example.newsclient.Model.bean.VideoTypeBean;
+import com.example.newsclient.Model.bean.image.ImageMainTypeBean;
+import com.example.newsclient.Model.bean.image.ImageTypeJsonBean;
+import com.example.newsclient.Model.bean.video.VideoTypeBean;
 import com.example.newsclient.Model.impl.MainViewModelImpl;
 import com.example.newsclient.Model.model.MainViewModel;
 import com.example.newsclient.R;

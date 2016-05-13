@@ -1,7 +1,7 @@
 package com.example.newsclient.view.impl;
 
-import com.example.newsclient.Model.bean.ImageMainTypeBean;
-import com.example.newsclient.Model.bean.VideoTypeBean;
+import com.example.newsclient.Model.bean.image.ImageMainTypeBean;
+import com.example.newsclient.Model.bean.video.VideoTypeBean;
 
 import java.util.List;
 
