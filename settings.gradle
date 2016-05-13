@@ -1,2 +1,1 @@
-include ':app', ':vodPlayer'
-project(':vodPlayer').projectDir = new File('vodPlayerRelease')
+include ':News', ':YoukuPlayerOpenSDK'

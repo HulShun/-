@@ -12,32 +12,32 @@
         "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\icon_rewind.png"
     },
     {
-        "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\abc_textfield_search_activated_mtrl_alpha.9.png",
-        "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable-xhdpi-v4\\abc_textfield_search_activated_mtrl_alpha.9.png"
-    },
-    {
         "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\abc_ic_clear_mtrl_alpha.png",
         "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable-xhdpi-v4\\abc_ic_clear_mtrl_alpha.png"
     },
     {
-        "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\abc_btn_switch_to_on_mtrl_00012.9.png",
-        "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable-xhdpi-v4\\abc_btn_switch_to_on_mtrl_00012.9.png"
-    },
-    {
-        "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\icon_pause.png",
-        "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\icon_pause.png"
+        "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\abc_textfield_search_activated_mtrl_alpha.9.png",
+        "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable-xhdpi-v4\\abc_textfield_search_activated_mtrl_alpha.9.png"
     },
     {
         "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\abc_list_longpressed_holo.9.png",
         "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable-xhdpi-v4\\abc_list_longpressed_holo.9.png"
     },
     {
-        "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\loading_6.png",
-        "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\loading_6.png"
+        "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\icon_pause.png",
+        "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\icon_pause.png"
+    },
+    {
+        "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\abc_btn_switch_to_on_mtrl_00012.9.png",
+        "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable-xhdpi-v4\\abc_btn_switch_to_on_mtrl_00012.9.png"
     },
     {
         "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\bg_bottom.png",
         "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\bg_bottom.png"
+    },
+    {
+        "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\loading_6.png",
+        "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\loading_6.png"
     },
     {
         "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\loading_3.png",
@@ -52,20 +52,20 @@
         "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\loading_10.png"
     },
     {
-        "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\abc_btn_rating_star_on_mtrl_alpha.png",
-        "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable-xhdpi-v4\\abc_btn_rating_star_on_mtrl_alpha.png"
-    },
-    {
         "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\icon_volume_notice.png",
         "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\icon_volume_notice.png"
     },
     {
-        "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\btn_try.png",
-        "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\btn_try.png"
+        "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\abc_btn_rating_star_on_mtrl_alpha.png",
+        "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable-xhdpi-v4\\abc_btn_rating_star_on_mtrl_alpha.png"
     },
     {
         "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\abc_ic_go_search_api_mtrl_alpha.png",
         "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable-xhdpi-v4\\abc_ic_go_search_api_mtrl_alpha.png"
+    },
+    {
+        "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\btn_try.png",
+        "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\btn_try.png"
     },
     {
         "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\loading_1.png",
@@ -92,12 +92,12 @@
         "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\loading_2.png"
     },
     {
-        "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\abc_list_divider_mtrl_alpha.9.png",
-        "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable-xhdpi-v4\\abc_list_divider_mtrl_alpha.9.png"
-    },
-    {
         "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\abc_switch_track_mtrl_alpha.9.png",
         "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable-xhdpi-v4\\abc_switch_track_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\abc_list_divider_mtrl_alpha.9.png",
+        "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable-xhdpi-v4\\abc_list_divider_mtrl_alpha.9.png"
     },
     {
         "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png",
@@ -112,12 +112,12 @@
         "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable-xhdpi-v4\\abc_ic_commit_search_api_mtrl_alpha.png"
     },
     {
-        "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\abc_menu_hardkey_panel_mtrl_mult.9.png",
-        "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable-xhdpi-v4\\abc_menu_hardkey_panel_mtrl_mult.9.png"
-    },
-    {
         "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\abc_btn_rating_star_off_mtrl_alpha.png",
         "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable-xhdpi-v4\\abc_btn_rating_star_off_mtrl_alpha.png"
+    },
+    {
+        "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\abc_menu_hardkey_panel_mtrl_mult.9.png",
+        "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable-xhdpi-v4\\abc_menu_hardkey_panel_mtrl_mult.9.png"
     },
     {
         "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\abc_textfield_search_default_mtrl_alpha.9.png",
@@ -152,12 +152,12 @@
         "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\loading_5.png"
     },
     {
-        "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\icon_qaulity_switch.png",
-        "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\icon_qaulity_switch.png"
-    },
-    {
         "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png",
         "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable-xhdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png"
+    },
+    {
+        "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\icon_qaulity_switch.png",
+        "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\icon_qaulity_switch.png"
     },
     {
         "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\abc_btn_radio_to_on_mtrl_000.png",
@@ -188,12 +188,12 @@
         "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable-xhdpi-v4\\abc_ic_star_black_36dp.png"
     },
     {
-        "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\icon_back.png",
-        "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\icon_back.png"
-    },
-    {
         "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\abc_list_pressed_holo_dark.9.png",
         "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable-xhdpi-v4\\abc_list_pressed_holo_dark.9.png"
+    },
+    {
+        "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\icon_back.png",
+        "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\icon_back.png"
     },
     {
         "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\progress_thumb_press.png",
@@ -208,12 +208,12 @@
         "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable-xhdpi-v4\\abc_ab_share_pack_mtrl_alpha.9.png"
     },
     {
-        "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\abc_scrubber_control_to_pressed_mtrl_005.png",
-        "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable-xhdpi-v4\\abc_scrubber_control_to_pressed_mtrl_005.png"
-    },
-    {
         "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\icon_half.png",
         "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\icon_half.png"
+    },
+    {
+        "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\abc_scrubber_control_to_pressed_mtrl_005.png",
+        "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable-xhdpi-v4\\abc_scrubber_control_to_pressed_mtrl_005.png"
     },
     {
         "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\bg_float.png",
@@ -268,12 +268,12 @@
         "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\icon_silent.png"
     },
     {
-        "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\abc_btn_radio_to_on_mtrl_015.png",
-        "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable-xhdpi-v4\\abc_btn_radio_to_on_mtrl_015.png"
-    },
-    {
         "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\loading_7.png",
         "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\loading_7.png"
+    },
+    {
+        "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\abc_btn_radio_to_on_mtrl_015.png",
+        "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable-xhdpi-v4\\abc_btn_radio_to_on_mtrl_015.png"
     },
     {
         "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\abc_scrubber_track_mtrl_alpha.9.png",
@@ -284,27 +284,27 @@
         "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable-xhdpi-v4\\abc_ic_menu_share_mtrl_alpha.png"
     },
     {
-        "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\abc_ic_star_half_black_16dp.png",
-        "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable-xhdpi-v4\\abc_ic_star_half_black_16dp.png"
-    },
-    {
         "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\abc_list_selector_disabled_holo_dark.9.png",
         "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable-xhdpi-v4\\abc_list_selector_disabled_holo_dark.9.png"
     },
     {
-        "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\loading_9.png",
-        "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\loading_9.png"
+        "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\abc_ic_star_half_black_16dp.png",
+        "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable-xhdpi-v4\\abc_ic_star_half_black_16dp.png"
     },
     {
         "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\icon_full.png",
         "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\icon_full.png"
     },
     {
-        "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\abc_textfield_default_mtrl_alpha.9.png",
-        "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable-xhdpi-v4\\abc_textfield_default_mtrl_alpha.9.png"
+        "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\loading_9.png",
+        "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\loading_9.png"
     },
     {
         "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\abc_ic_menu_selectall_mtrl_alpha.png",
         "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable-xhdpi-v4\\abc_ic_menu_selectall_mtrl_alpha.png"
+    },
+    {
+        "merged": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\abc_textfield_default_mtrl_alpha.9.png",
+        "source": "E:\\workspace\\NewsClient\\vodPlayerRelease\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable-xhdpi-v4\\abc_textfield_default_mtrl_alpha.9.png"
     }
 ]

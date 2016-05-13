@@ -8,15 +8,15 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/vodPlayerRelease" />
+            <option value="$PROJECT_DIR$/News" />
+            <option value="$PROJECT_DIR$/YoukuPlayerOpenSDK" />
           </set>
         </option>
         <option name="myModules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/vodPlayerRelease" />
+            <option value="$PROJECT_DIR$/News" />
+            <option value="$PROJECT_DIR$/YoukuPlayerOpenSDK" />
           </set>
         </option>
       </GradleProjectSettings>
