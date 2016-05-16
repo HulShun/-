@@ -42,10 +42,6 @@ public class ImagesAdapter extends BaseRecyclerViewAdapter<ImageContentBean, Ima
         return new ImageViewHolder(view, viewType);
     }
 
-    @Override
-    protected void onBindFooterViewHolder(ImageViewHolder holder, int position) {
-        holder.loadmoreBtn.setOnClickListener(getOnClickListener());
-    }
 
     @Override
     protected void onBindItemViewHolder(final ImageViewHolder holder, int position) {

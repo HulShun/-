@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     android:clipToPadding="false"
     android:fitsSystemWindows="true"
-
     android:orientation="vertical">
 
     <android.support.design.widget.AppBarLayout
@@ -28,7 +27,6 @@
             android:id="@+id/tablayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             app:tabIndicatorColor="@color/tabIndicatorColor"
             app:tabMode="scrollable"
             app:tabSelectedTextColor="@color/tab_selected"

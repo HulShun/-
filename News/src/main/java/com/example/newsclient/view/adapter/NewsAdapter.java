@@ -38,13 +38,9 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsBean, NewsViewHolde
 
     @Override
     protected NewsViewHolder onCreateMyViewHolder(View view, int viewType) {
-        return new NewsViewHolder(view, viewType);
+        return new NewsViewHolder(view);
     }
 
-    @Override
-    protected void onBindFooterViewHolder(NewsViewHolder holder, int position) {
-        holder.loadmoreBtn.setOnClickListener(getOnClickListener());
-    }
 
     @Override
     protected void onBindItemViewHolder(final NewsViewHolder holder, final int position) {

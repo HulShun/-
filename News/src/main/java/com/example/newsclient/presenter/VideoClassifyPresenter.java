@@ -24,7 +24,7 @@ public class VideoClassifyPresenter extends BasePresenter<IVideoClassifyViewIpml
 
     public void loadVideoTypeList(String label, String period, final int page) {
         Map<String, String> map = new HashMap<>();
-        map.put("client_id", Configuration.YOUKU_KEYWORD);
+        map.put("client_id", Configuration.YOUKU_CLIENT_ID);
         map.put("category", label);
         map.put("period", "today");
         map.put("orderby", "view-count");

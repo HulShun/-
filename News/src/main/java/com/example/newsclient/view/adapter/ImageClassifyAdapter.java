@@ -41,10 +41,6 @@ public class ImageClassifyAdapter extends BaseRecyclerViewAdapter<ImageJsonBean,
         return new ImageClassifyViewHolder(view, viewType);
     }
 
-    @Override
-    protected void onBindFooterViewHolder(ImageClassifyViewHolder holder, int position) {
-        // holder.loadmoreBtn.setOnClickListener(getOnClickListener());
-    }
 
     @Override
     protected void onBindItemViewHolder(final ImageClassifyViewHolder holder, int position) {

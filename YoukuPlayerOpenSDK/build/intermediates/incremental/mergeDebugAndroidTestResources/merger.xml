@@ -27,8 +27,8 @@
         <item name="android:textColor">#000000</item>
     </style><dimen name="dialog_item_marginV">5dp</dimen><dimen name="fullscreen_punchbox_pause_ad_width">405dp</dimen><string name="download_add_failed">添加失败，请稍后再试</string><string name="high_pic">高清  </string><dimen name="dialog_item_marginH">14dp</dimen><string name="playersdk_ad_descrip_youku">了解详情</string><string name="choice_download_mode">缓存默认设置</string><string name="download_write_fail">储存本地视频信息失败</string><style name="tudou_encrypt_dialog" parent="@android:style/Theme.Dialog">
         <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowNoTitle">true</item> 
-	</style><dimen name="player_ad_go_full_width_youku">35dp</dimen><color name="tudou_dialog_sub_title">#898989</color><style name="wordpagegridtitle" parent="FontC">
+        <item name="android:windowNoTitle">true</item>
+    </style><dimen name="player_ad_go_full_width_youku">35dp</dimen><color name="tudou_dialog_sub_title">#898989</color><style name="wordpagegridtitle" parent="FontC">
         <item name="android:textColor">#666666</item>
         <item name="android:shadowRadius">1</item>
         <item name="android:shadowDx">0</item>
@@ -435,7 +435,7 @@
     </style><dimen name="yp_investigate_close_width">37dp</dimen><style name="homepagegridtitle" parent="FontD">
         <item name="android:textColor">#515151</item>
     </style><dimen name="subtitle_height">40dp</dimen><style name="detail_intro_title" parent="FontE">
-         <item name="android:textColor">#333333</item>
+        <item name="android:textColor">#333333</item>
     </style><dimen name="dialog_arrow_marginRight">20dp</dimen><style name="epiTextWithTitleStyle" parent="epiTextStyleBase">
         <item name="android:textSize">@dimen/fullscreen_player_episode_item_small_text_size</item>
     </style><style name="Font3_gray_666666">
@@ -505,7 +505,7 @@
         <item name="android:textColor">#666666</item>
     </style><dimen name="text_size_j">16sp</dimen><style name="stripeMiddleFont" parent="FontC">
         <item name="android:textColor">#ffffff</item>
-         <item name="android:shadowColor">#000000</item>
+        <item name="android:shadowColor">#000000</item>
         <item name="android:shadowDx">0</item>
         <item name="android:shadowDy">1</item>
         <item name="android:shadowRadius">1</item>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android" >
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
         android:id="@+id/seek_loading_bg"
@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:background="@drawable/bg_play"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/loading_tips"

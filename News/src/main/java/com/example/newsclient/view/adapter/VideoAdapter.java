@@ -24,13 +24,9 @@ public class VideoAdapter extends BaseRecyclerViewAdapter<VideoBean, VideoViewHo
 
     @Override
     protected VideoViewHolder onCreateMyViewHolder(View view, int viewType) {
-        return new VideoViewHolder(view, viewType);
+        return new VideoViewHolder(view);
     }
 
-    @Override
-    protected void onBindFooterViewHolder(VideoViewHolder holder, int position) {
-
-    }
 
     @Override
     protected void onBindItemViewHolder(VideoViewHolder holder, int position) {

@@ -29,7 +29,7 @@ public class LaunchAcitivity extends AppCompatActivity {
         if (AppUtil.getInstance().isNetWorkConnected()) {
             //加载各个模块的标签页tab
             model.getImageTabsFromNet(Configuration.IMAGE_TYPE_URL);
-            model.getVideoTabsFromNet(Configuration.VIDEO_TYPE_URL);
+            model.getVideoTabsFromNet(Configuration.YOUKU_API_BASE_URL);
         }
 
     }

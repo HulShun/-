@@ -5912,7 +5912,7 @@
                     "startOffset": 26384,
                     "endLine": 536,
                     "endColumn": 12,
-                    "endOffset": 26500
+                    "endOffset": 26499
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
@@ -5922,7 +5922,7 @@
                         "startOffset": 26384,
                         "endLine": 536,
                         "endColumn": 12,
-                        "endOffset": 26500
+                        "endOffset": 26499
                     }
                 }
             },
@@ -5930,20 +5930,20 @@
                 "to": {
                     "startLine": 537,
                     "startColumn": 4,
-                    "startOffset": 26505,
+                    "startOffset": 26504,
                     "endLine": 539,
                     "endColumn": 12,
-                    "endOffset": 26621
+                    "endOffset": 26620
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 537,
                         "startColumn": 4,
-                        "startOffset": 26505,
+                        "startOffset": 26504,
                         "endLine": 539,
                         "endColumn": 12,
-                        "endOffset": 26621
+                        "endOffset": 26620
                     }
                 }
             },
@@ -5951,20 +5951,20 @@
                 "to": {
                     "startLine": 540,
                     "startColumn": 4,
-                    "startOffset": 26626,
+                    "startOffset": 26625,
                     "endLine": 542,
                     "endColumn": 12,
-                    "endOffset": 26741
+                    "endOffset": 26740
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 540,
                         "startColumn": 4,
-                        "startOffset": 26626,
+                        "startOffset": 26625,
                         "endLine": 542,
                         "endColumn": 12,
-                        "endOffset": 26741
+                        "endOffset": 26740
                     }
                 }
             },
@@ -5972,20 +5972,20 @@
                 "to": {
                     "startLine": 543,
                     "startColumn": 4,
-                    "startOffset": 26746,
+                    "startOffset": 26745,
                     "endLine": 545,
                     "endColumn": 12,
-                    "endOffset": 26866
+                    "endOffset": 26865
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 543,
                         "startColumn": 4,
-                        "startOffset": 26746,
+                        "startOffset": 26745,
                         "endLine": 545,
                         "endColumn": 12,
-                        "endOffset": 26866
+                        "endOffset": 26865
                     }
                 }
             },
@@ -5993,20 +5993,20 @@
                 "to": {
                     "startLine": 546,
                     "startColumn": 4,
-                    "startOffset": 26871,
+                    "startOffset": 26870,
                     "endLine": 548,
                     "endColumn": 12,
-                    "endOffset": 26985
+                    "endOffset": 26984
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 546,
                         "startColumn": 4,
-                        "startOffset": 26871,
+                        "startOffset": 26870,
                         "endLine": 548,
                         "endColumn": 12,
-                        "endOffset": 26985
+                        "endOffset": 26984
                     }
                 }
             },
@@ -6014,20 +6014,20 @@
                 "to": {
                     "startLine": 549,
                     "startColumn": 4,
-                    "startOffset": 26990,
+                    "startOffset": 26989,
                     "endLine": 551,
                     "endColumn": 12,
-                    "endOffset": 27105
+                    "endOffset": 27104
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 549,
                         "startColumn": 4,
-                        "startOffset": 26990,
+                        "startOffset": 26989,
                         "endLine": 551,
                         "endColumn": 12,
-                        "endOffset": 27105
+                        "endOffset": 27104
                     }
                 }
             },
@@ -6035,20 +6035,20 @@
                 "to": {
                     "startLine": 552,
                     "startColumn": 4,
-                    "startOffset": 27110,
+                    "startOffset": 27109,
                     "endLine": 554,
                     "endColumn": 12,
-                    "endOffset": 27222
+                    "endOffset": 27221
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 552,
                         "startColumn": 4,
-                        "startOffset": 27110,
+                        "startOffset": 27109,
                         "endLine": 554,
                         "endColumn": 12,
-                        "endOffset": 27222
+                        "endOffset": 27221
                     }
                 }
             },
@@ -6056,20 +6056,20 @@
                 "to": {
                     "startLine": 555,
                     "startColumn": 4,
-                    "startOffset": 27227,
+                    "startOffset": 27226,
                     "endLine": 557,
                     "endColumn": 12,
-                    "endOffset": 27339
+                    "endOffset": 27338
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 555,
                         "startColumn": 4,
-                        "startOffset": 27227,
+                        "startOffset": 27226,
                         "endLine": 557,
                         "endColumn": 12,
-                        "endOffset": 27339
+                        "endOffset": 27338
                     }
                 }
             },
@@ -6077,20 +6077,20 @@
                 "to": {
                     "startLine": 558,
                     "startColumn": 4,
-                    "startOffset": 27344,
+                    "startOffset": 27343,
                     "endLine": 560,
                     "endColumn": 12,
-                    "endOffset": 27461
+                    "endOffset": 27460
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 558,
                         "startColumn": 4,
-                        "startOffset": 27344,
+                        "startOffset": 27343,
                         "endLine": 560,
                         "endColumn": 12,
-                        "endOffset": 27461
+                        "endOffset": 27460
                     }
                 }
             },
@@ -6098,20 +6098,20 @@
                 "to": {
                     "startLine": 561,
                     "startColumn": 4,
-                    "startOffset": 27466,
+                    "startOffset": 27465,
                     "endLine": 563,
                     "endColumn": 12,
-                    "endOffset": 27576
+                    "endOffset": 27575
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 561,
                         "startColumn": 4,
-                        "startOffset": 27466,
+                        "startOffset": 27465,
                         "endLine": 563,
                         "endColumn": 12,
-                        "endOffset": 27576
+                        "endOffset": 27575
                     }
                 }
             },
@@ -6119,20 +6119,20 @@
                 "to": {
                     "startLine": 564,
                     "startColumn": 4,
-                    "startOffset": 27581,
+                    "startOffset": 27580,
                     "endLine": 567,
                     "endColumn": 12,
-                    "endOffset": 27813
+                    "endOffset": 27812
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 564,
                         "startColumn": 4,
-                        "startOffset": 27581,
+                        "startOffset": 27580,
                         "endLine": 567,
                         "endColumn": 12,
-                        "endOffset": 27813
+                        "endOffset": 27812
                     }
                 }
             },
@@ -6140,20 +6140,20 @@
                 "to": {
                     "startLine": 568,
                     "startColumn": 4,
-                    "startOffset": 27818,
+                    "startOffset": 27817,
                     "endLine": 571,
                     "endColumn": 12,
-                    "endOffset": 27963
+                    "endOffset": 27962
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 568,
                         "startColumn": 4,
-                        "startOffset": 27818,
+                        "startOffset": 27817,
                         "endLine": 571,
                         "endColumn": 12,
-                        "endOffset": 27963
+                        "endOffset": 27962
                     }
                 }
             },
@@ -6161,20 +6161,20 @@
                 "to": {
                     "startLine": 572,
                     "startColumn": 4,
-                    "startOffset": 27968,
+                    "startOffset": 27967,
                     "endLine": 574,
                     "endColumn": 12,
-                    "endOffset": 28080
+                    "endOffset": 28079
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 572,
                         "startColumn": 4,
-                        "startOffset": 27968,
+                        "startOffset": 27967,
                         "endLine": 574,
                         "endColumn": 12,
-                        "endOffset": 28080
+                        "endOffset": 28079
                     }
                 }
             },
@@ -6182,20 +6182,20 @@
                 "to": {
                     "startLine": 575,
                     "startColumn": 4,
-                    "startOffset": 28085,
+                    "startOffset": 28084,
                     "endLine": 577,
                     "endColumn": 12,
-                    "endOffset": 28178
+                    "endOffset": 28177
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 575,
                         "startColumn": 4,
-                        "startOffset": 28085,
+                        "startOffset": 28084,
                         "endLine": 577,
                         "endColumn": 12,
-                        "endOffset": 28178
+                        "endOffset": 28177
                     }
                 }
             },
@@ -6203,20 +6203,20 @@
                 "to": {
                     "startLine": 578,
                     "startColumn": 4,
-                    "startOffset": 28183,
+                    "startOffset": 28182,
                     "endLine": 583,
                     "endColumn": 12,
-                    "endOffset": 28431
+                    "endOffset": 28430
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 578,
                         "startColumn": 4,
-                        "startOffset": 28183,
+                        "startOffset": 28182,
                         "endLine": 583,
                         "endColumn": 12,
-                        "endOffset": 28431
+                        "endOffset": 28430
                     }
                 }
             },
@@ -6224,20 +6224,20 @@
                 "to": {
                     "startLine": 584,
                     "startColumn": 4,
-                    "startOffset": 28436,
+                    "startOffset": 28435,
                     "endLine": 587,
                     "endColumn": 12,
-                    "endOffset": 28578
+                    "endOffset": 28577
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 584,
                         "startColumn": 4,
-                        "startOffset": 28436,
+                        "startOffset": 28435,
                         "endLine": 587,
                         "endColumn": 12,
-                        "endOffset": 28578
+                        "endOffset": 28577
                     }
                 }
             },
@@ -6245,20 +6245,20 @@
                 "to": {
                     "startLine": 588,
                     "startColumn": 4,
-                    "startOffset": 28583,
+                    "startOffset": 28582,
                     "endLine": 590,
                     "endColumn": 12,
-                    "endOffset": 28703
+                    "endOffset": 28702
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 588,
                         "startColumn": 4,
-                        "startOffset": 28583,
+                        "startOffset": 28582,
                         "endLine": 590,
                         "endColumn": 12,
-                        "endOffset": 28703
+                        "endOffset": 28702
                     }
                 }
             },
@@ -6266,20 +6266,20 @@
                 "to": {
                     "startLine": 591,
                     "startColumn": 4,
-                    "startOffset": 28708,
+                    "startOffset": 28707,
                     "endLine": 594,
                     "endColumn": 12,
-                    "endOffset": 28861
+                    "endOffset": 28860
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 591,
                         "startColumn": 4,
-                        "startOffset": 28708,
+                        "startOffset": 28707,
                         "endLine": 594,
                         "endColumn": 12,
-                        "endOffset": 28861
+                        "endOffset": 28860
                     }
                 }
             },
@@ -6287,20 +6287,20 @@
                 "to": {
                     "startLine": 595,
                     "startColumn": 4,
-                    "startOffset": 28866,
+                    "startOffset": 28865,
                     "endLine": 600,
                     "endColumn": 12,
-                    "endOffset": 29121
+                    "endOffset": 29120
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 595,
                         "startColumn": 4,
-                        "startOffset": 28866,
+                        "startOffset": 28865,
                         "endLine": 600,
                         "endColumn": 12,
-                        "endOffset": 29121
+                        "endOffset": 29120
                     }
                 }
             },
@@ -6308,20 +6308,20 @@
                 "to": {
                     "startLine": 601,
                     "startColumn": 4,
-                    "startOffset": 29126,
+                    "startOffset": 29125,
                     "endLine": 609,
                     "endColumn": 12,
-                    "endOffset": 29591
+                    "endOffset": 29590
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 601,
                         "startColumn": 4,
-                        "startOffset": 29126,
+                        "startOffset": 29125,
                         "endLine": 609,
                         "endColumn": 12,
-                        "endOffset": 29591
+                        "endOffset": 29590
                     }
                 }
             },
@@ -6329,20 +6329,20 @@
                 "to": {
                     "startLine": 610,
                     "startColumn": 4,
-                    "startOffset": 29596,
+                    "startOffset": 29595,
                     "endLine": 616,
                     "endColumn": 12,
-                    "endOffset": 29896
+                    "endOffset": 29895
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 610,
                         "startColumn": 4,
-                        "startOffset": 29596,
+                        "startOffset": 29595,
                         "endLine": 616,
                         "endColumn": 12,
-                        "endOffset": 29896
+                        "endOffset": 29895
                     }
                 }
             },
@@ -6350,20 +6350,20 @@
                 "to": {
                     "startLine": 617,
                     "startColumn": 4,
-                    "startOffset": 29901,
+                    "startOffset": 29900,
                     "endLine": 619,
                     "endColumn": 12,
-                    "endOffset": 30075
+                    "endOffset": 30074
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 617,
                         "startColumn": 4,
-                        "startOffset": 29901,
+                        "startOffset": 29900,
                         "endLine": 619,
                         "endColumn": 12,
-                        "endOffset": 30075
+                        "endOffset": 30074
                     }
                 }
             },
@@ -6371,20 +6371,20 @@
                 "to": {
                     "startLine": 620,
                     "startColumn": 4,
-                    "startOffset": 30080,
+                    "startOffset": 30079,
                     "endLine": 624,
                     "endColumn": 12,
-                    "endOffset": 30330
+                    "endOffset": 30329
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 620,
                         "startColumn": 4,
-                        "startOffset": 30080,
+                        "startOffset": 30079,
                         "endLine": 624,
                         "endColumn": 12,
-                        "endOffset": 30330
+                        "endOffset": 30329
                     }
                 }
             },
@@ -6392,20 +6392,20 @@
                 "to": {
                     "startLine": 625,
                     "startColumn": 4,
-                    "startOffset": 30335,
+                    "startOffset": 30334,
                     "endLine": 628,
                     "endColumn": 12,
-                    "endOffset": 30487
+                    "endOffset": 30486
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 625,
                         "startColumn": 4,
-                        "startOffset": 30335,
+                        "startOffset": 30334,
                         "endLine": 628,
                         "endColumn": 12,
-                        "endOffset": 30487
+                        "endOffset": 30486
                     }
                 }
             },
@@ -6413,20 +6413,20 @@
                 "to": {
                     "startLine": 629,
                     "startColumn": 4,
-                    "startOffset": 30492,
+                    "startOffset": 30491,
                     "endLine": 632,
                     "endColumn": 12,
-                    "endOffset": 30638
+                    "endOffset": 30637
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 629,
                         "startColumn": 4,
-                        "startOffset": 30492,
+                        "startOffset": 30491,
                         "endLine": 632,
                         "endColumn": 12,
-                        "endOffset": 30638
+                        "endOffset": 30637
                     }
                 }
             },
@@ -6434,20 +6434,20 @@
                 "to": {
                     "startLine": 633,
                     "startColumn": 4,
-                    "startOffset": 30643,
+                    "startOffset": 30642,
                     "endLine": 636,
                     "endColumn": 12,
-                    "endOffset": 30797
+                    "endOffset": 30796
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 633,
                         "startColumn": 4,
-                        "startOffset": 30643,
+                        "startOffset": 30642,
                         "endLine": 636,
                         "endColumn": 12,
-                        "endOffset": 30797
+                        "endOffset": 30796
                     }
                 }
             },
@@ -6455,20 +6455,20 @@
                 "to": {
                     "startLine": 637,
                     "startColumn": 4,
-                    "startOffset": 30802,
+                    "startOffset": 30801,
                     "endLine": 640,
                     "endColumn": 12,
-                    "endOffset": 30952
+                    "endOffset": 30951
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 637,
                         "startColumn": 4,
-                        "startOffset": 30802,
+                        "startOffset": 30801,
                         "endLine": 640,
                         "endColumn": 12,
-                        "endOffset": 30952
+                        "endOffset": 30951
                     }
                 }
             },
@@ -6476,20 +6476,20 @@
                 "to": {
                     "startLine": 641,
                     "startColumn": 4,
-                    "startOffset": 30957,
+                    "startOffset": 30956,
                     "endLine": 644,
                     "endColumn": 12,
-                    "endOffset": 31104
+                    "endOffset": 31103
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 641,
                         "startColumn": 4,
-                        "startOffset": 30957,
+                        "startOffset": 30956,
                         "endLine": 644,
                         "endColumn": 12,
-                        "endOffset": 31104
+                        "endOffset": 31103
                     }
                 }
             },
@@ -6497,20 +6497,20 @@
                 "to": {
                     "startLine": 645,
                     "startColumn": 4,
-                    "startOffset": 31109,
+                    "startOffset": 31108,
                     "endLine": 648,
                     "endColumn": 12,
-                    "endOffset": 31261
+                    "endOffset": 31260
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 645,
                         "startColumn": 4,
-                        "startOffset": 31109,
+                        "startOffset": 31108,
                         "endLine": 648,
                         "endColumn": 12,
-                        "endOffset": 31261
+                        "endOffset": 31260
                     }
                 }
             },
@@ -6518,20 +6518,20 @@
                 "to": {
                     "startLine": 649,
                     "startColumn": 4,
-                    "startOffset": 31266,
+                    "startOffset": 31265,
                     "endLine": 652,
                     "endColumn": 12,
-                    "endOffset": 31421
+                    "endOffset": 31420
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 649,
                         "startColumn": 4,
-                        "startOffset": 31266,
+                        "startOffset": 31265,
                         "endLine": 652,
                         "endColumn": 12,
-                        "endOffset": 31421
+                        "endOffset": 31420
                     }
                 }
             },
@@ -6539,20 +6539,20 @@
                 "to": {
                     "startLine": 653,
                     "startColumn": 4,
-                    "startOffset": 31426,
+                    "startOffset": 31425,
                     "endLine": 656,
                     "endColumn": 12,
-                    "endOffset": 31586
+                    "endOffset": 31585
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 653,
                         "startColumn": 4,
-                        "startOffset": 31426,
+                        "startOffset": 31425,
                         "endLine": 656,
                         "endColumn": 12,
-                        "endOffset": 31586
+                        "endOffset": 31585
                     }
                 }
             },
@@ -6560,20 +6560,20 @@
                 "to": {
                     "startLine": 657,
                     "startColumn": 4,
-                    "startOffset": 31591,
+                    "startOffset": 31590,
                     "endLine": 660,
                     "endColumn": 12,
-                    "endOffset": 31749
+                    "endOffset": 31748
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 657,
                         "startColumn": 4,
-                        "startOffset": 31591,
+                        "startOffset": 31590,
                         "endLine": 660,
                         "endColumn": 12,
-                        "endOffset": 31749
+                        "endOffset": 31748
                     }
                 }
             },
@@ -6581,20 +6581,20 @@
                 "to": {
                     "startLine": 661,
                     "startColumn": 4,
-                    "startOffset": 31754,
+                    "startOffset": 31753,
                     "endLine": 664,
                     "endColumn": 12,
-                    "endOffset": 31899
+                    "endOffset": 31898
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 661,
                         "startColumn": 4,
-                        "startOffset": 31754,
+                        "startOffset": 31753,
                         "endLine": 664,
                         "endColumn": 12,
-                        "endOffset": 31899
+                        "endOffset": 31898
                     }
                 }
             },
@@ -6602,20 +6602,20 @@
                 "to": {
                     "startLine": 665,
                     "startColumn": 4,
-                    "startOffset": 31904,
+                    "startOffset": 31903,
                     "endLine": 667,
                     "endColumn": 12,
-                    "endOffset": 32016
+                    "endOffset": 32015
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 665,
                         "startColumn": 4,
-                        "startOffset": 31904,
+                        "startOffset": 31903,
                         "endLine": 667,
                         "endColumn": 12,
-                        "endOffset": 32016
+                        "endOffset": 32015
                     }
                 }
             },
@@ -6623,20 +6623,20 @@
                 "to": {
                     "startLine": 668,
                     "startColumn": 4,
-                    "startOffset": 32021,
+                    "startOffset": 32020,
                     "endLine": 670,
                     "endColumn": 12,
-                    "endOffset": 32155
+                    "endOffset": 32154
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 668,
                         "startColumn": 4,
-                        "startOffset": 32021,
+                        "startOffset": 32020,
                         "endLine": 670,
                         "endColumn": 12,
-                        "endOffset": 32155
+                        "endOffset": 32154
                     }
                 }
             },
@@ -6644,20 +6644,20 @@
                 "to": {
                     "startLine": 671,
                     "startColumn": 4,
-                    "startOffset": 32160,
+                    "startOffset": 32159,
                     "endLine": 674,
                     "endColumn": 12,
-                    "endOffset": 32352
+                    "endOffset": 32351
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 671,
                         "startColumn": 4,
-                        "startOffset": 32160,
+                        "startOffset": 32159,
                         "endLine": 674,
                         "endColumn": 12,
-                        "endOffset": 32352
+                        "endOffset": 32351
                     }
                 }
             },
@@ -6665,20 +6665,20 @@
                 "to": {
                     "startLine": 675,
                     "startColumn": 4,
-                    "startOffset": 32357,
+                    "startOffset": 32356,
                     "endLine": 677,
                     "endColumn": 12,
-                    "endOffset": 32467
+                    "endOffset": 32466
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 675,
                         "startColumn": 4,
-                        "startOffset": 32357,
+                        "startOffset": 32356,
                         "endLine": 677,
                         "endColumn": 12,
-                        "endOffset": 32467
+                        "endOffset": 32466
                     }
                 }
             },
@@ -6686,20 +6686,20 @@
                 "to": {
                     "startLine": 678,
                     "startColumn": 4,
-                    "startOffset": 32472,
+                    "startOffset": 32471,
                     "endLine": 680,
                     "endColumn": 12,
-                    "endOffset": 32581
+                    "endOffset": 32580
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 678,
                         "startColumn": 4,
-                        "startOffset": 32472,
+                        "startOffset": 32471,
                         "endLine": 680,
                         "endColumn": 12,
-                        "endOffset": 32581
+                        "endOffset": 32580
                     }
                 }
             },
@@ -6707,20 +6707,20 @@
                 "to": {
                     "startLine": 681,
                     "startColumn": 4,
-                    "startOffset": 32586,
+                    "startOffset": 32585,
                     "endLine": 684,
                     "endColumn": 12,
-                    "endOffset": 32731
+                    "endOffset": 32730
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 681,
                         "startColumn": 4,
-                        "startOffset": 32586,
+                        "startOffset": 32585,
                         "endLine": 684,
                         "endColumn": 12,
-                        "endOffset": 32731
+                        "endOffset": 32730
                     }
                 }
             },
@@ -6728,20 +6728,20 @@
                 "to": {
                     "startLine": 685,
                     "startColumn": 4,
-                    "startOffset": 32736,
+                    "startOffset": 32735,
                     "endLine": 688,
                     "endColumn": 12,
-                    "endOffset": 32885
+                    "endOffset": 32884
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 685,
                         "startColumn": 4,
-                        "startOffset": 32736,
+                        "startOffset": 32735,
                         "endLine": 688,
                         "endColumn": 12,
-                        "endOffset": 32885
+                        "endOffset": 32884
                     }
                 }
             },
@@ -6749,20 +6749,20 @@
                 "to": {
                     "startLine": 689,
                     "startColumn": 4,
-                    "startOffset": 32890,
+                    "startOffset": 32889,
                     "endLine": 692,
                     "endColumn": 12,
-                    "endOffset": 33040
+                    "endOffset": 33039
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 689,
                         "startColumn": 4,
-                        "startOffset": 32890,
+                        "startOffset": 32889,
                         "endLine": 692,
                         "endColumn": 12,
-                        "endOffset": 33040
+                        "endOffset": 33039
                     }
                 }
             },
@@ -6770,20 +6770,20 @@
                 "to": {
                     "startLine": 693,
                     "startColumn": 4,
-                    "startOffset": 33045,
+                    "startOffset": 33044,
                     "endLine": 696,
                     "endColumn": 12,
-                    "endOffset": 33232
+                    "endOffset": 33231
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 693,
                         "startColumn": 4,
-                        "startOffset": 33045,
+                        "startOffset": 33044,
                         "endLine": 696,
                         "endColumn": 12,
-                        "endOffset": 33232
+                        "endOffset": 33231
                     }
                 }
             },
@@ -6791,20 +6791,20 @@
                 "to": {
                     "startLine": 697,
                     "startColumn": 4,
-                    "startOffset": 33237,
+                    "startOffset": 33236,
                     "endLine": 704,
                     "endColumn": 12,
-                    "endOffset": 33618
+                    "endOffset": 33617
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 697,
                         "startColumn": 4,
-                        "startOffset": 33237,
+                        "startOffset": 33236,
                         "endLine": 704,
                         "endColumn": 12,
-                        "endOffset": 33618
+                        "endOffset": 33617
                     }
                 }
             },
@@ -6812,20 +6812,20 @@
                 "to": {
                     "startLine": 705,
                     "startColumn": 4,
-                    "startOffset": 33623,
+                    "startOffset": 33622,
                     "endLine": 707,
                     "endColumn": 12,
-                    "endOffset": 33738
+                    "endOffset": 33737
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 705,
                         "startColumn": 4,
-                        "startOffset": 33623,
+                        "startOffset": 33622,
                         "endLine": 707,
                         "endColumn": 12,
-                        "endOffset": 33738
+                        "endOffset": 33737
                     }
                 }
             },
@@ -6833,20 +6833,20 @@
                 "to": {
                     "startLine": 708,
                     "startColumn": 4,
-                    "startOffset": 33743,
+                    "startOffset": 33742,
                     "endLine": 710,
                     "endColumn": 12,
-                    "endOffset": 33856
+                    "endOffset": 33855
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 708,
                         "startColumn": 4,
-                        "startOffset": 33743,
+                        "startOffset": 33742,
                         "endLine": 710,
                         "endColumn": 12,
-                        "endOffset": 33856
+                        "endOffset": 33855
                     }
                 }
             },
@@ -6854,20 +6854,20 @@
                 "to": {
                     "startLine": 711,
                     "startColumn": 4,
-                    "startOffset": 33861,
+                    "startOffset": 33860,
                     "endLine": 713,
                     "endColumn": 12,
-                    "endOffset": 33975
+                    "endOffset": 33974
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 711,
                         "startColumn": 4,
-                        "startOffset": 33861,
+                        "startOffset": 33860,
                         "endLine": 713,
                         "endColumn": 12,
-                        "endOffset": 33975
+                        "endOffset": 33974
                     }
                 }
             },
@@ -6875,20 +6875,20 @@
                 "to": {
                     "startLine": 714,
                     "startColumn": 4,
-                    "startOffset": 33980,
+                    "startOffset": 33979,
                     "endLine": 716,
                     "endColumn": 12,
-                    "endOffset": 34089
+                    "endOffset": 34088
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 714,
                         "startColumn": 4,
-                        "startOffset": 33980,
+                        "startOffset": 33979,
                         "endLine": 716,
                         "endColumn": 12,
-                        "endOffset": 34089
+                        "endOffset": 34088
                     }
                 }
             },
@@ -6896,20 +6896,20 @@
                 "to": {
                     "startLine": 717,
                     "startColumn": 4,
-                    "startOffset": 34094,
+                    "startOffset": 34093,
                     "endLine": 719,
                     "endColumn": 12,
-                    "endOffset": 34204
+                    "endOffset": 34203
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 717,
                         "startColumn": 4,
-                        "startOffset": 34094,
+                        "startOffset": 34093,
                         "endLine": 719,
                         "endColumn": 12,
-                        "endOffset": 34204
+                        "endOffset": 34203
                     }
                 }
             },
@@ -6917,20 +6917,20 @@
                 "to": {
                     "startLine": 720,
                     "startColumn": 4,
-                    "startOffset": 34209,
+                    "startOffset": 34208,
                     "endLine": 722,
                     "endColumn": 12,
-                    "endOffset": 34315
+                    "endOffset": 34314
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 720,
                         "startColumn": 4,
-                        "startOffset": 34209,
+                        "startOffset": 34208,
                         "endLine": 722,
                         "endColumn": 12,
-                        "endOffset": 34315
+                        "endOffset": 34314
                     }
                 }
             },
@@ -6938,20 +6938,20 @@
                 "to": {
                     "startLine": 723,
                     "startColumn": 4,
-                    "startOffset": 34320,
+                    "startOffset": 34319,
                     "endLine": 725,
                     "endColumn": 12,
-                    "endOffset": 34435
+                    "endOffset": 34434
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 723,
                         "startColumn": 4,
-                        "startOffset": 34320,
+                        "startOffset": 34319,
                         "endLine": 725,
                         "endColumn": 12,
-                        "endOffset": 34435
+                        "endOffset": 34434
                     }
                 }
             },
@@ -6959,20 +6959,20 @@
                 "to": {
                     "startLine": 726,
                     "startColumn": 4,
-                    "startOffset": 34440,
+                    "startOffset": 34439,
                     "endLine": 728,
                     "endColumn": 12,
-                    "endOffset": 34547
+                    "endOffset": 34546
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 726,
                         "startColumn": 4,
-                        "startOffset": 34440,
+                        "startOffset": 34439,
                         "endLine": 728,
                         "endColumn": 12,
-                        "endOffset": 34547
+                        "endOffset": 34546
                     }
                 }
             },
@@ -6980,20 +6980,20 @@
                 "to": {
                     "startLine": 729,
                     "startColumn": 4,
-                    "startOffset": 34552,
+                    "startOffset": 34551,
                     "endLine": 731,
                     "endColumn": 12,
-                    "endOffset": 34665
+                    "endOffset": 34664
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 729,
                         "startColumn": 4,
-                        "startOffset": 34552,
+                        "startOffset": 34551,
                         "endLine": 731,
                         "endColumn": 12,
-                        "endOffset": 34665
+                        "endOffset": 34664
                     }
                 }
             },
@@ -7001,20 +7001,20 @@
                 "to": {
                     "startLine": 732,
                     "startColumn": 4,
-                    "startOffset": 34670,
+                    "startOffset": 34669,
                     "endLine": 734,
                     "endColumn": 12,
-                    "endOffset": 34761
+                    "endOffset": 34760
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 732,
                         "startColumn": 4,
-                        "startOffset": 34670,
+                        "startOffset": 34669,
                         "endLine": 734,
                         "endColumn": 12,
-                        "endOffset": 34761
+                        "endOffset": 34760
                     }
                 }
             },
@@ -7022,20 +7022,20 @@
                 "to": {
                     "startLine": 735,
                     "startColumn": 4,
-                    "startOffset": 34766,
+                    "startOffset": 34765,
                     "endLine": 737,
                     "endColumn": 12,
-                    "endOffset": 34890
+                    "endOffset": 34889
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 735,
                         "startColumn": 4,
-                        "startOffset": 34766,
+                        "startOffset": 34765,
                         "endLine": 737,
                         "endColumn": 12,
-                        "endOffset": 34890
+                        "endOffset": 34889
                     }
                 }
             },
@@ -7043,20 +7043,20 @@
                 "to": {
                     "startLine": 738,
                     "startColumn": 4,
-                    "startOffset": 34895,
+                    "startOffset": 34894,
                     "endLine": 744,
                     "endColumn": 12,
-                    "endOffset": 35222
+                    "endOffset": 35221
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 738,
                         "startColumn": 4,
-                        "startOffset": 34895,
+                        "startOffset": 34894,
                         "endLine": 744,
                         "endColumn": 12,
-                        "endOffset": 35222
+                        "endOffset": 35221
                     }
                 }
             },
@@ -7064,20 +7064,20 @@
                 "to": {
                     "startLine": 745,
                     "startColumn": 4,
-                    "startOffset": 35227,
+                    "startOffset": 35226,
                     "endLine": 751,
                     "endColumn": 12,
-                    "endOffset": 35562
+                    "endOffset": 35561
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 745,
                         "startColumn": 4,
-                        "startOffset": 35227,
+                        "startOffset": 35226,
                         "endLine": 751,
                         "endColumn": 12,
-                        "endOffset": 35562
+                        "endOffset": 35561
                     }
                 }
             },
@@ -7085,20 +7085,20 @@
                 "to": {
                     "startLine": 752,
                     "startColumn": 4,
-                    "startOffset": 35567,
+                    "startOffset": 35566,
                     "endLine": 758,
                     "endColumn": 12,
-                    "endOffset": 35899
+                    "endOffset": 35898
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 752,
                         "startColumn": 4,
-                        "startOffset": 35567,
+                        "startOffset": 35566,
                         "endLine": 758,
                         "endColumn": 12,
-                        "endOffset": 35899
+                        "endOffset": 35898
                     }
                 }
             },
@@ -7106,20 +7106,20 @@
                 "to": {
                     "startLine": 759,
                     "startColumn": 4,
-                    "startOffset": 35904,
+                    "startOffset": 35903,
                     "endLine": 761,
                     "endColumn": 12,
-                    "endOffset": 36040
+                    "endOffset": 36039
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 759,
                         "startColumn": 4,
-                        "startOffset": 35904,
+                        "startOffset": 35903,
                         "endLine": 761,
                         "endColumn": 12,
-                        "endOffset": 36040
+                        "endOffset": 36039
                     }
                 }
             },
@@ -7127,20 +7127,20 @@
                 "to": {
                     "startLine": 762,
                     "startColumn": 4,
-                    "startOffset": 36045,
+                    "startOffset": 36044,
                     "endLine": 769,
                     "endColumn": 12,
-                    "endOffset": 36408
+                    "endOffset": 36407
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 762,
                         "startColumn": 4,
-                        "startOffset": 36045,
+                        "startOffset": 36044,
                         "endLine": 769,
                         "endColumn": 12,
-                        "endOffset": 36408
+                        "endOffset": 36407
                     }
                 }
             },
@@ -7148,20 +7148,20 @@
                 "to": {
                     "startLine": 770,
                     "startColumn": 4,
-                    "startOffset": 36413,
+                    "startOffset": 36412,
                     "endLine": 777,
                     "endColumn": 12,
-                    "endOffset": 36780
+                    "endOffset": 36779
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 770,
                         "startColumn": 4,
-                        "startOffset": 36413,
+                        "startOffset": 36412,
                         "endLine": 777,
                         "endColumn": 12,
-                        "endOffset": 36780
+                        "endOffset": 36779
                     }
                 }
             },
@@ -7169,20 +7169,20 @@
                 "to": {
                     "startLine": 778,
                     "startColumn": 4,
-                    "startOffset": 36785,
+                    "startOffset": 36784,
                     "endLine": 784,
                     "endColumn": 12,
-                    "endOffset": 37105
+                    "endOffset": 37104
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 778,
                         "startColumn": 4,
-                        "startOffset": 36785,
+                        "startOffset": 36784,
                         "endLine": 784,
                         "endColumn": 12,
-                        "endOffset": 37105
+                        "endOffset": 37104
                     }
                 }
             },
@@ -7190,20 +7190,20 @@
                 "to": {
                     "startLine": 785,
                     "startColumn": 4,
-                    "startOffset": 37110,
+                    "startOffset": 37109,
                     "endLine": 791,
                     "endColumn": 12,
-                    "endOffset": 37430
+                    "endOffset": 37429
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 785,
                         "startColumn": 4,
-                        "startOffset": 37110,
+                        "startOffset": 37109,
                         "endLine": 791,
                         "endColumn": 12,
-                        "endOffset": 37430
+                        "endOffset": 37429
                     }
                 }
             },
@@ -7211,18 +7211,18 @@
                 "to": {
                     "startLine": 792,
                     "startColumn": 4,
-                    "startOffset": 37435,
+                    "startOffset": 37434,
                     "endColumn": 59,
-                    "endOffset": 37490
+                    "endOffset": 37489
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 792,
                         "startColumn": 4,
-                        "startOffset": 37435,
+                        "startOffset": 37434,
                         "endColumn": 59,
-                        "endOffset": 37490
+                        "endOffset": 37489
                     }
                 }
             },
@@ -7230,20 +7230,20 @@
                 "to": {
                     "startLine": 793,
                     "startColumn": 4,
-                    "startOffset": 37495,
+                    "startOffset": 37494,
                     "endLine": 795,
                     "endColumn": 12,
-                    "endOffset": 37619
+                    "endOffset": 37618
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 793,
                         "startColumn": 4,
-                        "startOffset": 37495,
+                        "startOffset": 37494,
                         "endLine": 795,
                         "endColumn": 12,
-                        "endOffset": 37619
+                        "endOffset": 37618
                     }
                 }
             },
@@ -7251,20 +7251,20 @@
                 "to": {
                     "startLine": 796,
                     "startColumn": 4,
-                    "startOffset": 37624,
+                    "startOffset": 37623,
                     "endLine": 798,
                     "endColumn": 12,
-                    "endOffset": 37733
+                    "endOffset": 37732
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 796,
                         "startColumn": 4,
-                        "startOffset": 37624,
+                        "startOffset": 37623,
                         "endLine": 798,
                         "endColumn": 12,
-                        "endOffset": 37733
+                        "endOffset": 37732
                     }
                 }
             },
@@ -7272,20 +7272,20 @@
                 "to": {
                     "startLine": 799,
                     "startColumn": 4,
-                    "startOffset": 37738,
+                    "startOffset": 37737,
                     "endLine": 802,
                     "endColumn": 12,
-                    "endOffset": 37935
+                    "endOffset": 37934
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 799,
                         "startColumn": 4,
-                        "startOffset": 37738,
+                        "startOffset": 37737,
                         "endLine": 802,
                         "endColumn": 12,
-                        "endOffset": 37935
+                        "endOffset": 37934
                     }
                 }
             },
@@ -7293,20 +7293,20 @@
                 "to": {
                     "startLine": 803,
                     "startColumn": 4,
-                    "startOffset": 37940,
+                    "startOffset": 37939,
                     "endLine": 806,
                     "endColumn": 12,
-                    "endOffset": 38136
+                    "endOffset": 38135
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 803,
                         "startColumn": 4,
-                        "startOffset": 37940,
+                        "startOffset": 37939,
                         "endLine": 806,
                         "endColumn": 12,
-                        "endOffset": 38136
+                        "endOffset": 38135
                     }
                 }
             },
@@ -7314,20 +7314,20 @@
                 "to": {
                     "startLine": 807,
                     "startColumn": 4,
-                    "startOffset": 38141,
+                    "startOffset": 38140,
                     "endLine": 809,
                     "endColumn": 12,
-                    "endOffset": 38284
+                    "endOffset": 38283
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 807,
                         "startColumn": 4,
-                        "startOffset": 38141,
+                        "startOffset": 38140,
                         "endLine": 809,
                         "endColumn": 12,
-                        "endOffset": 38284
+                        "endOffset": 38283
                     }
                 }
             },
@@ -7335,20 +7335,20 @@
                 "to": {
                     "startLine": 810,
                     "startColumn": 4,
-                    "startOffset": 38289,
+                    "startOffset": 38288,
                     "endLine": 812,
                     "endColumn": 12,
-                    "endOffset": 38424
+                    "endOffset": 38423
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 810,
                         "startColumn": 4,
-                        "startOffset": 38289,
+                        "startOffset": 38288,
                         "endLine": 812,
                         "endColumn": 12,
-                        "endOffset": 38424
+                        "endOffset": 38423
                     }
                 }
             },
@@ -7356,20 +7356,20 @@
                 "to": {
                     "startLine": 813,
                     "startColumn": 4,
-                    "startOffset": 38429,
+                    "startOffset": 38428,
                     "endLine": 819,
                     "endColumn": 12,
-                    "endOffset": 38771
+                    "endOffset": 38770
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 813,
                         "startColumn": 4,
-                        "startOffset": 38429,
+                        "startOffset": 38428,
                         "endLine": 819,
                         "endColumn": 12,
-                        "endOffset": 38771
+                        "endOffset": 38770
                     }
                 }
             },
@@ -7377,20 +7377,20 @@
                 "to": {
                     "startLine": 820,
                     "startColumn": 4,
-                    "startOffset": 38776,
+                    "startOffset": 38775,
                     "endLine": 823,
                     "endColumn": 12,
-                    "endOffset": 38928
+                    "endOffset": 38927
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 820,
                         "startColumn": 4,
-                        "startOffset": 38776,
+                        "startOffset": 38775,
                         "endLine": 823,
                         "endColumn": 12,
-                        "endOffset": 38928
+                        "endOffset": 38927
                     }
                 }
             },
@@ -7398,20 +7398,20 @@
                 "to": {
                     "startLine": 824,
                     "startColumn": 4,
-                    "startOffset": 38933,
+                    "startOffset": 38932,
                     "endLine": 827,
                     "endColumn": 12,
-                    "endOffset": 39091
+                    "endOffset": 39090
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 824,
                         "startColumn": 4,
-                        "startOffset": 38933,
+                        "startOffset": 38932,
                         "endLine": 827,
                         "endColumn": 12,
-                        "endOffset": 39091
+                        "endOffset": 39090
                     }
                 }
             },
@@ -7419,20 +7419,20 @@
                 "to": {
                     "startLine": 828,
                     "startColumn": 4,
-                    "startOffset": 39096,
+                    "startOffset": 39095,
                     "endLine": 831,
                     "endColumn": 12,
-                    "endOffset": 39251
+                    "endOffset": 39250
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 828,
                         "startColumn": 4,
-                        "startOffset": 39096,
+                        "startOffset": 39095,
                         "endLine": 831,
                         "endColumn": 12,
-                        "endOffset": 39251
+                        "endOffset": 39250
                     }
                 }
             },
@@ -7440,20 +7440,20 @@
                 "to": {
                     "startLine": 832,
                     "startColumn": 4,
-                    "startOffset": 39256,
+                    "startOffset": 39255,
                     "endLine": 834,
                     "endColumn": 12,
-                    "endOffset": 39365
+                    "endOffset": 39364
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 832,
                         "startColumn": 4,
-                        "startOffset": 39256,
+                        "startOffset": 39255,
                         "endLine": 834,
                         "endColumn": 12,
-                        "endOffset": 39365
+                        "endOffset": 39364
                     }
                 }
             },
@@ -7461,20 +7461,20 @@
                 "to": {
                     "startLine": 835,
                     "startColumn": 4,
-                    "startOffset": 39370,
+                    "startOffset": 39369,
                     "endLine": 841,
                     "endColumn": 12,
-                    "endOffset": 39685
+                    "endOffset": 39683
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 835,
                         "startColumn": 4,
-                        "startOffset": 39370,
+                        "startOffset": 39369,
                         "endLine": 841,
                         "endColumn": 12,
-                        "endOffset": 39685
+                        "endOffset": 39683
                     }
                 }
             },
@@ -7482,20 +7482,20 @@
                 "to": {
                     "startLine": 842,
                     "startColumn": 4,
-                    "startOffset": 39690,
+                    "startOffset": 39688,
                     "endLine": 844,
                     "endColumn": 12,
-                    "endOffset": 39799
+                    "endOffset": 39797
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 842,
                         "startColumn": 4,
-                        "startOffset": 39690,
+                        "startOffset": 39688,
                         "endLine": 844,
                         "endColumn": 12,
-                        "endOffset": 39799
+                        "endOffset": 39797
                     }
                 }
             },
@@ -7503,20 +7503,20 @@
                 "to": {
                     "startLine": 845,
                     "startColumn": 4,
-                    "startOffset": 39804,
+                    "startOffset": 39802,
                     "endLine": 848,
                     "endColumn": 12,
-                    "endOffset": 39945
+                    "endOffset": 39943
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 845,
                         "startColumn": 4,
-                        "startOffset": 39804,
+                        "startOffset": 39802,
                         "endLine": 848,
                         "endColumn": 12,
-                        "endOffset": 39945
+                        "endOffset": 39943
                     }
                 }
             },
@@ -7524,20 +7524,20 @@
                 "to": {
                     "startLine": 849,
                     "startColumn": 4,
-                    "startOffset": 39950,
+                    "startOffset": 39948,
                     "endLine": 856,
                     "endColumn": 12,
-                    "endOffset": 40329
+                    "endOffset": 40327
                 },
                 "from": {
                     "file": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 849,
                         "startColumn": 4,
-                        "startOffset": 39950,
+                        "startOffset": 39948,
                         "endLine": 856,
                         "endColumn": 12,
-                        "endOffset": 40329
+                        "endOffset": 40327
                     }
                 }
             },
@@ -7545,9 +7545,9 @@
                 "to": {
                     "startLine": 857,
                     "startColumn": 4,
-                    "startOffset": 40334,
+                    "startOffset": 40332,
                     "endLine": 860,
-                    "endColumn": 9,
+                    "endColumn": 12,
                     "endOffset": 40552
                 },
                 "from": {
@@ -7555,9 +7555,9 @@
                     "position": {
                         "startLine": 857,
                         "startColumn": 4,
-                        "startOffset": 40334,
+                        "startOffset": 40332,
                         "endLine": 860,
-                        "endColumn": 9,
+                        "endColumn": 12,
                         "endOffset": 40552
                     }
                 }

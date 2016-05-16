@@ -3,6 +3,7 @@ package com.example.newsclient.view.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -44,7 +45,7 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
 
     @Override
     protected int getToolBarId() {
-        return R.id.videoitem_toorbar;
+        return 0;
     }
 
 
@@ -53,7 +54,13 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
         Intent intent = getIntent();
         id = intent.getStringExtra("id");
         title = intent.getStringExtra("title");
-        initYoukuPlayer();
+        try {
+            initYoukuPlayer();
+        } catch (Exception e) {
+            e.printStackTrace();
+            VideoItemActivity.this.finish();
+        }
+
         initViewPager();
 
         loadData();
@@ -69,18 +76,32 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
         mViewpager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
-                return new CommentsFramgent();
+                Fragment fragment;
+                Bundle bundle = new Bundle();
+                bundle.putCharSequence("vid", id);
+                if (position == 0) {
+                    fragment = new CommentsFramgent();
+                } else {
+                    fragment = new CommentsFramgent();
+                }
+                fragment.setArguments(bundle);
+                return fragment;
             }
 
             @Override
             public int getCount() {
                 return tabs.length;
             }
+
+            @Override
+            public CharSequence getPageTitle(int position) {
+                return tabs[position];
+            }
         });
         mTabLayout.setupWithViewPager(mViewpager);
     }
 
-    private void initYoukuPlayer() {
+    private void initYoukuPlayer() throws Exception {
         mPlayManager = new MyYoukuBasePlayerManager(VideoItemActivity.this) {
             @Override
             public void onInitializationSuccess(YoukuPlayer player) {
@@ -114,7 +135,7 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
     private void loadData() {
         Map<String, String> map = new HashMap<>();
         map.put("id", id);
-        getPresenter().loadData(map);
+        getPresenter().loadVideoData(map);
     }
 
     @Override
@@ -131,6 +152,11 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
     @Override
     public void loadVideoItemInform(VideoItemBean data) {
         mVideoData = data;
+    }
+
+    @Override
+    public void onCompleted() {
+
     }
 
     @Override

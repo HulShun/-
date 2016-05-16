@@ -3,7 +3,8 @@ package com.example.newsclient.Model.impl;
 import com.example.newsclient.Model.bean.image.ImageJsonBean;
 import com.example.newsclient.Model.bean.image.ImageTypeJsonBean;
 import com.example.newsclient.Model.bean.NewsListBean;
-import com.example.newsclient.Model.bean.video.CommentsBean;
+import com.example.newsclient.Model.bean.video.CommentsJsonBean;
+import com.example.newsclient.Model.bean.video.Commentsv2JsonBean;
 import com.example.newsclient.Model.bean.video.VideoItemBean;
 import com.example.newsclient.Model.bean.video.VideoListBean;
 import com.example.newsclient.Model.bean.video.VideoShowBean;
@@ -91,9 +92,22 @@ public interface ApiService {
                                              @Query("show_id") String show_id);
 
 
+    /**
+     * 评论 V3版本
+     *
+     * @param opensysparams
+     * @param vid
+     * @return
+     */
+    @GET("router/rest.json")
+    Observable<CommentsJsonBean> loadVideoComments(@Query("opensysparams") String opensysparams,
+                                                   @Query("vid") String vid
+    );
+
     @GET("v2/comments/by_video.json")
-    Observable<CommentsBean> loadVideoComments(@Query("client_id") String client_id,
-                                               @Query("video_id") String video_id);
+    Observable<Commentsv2JsonBean> loadVideoComments(@Query("client_id") String client_id,
+                                                     @Query("video_id") String video_id,
+                                                     @Query("page") String page);
 
     /**
      * 美图大全api

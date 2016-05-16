@@ -1,6 +1,9 @@
 package com.example.newsclient.Model.impl;
 
+import com.example.newsclient.Model.bean.video.CommentsJsonBean;
 import com.example.newsclient.Model.bean.video.VideoItemBean;
+
+import java.util.Map;
 
 import rx.Observer;
 
@@ -10,5 +13,5 @@ import rx.Observer;
 public interface VideoItemModelImpl extends BaseModelImpl {
     void loadVideoItemData(String id, Observer<VideoItemBean> os);
 
-    void loadVideoM8u3(String s, Observer<String> os);
+    void loadComments(Map<String, String> map, Observer<CommentsJsonBean> os);
 }

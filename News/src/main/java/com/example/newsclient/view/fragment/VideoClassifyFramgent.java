@@ -83,7 +83,7 @@ public class VideoClassifyFramgent extends BaseFragment<VideoClassifyPresenter> 
             public void onClick(View v) {
                 if (!isloadingMore) {
                     isloadingMore = true;
-                    mAdapter.setFooterText("正在加载中...");
+                    mAdapter.showFooterLoading();
                     nowPage++;
                     getPresenter().loadVideoTypeList(mVideoTypeBean.getLabel(), null, nowPage);
                 }
@@ -167,7 +167,7 @@ public class VideoClassifyFramgent extends BaseFragment<VideoClassifyPresenter> 
     public void showFaild(String msg) {
         super.showFaild(msg);
         if (!getLoadingView().isloading()) {
-            mAdapter.setFooterText("点击加载更多");
+            mAdapter.showFooterBtn();
         }
     }
 }

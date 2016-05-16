@@ -13,4 +13,6 @@ public interface IBaseViewImpl {
     boolean checkNetWork();
 
     boolean isVisiable();
+
+    void onCompleted();
 }

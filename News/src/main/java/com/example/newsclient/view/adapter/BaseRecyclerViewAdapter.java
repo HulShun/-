@@ -14,6 +14,7 @@ import com.android.volley.toolbox.ImageLoader;
 import com.example.newsclient.Model.utils.MyImageLoader;
 import com.example.newsclient.R;
 import com.example.newsclient.view.impl.OnItemClickListener;
+import com.example.newsclient.view.viewholder.FooterViewHolder;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -24,7 +25,7 @@ import java.util.List;
 public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter {
     public static final int VIEWTYPE_ITEM = 1;
     public static final int VIEWTYPE_FOOTER = 2;
-    private String footerMessage = "正在加载中...";
+
     private ImageLoader imageLoader;
     private Drawable[] tdDrawableArray;
     private Context context;
@@ -62,20 +63,16 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
             tdDrawableArray = new Drawable[]{drawable, drawable};
         }
 
-        RecyclerView.ViewHolder holder;
+        RecyclerView.ViewHolder holder = null;
         View view = null;
         if (viewType == VIEWTYPE_FOOTER) {
-
             view = LayoutInflater.from(parent.getContext()).inflate(getFooterLayoutId(), null);
-
-        }
-        if (viewType == VIEWTYPE_ITEM) {
-
+            holder = new FooterViewHolder(view);
+            footerVH = holder;
+        } else if (viewType == VIEWTYPE_ITEM) {
             view = LayoutInflater.from(parent.getContext()).inflate(getItemLayoutId(), parent, false);
-
+            holder = onCreateMyViewHolder(view, viewType);
         }
-        holder = onCreateMyViewHolder(view, viewType);
-        view.setTag(holder);
 
         return holder;
 
@@ -100,13 +97,9 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
                 executeTask();
             }
         } else {
-            onBindFooterViewHolder((VH) holder, position);
-            footerVH = holder;
+            ((FooterViewHolder) footerVH).button.setOnClickListener(listener);
         }
-
     }
-
-    protected abstract void onBindFooterViewHolder(VH holder, int position);
 
     protected abstract void onBindItemViewHolder(VH holder, int position);
 
@@ -241,9 +234,18 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
         return listener;
     }
 
-    public void setFooterText(String s) {
+    public void showFooterBtn() {
         if (footerVH != null) {
-            footerMessage = s;
+            ((FooterViewHolder) footerVH).loadingLayout.setVisibility(View.GONE);
+            ((FooterViewHolder) footerVH).button.setVisibility(View.VISIBLE);
+            notifyItemChanged(datas.size());
+        }
+    }
+
+    public void showFooterLoading() {
+        if (footerVH != null) {
+            ((FooterViewHolder) footerVH).loadingLayout.setVisibility(View.VISIBLE);
+            ((FooterViewHolder) footerVH).button.setVisibility(View.GONE);
             notifyItemChanged(datas.size());
         }
     }

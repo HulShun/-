@@ -8,4 +8,5 @@ import com.example.newsclient.Model.bean.video.VideoItemBean;
 public interface IVideoItemViewImpl extends IBaseViewImpl {
 
     void loadVideoItemInform(VideoItemBean data);
+
 }

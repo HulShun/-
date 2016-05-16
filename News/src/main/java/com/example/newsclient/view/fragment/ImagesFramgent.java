@@ -110,7 +110,7 @@ public class ImagesFramgent extends BaseFragment<ImageListPresenter> implements 
         fragmentImageRc.addOnScrollListener(new AutoRecyclerView.AutoLoadMoreListener() {
             @Override
             protected void loadMore() {
-                mAdapter.setFooterText("正在加载中...");
+                mAdapter.showFooterLoading();
                 getMore();
             }
 
@@ -201,7 +201,7 @@ public class ImagesFramgent extends BaseFragment<ImageListPresenter> implements 
     @Override
     public void showNoNetWork() {
         super.showNoNetWork();
-        mAdapter.setFooterText("网络粗故障了...");
+        mAdapter.showFooterBtn();
     }
 
     @Override

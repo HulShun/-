@@ -94,9 +94,11 @@ public class NewsClassifyFragment extends BaseFragment<NewsListPresenter> implem
     }
 
     private void getMore() {
+
         if (newsList != null && newsList.getRetData().getHas_more() == 0) {
             Toast.makeText(NewsClassifyFragment.this.getContext(), "已全部加载...", Toast.LENGTH_SHORT).show();
         } else {
+            mAdapter.showFooterLoading();
             Map<String, String> map = new HashMap<>();
             map.put("keyword", mKeyWord);
             map.put("page", String.valueOf(nextPage));
@@ -117,7 +119,7 @@ public class NewsClassifyFragment extends BaseFragment<NewsListPresenter> implem
             mAdapter.setOnFooterListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mAdapter.setFooterText("正在加载中...");
+                    mAdapter.showFooterLoading();
                     getMore();
                 }
             });
@@ -142,7 +144,7 @@ public class NewsClassifyFragment extends BaseFragment<NewsListPresenter> implem
         newsRc.addOnScrollListener(new AutoRecyclerView.AutoLoadMoreListener() {
             @Override
             protected void loadMore() {
-                mAdapter.setFooterText("正在加载中...");
+                mAdapter.showFooterLoading();
                 getMore();
             }
 
@@ -217,6 +219,14 @@ public class NewsClassifyFragment extends BaseFragment<NewsListPresenter> implem
         }
     }
 
+
+    @Override
+    public void showFaild(String msg) {
+        super.showFaild(msg);
+        if (mAdapter != null) {
+            mAdapter.showFooterBtn();
+        }
+    }
 
     @Override
     public void showNoNetWork() {

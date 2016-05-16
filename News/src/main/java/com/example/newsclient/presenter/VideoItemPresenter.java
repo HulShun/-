@@ -1,6 +1,7 @@
 package com.example.newsclient.presenter;
 
 import com.example.newsclient.Model.LogUtil;
+import com.example.newsclient.Model.bean.video.CommentsJsonBean;
 import com.example.newsclient.Model.bean.video.VideoItemBean;
 import com.example.newsclient.Model.impl.VideoItemModelImpl;
 import com.example.newsclient.Model.model.VideoItemModel;
@@ -20,7 +21,7 @@ public class VideoItemPresenter extends BasePresenter<IVideoItemViewImpl, VideoI
     }
 
 
-    public void loadData(Map<String, String> map) {
+    public void loadVideoData(Map<String, String> map) {
         getModel().loadVideoItemData(map.get("id"), new Observer<VideoItemBean>() {
             @Override
             public void onCompleted() {
@@ -46,23 +47,31 @@ public class VideoItemPresenter extends BasePresenter<IVideoItemViewImpl, VideoI
         });
     }
 
-    public void loadVideoM3u8(String id) {
-        getModel().loadVideoM8u3(id, new Observer<String>() {
+    public void loadCommentsData(Map<String, String> map) {
+
+        getModel().loadComments(map, new Observer<CommentsJsonBean>() {
             @Override
             public void onCompleted() {
-
+                if (getView().isVisiable()) {
+                    getView().showSuccess();
+                    getView().onCompleted();
+                }
             }
 
             @Override
             public void onError(Throwable e) {
-                LogUtil.d("video", e.getMessage());
+                if (getView().isVisiable()) {
+                    getView().showFaild(e.getMessage());
+                    getView().onCompleted();
+                }
             }
 
             @Override
-            public void onNext(String s) {
-                LogUtil.d("video", s);
+            public void onNext(CommentsJsonBean commentsJsonBean) {
+                if (getView().isVisiable()) {
+
+                }
             }
         });
-
     }
 }

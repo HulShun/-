@@ -26,13 +26,9 @@ public class VideoClassifyAdapter extends BaseRecyclerViewAdapter<VideosInFormBe
 
     @Override
     protected VideoViewHolder onCreateMyViewHolder(View view, int viewType) {
-        return new VideoViewHolder(view, viewType);
+        return new VideoViewHolder(view);
     }
 
-    @Override
-    protected void onBindFooterViewHolder(VideoViewHolder holder, int position) {
-        holder.loadmoreBtn.setOnClickListener(getOnClickListener());
-    }
 
     @Override
     protected void onBindItemViewHolder(VideoViewHolder holder, int position) {

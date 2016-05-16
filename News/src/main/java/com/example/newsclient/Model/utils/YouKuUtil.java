@@ -6,12 +6,12 @@ import com.example.newsclient.Configuration;
 import com.example.newsclient.Model.bean.SysParam;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.security.GeneralSecurityException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.crypto.Mac;
@@ -36,44 +36,33 @@ public class YouKuUtil {
         return util;
     }
 
+    /**
+     * 请用setTimestamp()方法设置时间戳
+     *
+     * @return
+     */
     public SysParam getParam() {
         if (param == null) {
+            param = new SysParam();
             try {
-                getSign();
-            } catch (IOException e) {
+                String s = null;
+                s = URLEncoder.encode("youku.api.vod.get.videostream", "UTF-8");
+                param.setAction(s);
+                param.setClient_id(URLEncoder.encode(Configuration.YOUKU_CLIENT_ID, "UTF-8"));
+                param.setVersion(URLEncoder.encode("3.0", "UTF-8"));
+            } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
         }
         return param;
     }
 
-    public String getSign() throws IOException {
-        if (sign == null) {
-            param = new SysParam();
-            String s = URLEncoder.encode("youku.api.vod.get.videostream", "UTF-8");
-            param.setAction(s);
-            param.setClient_id(URLEncoder.encode(Configuration.YOUKU_KEYWORD, "UTF-8"));
-            long time = (System.currentTimeMillis() / 1000);
-            param.setTimestamp(URLEncoder.encode(String.valueOf(time), "UTF-8"));
-            param.setVersion(URLEncoder.encode("3.0", "UTF-8"));
-
-            Map<String, String> map = new HashMap<>();
-            map.put("action", param.getAction());
-            map.put("client_id", param.getClient_id());
-            map.put("access_token", param.getAccess_token());
-            map.put("format", param.getFormat());
-            map.put("timestamp", param.getTimestamp());
-            map.put("version", param.getVersion());
-
-            sign = signApiRequest(map, Configuration.YOUKU_SECRET, "md5");
-            param.setSign(sign);
-        }
-
+    public String getSign() {
         return sign;
     }
 
-    //确保params中的参数值进行了UTF-8的URLEncode。参数值为空的参数，也要加入到签名字符串中。
-    public String signApiRequest(Map params, String secret, String signMethod) throws IOException {
+    //确保params中的参数值进行了UTF-8的URLEncode。
+    public String signApiRequest(Map params, String secret) throws IOException {
         // 第一步：检查参数是否已经排序
         String[] keys = (String[]) params.keySet().toArray(new String[0]);
         Arrays.sort(keys);
@@ -83,22 +72,16 @@ public class YouKuUtil {
         for (String key : keys) {
             String value = (String) params.get(key);
             if (!TextUtils.isEmpty(key) && !TextUtils.isEmpty(value)) {
-                query.append(key)
-                        .append(value);
+                query.append(key).append(value);
             }
         }
+        query.append(secret);
+        // 第三步：使用MD5加密
+        //URLEncoder编码
+        String signStr = URLEncoder.encode(query.toString(), "UTF-8");
+        //32位小写md5加密
+        return getMd5Value(signStr);
 
-        // 第三步：使用MD5/HMAC加密
-        byte[] bytes;
-        if ("HmacSHA256".equals(signMethod)) {
-            bytes = encryptHMAC(query.toString(), secret);
-            // 第四步：把二进制转化为大写的十六进制
-            return byte2hex(bytes);
-        } else {
-            query.append(secret);
-            //32位小写md5加密
-            return getMd5Value(query.toString());
-        }
 
     }
 

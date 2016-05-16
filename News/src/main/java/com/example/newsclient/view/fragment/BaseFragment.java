@@ -116,4 +116,9 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
             getLoadingView().showNoNetWork();
         }
     }
+
+    @Override
+    public void onCompleted() {
+
+    }
 }

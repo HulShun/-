@@ -48,7 +48,7 @@ public class MainViewPresenter extends BasePresenter<IMainViewImpl, MainViewMode
 
     public void loadVideoTypes() {
         if (mVideoTypes == null) {
-            getVideoTabsFromNet(Configuration.VIDEO_TYPE_URL);
+            getVideoTabsFromNet(Configuration.YOUKU_API_BASE_URL);
         } else {
             getView().onVideoTabs(mVideoTypes);
         }
