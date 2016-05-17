@@ -22,7 +22,7 @@ import butterknife.Bind;
 /**
  * 新闻详情页
  */
-public class ArticleActivity extends BaseActivity  {
+public class ArticleActivity extends BaseActivity {
 
     public static final int ARTICLE_CODE = 0x000506;
 
@@ -39,6 +39,12 @@ public class ArticleActivity extends BaseActivity  {
     @Override
     protected int getToolBarId() {
         return R.id.article_toorbar;
+    }
+
+    @Override
+    protected void onCreateBeforView() {
+        super.onCreateBeforView();
+        setStatusBarColor(R.color.colorPrimary);
     }
 
     @Override
@@ -134,8 +140,6 @@ public class ArticleActivity extends BaseActivity  {
     public void showFaild(String msg) {
 
     }
-
-
 
 
     @Override

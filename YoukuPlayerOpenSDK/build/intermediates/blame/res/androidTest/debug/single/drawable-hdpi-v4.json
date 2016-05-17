@@ -72,12 +72,12 @@
         "source": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\play_btn_pause_big_detail.png"
     },
     {
-        "merged": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\yp_detail_icon_schedule_ball.png",
-        "source": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\yp_detail_icon_schedule_ball.png"
-    },
-    {
         "merged": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\bg_tudou_encrypt_dialog.9.png",
         "source": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\bg_tudou_encrypt_dialog.9.png"
+    },
+    {
+        "merged": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\yp_detail_icon_schedule_ball.png",
+        "source": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\yp_detail_icon_schedule_ball.png"
     },
     {
         "merged": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\play_btn_play_big_detail_down.png",

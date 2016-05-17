@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.newsclient.widget.MyScrollLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/brief_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:lines="4"
+            android:padding="@dimen/px26"
+            android:text="视频简介："
+            android:textColor="@color/text_color"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/brief_text_nolimit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/px26"
+            android:text="视频简介："
+            android:textColor="@color/text_color"
+            android:textSize="14sp"
+            android:visibility="gone" />
+
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/brief_tv_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:background="@android:color/transparent"
+        android:text="展开>>"
+        android:textColor="@color/text_color2"
+        android:textSize="@dimen/px28" />
+
+    <RelativeLayout
+        android:id="@+id/brief_rlayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/px40"
+        android:layout_marginTop="@dimen/px50">
+
+        <ImageView
+            android:id="@+id/brief_iv"
+            android:layout_width="@dimen/px6"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/px14"
+            android:layout_toRightOf="@id/brief_iv"
+            android:text="推荐视频"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/brief_more_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@android:color/transparent"
+            android:text="更多"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/brief_more_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/px12"
+        android:layout_marginRight="@dimen/px12"
+        android:layout_marginTop="@dimen/px24"
+        android:overScrollMode="never" />
+
+</com.example.newsclient.widget.MyScrollLayout>

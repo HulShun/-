@@ -93,6 +93,17 @@ public interface ApiService {
 
 
     /**
+     * 智能推荐视频
+     *
+     * @param client_id
+     * @param video_id
+     * @return
+     */
+    @GET("v2/videos/by_related.json")
+    Observable<RecommendJsonVideoBean> loadRecommendVideo(@Query("client_id") String client_id,
+                                                          @Query("video_id") String video_id);
+
+    /**
      * 评论 V3版本
      *
      * @param opensysparams

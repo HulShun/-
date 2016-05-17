@@ -730,8 +730,10 @@ public class YoukuPlayerView extends PluginOverlay implements DetailMessage,
 
         Logger.d(TAG, "initialize(): ua = " + ua);
 
-        initialize(mYoukuBaseActivity, 10001, "528a34396e9040f3", ver, ua,
-                false, -7L, "631l1i1x3fv5vs2dxlj5v8x81jqfs2om");
+        initialize(mYoukuBaseActivity, 10001, "094ebf6ebc9248e9", ver, ua,
+                false, -7L, "57f0ff75df4c3b8c13ab1c161c3c3c7e");
+      /*  initialize(mYoukuBaseActivity, 10001, "528a34396e9040f3", ver, ua,
+                false, -7L, "631l1i1x3fv5vs2dxlj5v8x81jqfs2om");*/
     }
 
     public void initialize(YoukuBasePlayerManager mYoukuBaseActivity, String pid) {

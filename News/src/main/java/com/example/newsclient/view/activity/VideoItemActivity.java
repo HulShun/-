@@ -15,6 +15,7 @@ import com.example.newsclient.Model.bean.video.VideoItemBean;
 import com.example.newsclient.R;
 import com.example.newsclient.presenter.VideoItemPresenter;
 import com.example.newsclient.view.fragment.CommentsFramgent;
+import com.example.newsclient.view.fragment.VideoBriefFramgent;
 import com.example.newsclient.view.impl.IVideoItemViewImpl;
 import com.youku.player.base.YoukuBasePlayerManager;
 import com.youku.player.base.YoukuPlayer;
@@ -38,7 +39,7 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
 
     private String title;
     private String id;
-    private String[] tabs = {"评论", "相关节目"};
+    private String[] tabs = {"简介", "评论"};
 
     private VideoItemBean mVideoData;
 
@@ -54,13 +55,7 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
         Intent intent = getIntent();
         id = intent.getStringExtra("id");
         title = intent.getStringExtra("title");
-        try {
-            initYoukuPlayer();
-        } catch (Exception e) {
-            e.printStackTrace();
-            VideoItemActivity.this.finish();
-        }
-
+        initYoukuPlayer();
         initViewPager();
 
         loadData();
@@ -80,7 +75,7 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
                 Bundle bundle = new Bundle();
                 bundle.putCharSequence("vid", id);
                 if (position == 0) {
-                    fragment = new CommentsFramgent();
+                    fragment = new VideoBriefFramgent();
                 } else {
                     fragment = new CommentsFramgent();
                 }
@@ -101,7 +96,7 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
         mTabLayout.setupWithViewPager(mViewpager);
     }
 
-    private void initYoukuPlayer() throws Exception {
+    private void initYoukuPlayer() {
         mPlayManager = new MyYoukuBasePlayerManager(VideoItemActivity.this) {
             @Override
             public void onInitializationSuccess(YoukuPlayer player) {
@@ -126,6 +121,7 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
                         LinearLayout.LayoutParams.MATCH_PARENT));
         // 初始化播放器相关数据
         mPlayerView.initialize(mPlayManager);
+
     }
 
     private void goPlay() {

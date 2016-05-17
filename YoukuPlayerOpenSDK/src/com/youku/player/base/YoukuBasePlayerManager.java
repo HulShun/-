@@ -1662,7 +1662,7 @@ public abstract class YoukuBasePlayerManager extends IBasePlayerManager implemen
                 WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         pluginManager = new PluginManager(this);
-//		mediaPlayerDelegate = new IMediaPlayerDelegate(pluginManager, this);		//初始化MediaPlayerDelegate
+        // mediaPlayerDelegate = new IMediaPlayerDelegate(pluginManager, this);		//初始化MediaPlayerDelegate
         mediaPlayerDelegate.initial(pluginManager, this);
 
         initPlayerPart();
@@ -1907,7 +1907,7 @@ public abstract class YoukuBasePlayerManager extends IBasePlayerManager implemen
     /**
      * 播放广告
      *
-     * @param isADshowing 是否正在播放广告
+     * @param
      */
     public void updatePlugin(final int pluginID) {
         Logger.e(TAG, "数组访问 updatePlugin");
@@ -2016,7 +2016,7 @@ public abstract class YoukuBasePlayerManager extends IBasePlayerManager implemen
 
 
     /**
-     * @param ispause 是否从挂起中恢复
+     * @param
      */
     public void startPlay() {
         if (mYoukuPlayerView != null) {

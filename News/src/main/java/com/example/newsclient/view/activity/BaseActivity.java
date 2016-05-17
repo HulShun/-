@@ -26,10 +26,10 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        onCreateBeforView();
         initWindow();
         View view = LayoutInflater.from(this).inflate(getLayoutId(), null);
         ButterKnife.bind(this, view);
-        onCreateBeforView();
         setContentView(view);
         mToolBar = (Toolbar) findViewById(getToolBarId());
         setSupportActionBar(mToolBar);
@@ -84,10 +84,16 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
             tintManager = new SystemBarTintManager(this);
             tintManager.setStatusBarTintEnabled(true);
             tintManager.setNavigationBarTintEnabled(true);
-            // tintManager.setStatusBarTintResource(0);
+            tintManager.setStatusBarTintResource(statusBarColor);
         }
 
 
+    }
+
+    private int statusBarColor;
+
+    public int setStatusBarColor(int i) {
+        return i;
     }
 
     @Override

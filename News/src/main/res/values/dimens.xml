@@ -11,9 +11,11 @@
     <dimen name="px560">280dp</dimen>
     <dimen name="px684">342dp</dimen>
     <dimen name="px340">170dp</dimen>
+    <dimen name="px334">167dp</dimen>
     <dimen name="px332">166dp</dimen>
     <dimen name="px320">160dp</dimen>
     <dimen name="px266">133dp</dimen>
+    <dimen name="px214">102dp</dimen>
     <dimen name="px186">93dp</dimen>
     <dimen name="px166">83dp</dimen>
     <dimen name="px100">50dp</dimen>
@@ -35,8 +37,12 @@
     <dimen name="px38">19dp</dimen>
     <dimen name="px30">15dp</dimen>
     <dimen name="px20">10dp</dimen>
+    <dimen name="px24">12dp</dimen>
+    <dimen name="px26">13dp</dimen>
     <dimen name="px40">20dp</dimen>
     <dimen name="px64">32dp</dimen>
+    <dimen name="px80">40dp</dimen>
+    <dimen name="px76">38dp</dimen>
 
 
 </resources>

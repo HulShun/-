@@ -8,6 +8,9 @@
     <string name="action_settings">Settings</string>
 
 
+    <string name="brief_text_on">更多>></string>
+    <string name="brief_text_off">收起>></string>
+    <string name="video_brief_title">视频简介：</string>
     <array name="news_tab">
         <item>搞笑</item>
         <item>创意</item>
@@ -20,6 +23,4 @@
         <item>电脑</item>
     </array>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
