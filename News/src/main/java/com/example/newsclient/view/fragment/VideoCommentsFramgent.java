@@ -2,7 +2,6 @@ package com.example.newsclient.view.fragment;
 
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.example.newsclient.Model.bean.video.Commentsv2JsonBean;
@@ -47,7 +46,7 @@ public class VideoCommentsFramgent extends BaseFragment<CommentsPresenter> imple
 
 
     @Bind(R.id.comments_rv)
-    RecyclerView commentsRv;
+    AutoRecyclerView commentsRv;
 
     private VideoCommentsAdapter mAdapter;
 
@@ -121,6 +120,12 @@ public class VideoCommentsFramgent extends BaseFragment<CommentsPresenter> imple
     public void showFaild(String msg) {
         super.showFaild(msg);
         mAdapter.showFooterBtn();
+    }
+
+    @Override
+    public void onCompleted() {
+        super.onCompleted();
+        commentsRv.loadMoreCompleted();
     }
 
     @Override
