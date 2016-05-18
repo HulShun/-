@@ -53,7 +53,7 @@ public class VideoBriefFramgent extends BaseFragment<VideoBriefPresenter> implem
 
     private String vid;
     private VideoItemBean videoInform;
-    private RecommendVideoAapter mAapter;
+    private RecommendVideoAapter mAdapter;
 
     @Override
     int getLayoutId() {
@@ -74,10 +74,12 @@ public class VideoBriefFramgent extends BaseFragment<VideoBriefPresenter> implem
             public void onClick(View v) {
                 //当前已经显示了全文,就回到收缩状态
                 if (isTextOn) {
+                    isTextOn = false;
                     briefText.setVisibility(View.VISIBLE);
                     briefText_nolimit.setVisibility(View.INVISIBLE);
                     briefMoreText_Btn.setText(R.string.brief_text_on);
                 } else {
+                    isTextOn = true;
                     //设置成展示全文的状态
                     briefText.setVisibility(View.INVISIBLE);
                     briefText_nolimit.setVisibility(View.VISIBLE);
@@ -92,9 +94,10 @@ public class VideoBriefFramgent extends BaseFragment<VideoBriefPresenter> implem
     private void initRecyclerView() {
         briefMoreRv.setLayoutManager(new GridLayoutManager(getContext(), 2));
         briefMoreRv.setItemAnimator(new DefaultItemAnimator());
-        mAapter = new RecommendVideoAapter();
-        mAapter.setFooterShow(false);
-        briefMoreRv.setAdapter(mAapter);
+        mAdapter = new RecommendVideoAapter();
+        mAdapter.setFooterShow(false);
+        briefMoreRv.setAdapter(mAdapter);
+
     }
 
     /**
@@ -129,20 +132,22 @@ public class VideoBriefFramgent extends BaseFragment<VideoBriefPresenter> implem
         }
         //简介
         String description = videoInform.getDescription();
-        if (description != null) {
-            String title = getContext().getResources().getString(R.string.video_brief_title);
+        String title = getContext().getResources().getString(R.string.video_brief_title);
+        if (!"".equals(description)) {
             briefText.setText(title +
                     "\r\n" +
-                    "\t\t" +
+                    "\t\t\t\t" +
                     description);
             briefText_nolimit.setText(title + description);
-            mesureTextDescription(briefText.getHeight(), briefText_nolimit.getHeight());
+        } else {
+            briefText.setText(title + "无");
         }
+        mesureTextDescription(briefText.getMeasuredHeight(), briefText_nolimit.getMeasuredHeight());
         //推荐视频
-        if (mAapter.getData() != null) {
-            mAapter.getData().clear();
+        if (mAdapter.getData() != null) {
+            mAdapter.getData().clear();
         }
-        mAapter.addData(data.getVideos());
+        mAdapter.addData(data.getVideos());
     }
 
 

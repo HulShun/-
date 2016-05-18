@@ -3,26 +3,29 @@ package com.example.newsclient.view.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 
 import com.example.newsclient.Model.bean.video.VideoItemBean;
 import com.example.newsclient.R;
 import com.example.newsclient.presenter.VideoItemPresenter;
-import com.example.newsclient.view.fragment.CommentsFramgent;
 import com.example.newsclient.view.fragment.VideoBriefFramgent;
+import com.example.newsclient.view.fragment.VideoCommentsFramgent;
 import com.example.newsclient.view.impl.IVideoItemViewImpl;
 import com.youku.player.base.YoukuBasePlayerManager;
 import com.youku.player.base.YoukuPlayer;
 import com.youku.player.base.YoukuPlayerView;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import butterknife.Bind;
 
@@ -37,11 +40,8 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
 
     MyYoukuBasePlayerManager mPlayManager;
 
-    private String title;
     private String id;
     private String[] tabs = {"简介", "评论"};
-
-    private VideoItemBean mVideoData;
 
 
     @Override
@@ -49,17 +49,41 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
         return 0;
     }
 
+    @Bind(R.id.videoitem_back)
+    ImageButton backBtn;
+    @Bind(R.id.videoitem_share)
+    ImageButton shareBtn;
+
+    private PopupWindow mPopupWindow;
 
     @Override
     protected void init() {
         Intent intent = getIntent();
         id = intent.getStringExtra("id");
-        title = intent.getStringExtra("title");
         initYoukuPlayer();
         initViewPager();
 
-        loadData();
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                VideoItemActivity.this.finish();
+            }
+        });
+        initPopupWindow();
+        shareBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPopupWindow.showAsDropDown(v);
+            }
+        });
+    }
 
+    private void initPopupWindow() {
+        View view = LayoutInflater.from(this).inflate(R.layout.popupwindow_videoitem, null, false);
+        mPopupWindow = new PopupWindow(view, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        mPopupWindow.setTouchable(true);
+        mPopupWindow.setBackgroundDrawable(new BitmapDrawable());
+        mPopupWindow.setOutsideTouchable(true);
     }
 
     @Bind(R.id.video_vp)
@@ -77,7 +101,7 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
                 if (position == 0) {
                     fragment = new VideoBriefFramgent();
                 } else {
-                    fragment = new CommentsFramgent();
+                    fragment = new VideoCommentsFramgent();
                 }
                 fragment.setArguments(bundle);
                 return fragment;
@@ -128,11 +152,6 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
         mPlayer.playVideo(id);
     }
 
-    private void loadData() {
-        Map<String, String> map = new HashMap<>();
-        map.put("id", id);
-        getPresenter().loadVideoData(map);
-    }
 
     @Override
     protected int getLayoutId() {
@@ -147,7 +166,7 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
 
     @Override
     public void loadVideoItemInform(VideoItemBean data) {
-        mVideoData = data;
+
     }
 
     @Override

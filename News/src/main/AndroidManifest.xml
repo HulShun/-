@@ -8,16 +8,12 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.CAMERA" />
-
-
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
-    <!-- uses-permission android:name="com.android.launcher.permission.WRITE_SETTINGS" /-->
+    <!-- uses-permission android:name="com.android.launcher.permission.WRITE_SETTINGS" / -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-
 
     <!-- <uses-permission android:name="android.permission.INTERNAL_SYSTEM_WINDOW"/> -->
     <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
@@ -40,14 +36,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".view.activity.MainActivity">
-
-        </activity>
+        <activity android:name=".view.activity.MainActivity"></activity>
         <activity android:name=".view.activity.ArticleActivity" />
-
         <activity android:name=".view.activity.ImageListActivity" />
-
         <activity
             android:name=".view.activity.VideoItemActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -55,15 +46,15 @@
             android:launchMode="singleTask"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
 
-
         <!-- 优酷播放器 -->
         <!-- client_id及client_secret配置  这里需要切换为自己的id和secret -->
         <meta-data
             android:name="client_id"
-            android:value="094ebf6ebc9248e9" />
+            android:value="f3a5372f0293848d" />
         <meta-data
             android:name="client_secret"
-            android:value="57f0ff75df4c3b8c13ab1c161c3c3c7e" />
+            android:value="52814a350fb11005df8440835488fef9" />
+
     </application>
 
 </manifest>

@@ -14,6 +14,8 @@ import java.util.List;
  * Created by Administrator on 2016-05-17.
  */
 public class RecommendVideoAapter extends BaseRecyclerViewAdapter<RecommendJsonVideoBean.RecommendVideoBean, RecommendVideoViewHolder> {
+
+
     @Override
     public int getFooterLayoutId() {
         return 0;
@@ -21,7 +23,7 @@ public class RecommendVideoAapter extends BaseRecyclerViewAdapter<RecommendJsonV
 
     @Override
     public int getItemLayoutId() {
-        return R.layout.fragment_comments_item;
+        return R.layout.fragment_brief_video_item;
     }
 
     @Override

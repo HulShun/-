@@ -5,16 +5,16 @@
     android:orientation="vertical">
 
     <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/px26">
 
         <TextView
             android:id="@+id/brief_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
-            android:lines="4"
-            android:padding="@dimen/px26"
+            android:lines="2"
             android:text="视频简介："
             android:textColor="@color/text_color"
             android:textSize="14sp" />

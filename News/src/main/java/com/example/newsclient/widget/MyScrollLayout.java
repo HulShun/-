@@ -74,7 +74,7 @@ public class MyScrollLayout extends LinearLayout {
         //recyclerview的最终显示高度
         ViewGroup.LayoutParams lp = recyclerView.getLayoutParams();
         lp.height = getMeasuredHeight()
-                - relativeLayout.getHeight() - 50;
+                - relativeLayout.getHeight() - 80;
         recyclerView.setLayoutParams(lp);
     }
 
@@ -82,12 +82,7 @@ public class MyScrollLayout extends LinearLayout {
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
         int textHeight;
-        if (briefView_limit.getVisibility() == VISIBLE) {
-            textHeight = briefView_limit.getMeasuredHeight(); //要取得是整个view的高度，getHeight()是取在屏幕上看到的高度
-        } else {
-            textHeight = briefView_nolimit.getMeasuredHeight();
-        }
-
+        textHeight = briefView_limit.getMeasuredHeight(); //要取得是整个view的高度，getHeight()是取在屏幕上看到的高度
         topViewHeight = textHeight + moreBtn.getMeasuredHeight();
 
     }

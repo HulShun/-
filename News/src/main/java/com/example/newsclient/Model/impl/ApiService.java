@@ -1,13 +1,12 @@
 package com.example.newsclient.Model.impl;
 
+import com.example.newsclient.Model.bean.NewsListBean;
 import com.example.newsclient.Model.bean.image.ImageJsonBean;
 import com.example.newsclient.Model.bean.image.ImageTypeJsonBean;
-import com.example.newsclient.Model.bean.NewsListBean;
 import com.example.newsclient.Model.bean.video.CommentsJsonBean;
 import com.example.newsclient.Model.bean.video.Commentsv2JsonBean;
+import com.example.newsclient.Model.bean.video.VideoCommentUserBean;
 import com.example.newsclient.Model.bean.video.VideoItemBean;
-import com.example.newsclient.Model.bean.video.VideoListBean;
-import com.example.newsclient.Model.bean.video.VideoShowBean;
 import com.example.newsclient.Model.bean.video.VideoTypeBean;
 import com.example.newsclient.Model.bean.video.VideosInFormBean;
 
@@ -42,22 +41,6 @@ public interface ApiService {
     Observable<VideoTypeBean> loadVideoType();
 
 
-    /**
-     * 优酷 多条视频基本信息 api
-     *
-     * @param params
-     * @param query
-     * @param field
-     * @param caller
-     * @return
-     */
-    @GET("router/rest.json")
-    Observable<VideoListBean> loadVideos(@Query("opensysparams") String params,
-                                         @Query("q") String query,
-                                         @Query("fd") String field,
-                                         @Query("cl") String caller);
-
-
     @GET("v2/videos/by_category.json")
     Observable<VideosInFormBean> loadVideosInform(@Query("client_id") String client_id,
                                                   @Query("category") String category,
@@ -78,18 +61,6 @@ public interface ApiService {
     Observable<VideoItemBean> loadVideoItem(@Query("client_id") String client_id,
                                             @Query("video_id") String video_id,
                                             @Query("ext") String ext);
-
-
-    /**
-     * 相关节目(shows/by_related)
-     *
-     * @param client_id
-     * @param show_id
-     * @return
-     */
-    @GET("v2/shows/by_related.json")
-    Observable<VideoShowBean> loadVideoShows(@Query("client_id") String client_id,
-                                             @Query("show_id") String show_id);
 
 
     /**
@@ -115,10 +86,36 @@ public interface ApiService {
                                                    @Query("vid") String vid
     );
 
+    /**
+     * 评论V2版本
+     *
+     * @param client_id
+     * @param video_id
+     * @param page
+     * @return
+     */
     @GET("v2/comments/by_video.json")
     Observable<Commentsv2JsonBean> loadVideoComments(@Query("client_id") String client_id,
                                                      @Query("video_id") String video_id,
                                                      @Query("page") String page);
+
+    /**
+     * 单条人物详细信息
+     *
+     * @param client_id
+     * @param video_id
+     * @return
+     */
+    @GET("v2/persons/show.json")
+    Observable<VideoCommentUserBean> loadCommentUsers(@Query("client_id") String client_id,
+                                                      @Query("person_id") String video_id);
+
+
+    @GET("router/rest.json")
+    Observable<VideoCommentUserBean> loadCommentUser(@Query("opensysparams") String opensysparams,
+                                                     @Query("q") String q,
+                                                     @Query("fd") String fd);
+
 
     /**
      * 美图大全api

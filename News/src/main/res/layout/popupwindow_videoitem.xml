@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/videoitem_share_popup"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/px12"
+        android:text="分享到"
+        android:textColor="@color/text_color3"
+        android:textSize="13sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/px40"
+        android:layout_marginRight="@dimen/px40"
+        android:layout_marginTop="@dimen/px12"
+        android:orientation="horizontal">
+
+        <CheckedTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/videoitem_wechatshare_selector"
+            android:gravity="center"
+            android:text="微信好友"
+            android:textColor="@color/text_color2"
+            android:textSize="12sp" />
+
+        <CheckedTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/videoitem_wechat_f_selector"
+            android:gravity="center"
+            android:text="微信朋友圈"
+            android:textColor="@color/text_color2"
+            android:textSize="12sp" />
+
+        <CheckedTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/videoitem_qqshare_selector"
+            android:gravity="center"
+            android:text="QQ好友"
+            android:textColor="@color/text_color2"
+            android:textSize="12sp" />
+
+        <CheckedTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/videoitem_weiboshare_selector"
+            android:gravity="center"
+            android:text="新浪微博"
+            android:textColor="@color/text_color2"
+            android:textSize="12sp" />
+    </LinearLayout>
+</LinearLayout>

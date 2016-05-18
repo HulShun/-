@@ -95,6 +95,7 @@ public class VideoClassifyFramgent extends BaseFragment<VideoClassifyPresenter> 
                 //点击跳转
                 VideoViewHolder holder = (VideoViewHolder) viewHolder;
                 String id = (String) holder.title_textView.getTag();
+                // Intent intent = new Intent(getContext(), VideoItemActivity.class);
                 Intent intent = new Intent(getContext(), VideoItemActivity.class);
                 intent.putExtra("id", id);
                 intent.putExtra("title", holder.title_textView.getText().toString());

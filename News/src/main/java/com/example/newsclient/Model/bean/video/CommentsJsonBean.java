@@ -9,40 +9,21 @@ public class CommentsJsonBean {
 
 
     /**
-     * error : 1
-     * total : 30
-     * cost : 0.0010538101196289
-     * data : [{"_id":"4facfa21cd2c6d4228000002","v":95511637,"u":65542463,"ct":1336736289,"sid":368000590,"rec":0,"rpc":0,"pcid":"","scmt":"","con":"震惊！真是一场大毁灭啊","ip":-1210974066,"ps":999,"st":0}]
+     * total : 100
+     * video_id : XMjg1MTcyNDQ0
+     * comments : [{"id":"4e263a4c67c6e27d4d000000","content":"光是装满爱的房间，光是房间这么说不合适，光是装满房间的爱还差不多。","published":"2011-07-19 10:40:03","user":{"id":28564403,"name":"macanying","link":"http://u.youku.com/user_show/id_UMTE0MjU3NjEy.html"}}]
      */
 
-    private int error;
     private int total;
-    private double cost;
+    private String video_id;
     /**
-     * _id : 4facfa21cd2c6d4228000002
-     * v : 95511637
-     * u : 65542463
-     * ct : 1336736289
-     * sid : 368000590
-     * rec : 0
-     * rpc : 0
-     * pcid :
-     * scmt :
-     * con : 震惊！真是一场大毁灭啊
-     * ip : -1210974066
-     * ps : 999
-     * st : 0
+     * id : 4e263a4c67c6e27d4d000000
+     * content : 光是装满爱的房间，光是房间这么说不合适，光是装满房间的爱还差不多。
+     * published : 2011-07-19 10:40:03
+     * user : {"id":28564403,"name":"macanying","link":"http://u.youku.com/user_show/id_UMTE0MjU3NjEy.html"}
      */
 
-    private List<CommentBean> data;
-
-    public int getError() {
-        return error;
-    }
-
-    public void setError(int error) {
-        this.error = error;
-    }
+    private List<CommentBean> comments;
 
     public int getTotal() {
         return total;
@@ -52,139 +33,94 @@ public class CommentsJsonBean {
         this.total = total;
     }
 
-    public double getCost() {
-        return cost;
+    public String getVideo_id() {
+        return video_id;
     }
 
-    public void setCost(double cost) {
-        this.cost = cost;
+    public void setVideo_id(String video_id) {
+        this.video_id = video_id;
     }
 
-    public List<CommentBean> getData() {
-        return data;
+    public List<CommentBean> getComments() {
+        return comments;
     }
 
-    public void setData(List<CommentBean> data) {
-        this.data = data;
+    public void setComments(List<CommentBean> comments) {
+        this.comments = comments;
     }
 
     public static class CommentBean {
-        private String _id;
-        private int v;
-        private int u;
-        private int ct;
-        private int sid;
-        private int rec;
-        private int rpc;
-        private String pcid;
-        private String scmt;
-        private String con;
-        private int ip;
-        private int ps;
-        private int st;
+        private String id;
+        private String content;
+        private String published;
+        /**
+         * id : 28564403
+         * name : macanying
+         * link : http://u.youku.com/user_show/id_UMTE0MjU3NjEy.html
+         */
 
-        public String get_id() {
-            return _id;
+        private UserBean user;
+
+        public String getId() {
+            return id;
         }
 
-        public void set_id(String _id) {
-            this._id = _id;
+        public void setId(String id) {
+            this.id = id;
         }
 
-        public int getV() {
-            return v;
+        public String getContent() {
+            return content;
         }
 
-        public void setV(int v) {
-            this.v = v;
+        public void setContent(String content) {
+            this.content = content;
         }
 
-        public int getU() {
-            return u;
+        public String getPublished() {
+            return published;
         }
 
-        public void setU(int u) {
-            this.u = u;
+        public void setPublished(String published) {
+            this.published = published;
         }
 
-        public int getCt() {
-            return ct;
+        public UserBean getUser() {
+            return user;
         }
 
-        public void setCt(int ct) {
-            this.ct = ct;
+        public void setUser(UserBean user) {
+            this.user = user;
         }
 
-        public int getSid() {
-            return sid;
-        }
+        public static class UserBean {
+            private int id;
+            private String name;
+            private String link;
 
-        public void setSid(int sid) {
-            this.sid = sid;
-        }
+            public int getId() {
+                return id;
+            }
 
-        public int getRec() {
-            return rec;
-        }
+            public void setId(int id) {
+                this.id = id;
+            }
 
-        public void setRec(int rec) {
-            this.rec = rec;
-        }
+            public String getName() {
+                return name;
+            }
 
-        public int getRpc() {
-            return rpc;
-        }
+            public void setName(String name) {
+                this.name = name;
+            }
 
-        public void setRpc(int rpc) {
-            this.rpc = rpc;
-        }
+            public String getLink() {
+                return link;
+            }
 
-        public String getPcid() {
-            return pcid;
-        }
-
-        public void setPcid(String pcid) {
-            this.pcid = pcid;
-        }
-
-        public String getScmt() {
-            return scmt;
-        }
-
-        public void setScmt(String scmt) {
-            this.scmt = scmt;
-        }
-
-        public String getCon() {
-            return con;
-        }
-
-        public void setCon(String con) {
-            this.con = con;
-        }
-
-        public int getIp() {
-            return ip;
-        }
-
-        public void setIp(int ip) {
-            this.ip = ip;
-        }
-
-        public int getPs() {
-            return ps;
-        }
-
-        public void setPs(int ps) {
-            this.ps = ps;
-        }
-
-        public int getSt() {
-            return st;
-        }
-
-        public void setSt(int st) {
-            this.st = st;
+            public void setLink(String link) {
+                this.link = link;
+            }
         }
     }
 }
