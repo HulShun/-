@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/px12"
+        android:layout_marginTop="@dimen/px40"
         android:text="分享到"
         android:textColor="@color/text_color3"
         android:textSize="13sp" />

@@ -74,7 +74,7 @@ public class MyScrollLayout extends LinearLayout {
         //recyclerview的最终显示高度
         ViewGroup.LayoutParams lp = recyclerView.getLayoutParams();
         lp.height = getMeasuredHeight()
-                - relativeLayout.getHeight() - 80;
+                - relativeLayout.getHeight() - 120;
         recyclerView.setLayoutParams(lp);
     }
 

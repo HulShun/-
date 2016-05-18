@@ -9,10 +9,15 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.DisplayMetrics;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -46,13 +51,13 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
 
     @Override
     protected int getToolBarId() {
-        return 0;
+        return R.id.videoitem_toolbar;
     }
 
     @Bind(R.id.videoitem_back)
     ImageButton backBtn;
     @Bind(R.id.videoitem_share)
-    ImageButton shareBtn;
+    CheckBox shareBtn;
 
     private PopupWindow mPopupWindow;
 
@@ -70,10 +75,23 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
             }
         });
         initPopupWindow();
-        shareBtn.setOnClickListener(new View.OnClickListener() {
+
+        shareBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            private int xoff;
+
             @Override
-            public void onClick(View v) {
-                mPopupWindow.showAsDropDown(v);
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (xoff == 0) {
+                    WindowManager manager = getWindowManager();
+                    DisplayMetrics dm = new DisplayMetrics();
+                    manager.getDefaultDisplay().getMetrics(dm);
+                    xoff = dm.widthPixels / 8;
+                }
+                if (isChecked) {
+                    mPopupWindow.showAtLocation(buttonView, Gravity.LEFT | Gravity.BOTTOM, 0, 0);
+                } else {
+                    mPopupWindow.dismiss();
+                }
             }
         });
     }
@@ -82,7 +100,7 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
         View view = LayoutInflater.from(this).inflate(R.layout.popupwindow_videoitem, null, false);
         mPopupWindow = new PopupWindow(view, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         mPopupWindow.setTouchable(true);
-        mPopupWindow.setBackgroundDrawable(new BitmapDrawable());
+        mPopupWindow.setBackgroundDrawable(new BitmapDrawable(null, ""));
         mPopupWindow.setOutsideTouchable(true);
     }
 
@@ -257,12 +275,12 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
 
         @Override
         public void onFullscreenListener() {
-
+            getToolBar().setVisibility(View.GONE);
         }
 
         @Override
         public void onSmallscreenListener() {
-
+            getToolBar().setVisibility(View.VISIBLE);
         }
     }
 }
