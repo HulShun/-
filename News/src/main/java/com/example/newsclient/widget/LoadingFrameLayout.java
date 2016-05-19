@@ -105,7 +105,13 @@ public abstract class LoadingFrameLayout extends FrameLayout {
         button.setOnClickListener(l);
     }
 
-    public void setText(String s) {
+    public void showMessage(String s) {
         textView.setText(s);
+        imageView.setVisibility(VISIBLE);
+        gifImageView.setVisibility(INVISIBLE);
+        textView.setVisibility(VISIBLE);
+        button.setVisibility(VISIBLE);
+        Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.loading_failed);
+        imageView.setImageBitmap(bitmap);
     }
 }

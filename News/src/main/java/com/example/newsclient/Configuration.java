@@ -28,4 +28,18 @@ public class Configuration {
     public static final String VIDEO_TYPE_TABLE_NAEM = "video_type";
     public static final String VIDEO_TYPE_SUBTITLE_TABLE_NAEM = "video_subtitle_type";
 
+
+    public static final String TENCENT_APPID = "1105409954";
+
+    public static final String WECHAT_APPID = "wxafea8174545dfea9";
+    public static final String WECHAT_SECRET = "9cda3bb37c092c69da7d9e8a4d89f3d3";
+
+    public static final String WEIBO_APPID = "96968995";
+    public static final String WEIBO_SECRET = "54c0c58bb9961aea2ba1f98a2066072b";
+    public static final String WEIBO_REDIRECT_URL = "https://api.weibo.com/oauth2/default.html";
+    public static final String WEIBO_SCOPE = // 应用申请的高级权限
+            "email,direct_messages_read,direct_messages_write,"
+                    + "friendships_groups_read,friendships_groups_write,statuses_to_me_read,"
+                    + "follow_app_official_microblog," + "invitation_write";
+
 }

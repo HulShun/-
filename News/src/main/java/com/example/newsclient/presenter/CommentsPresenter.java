@@ -46,6 +46,10 @@ public class CommentsPresenter extends BasePresenter<ICommentsViewImpl, Comments
             @Override
             public void onNext(Commentsv2JsonBean data) {
                 if (getView().isVisiable()) {
+                    if (data == null) {
+                        getView().showFaild("获取失败");
+                        return;
+                    }
                     getView().onCommentsResulte(data);
                 }
             }

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:title="登陆"
+        app:theme="@style/Base.AlertDialog.AppCompat.Light" />
+
+    <Button
+        android:id="@+id/login_qq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="QQ登陆" />
+
+    <Button
+        android:id="@+id/login_weibo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="微博登陆" />
+
+
+</LinearLayout>

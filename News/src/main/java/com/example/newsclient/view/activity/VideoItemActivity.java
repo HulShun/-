@@ -17,17 +17,37 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.CheckBox;
+import android.widget.CheckedTextView;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.Toast;
 
+import com.example.newsclient.Model.LogUtil;
 import com.example.newsclient.Model.bean.video.VideoItemBean;
+import com.example.newsclient.Model.impl.TencentBaseUIListenner;
 import com.example.newsclient.R;
 import com.example.newsclient.presenter.VideoItemPresenter;
 import com.example.newsclient.view.fragment.VideoBriefFramgent;
 import com.example.newsclient.view.fragment.VideoCommentsFramgent;
 import com.example.newsclient.view.impl.IVideoItemViewImpl;
+import com.sina.weibo.sdk.api.BaseMediaObject;
+import com.sina.weibo.sdk.api.ImageObject;
+import com.sina.weibo.sdk.api.TextObject;
+import com.sina.weibo.sdk.api.WeiboMultiMessage;
+import com.sina.weibo.sdk.api.share.BaseRequest;
+import com.sina.weibo.sdk.api.share.IWeiboHandler;
+import com.sina.weibo.sdk.api.share.IWeiboShareAPI;
+import com.sina.weibo.sdk.api.share.SendMultiMessageToWeiboRequest;
+import com.sina.weibo.sdk.api.share.WeiboShareSDK;
+import com.tencent.connect.share.QQShare;
+import com.tencent.mm.sdk.openapi.IWXAPI;
+import com.tencent.mm.sdk.openapi.SendMessageToWX;
+import com.tencent.mm.sdk.openapi.WXAPIFactory;
+import com.tencent.mm.sdk.openapi.WXMediaMessage;
+import com.tencent.mm.sdk.openapi.WXWebpageObject;
+import com.tencent.tauth.Tencent;
 import com.youku.player.base.YoukuBasePlayerManager;
 import com.youku.player.base.YoukuPlayer;
 import com.youku.player.base.YoukuPlayerView;
@@ -45,6 +65,7 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
 
     MyYoukuBasePlayerManager mPlayManager;
 
+
     private String id;
     private String[] tabs = {"简介", "评论"};
 
@@ -60,22 +81,26 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
     CheckBox shareBtn;
 
     private PopupWindow mPopupWindow;
+    private VideoItemBean videoData;
 
     @Override
     protected void init() {
         Intent intent = getIntent();
         id = intent.getStringExtra("id");
+        //获取视频信息
+        getPresenter().loadVideoData(id);
+        //初始化优酷播放器
         initYoukuPlayer();
-        initViewPager();
 
+        initViewPager();
+        //返回按钮
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 VideoItemActivity.this.finish();
             }
         });
-        initPopupWindow();
-
+        //分享按钮
         shareBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             private int xoff;
 
@@ -88,20 +113,154 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
                     xoff = dm.widthPixels / 8;
                 }
                 if (isChecked) {
-                    mPopupWindow.showAtLocation(buttonView, Gravity.LEFT | Gravity.BOTTOM, 0, 0);
+                    mPopupWindow.showAtLocation(buttonView, Gravity.LEFT | Gravity.TOP, buttonView.getWidth() / 2, 2 * buttonView.getHeight());
                 } else {
                     mPopupWindow.dismiss();
                 }
             }
         });
+        initPopupWindow();
+
+
     }
+
+
+    private CheckedTextView shareWechatBtn;
+    private CheckedTextView shareWechatFBtn;
+    private CheckedTextView shareQqBtn;
+    private CheckedTextView shareWeiboBtn;
+
+    private IWeiboShareAPI mWeiboShareAPI;
+    private IWXAPI mWechatAPI;
 
     private void initPopupWindow() {
         View view = LayoutInflater.from(this).inflate(R.layout.popupwindow_videoitem, null, false);
+        shareWechatBtn = (CheckedTextView) view.findViewById(R.id.share_wechat_btn);
+        shareWechatFBtn = (CheckedTextView) view.findViewById(R.id.share_wechat_f_btn);
+        shareQqBtn = (CheckedTextView) view.findViewById(R.id.share_qq_btn);
+        shareWeiboBtn = (CheckedTextView) view.findViewById(R.id.share_weibo_btn);
+
         mPopupWindow = new PopupWindow(view, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         mPopupWindow.setTouchable(true);
         mPopupWindow.setBackgroundDrawable(new BitmapDrawable(null, ""));
         mPopupWindow.setOutsideTouchable(true);
+
+        //QQ分享
+        shareQqBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                shareToQQ();
+                mPopupWindow.dismiss();
+            }
+        });
+        shareWeiboBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mWeiboShareAPI == null) {
+                    //初始化
+                    mWeiboShareAPI = WeiboShareSDK.createWeiboAPI(VideoItemActivity.this, com.example.newsclient.Configuration.WEIBO_APPID);
+                    mWeiboShareAPI.registerApp();
+                }
+                shareToWeibo();
+            }
+        });
+
+        shareWechatBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mWechatAPI == null) {
+                    initWechatShare();
+                }
+                shareToWechat(SendMessageToWX.Req.WXSceneSession);
+            }
+        });
+
+        shareWechatFBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mWechatAPI == null) {
+                    initWechatShare();
+                }
+                shareToWechat(SendMessageToWX.Req.WXSceneTimeline);
+            }
+        });
+    }
+
+    private void initWechatShare() {
+        mWechatAPI = WXAPIFactory.createWXAPI(VideoItemActivity.this, com.example.newsclient.Configuration.WECHAT_APPID, true);
+        mWechatAPI.registerApp(com.example.newsclient.Configuration.WECHAT_APPID);
+    }
+
+    /**
+     * @param flage 分享到聊天窗口还是朋友圈的标识
+     */
+    private void shareToWechat(int flage) {
+        WXWebpageObject wxWebpageObject = new WXWebpageObject();
+        wxWebpageObject.webpageUrl = videoData.getLink();
+        WXMediaMessage mediaMessage = new WXMediaMessage();
+        mediaMessage.title = videoData.getTitle();
+        mediaMessage.description = videoData.getDescription();
+
+        SendMessageToWX.Req req = new SendMessageToWX.Req();
+        req.transaction = videoData.getTitle() + System.currentTimeMillis();
+        req.message = mediaMessage;
+        //分享到聊天窗口
+        req.scene = flage;
+        mWechatAPI.sendReq(req);
+    }
+
+
+    private void shareToWeibo() {
+        if (videoData == null) {
+            Toast.makeText(VideoItemActivity.this, "视频信息获取失败...", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        WeiboMultiMessage multiMessage = new WeiboMultiMessage();
+        TextObject textObject = new TextObject();
+        textObject.text = videoData.getTitle();
+        multiMessage.textObject = textObject;
+
+        ImageObject imageObject = new ImageObject();
+        imageObject.imagePath = videoData.getThumbnail();
+        multiMessage.imageObject = imageObject;
+        BaseMediaObject mediaObject = new BaseMediaObject() {
+            @Override
+            public int getObjType() {
+                return BaseMediaObject.MEDIA_TYPE_VIDEO;
+            }
+
+            @Override
+            protected BaseMediaObject toExtraMediaObject(String s) {
+                return null;
+            }
+
+            @Override
+            protected String toExtraMediaString() {
+                return videoData.getLink();
+            }
+        };
+        multiMessage.mediaObject = mediaObject;
+
+        SendMultiMessageToWeiboRequest request = new SendMultiMessageToWeiboRequest();
+        request.transaction = String.valueOf(System.currentTimeMillis());
+        request.multiMessage = multiMessage;
+        mWeiboShareAPI.sendRequest(VideoItemActivity.this, request);
+    }
+
+    private void shareToQQ() {
+        if (videoData == null) {
+            Toast.makeText(VideoItemActivity.this, "视频信息获取失败...", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        Bundle params = new Bundle();
+        params.putInt(QQShare.SHARE_TO_QQ_KEY_TYPE, QQShare.SHARE_TO_QQ_TYPE_DEFAULT);
+        params.putString(QQShare.SHARE_TO_QQ_TITLE, videoData.getTitle());
+        params.putString(QQShare.SHARE_TO_QQ_SUMMARY, videoData.getDescription());
+        params.putString(QQShare.SHARE_TO_QQ_TARGET_URL, videoData.getLink());
+        params.putString(QQShare.SHARE_TO_QQ_IMAGE_URL, videoData.getThumbnail());
+        params.putString(QQShare.SHARE_TO_QQ_APP_NAME, VideoItemActivity.this.getResources().getString(R.string.app_name));
+        Tencent tencent = Tencent.createInstance(com.example.newsclient.Configuration.TENCENT_APPID, VideoItemActivity.this);
+        tencent.shareToQQ(VideoItemActivity.this, params, new TencentBaseUIListenner());
     }
 
     @Bind(R.id.video_vp)
@@ -184,12 +343,24 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
 
     @Override
     public void loadVideoItemInform(VideoItemBean data) {
-
+        videoData = data;
     }
 
     @Override
     public void onCompleted() {
 
+    }
+
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        mWeiboShareAPI.handleWeiboRequest(intent, new IWeiboHandler.Request() {
+            @Override
+            public void onRequest(BaseRequest baseRequest) {
+                LogUtil.d("weibo", "分享后返回：" + baseRequest.getType());
+            }
+        });
     }
 
     @Override

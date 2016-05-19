@@ -1,13 +1,13 @@
 package com.example.newsclient.presenter;
 
+import android.graphics.Bitmap;
+
 import com.example.newsclient.Model.LogUtil;
-import com.example.newsclient.Model.bean.video.CommentsJsonBean;
 import com.example.newsclient.Model.bean.video.VideoItemBean;
 import com.example.newsclient.Model.impl.VideoItemModelImpl;
 import com.example.newsclient.Model.model.VideoItemModel;
 import com.example.newsclient.view.impl.IVideoItemViewImpl;
-
-import java.util.Map;
+import com.tencent.mm.sdk.openapi.IWXAPI;
 
 import rx.Observer;
 
@@ -21,8 +21,8 @@ public class VideoItemPresenter extends BasePresenter<IVideoItemViewImpl, VideoI
     }
 
 
-    public void loadVideoData(Map<String, String> map) {
-        getModel().loadVideoItemData(map.get("id"), new Observer<VideoItemBean>() {
+    public void loadVideoData(String id) {
+        getModel().loadVideoItemData(id, new Observer<VideoItemBean>() {
             @Override
             public void onCompleted() {
                 if (getView().isVisiable()) {
@@ -47,31 +47,23 @@ public class VideoItemPresenter extends BasePresenter<IVideoItemViewImpl, VideoI
         });
     }
 
-    public void loadCommentsData(Map<String, String> map) {
-
-        getModel().loadComments(map, new Observer<CommentsJsonBean>() {
+    public void shareToWechat(IWXAPI mWechatAPI, VideoItemBean videoData) {
+        getModel().getImage(videoData.getThumbnail(), new Observer<Bitmap>() {
             @Override
             public void onCompleted() {
-                if (getView().isVisiable()) {
-                    getView().showSuccess();
-                    getView().onCompleted();
-                }
+
             }
 
             @Override
             public void onError(Throwable e) {
-                if (getView().isVisiable()) {
-                    getView().showFaild(e.getMessage());
-                    getView().onCompleted();
-                }
+
             }
 
             @Override
-            public void onNext(CommentsJsonBean commentsJsonBean) {
-                if (getView().isVisiable()) {
+            public void onNext(Bitmap bitmap) {
 
-                }
             }
         });
+
     }
 }

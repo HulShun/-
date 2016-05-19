@@ -17,6 +17,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -52,8 +53,13 @@ public class MainActivity extends BaseActivity<MainViewPresenter> implements IMa
     TabLayout tablayout;
     @Bind(R.id.main_viewpager)
     ViewPager mainViewpager;
+
     @Bind(R.id.main_navi)
     NavigationView mainNavi;
+
+    LinearLayout login_layout;
+
+    //侧边栏
     @Bind(R.id.main_drawer)
     DrawerLayout mainDrawer;
 
@@ -70,10 +76,10 @@ public class MainActivity extends BaseActivity<MainViewPresenter> implements IMa
 
     @Override
     protected void init() {
+
         initViews();
         initDatas();
         register();
-
     }
 
     /**
@@ -168,6 +174,16 @@ public class MainActivity extends BaseActivity<MainViewPresenter> implements IMa
                 }
                 nowMenuItemId = id;
                 return true;
+            }
+        });
+
+        login_layout = (LinearLayout) mainNavi.getHeaderView(0).findViewById(R.id.main_header_login);
+
+        login_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
             }
         });
     }

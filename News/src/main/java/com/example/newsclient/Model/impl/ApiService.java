@@ -5,6 +5,7 @@ import com.example.newsclient.Model.bean.image.ImageJsonBean;
 import com.example.newsclient.Model.bean.image.ImageTypeJsonBean;
 import com.example.newsclient.Model.bean.video.CommentsJsonBean;
 import com.example.newsclient.Model.bean.video.Commentsv2JsonBean;
+import com.example.newsclient.Model.bean.video.RecommendJsonVideoBean;
 import com.example.newsclient.Model.bean.video.VideoCommentUserBean;
 import com.example.newsclient.Model.bean.video.VideoItemBean;
 import com.example.newsclient.Model.bean.video.VideoTypeBean;

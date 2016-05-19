@@ -1,42 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/px140"
     android:background="@color/white"
     android:paddingBottom="8dp">
 
-
-    <LinearLayout
-        android:id="@+id/footer_loadinglayout"
+    <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:layout_centerInParent="true">
 
-        <pl.droidsonroids.gif.GifImageView
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:id="@+id/footer_loadinglayout"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/px38"
-            android:src="@drawable/footer_loading" />
+            android:layout_gravity="center"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
-        <TextView
+            <pl.droidsonroids.gif.GifImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/footer_loading" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:lines="1"
+                android:text="正在加载中..."
+                android:textColor="@color/text_color3" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/footer_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
-            android:ellipsize="end"
-            android:gravity="center"
-            android:lines="1"
-            android:text="正在加载中..."
-            android:textColor="@color/text_color3" />
-    </LinearLayout>
+            android:text="点击加载更多"
+            android:textColor="@color/text_color3"
+            android:visibility="gone" />
+    </FrameLayout>
 
-    <Button
-        android:id="@+id/footer_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:text="点击加载更多"
-        android:textColor="@color/text_color3"
-        android:visibility="gone" />
-</FrameLayout>
+
+</RelativeLayout>

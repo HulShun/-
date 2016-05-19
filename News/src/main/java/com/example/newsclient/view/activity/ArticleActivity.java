@@ -42,17 +42,14 @@ public class ArticleActivity extends BaseActivity {
     }
 
     @Override
-    protected void onCreateBeforView() {
-        super.onCreateBeforView();
-        setStatusBarColor(R.color.colorPrimary);
+    public int getStatusBarColor() {
+        return R.color.colorPrimary;
     }
 
     @Override
     protected void init() {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-        // progressBar.setIndeterminate(false);
-
 
         Bundle bundle = getIntent().getBundleExtra("article");
         if (bundle == null) {

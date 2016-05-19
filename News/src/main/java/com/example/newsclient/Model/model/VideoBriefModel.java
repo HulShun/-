@@ -3,7 +3,7 @@ package com.example.newsclient.Model.model;
 import com.example.newsclient.Configuration;
 import com.example.newsclient.Model.bean.video.VideoItemBean;
 import com.example.newsclient.Model.impl.ApiService;
-import com.example.newsclient.Model.impl.RecommendJsonVideoBean;
+import com.example.newsclient.Model.bean.video.RecommendJsonVideoBean;
 import com.example.newsclient.Model.impl.VideoBriefModelImpl;
 
 import retrofit.GsonConverterFactory;

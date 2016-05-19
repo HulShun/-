@@ -2,7 +2,7 @@ package com.example.newsclient.presenter;
 
 import com.example.newsclient.Model.LogUtil;
 import com.example.newsclient.Model.bean.video.VideoItemBean;
-import com.example.newsclient.Model.impl.RecommendJsonVideoBean;
+import com.example.newsclient.Model.bean.video.RecommendJsonVideoBean;
 import com.example.newsclient.Model.impl.VideoBriefModelImpl;
 import com.example.newsclient.Model.model.VideoBriefModel;
 import com.example.newsclient.view.impl.IVideoBriefViewImpl;

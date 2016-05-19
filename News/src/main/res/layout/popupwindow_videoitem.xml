@@ -23,6 +23,7 @@
         android:orientation="horizontal">
 
         <CheckedTextView
+            android:id="@+id/share_wechat_btn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -33,6 +34,7 @@
             android:textSize="12sp" />
 
         <CheckedTextView
+            android:id="@+id/share_wechat_f_btn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -43,6 +45,7 @@
             android:textSize="12sp" />
 
         <CheckedTextView
+            android:id="@+id/share_qq_btn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -53,6 +56,7 @@
             android:textSize="12sp" />
 
         <CheckedTextView
+            android:id="@+id/share_weibo_btn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

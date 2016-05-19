@@ -4,6 +4,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
+import com.example.newsclient.Model.LogUtil;
 import com.example.newsclient.Model.bean.video.Commentsv2JsonBean;
 import com.example.newsclient.R;
 import com.example.newsclient.presenter.CommentsPresenter;
@@ -28,6 +29,7 @@ public class VideoCommentsFramgent extends BaseFragment<CommentsPresenter> imple
     private String vid;
     private int nowPage;
     private boolean isloadingMore;
+    private boolean isEnded;
 
     @Override
     protected void initLoading() {
@@ -62,7 +64,8 @@ public class VideoCommentsFramgent extends BaseFragment<CommentsPresenter> imple
             @Override
             public void onClick(View v) {
                 mAdapter.showFooterLoading();
-                if (!isloadingMore) {
+                //没有正在加载，并且还没有加载全部的页数
+                if (!isloadingMore && !isEnded) {
                     nowPage++;
                     isloadingMore = true;
                     getPresenter().loadComments(vid, nowPage);
@@ -73,6 +76,7 @@ public class VideoCommentsFramgent extends BaseFragment<CommentsPresenter> imple
         commentsRv.addOnScrollListener(new AutoRecyclerView.AutoLoadMoreListener() {
             @Override
             protected void loadMore() {
+                LogUtil.d("comments", "评论数据加载中...");
                 nowPage++;
                 getPresenter().loadComments(vid, nowPage);
 
@@ -106,12 +110,19 @@ public class VideoCommentsFramgent extends BaseFragment<CommentsPresenter> imple
     public void onCommentsResulte(Commentsv2JsonBean data) {
         isloadingMore = false;
         if (getLoadingView().isloading()) {
-            getLoadingView().showSuccess();
+            if (data.getComments() == null || data.getComments().isEmpty()) {
+                getLoadingView().showMessage("没有评论内容.");
+                return;
+            } else {
+                getLoadingView().showSuccess();
+            }
         }
 
         //最后一页了
-        if (data.getPage() == data.getCount()) {
+        if (data.getComments().size() == 0) {
+            isEnded = true;
             mAdapter.setFooterShow(false);
+            nowPage = data.getPage() - 1;
         }
         mAdapter.addData(data.getComments());
     }
@@ -119,13 +130,18 @@ public class VideoCommentsFramgent extends BaseFragment<CommentsPresenter> imple
     @Override
     public void showFaild(String msg) {
         super.showFaild(msg);
-        mAdapter.showFooterBtn();
+        if (mAdapter != null) {
+            mAdapter.showFooterBtn();
+        }
     }
 
     @Override
     public void onCompleted() {
         super.onCompleted();
-        commentsRv.loadMoreCompleted();
+        if (commentsRv != null) {
+            commentsRv.loadMoreCompleted();
+            LogUtil.d("comments", "评论数据加载完成...");
+        }
     }
 
     @Override

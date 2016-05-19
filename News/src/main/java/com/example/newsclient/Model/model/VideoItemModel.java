@@ -1,5 +1,7 @@
 package com.example.newsclient.Model.model;
 
+import android.graphics.Bitmap;
+
 import com.example.newsclient.Configuration;
 import com.example.newsclient.Model.bean.video.CommentsJsonBean;
 import com.example.newsclient.Model.bean.video.VideoItemBean;
@@ -37,6 +39,11 @@ public class VideoItemModel implements VideoItemModelImpl {
 
     @Override
     public void loadComments(Map<String, String> map, Observer<CommentsJsonBean> os) {
+
+    }
+
+    @Override
+    public void getImage(String thumbnail, Observer<Bitmap> observer) {
 
     }
 

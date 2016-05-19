@@ -1,4 +1,4 @@
-package com.example.newsclient.Model.impl;
+package com.example.newsclient.Model.bean.video;
 
 import java.util.List;
 

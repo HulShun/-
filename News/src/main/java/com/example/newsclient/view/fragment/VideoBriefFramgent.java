@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.newsclient.Model.bean.video.VideoItemBean;
-import com.example.newsclient.Model.impl.RecommendJsonVideoBean;
+import com.example.newsclient.Model.bean.video.RecommendJsonVideoBean;
 import com.example.newsclient.R;
 import com.example.newsclient.presenter.VideoBriefPresenter;
 import com.example.newsclient.view.adapter.RecommendVideoAapter;
