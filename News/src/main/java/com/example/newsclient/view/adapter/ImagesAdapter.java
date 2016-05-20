@@ -1,17 +1,15 @@
 package com.example.newsclient.view.adapter;
 
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.TransitionDrawable;
+import android.graphics.Bitmap;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.ImageLoader;
 import com.example.newsclient.Model.bean.image.ImageContentBean;
 import com.example.newsclient.R;
 import com.example.newsclient.presenter.ImageListPresenter;
 import com.example.newsclient.view.viewholder.ImageViewHolder;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +37,7 @@ public class ImagesAdapter extends BaseRecyclerViewAdapter<ImageContentBean, Ima
 
     @Override
     protected ImageViewHolder onCreateMyViewHolder(View view, int viewType) {
-        return new ImageViewHolder(view, viewType);
+        return new ImageViewHolder(view);
     }
 
 
@@ -50,9 +48,19 @@ public class ImagesAdapter extends BaseRecyclerViewAdapter<ImageContentBean, Ima
         final String s = getData().get(position).getList().get(0).getSmall();
         ImageView imageView = holder.imageView;
         if (!TextUtils.isEmpty(s)) {
-            imageView.setTag(s);
+            //imageView.setTag(s);
+            Picasso.with(getContext())
+                    .load(s)
+                    .tag(s)
+                    .placeholder(R.drawable.ic_loading)
+                    .error(R.drawable.ic_loading)
+                    .config(Bitmap.Config.RGB_565)
+                    .into(imageView);
+
+        } else {
+            imageView.setImageResource(R.drawable.ic_launcher);
         }
-        //默认加载图片
+      /*  //默认加载图片
         imageView.setImageBitmap(getLoadingBitmap());
 
         addTask(new Runnable() {
@@ -76,7 +84,7 @@ public class ImagesAdapter extends BaseRecyclerViewAdapter<ImageContentBean, Ima
                     }
                 });
             }
-        });
+        });*/
     }
 
     @Override

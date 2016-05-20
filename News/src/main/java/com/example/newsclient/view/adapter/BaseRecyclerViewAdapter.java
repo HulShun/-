@@ -1,22 +1,16 @@
 package com.example.newsclient.view.adapter;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.android.volley.toolbox.ImageLoader;
-import com.example.newsclient.Model.utils.MyImageLoader;
+import com.example.newsclient.Model.LogUtil;
 import com.example.newsclient.R;
 import com.example.newsclient.view.impl.OnItemClickListener;
 import com.example.newsclient.view.viewholder.FooterViewHolder;
 
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -26,8 +20,8 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
     public static final int VIEWTYPE_ITEM = 1;
     public static final int VIEWTYPE_FOOTER = 2;
 
-    private ImageLoader imageLoader;
-    private Drawable[] tdDrawableArray;
+    //  private ImageLoader imageLoader;
+    //  private Drawable[] tdDrawableArray;
     private Context context;
     private boolean footershow;
 
@@ -36,8 +30,8 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
     private View.OnClickListener listener;
     private RecyclerView.ViewHolder footerVH;
 
-    private LinkedList<Runnable> mImgLoadQueue;
-    private boolean pauseLoading;
+    //  private LinkedList<Runnable> mImgLoadQueue;
+    //  private boolean pauseLoading;
 
     private OnItemClickListener itemClickListener;
 
@@ -50,17 +44,18 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         //一些需要context的初始化工作
-        if (imageLoader == null) {
+        // if (imageLoader == null)
+        if (context == null) {
             context = parent.getContext();
-            MyImageLoader.newInstance().init(parent.getContext());
-            imageLoader = MyImageLoader.getImageLoader();
-            //图片渐变数组的初始化
+           /* MyImageLoader.newInstance().init(parent.getContext());
+            imageLoader = MyImageLoader.getImageLoader();*/
+            /*//图片渐变数组的初始化
             Drawable drawable;
             if (loadingBitamp == null) {
                 loadingBitamp = BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_loading);
             }
             drawable = new BitmapDrawable(getContext().getResources(), loadingBitamp);
-            tdDrawableArray = new Drawable[]{drawable, drawable};
+            tdDrawableArray = new Drawable[]{drawable, drawable};*/
         }
 
         RecyclerView.ViewHolder holder = null;
@@ -93,11 +88,11 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
                     }
                 }
             });
-            if (!pauseLoading) {
+           /* if (!pauseLoading) {
                 executeTask();
-            }
+            }*/
         } else {
-            ((FooterViewHolder) footerVH).button.setOnClickListener(listener);
+            ((FooterViewHolder) footerVH).loadingLayout.setOnClickListener(listener);
         }
     }
 
@@ -144,7 +139,7 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
         }
 
         //添加后就立即开启获取图片
-        pauseLoading(false);
+        //  pauseLoading(false);
     }
 
     public void addData(T data) {
@@ -162,7 +157,7 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
             notifyItemRangeInserted(size, 1);
         }
         //添加后就立即开启获取图片
-        pauseLoading(false);
+        //  pauseLoading(false);
     }
 
 
@@ -185,15 +180,15 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
     }
 
 
-    public void pauseLoading(boolean b) {
+   /* public void pauseLoading(boolean b) {
         pauseLoading = b;
-    }
+    }*/
 
-    public boolean getPauseLoading() {
+   /* public boolean getPauseLoading() {
         return pauseLoading;
-    }
+    }*/
 
-    public void executeTask(int firstPosition, int lastPositon) {
+  /*  public void executeTask(int firstPosition, int lastPositon) {
         if (mImgLoadQueue == null) {
             return;
         }
@@ -207,9 +202,9 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
         }
         //加载完当前页的图片就全部清空队列。
         mImgLoadQueue.clear();
-    }
+    }*/
 
-    public void executeTask() {
+  /*  public void executeTask() {
         if (mImgLoadQueue == null) {
             return;
         }
@@ -217,36 +212,38 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
             r.run();
         }
         mImgLoadQueue.clear();
-    }
+    }*/
 
-    protected void addTask(Runnable r) {
+  /*  protected void addTask(Runnable r) {
         if (mImgLoadQueue == null) {
             mImgLoadQueue = new LinkedList<>();
         }
         mImgLoadQueue.add(r);
-    }
+    }*/
 
     public void setOnFooterListener(View.OnClickListener l) {
         listener = l;
     }
 
-    public View.OnClickListener getOnClickListener() {
-        return listener;
-    }
 
     public void showFooterBtn() {
         if (footerVH != null) {
-            ((FooterViewHolder) footerVH).loadingLayout.setVisibility(View.GONE);
-            ((FooterViewHolder) footerVH).button.setVisibility(View.VISIBLE);
+            // ((FooterViewHolder) footerVH).loadingLayout.setVisibility(View.GONE);
+            ((FooterViewHolder) footerVH).textView.setText(R.string.footer_btn);
+            ((FooterViewHolder) footerVH).imageView.setVisibility(View.GONE);
             notifyItemChanged(datas.size());
+            LogUtil.d("footer", "showFooterBtn");
         }
     }
 
     public void showFooterLoading() {
         if (footerVH != null) {
             ((FooterViewHolder) footerVH).loadingLayout.setVisibility(View.VISIBLE);
-            ((FooterViewHolder) footerVH).button.setVisibility(View.GONE);
+            ((FooterViewHolder) footerVH).imageView.setImageResource(R.drawable.footer_loading);
+            ((FooterViewHolder) footerVH).imageView.setVisibility(View.VISIBLE);
+            ((FooterViewHolder) footerVH).textView.setText(R.string.footer_loadmore);
             notifyItemChanged(datas.size());
+            LogUtil.d("footer", "showFooterLoading");
         }
     }
 
@@ -259,11 +256,11 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
         }
     }
 
-    private static Bitmap loadingBitamp;
+  /*  private static Bitmap loadingBitamp;
 
     protected Bitmap getLoadingBitmap() {
         return loadingBitamp;
-    }
+    }*/
 
     public List<T> getData() {
         return datas;
@@ -274,12 +271,12 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
         return context;
     }
 
-    /**
+  /*  *//**
      * @return 图片渐变
-     */
+     *//*
     public Drawable[] getTdDrawableArray() {
         return tdDrawableArray;
-    }
+    }*/
 
 
 }

@@ -103,6 +103,7 @@ public abstract class LoadingFrameLayout extends FrameLayout {
 
     public void setOnBtnClickListener(View.OnClickListener l) {
         button.setOnClickListener(l);
+        //  imageView.setOnClickListener(l);
     }
 
     public void showMessage(String s) {
@@ -110,7 +111,7 @@ public abstract class LoadingFrameLayout extends FrameLayout {
         imageView.setVisibility(VISIBLE);
         gifImageView.setVisibility(INVISIBLE);
         textView.setVisibility(VISIBLE);
-        button.setVisibility(VISIBLE);
+        //  button.setVisibility(VISIBLE);
         Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.loading_failed);
         imageView.setImageBitmap(bitmap);
     }

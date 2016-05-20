@@ -18,4 +18,6 @@ public interface VideoItemModelImpl extends BaseModelImpl {
     void loadComments(Map<String, String> map, Observer<CommentsJsonBean> os);
 
     void getImage(String thumbnail, Observer<Bitmap> observer);
+
+    void shareToWeibo(VideoItemBean videoData, Observer<Bitmap> os);
 }

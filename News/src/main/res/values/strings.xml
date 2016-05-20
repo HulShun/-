@@ -11,6 +11,8 @@
     <string name="brief_text_on">更多>></string>
     <string name="brief_text_off">收起>></string>
     <string name="video_brief_title">视频简介：</string>
+    <string name="footer_loadmore">努力加载中...</string>
+    <string name="footer_btn">点击加载更多</string>
     <array name="news_tab">
         <item>搞笑</item>
         <item>创意</item>

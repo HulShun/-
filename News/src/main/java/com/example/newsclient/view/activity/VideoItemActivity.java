@@ -3,6 +3,8 @@ package com.example.newsclient.view.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -32,9 +34,7 @@ import com.example.newsclient.presenter.VideoItemPresenter;
 import com.example.newsclient.view.fragment.VideoBriefFramgent;
 import com.example.newsclient.view.fragment.VideoCommentsFramgent;
 import com.example.newsclient.view.impl.IVideoItemViewImpl;
-import com.sina.weibo.sdk.api.BaseMediaObject;
-import com.sina.weibo.sdk.api.ImageObject;
-import com.sina.weibo.sdk.api.TextObject;
+import com.sina.weibo.sdk.api.VideoObject;
 import com.sina.weibo.sdk.api.WeiboMultiMessage;
 import com.sina.weibo.sdk.api.share.BaseRequest;
 import com.sina.weibo.sdk.api.share.IWeiboHandler;
@@ -46,7 +46,7 @@ import com.tencent.mm.sdk.openapi.IWXAPI;
 import com.tencent.mm.sdk.openapi.SendMessageToWX;
 import com.tencent.mm.sdk.openapi.WXAPIFactory;
 import com.tencent.mm.sdk.openapi.WXMediaMessage;
-import com.tencent.mm.sdk.openapi.WXWebpageObject;
+import com.tencent.mm.sdk.openapi.WXVideoObject;
 import com.tencent.tauth.Tencent;
 import com.youku.player.base.YoukuBasePlayerManager;
 import com.youku.player.base.YoukuPlayer;
@@ -162,6 +162,7 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
                     mWeiboShareAPI.registerApp();
                 }
                 shareToWeibo();
+                mPopupWindow.dismiss();
             }
         });
 
@@ -172,6 +173,7 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
                     initWechatShare();
                 }
                 shareToWechat(SendMessageToWX.Req.WXSceneSession);
+                mPopupWindow.dismiss();
             }
         });
 
@@ -182,6 +184,7 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
                     initWechatShare();
                 }
                 shareToWechat(SendMessageToWX.Req.WXSceneTimeline);
+                mPopupWindow.dismiss();
             }
         });
     }
@@ -195,11 +198,16 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
      * @param flage 分享到聊天窗口还是朋友圈的标识
      */
     private void shareToWechat(int flage) {
-        WXWebpageObject wxWebpageObject = new WXWebpageObject();
-        wxWebpageObject.webpageUrl = videoData.getLink();
-        WXMediaMessage mediaMessage = new WXMediaMessage();
+        //视频分享
+        WXVideoObject wxVideoObject = new WXVideoObject();
+        wxVideoObject.videoUrl = videoData.getLink();
+
+        WXMediaMessage mediaMessage = new WXMediaMessage(wxVideoObject);
         mediaMessage.title = videoData.getTitle();
         mediaMessage.description = videoData.getDescription();
+
+        Bitmap thumb = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
+        mediaMessage.setThumbImage(thumb);
 
         SendMessageToWX.Req req = new SendMessageToWX.Req();
         req.transaction = videoData.getTitle() + System.currentTimeMillis();
@@ -215,36 +223,7 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
             Toast.makeText(VideoItemActivity.this, "视频信息获取失败...", Toast.LENGTH_SHORT).show();
             return;
         }
-        WeiboMultiMessage multiMessage = new WeiboMultiMessage();
-        TextObject textObject = new TextObject();
-        textObject.text = videoData.getTitle();
-        multiMessage.textObject = textObject;
-
-        ImageObject imageObject = new ImageObject();
-        imageObject.imagePath = videoData.getThumbnail();
-        multiMessage.imageObject = imageObject;
-        BaseMediaObject mediaObject = new BaseMediaObject() {
-            @Override
-            public int getObjType() {
-                return BaseMediaObject.MEDIA_TYPE_VIDEO;
-            }
-
-            @Override
-            protected BaseMediaObject toExtraMediaObject(String s) {
-                return null;
-            }
-
-            @Override
-            protected String toExtraMediaString() {
-                return videoData.getLink();
-            }
-        };
-        multiMessage.mediaObject = mediaObject;
-
-        SendMultiMessageToWeiboRequest request = new SendMultiMessageToWeiboRequest();
-        request.transaction = String.valueOf(System.currentTimeMillis());
-        request.multiMessage = multiMessage;
-        mWeiboShareAPI.sendRequest(VideoItemActivity.this, request);
+        getPresenter().shareToWeibo(VideoItemActivity.this, videoData);
     }
 
     private void shareToQQ() {
@@ -344,6 +323,19 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
     @Override
     public void loadVideoItemInform(VideoItemBean data) {
         videoData = data;
+    }
+
+    @Override
+    public void readyShareToWeibo(VideoObject videoObject) {
+        WeiboMultiMessage multiMessage = new WeiboMultiMessage();
+
+        multiMessage.mediaObject = videoObject;
+        SendMultiMessageToWeiboRequest request = new SendMultiMessageToWeiboRequest();
+        request.transaction = String.valueOf(System.currentTimeMillis());
+        request.multiMessage = multiMessage;
+        //查看日志
+        //  com.sina.weibo.sdk.utils.LogUtil.sIsLogEnable = true;
+        mWeiboShareAPI.sendRequest(VideoItemActivity.this, request);
     }
 
     @Override

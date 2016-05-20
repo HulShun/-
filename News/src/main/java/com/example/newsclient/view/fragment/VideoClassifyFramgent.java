@@ -103,7 +103,8 @@ public class VideoClassifyFramgent extends BaseFragment<VideoClassifyPresenter> 
             }
         });
 
-        fragmentVideoRc.addOnScrollListener(new AutoRecyclerView.AutoLoadMoreListener() {
+        fragmentVideoRc.addOnScrollListener(
+                new AutoRecyclerView.AutoLoadMoreListener() {
             @Override
             protected void loadMore() {
                 nowPage++;
@@ -145,7 +146,6 @@ public class VideoClassifyFramgent extends BaseFragment<VideoClassifyPresenter> 
 
     @Override
     public void onloadMoreVideos(VideosInFormBean date) {
-        fragmentVideoRc.loadMoreCompleted();
         mAdapter.addData(date.getVideos());
     }
 
@@ -155,6 +155,7 @@ public class VideoClassifyFramgent extends BaseFragment<VideoClassifyPresenter> 
         if (fragmentVideoRefresh != null) {
             fragmentVideoRefresh.setRefreshing(false);
         }
+        fragmentVideoRc.loadMoreCompleted();
     }
 
 

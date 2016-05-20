@@ -7,7 +7,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.newsclient.R;
-import com.example.newsclient.view.adapter.BaseRecyclerViewAdapter;
 
 /**
  * Created by Administrator on 2016-05-04.
@@ -18,13 +17,11 @@ public class ImageViewHolder extends RecyclerView.ViewHolder {
 
     public Button loadmoreBtn;
 
-    public ImageViewHolder(View itemView, int viewType) {
+    public ImageViewHolder(View itemView) {
         super(itemView);
-        if (viewType == BaseRecyclerViewAdapter.VIEWTYPE_ITEM) {
-            imageView = (ImageView) itemView.findViewById(R.id.image_item_iv);
+
+        imageView = (ImageView) itemView.findViewById(R.id.image_item_iv);
             textView = (TextView) itemView.findViewById(R.id.image_item_tv);
-        } else {
-            loadmoreBtn = (Button) itemView.findViewById(R.id.footer_btn);
-        }
+
     }
 }

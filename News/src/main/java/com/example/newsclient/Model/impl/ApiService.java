@@ -10,9 +10,12 @@ import com.example.newsclient.Model.bean.video.VideoCommentUserBean;
 import com.example.newsclient.Model.bean.video.VideoItemBean;
 import com.example.newsclient.Model.bean.video.VideoTypeBean;
 import com.example.newsclient.Model.bean.video.VideosInFormBean;
+import com.squareup.okhttp.ResponseBody;
 
 import retrofit.http.GET;
+import retrofit.http.Headers;
 import retrofit.http.Query;
+import retrofit.http.Url;
 import rx.Observable;
 
 /**
@@ -136,4 +139,8 @@ public interface ApiService {
      */
     @GET("pic/pic_type")
     Observable<ImageTypeJsonBean> loadImageTypes();
+
+    @GET
+    @Headers("Content_Type:iamge/jpeg")
+    Observable<ResponseBody> loadImage(@Url String url);
 }

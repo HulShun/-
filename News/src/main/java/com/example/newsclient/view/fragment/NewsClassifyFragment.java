@@ -44,7 +44,6 @@ public class NewsClassifyFragment extends BaseFragment<NewsListPresenter> implem
     private NewsAdapter mAdapter;
     private NewsListBean newsList;
 
-    private boolean isloadingMore;
     @Bind(R.id.fragment_refresh)
     SwipeRefreshLayout fragmentRefresh;
 
@@ -93,20 +92,6 @@ public class NewsClassifyFragment extends BaseFragment<NewsListPresenter> implem
 
     }
 
-    private void getMore() {
-
-        if (newsList != null && newsList.getRetData().getHas_more() == 0) {
-            Toast.makeText(NewsClassifyFragment.this.getContext(), "已全部加载...", Toast.LENGTH_SHORT).show();
-        } else {
-            mAdapter.showFooterLoading();
-            Map<String, String> map = new HashMap<>();
-            map.put("keyword", mKeyWord);
-            map.put("page", String.valueOf(nextPage));
-            map.put("count", "20");
-            getPresenter().getNewsList(ModelMode.LOCAL, map);
-        }
-
-    }
 
     private void initRecyclerView() {
         newsRc.setHasFixedSize(true);
@@ -119,7 +104,6 @@ public class NewsClassifyFragment extends BaseFragment<NewsListPresenter> implem
             mAdapter.setOnFooterListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mAdapter.showFooterLoading();
                     getMore();
                 }
             });
@@ -144,27 +128,40 @@ public class NewsClassifyFragment extends BaseFragment<NewsListPresenter> implem
         newsRc.addOnScrollListener(new AutoRecyclerView.AutoLoadMoreListener() {
             @Override
             protected void loadMore() {
-                mAdapter.showFooterLoading();
                 getMore();
             }
 
             @Override
             protected void pauseLoadImg() {
-                if (mAdapter != null) {
+               /* if (mAdapter != null) {
                     mAdapter.pauseLoading(true);
-                }
+                }*/
             }
 
             @Override
             protected void resumeLoadImg(int firstPosition, int lastPositon) {
-                if (mAdapter != null) {
+                /*if (mAdapter != null) {
                     mAdapter.pauseLoading(false);
                     mAdapter.executeTask(firstPosition, lastPositon);
-                }
+                }*/
             }
         });
     }
 
+    private void getMore() {
+
+        if (newsList != null && newsList.getRetData().getHas_more() == 0) {
+            Toast.makeText(NewsClassifyFragment.this.getContext(), "已全部加载...", Toast.LENGTH_SHORT).show();
+        } else {
+            mAdapter.showFooterLoading();
+            Map<String, String> map = new HashMap<>();
+            map.put("keyword", mKeyWord);
+            map.put("page", String.valueOf(nextPage));
+            map.put("count", "20");
+            getPresenter().getNewsList(ModelMode.LOCAL, map);
+        }
+
+    }
 
     private void updateDatas(int mode) {
         Map<String, String> map = new HashMap<>();
@@ -195,7 +192,6 @@ public class NewsClassifyFragment extends BaseFragment<NewsListPresenter> implem
 
     @Override
     public void onRefreshOrLoadMore(NewsListBean datas) {
-        isloadingMore = false;
         if (getLoadingView().isloading()) {
             getLoadingView().showSuccess();
         }

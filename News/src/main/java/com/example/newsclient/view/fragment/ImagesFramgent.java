@@ -116,17 +116,17 @@ public class ImagesFramgent extends BaseFragment<ImageListPresenter> implements 
 
             @Override
             protected void pauseLoadImg() {
-                if (mAdapter != null) {
+               /* if (mAdapter != null) {
                     mAdapter.pauseLoading(true);
-                }
+                }*/
             }
 
             @Override
             protected void resumeLoadImg(int firstPosition, int lastPositon) {
-                if (mAdapter != null) {
+               /* if (mAdapter != null) {
                     mAdapter.pauseLoading(false);
                     mAdapter.executeTask(firstPosition, lastPositon);
-                }
+                }*/
             }
         });
     }

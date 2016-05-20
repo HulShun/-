@@ -38,7 +38,7 @@ public class ImageClassifyAdapter extends BaseRecyclerViewAdapter<ImageJsonBean,
 
     @Override
     protected ImageClassifyViewHolder onCreateMyViewHolder(View view, int viewType) {
-        return new ImageClassifyViewHolder(view, viewType);
+        return new ImageClassifyViewHolder(view);
     }
 
 

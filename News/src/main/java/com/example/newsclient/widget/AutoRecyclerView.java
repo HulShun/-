@@ -6,6 +6,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 
+import com.example.newsclient.Model.LogUtil;
+
 /**
  * Created by Administrator on 2016-04-19.
  */
@@ -49,6 +51,7 @@ public class AutoRecyclerView extends RecyclerView {
                 //通过isLoadingMore来判断是否正在加载，避免重复加载
                 if (!isLoadingMore && dy >= 0 && lastPositon == itemCount - 2) {
                     isLoadingMore = true;
+                    LogUtil.d("footer", "loadMore...");
                     loadMore();
                 } else if (dy <= 10) {
                     firstPosition = ((LinearLayoutManager) manager).findFirstVisibleItemPosition();
