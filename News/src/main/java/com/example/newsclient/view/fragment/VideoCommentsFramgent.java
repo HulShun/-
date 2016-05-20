@@ -82,15 +82,6 @@ public class VideoCommentsFramgent extends BaseFragment<CommentsPresenter> imple
 
             }
 
-            @Override
-            protected void pauseLoadImg() {
-
-            }
-
-            @Override
-            protected void resumeLoadImg(int firstPosition, int lastPositon) {
-
-            }
         });
 
     }

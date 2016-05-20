@@ -130,21 +130,6 @@ public class NewsClassifyFragment extends BaseFragment<NewsListPresenter> implem
             protected void loadMore() {
                 getMore();
             }
-
-            @Override
-            protected void pauseLoadImg() {
-               /* if (mAdapter != null) {
-                    mAdapter.pauseLoading(true);
-                }*/
-            }
-
-            @Override
-            protected void resumeLoadImg(int firstPosition, int lastPositon) {
-                /*if (mAdapter != null) {
-                    mAdapter.pauseLoading(false);
-                    mAdapter.executeTask(firstPosition, lastPositon);
-                }*/
-            }
         });
     }
 

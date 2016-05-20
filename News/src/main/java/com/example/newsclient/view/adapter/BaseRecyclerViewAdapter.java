@@ -20,8 +20,7 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
     public static final int VIEWTYPE_ITEM = 1;
     public static final int VIEWTYPE_FOOTER = 2;
 
-    //  private ImageLoader imageLoader;
-    //  private Drawable[] tdDrawableArray;
+
     private Context context;
     private boolean footershow;
 
@@ -29,9 +28,6 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
 
     private View.OnClickListener listener;
     private RecyclerView.ViewHolder footerVH;
-
-    //  private LinkedList<Runnable> mImgLoadQueue;
-    //  private boolean pauseLoading;
 
     private OnItemClickListener itemClickListener;
 
@@ -47,15 +43,6 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
         // if (imageLoader == null)
         if (context == null) {
             context = parent.getContext();
-           /* MyImageLoader.newInstance().init(parent.getContext());
-            imageLoader = MyImageLoader.getImageLoader();*/
-            /*//图片渐变数组的初始化
-            Drawable drawable;
-            if (loadingBitamp == null) {
-                loadingBitamp = BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_loading);
-            }
-            drawable = new BitmapDrawable(getContext().getResources(), loadingBitamp);
-            tdDrawableArray = new Drawable[]{drawable, drawable};*/
         }
 
         RecyclerView.ViewHolder holder = null;
@@ -88,9 +75,7 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
                     }
                 }
             });
-           /* if (!pauseLoading) {
-                executeTask();
-            }*/
+
         } else {
             ((FooterViewHolder) footerVH).loadingLayout.setOnClickListener(listener);
         }
@@ -180,46 +165,6 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
     }
 
 
-   /* public void pauseLoading(boolean b) {
-        pauseLoading = b;
-    }*/
-
-   /* public boolean getPauseLoading() {
-        return pauseLoading;
-    }*/
-
-  /*  public void executeTask(int firstPosition, int lastPositon) {
-        if (mImgLoadQueue == null) {
-            return;
-        }
-        for (int i = lastPositon; i >= firstPosition; i--) {
-            if (pauseLoading) {
-                break;
-            }
-            if (!mImgLoadQueue.isEmpty()) {
-                mImgLoadQueue.removeLast().run();
-            }
-        }
-        //加载完当前页的图片就全部清空队列。
-        mImgLoadQueue.clear();
-    }*/
-
-  /*  public void executeTask() {
-        if (mImgLoadQueue == null) {
-            return;
-        }
-        for (Runnable r : mImgLoadQueue) {
-            r.run();
-        }
-        mImgLoadQueue.clear();
-    }*/
-
-  /*  protected void addTask(Runnable r) {
-        if (mImgLoadQueue == null) {
-            mImgLoadQueue = new LinkedList<>();
-        }
-        mImgLoadQueue.add(r);
-    }*/
 
     public void setOnFooterListener(View.OnClickListener l) {
         listener = l;
@@ -256,11 +201,6 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
         }
     }
 
-  /*  private static Bitmap loadingBitamp;
-
-    protected Bitmap getLoadingBitmap() {
-        return loadingBitamp;
-    }*/
 
     public List<T> getData() {
         return datas;
@@ -271,12 +211,6 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
         return context;
     }
 
-  /*  *//**
-     * @return 图片渐变
-     *//*
-    public Drawable[] getTdDrawableArray() {
-        return tdDrawableArray;
-    }*/
 
 
 }

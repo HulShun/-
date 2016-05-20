@@ -3,8 +3,6 @@ package com.example.newsclient.view.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -27,27 +25,20 @@ import android.widget.PopupWindow;
 import android.widget.Toast;
 
 import com.example.newsclient.Model.LogUtil;
+import com.example.newsclient.Model.ModelMode;
 import com.example.newsclient.Model.bean.video.VideoItemBean;
-import com.example.newsclient.Model.impl.TencentBaseUIListenner;
 import com.example.newsclient.R;
 import com.example.newsclient.presenter.VideoItemPresenter;
 import com.example.newsclient.view.fragment.VideoBriefFramgent;
 import com.example.newsclient.view.fragment.VideoCommentsFramgent;
 import com.example.newsclient.view.impl.IVideoItemViewImpl;
-import com.sina.weibo.sdk.api.VideoObject;
-import com.sina.weibo.sdk.api.WeiboMultiMessage;
 import com.sina.weibo.sdk.api.share.BaseRequest;
 import com.sina.weibo.sdk.api.share.IWeiboHandler;
 import com.sina.weibo.sdk.api.share.IWeiboShareAPI;
-import com.sina.weibo.sdk.api.share.SendMultiMessageToWeiboRequest;
 import com.sina.weibo.sdk.api.share.WeiboShareSDK;
-import com.tencent.connect.share.QQShare;
 import com.tencent.mm.sdk.openapi.IWXAPI;
 import com.tencent.mm.sdk.openapi.SendMessageToWX;
 import com.tencent.mm.sdk.openapi.WXAPIFactory;
-import com.tencent.mm.sdk.openapi.WXMediaMessage;
-import com.tencent.mm.sdk.openapi.WXVideoObject;
-import com.tencent.tauth.Tencent;
 import com.youku.player.base.YoukuBasePlayerManager;
 import com.youku.player.base.YoukuPlayer;
 import com.youku.player.base.YoukuPlayerView;
@@ -88,7 +79,7 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
         Intent intent = getIntent();
         id = intent.getStringExtra("id");
         //获取视频信息
-        getPresenter().loadVideoData(id);
+        getPresenter().loadVideoData(id, ModelMode.LOCAL);
         //初始化优酷播放器
         initYoukuPlayer();
 
@@ -198,23 +189,11 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
      * @param flage 分享到聊天窗口还是朋友圈的标识
      */
     private void shareToWechat(int flage) {
-        //视频分享
-        WXVideoObject wxVideoObject = new WXVideoObject();
-        wxVideoObject.videoUrl = videoData.getLink();
-
-        WXMediaMessage mediaMessage = new WXMediaMessage(wxVideoObject);
-        mediaMessage.title = videoData.getTitle();
-        mediaMessage.description = videoData.getDescription();
-
-        Bitmap thumb = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
-        mediaMessage.setThumbImage(thumb);
-
-        SendMessageToWX.Req req = new SendMessageToWX.Req();
-        req.transaction = videoData.getTitle() + System.currentTimeMillis();
-        req.message = mediaMessage;
-        //分享到聊天窗口
-        req.scene = flage;
-        mWechatAPI.sendReq(req);
+        if (videoData == null) {
+            Toast.makeText(VideoItemActivity.this, "视频信息获取失败...", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        getPresenter().shareToWechat(VideoItemActivity.this, mWechatAPI, videoData, flage);
     }
 
 
@@ -223,7 +202,7 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
             Toast.makeText(VideoItemActivity.this, "视频信息获取失败...", Toast.LENGTH_SHORT).show();
             return;
         }
-        getPresenter().shareToWeibo(VideoItemActivity.this, videoData);
+        getPresenter().prepareShareToWeibo(VideoItemActivity.this, mWeiboShareAPI, videoData);
     }
 
     private void shareToQQ() {
@@ -231,15 +210,7 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
             Toast.makeText(VideoItemActivity.this, "视频信息获取失败...", Toast.LENGTH_SHORT).show();
             return;
         }
-        Bundle params = new Bundle();
-        params.putInt(QQShare.SHARE_TO_QQ_KEY_TYPE, QQShare.SHARE_TO_QQ_TYPE_DEFAULT);
-        params.putString(QQShare.SHARE_TO_QQ_TITLE, videoData.getTitle());
-        params.putString(QQShare.SHARE_TO_QQ_SUMMARY, videoData.getDescription());
-        params.putString(QQShare.SHARE_TO_QQ_TARGET_URL, videoData.getLink());
-        params.putString(QQShare.SHARE_TO_QQ_IMAGE_URL, videoData.getThumbnail());
-        params.putString(QQShare.SHARE_TO_QQ_APP_NAME, VideoItemActivity.this.getResources().getString(R.string.app_name));
-        Tencent tencent = Tencent.createInstance(com.example.newsclient.Configuration.TENCENT_APPID, VideoItemActivity.this);
-        tencent.shareToQQ(VideoItemActivity.this, params, new TencentBaseUIListenner());
+        getPresenter().shareToQQ(VideoItemActivity.this, videoData);
     }
 
     @Bind(R.id.video_vp)
@@ -325,18 +296,6 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
         videoData = data;
     }
 
-    @Override
-    public void readyShareToWeibo(VideoObject videoObject) {
-        WeiboMultiMessage multiMessage = new WeiboMultiMessage();
-
-        multiMessage.mediaObject = videoObject;
-        SendMultiMessageToWeiboRequest request = new SendMultiMessageToWeiboRequest();
-        request.transaction = String.valueOf(System.currentTimeMillis());
-        request.multiMessage = multiMessage;
-        //查看日志
-        //  com.sina.weibo.sdk.utils.LogUtil.sIsLogEnable = true;
-        mWeiboShareAPI.sendRequest(VideoItemActivity.this, request);
-    }
 
     @Override
     public void onCompleted() {

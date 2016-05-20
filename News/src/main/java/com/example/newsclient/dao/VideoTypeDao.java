@@ -1,4 +1,4 @@
-package com.example.newsclient.dao.helper;
+package com.example.newsclient.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.example.newsclient.Configuration;
 import com.example.newsclient.Model.bean.video.VideoTypeBean;
 import com.example.newsclient.MyApplication;
+import com.example.newsclient.dao.helper.VideoTypeDBHelper;
 
 import java.util.ArrayList;
 import java.util.List;

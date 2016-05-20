@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.example.newsclient.Model.ModelMode;
 import com.example.newsclient.Model.bean.video.VideoTypeBean;
 import com.example.newsclient.Model.bean.video.VideosInFormBean;
 import com.example.newsclient.R;
@@ -48,7 +49,7 @@ public class VideoClassifyFramgent extends BaseFragment<VideoClassifyPresenter> 
         getLoadingView().setOnBtnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getPresenter().loadVideoTypeList(mVideoTypeBean.getLabel(), null, nowPage);
+                getPresenter().loadVideoTypeList(mVideoTypeBean.getLabel(), null, nowPage, ModelMode.LOCAL);
             }
         });
 
@@ -56,7 +57,7 @@ public class VideoClassifyFramgent extends BaseFragment<VideoClassifyPresenter> 
         nowPage = 1;
         Bundle bundle = getArguments();
         mVideoTypeBean = (VideoTypeBean.VideoCategoriesBean) bundle.get("type");
-        getPresenter().loadVideoTypeList(mVideoTypeBean.getLabel(), null, nowPage);
+        getPresenter().loadVideoTypeList(mVideoTypeBean.getLabel(), null, nowPage, ModelMode.LOCAL);
 
 
     }
@@ -69,7 +70,7 @@ public class VideoClassifyFramgent extends BaseFragment<VideoClassifyPresenter> 
             @Override
             public void onRefresh() {
                 nowPage = 1;
-                getPresenter().loadVideoTypeList(mVideoTypeBean.getLabel(), null, nowPage);
+                getPresenter().loadVideoTypeList(mVideoTypeBean.getLabel(), null, nowPage, ModelMode.INTERNET);
             }
         });
     }
@@ -85,7 +86,7 @@ public class VideoClassifyFramgent extends BaseFragment<VideoClassifyPresenter> 
                     isloadingMore = true;
                     mAdapter.showFooterLoading();
                     nowPage++;
-                    getPresenter().loadVideoTypeList(mVideoTypeBean.getLabel(), null, nowPage);
+                    getPresenter().loadVideoTypeList(mVideoTypeBean.getLabel(), null, nowPage, ModelMode.LOCAL);
                 }
             }
         });
@@ -105,22 +106,12 @@ public class VideoClassifyFramgent extends BaseFragment<VideoClassifyPresenter> 
 
         fragmentVideoRc.addOnScrollListener(
                 new AutoRecyclerView.AutoLoadMoreListener() {
-            @Override
-            protected void loadMore() {
-                nowPage++;
-                getPresenter().loadVideoTypeList(mVideoTypeBean.getLabel(), null, nowPage);
-            }
-
-            @Override
-            protected void pauseLoadImg() {
-
-            }
-
-            @Override
-            protected void resumeLoadImg(int firstPosition, int lastPositon) {
-
-            }
-        });
+                    @Override
+                    protected void loadMore() {
+                        nowPage++;
+                        getPresenter().loadVideoTypeList(mVideoTypeBean.getLabel(), null, nowPage, ModelMode.LOCAL);
+                    }
+                });
         fragmentVideoRc.setAdapter(mAdapter);
     }
 
@@ -146,6 +137,7 @@ public class VideoClassifyFramgent extends BaseFragment<VideoClassifyPresenter> 
 
     @Override
     public void onloadMoreVideos(VideosInFormBean date) {
+        fragmentVideoRc.loadMoreCompleted();
         mAdapter.addData(date.getVideos());
     }
 
@@ -155,7 +147,6 @@ public class VideoClassifyFramgent extends BaseFragment<VideoClassifyPresenter> 
         if (fragmentVideoRefresh != null) {
             fragmentVideoRefresh.setRefreshing(false);
         }
-        fragmentVideoRc.loadMoreCompleted();
     }
 
 

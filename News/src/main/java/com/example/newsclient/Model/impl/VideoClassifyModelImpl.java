@@ -10,5 +10,5 @@ import rx.Observer;
  * Created by Administrator on 2016-05-09.
  */
 public interface VideoClassifyModelImpl extends BaseModelImpl {
-    void loadVideosInform(Map<String, String> map, Observer<VideosInFormBean> os);
+    void loadVideosInform(Map<String, String> map, int mode, Observer<VideosInFormBean> os);
 }

@@ -13,11 +13,11 @@ import rx.Observer;
  * Created by Administrator on 2016-05-11.
  */
 public interface VideoItemModelImpl extends BaseModelImpl {
-    void loadVideoItemData(String id, Observer<VideoItemBean> os);
+    void loadVideoItemData(String id, int mode, Observer<VideoItemBean> os);
 
     void loadComments(Map<String, String> map, Observer<CommentsJsonBean> os);
 
     void getImage(String thumbnail, Observer<Bitmap> observer);
 
-    void shareToWeibo(VideoItemBean videoData, Observer<Bitmap> os);
+    void saveVideoDataToDB(VideoItemBean videoItemBean);
 }
