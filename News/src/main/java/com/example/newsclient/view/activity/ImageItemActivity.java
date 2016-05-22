@@ -36,13 +36,10 @@ public class ImageItemActivity extends BaseActivity<ImageItemPresenter> implemen
 
     @Override
     protected int getToolBarId() {
-        return R.id.imageitem_toorbar;
+        return 0;
     }
 
-    @Override
-    public int getStatusBarColor() {
-        return R.color.colorPrimary;
-    }
+
 
     @Override
     protected void init() {

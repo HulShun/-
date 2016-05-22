@@ -47,6 +47,7 @@
             android:launchMode="singleTask" />
         <activity
             android:name=".view.activity.ImageItemActivity"
+            android:launchMode="singleTask"
             android:process=":image" />
 
 
