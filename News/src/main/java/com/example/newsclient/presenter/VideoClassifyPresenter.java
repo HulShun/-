@@ -27,7 +27,7 @@ public class VideoClassifyPresenter extends BasePresenter<IVideoClassifyViewIpml
 
 
     public void loadVideoTypeList(final String label, final String period, final int page, final int mode) {
-        if (mode == ModelMode.INTERNET && getView().checkNetWork()) {
+        if (mode == ModelMode.INTERNET && !getView().checkNetWork()) {
             getView().showNoNetWork();
             return;
         }
@@ -69,7 +69,7 @@ public class VideoClassifyPresenter extends BasePresenter<IVideoClassifyViewIpml
                         //本地加载之后(在有网情况)，出现空数据，时间戳空，数据过期情况，就去网络加载
                         if (mode == ModelMode.LOCAL &&
                                 getView().checkNetWork() &&
-                                (videosInFormBean == null ||
+                                  (videosInFormBean == null ||
                                         videosInFormBean.getUpdateTime() == null ||
                                         (System.currentTimeMillis() / 1000 - Long.parseLong(videosInFormBean.getUpdateTime()) > PAST_TIEM))
                                 ) {

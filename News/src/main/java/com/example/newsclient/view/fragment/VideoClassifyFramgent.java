@@ -18,6 +18,7 @@ import com.example.newsclient.view.impl.IVideoClassifyViewIpml;
 import com.example.newsclient.view.impl.OnItemClickListener;
 import com.example.newsclient.view.viewholder.VideoViewHolder;
 import com.example.newsclient.widget.AutoRecyclerView;
+import com.squareup.picasso.Picasso;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -110,6 +111,33 @@ public class VideoClassifyFramgent extends BaseFragment<VideoClassifyPresenter> 
                     protected void loadMore() {
                         nowPage++;
                         getPresenter().loadVideoTypeList(mVideoTypeBean.getLabel(), null, nowPage, ModelMode.LOCAL);
+                    }
+
+                    @Override
+                    protected void resumeLoadImage(LinearLayoutManager manager, int first, int last) {
+                        Picasso.with(getContext())
+                                .resumeTag(getContext().getApplicationContext());
+                        /*int position = first;
+                        while (position < last) {
+                            LogUtil.d("image", "恢复加载图片");
+                            View view = manager.findViewByPosition(position);
+                            VideoViewHolder holder = (VideoViewHolder) view.getTag();
+                            Picasso.with(getContext())
+                                    .resumeTag(holder.imageView.getTag());
+                            position++;
+                        }*/
+                    }
+
+                    @Override
+                    protected void pauseLoadImage() {
+                        /*List<VideosInFormBean.VideosBean> datas = mAdapter.getData();
+                        for (int i = 0; i < mAdapter.getData().size(); i++) {
+                            Picasso.with(getContext())
+                                    .pauseTag(datas.get(i).getThumbnail());
+                            LogUtil.d("image", "暂停加载图片");
+                        }*/
+                        Picasso.with(getContext())
+                                .pauseTag(getContext().getApplicationContext());
                     }
                 });
         fragmentVideoRc.setAdapter(mAdapter);

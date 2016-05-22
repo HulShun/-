@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.AttributeSet;
 
 import com.example.newsclient.Model.LogUtil;
@@ -54,12 +55,53 @@ public class AutoRecyclerView extends RecyclerView {
                     LogUtil.d("footer", "loadMore...");
                     loadMore();
                 }
+            } else if (manager instanceof StaggeredGridLayoutManager) {
+                int last[] = ((StaggeredGridLayoutManager) manager).findLastVisibleItemPositions(null);
+                int lastItem = recyclerView.getAdapter().getItemCount() - 2;
+                if (!isLoadingMore && dy > 0) {
+                    for (int i = 0; i < last.length; i++) {
+                        if (last[i] == lastItem) {
+                            isLoadingMore = true;
+                            loadMore();
+                        }
+
+                    }
+
+
+                }
+
             }
             super.onScrolled(recyclerView, dx, dy);
         }
 
+        @Override
+        public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+            RecyclerView.Adapter adapter = recyclerView.getAdapter();
+            if (adapter == null) {
+                return;
+            }
+            //滑动停止
+            if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                LayoutManager manager = recyclerView.getLayoutManager();
+                if (manager instanceof LinearLayoutManager) {
+                    int first = ((LinearLayoutManager) manager).findFirstVisibleItemPosition();
+                    int last = ((LinearLayoutManager) manager).findLastVisibleItemPosition();
+                    resumeLoadImage((LinearLayoutManager) manager, first, last);
+                }
+            } else {
+                pauseLoadImage();
+            }
+
+
+        }
+
         protected abstract void loadMore();
 
+        protected void resumeLoadImage(LinearLayoutManager manager, int first, int last) {
+        }
+
+        protected void pauseLoadImage() {
+        }
     }
 
 }

@@ -31,6 +31,7 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
 
     private OnItemClickListener itemClickListener;
 
+
     public abstract int getFooterLayoutId();
 
     public abstract int getItemLayoutId();
@@ -45,17 +46,17 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
             context = parent.getContext();
         }
 
-        RecyclerView.ViewHolder holder = null;
-        View view = null;
+        RecyclerView.ViewHolder holder;
+        View view;
         if (viewType == VIEWTYPE_FOOTER) {
             view = LayoutInflater.from(parent.getContext()).inflate(getFooterLayoutId(), null);
             holder = new FooterViewHolder(view);
             footerVH = holder;
-        } else if (viewType == VIEWTYPE_ITEM) {
+        } else {
             view = LayoutInflater.from(parent.getContext()).inflate(getItemLayoutId(), parent, false);
             holder = onCreateMyViewHolder(view, viewType);
         }
-
+        view.setTag(holder);
         return holder;
 
     }
@@ -70,7 +71,9 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
                 @Override
                 public void onClick(View v) {
                     if (itemClickListener != null) {
+                        //把数据当做tag放到itemview中
                         holder.itemView.setTag(getData().get(position));
+
                         itemClickListener.onClick(holder, position);
                     }
                 }
@@ -165,7 +168,6 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
     }
 
 
-
     public void setOnFooterListener(View.OnClickListener l) {
         listener = l;
     }
@@ -210,7 +212,6 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
     public Context getContext() {
         return context;
     }
-
 
 
 }

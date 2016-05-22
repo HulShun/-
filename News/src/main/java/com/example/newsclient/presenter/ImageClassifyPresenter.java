@@ -1,11 +1,14 @@
 package com.example.newsclient.presenter;
 
+import android.widget.Toast;
+
 import com.example.newsclient.Model.LogUtil;
 import com.example.newsclient.Model.ModelMode;
 import com.example.newsclient.Model.bean.image.ImageJsonBean;
 import com.example.newsclient.Model.bean.image.ImageTypeBean;
 import com.example.newsclient.Model.impl.ImageClassifyModelImpl;
 import com.example.newsclient.Model.model.ImageClassifyModel;
+import com.example.newsclient.MyApplication;
 import com.example.newsclient.view.impl.IImageClassifyViewImpl;
 
 import java.util.HashMap;
@@ -29,6 +32,10 @@ public class ImageClassifyPresenter extends BasePresenter<IImageClassifyViewImpl
         if (mode == ModelMode.LOCAL) {
             getImageDataFromLocal(typeBeans);
         } else {
+            if (!getView().checkNetWork()) {
+                Toast.makeText(MyApplication.getInstance(), "网络连接失败...", Toast.LENGTH_SHORT).show();
+                return;
+            }
             getImageDataFromNet(typeBeans);
         }
 

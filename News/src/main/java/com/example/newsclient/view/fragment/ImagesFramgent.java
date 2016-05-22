@@ -1,10 +1,10 @@
 package com.example.newsclient.view.fragment;
 
-import android.os.Bundle;
+import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 import android.widget.Toast;
 
@@ -12,14 +12,14 @@ import com.example.newsclient.Model.ModelMode;
 import com.example.newsclient.Model.bean.image.ImageContentBean;
 import com.example.newsclient.Model.bean.image.ImageJsonBean;
 import com.example.newsclient.Model.bean.image.ImageTypeBean;
-import com.example.newsclient.Model.utils.AppUtil;
 import com.example.newsclient.R;
 import com.example.newsclient.presenter.ImageListPresenter;
+import com.example.newsclient.view.activity.ImageItemActivity;
+import com.example.newsclient.view.activity.ImageListActivity;
 import com.example.newsclient.view.adapter.ImagesAdapter;
 import com.example.newsclient.view.impl.IImageListViewImpl;
 import com.example.newsclient.view.impl.OnItemClickListener;
 import com.example.newsclient.widget.AutoRecyclerView;
-import com.example.newsclient.widget.GridLayoutItemDecoration;
 
 import java.util.HashMap;
 import java.util.List;
@@ -29,7 +29,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
- * 一级图片分类下相册页面
+ * 二级图片分类下相册页面
  * Created by Administrator on 2016-05-04.
  */
 public class ImagesFramgent extends BaseFragment<ImageListPresenter> implements IImageListViewImpl {
@@ -40,11 +40,10 @@ public class ImagesFramgent extends BaseFragment<ImageListPresenter> implements 
     @Bind(R.id.fragment_image_refresh)
     SwipeRefreshLayout fragmentImageRefresh;
 
-    private boolean isloadingMore;
-
     private ImageTypeBean mImageType;
-    private int nowPage;
 
+    private int type;
+    private int nowpage;
     private ImagesAdapter mAdapter;
 
     @Override
@@ -55,7 +54,17 @@ public class ImagesFramgent extends BaseFragment<ImageListPresenter> implements 
 
     @Override
     protected void initLoading() {
+        type = ((ImageListActivity) getActivity()).getType();
+        nowpage = 1;
+        getDatas(nowpage);
 
+    }
+
+    private void getDatas(int page) {
+        Map<String, Integer> map = new HashMap<>();
+        map.put("type", type);
+        map.put("page", page);
+        getPresenter().getImageDatas(ModelMode.INTERNET, map);
     }
 
     @Override
@@ -67,34 +76,48 @@ public class ImagesFramgent extends BaseFragment<ImageListPresenter> implements 
     protected void initViews(View view) {
         ButterKnife.bind(this, view);
 
-        Bundle bundle = getArguments();
-        mImageType = bundle.getParcelable("type");
-        update();
         initRecyclerView();
         //下拉刷新
         fragmentImageRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                update();
+                nowpage = 1;
+                getDatas(nowpage);
+            }
+        });
+
+        getLoadingView().setOnBtnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                nowpage = 1;
+                getDatas(nowpage);
             }
         });
     }
 
 
     private void initRecyclerView() {
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false);
-        fragmentImageRc.setLayoutManager(gridLayoutManager);
-        fragmentImageRc.addItemDecoration(new GridLayoutItemDecoration(getContext()));
+        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        fragmentImageRc.setLayoutManager(layoutManager);
         fragmentImageRc.setItemAnimator(new DefaultItemAnimator());
-        if (mAdapter == null) {
-            mAdapter = new ImagesAdapter(getPresenter());
-            mAdapter.setFooterShow(true);
 
+
+        fragmentImageRc.addOnScrollListener(new AutoRecyclerView.AutoLoadMoreListener() {
+            @Override
+            protected void loadMore() {
+                mAdapter.showFooterLoading();
+                nowpage++;
+                getDatas(nowpage);
+            }
+        });
+        if (mAdapter == null) {
+            mAdapter = new ImagesAdapter();
+            mAdapter.setFooterShow(true);
             mAdapter.setOnFooterListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    isloadingMore = true;
-                    getMore();
+                    nowpage++;
+                    getDatas(nowpage);
                 }
             });
 
@@ -102,41 +125,25 @@ public class ImagesFramgent extends BaseFragment<ImageListPresenter> implements 
                 @Override
                 public void onClick(RecyclerView.ViewHolder viewHolder, int position) {
                     //跳转页面
+                    ImageContentBean data = (ImageContentBean) viewHolder.itemView.getTag();
+
+                    Intent intent = new Intent(getContext(), ImageItemActivity.class);
+                    intent.putExtra("type", type);
+                    intent.putExtra("page", nowpage);
+                    intent.putExtra("itemid", data.getItemId());
+                    startActivity(intent);
+
                 }
             });
             fragmentImageRc.setAdapter(mAdapter);
         }
 
-        fragmentImageRc.addOnScrollListener(new AutoRecyclerView.AutoLoadMoreListener() {
-            @Override
-            protected void loadMore() {
-                mAdapter.showFooterLoading();
-                getMore();
-            }
-        });
     }
 
-    private void getMore() {
-        Map<String, String> params = new HashMap<>();
-        params.put("type", String.valueOf(mImageType.getId()));
-        nowPage += 1;
-        params.put("page", String.valueOf(nowPage));
-
-        getPresenter().getImageDatas(ModelMode.REFRESH, params);
-    }
-
-    private void update() {
-        Map<String, String> params = new HashMap<>();
-        params.put("type", String.valueOf(mImageType.getId()));
-        nowPage = 1;
-        params.put("page", String.valueOf(nowPage));
-
-        getPresenter().getImageDatas(ModelMode.REFRESH, params);
-    }
 
     @Override
     int getLayoutId() {
-        return R.layout.fragment_imageclassify;
+        return R.layout.fragment_images;
     }
 
     @Override
@@ -164,22 +171,32 @@ public class ImagesFramgent extends BaseFragment<ImageListPresenter> implements 
 
     @Override
     public void onRefreshed(ImageJsonBean data) {
+        List<ImageContentBean> imageConents = data.getShowapi_res_body().getPagebean().getContentlist();
+        if (imageConents == null || imageConents.isEmpty()) {
+            getLoadingView().showFailed();
+        }
+        if (getLoadingView().isloading()) {
+            getLoadingView().showSuccess();
+        }
         //清空原来的数据
         mAdapter.clearData();
-        List<ImageContentBean> imageConents = data.getShowapi_res_body().getPagebean().getContentlist();
         mAdapter.addData(imageConents);
     }
 
     @Override
     public void onLoadMore(ImageJsonBean data) {
-        isloadingMore = false;
         mAdapter.addData(data.getShowapi_res_body().getPagebean().getContentlist());
     }
 
     @Override
     public void onCompleted() {
+        if (fragmentImageRc != null) {
+            fragmentImageRc.loadMoreCompleted();
+        }
+
         if (fragmentImageRefresh != null) {
             fragmentImageRefresh.setRefreshing(false);
+
         }
     }
 
@@ -187,11 +204,6 @@ public class ImagesFramgent extends BaseFragment<ImageListPresenter> implements 
     public void showNoNetWork() {
         super.showNoNetWork();
         mAdapter.showFooterBtn();
-    }
-
-    @Override
-    public boolean checkNetWork() {
-        return AppUtil.getInstance().isNetWorkConnected();
     }
 
 

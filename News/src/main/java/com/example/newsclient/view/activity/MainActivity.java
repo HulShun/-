@@ -112,7 +112,7 @@ public class MainActivity extends BaseActivity<MainViewPresenter> implements IMa
         loadingBitmap = BitmapFactory.decodeResource(this.getResources(), R.drawable.ic_loading);
         nowMenuItemId = R.id.nav_news;
         mainNavi.setCheckedItem(nowMenuItemId);
-        mPresenter.loadNewsType(this);
+        getPresenter().loadNewsType(this);
     }
 
     private void initViews() {
@@ -153,21 +153,21 @@ public class MainActivity extends BaseActivity<MainViewPresenter> implements IMa
                     case R.id.nav_news:
                         mainDrawer.closeDrawers();
                         if (nowMenuItemId != id) {
-                            mPresenter.loadNewsType(MainActivity.this);
+                            getPresenter().loadNewsType(MainActivity.this);
                         }
                         break;
                     //图片
                     case R.id.nav_image:
                         mainDrawer.closeDrawers();
                         if (nowMenuItemId != id) {
-                            mPresenter.loadImageTpyes();
+                            getPresenter().loadImageTpyes();
                         }
                         break;
                     //视频
                     case R.id.nav_video:
                         mainDrawer.closeDrawers();
                         if (nowMenuItemId != id) {
-                            mPresenter.loadVideoTypes();
+                            getPresenter().loadVideoTypes();
                         }
                         break;
 

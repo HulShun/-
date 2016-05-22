@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Original file: E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\src\\com\\youku\\service\\download\\IDownloadService.aidl
+ * Original file: D:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\src\\com\\youku\\service\\download\\IDownloadService.aidl
  */
 package com.youku.service.download;
 /**

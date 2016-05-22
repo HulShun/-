@@ -81,7 +81,7 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
         //获取视频信息
         getPresenter().loadVideoData(id, ModelMode.LOCAL);
         //初始化优酷播放器
-        initYoukuPlayer();
+         initYoukuPlayer();
 
         initViewPager();
         //返回按钮
@@ -306,13 +306,17 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        mWeiboShareAPI.handleWeiboRequest(intent, new IWeiboHandler.Request() {
-            @Override
-            public void onRequest(BaseRequest baseRequest) {
-                LogUtil.d("weibo", "分享后返回：" + baseRequest.getType());
-            }
-        });
+        if (mWechatAPI != null) {
+            mWeiboShareAPI.handleWeiboRequest(intent, new IWeiboHandler.Request() {
+                @Override
+                public void onRequest(BaseRequest baseRequest) {
+                    LogUtil.d("weibo", "分享后返回：" + baseRequest.getType());
+                }
+            });
+        }
+
     }
+
 
     @Override
     protected void onDestroy() {

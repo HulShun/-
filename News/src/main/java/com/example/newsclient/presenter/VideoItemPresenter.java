@@ -1,5 +1,6 @@
 package com.example.newsclient.presenter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -12,7 +13,6 @@ import com.example.newsclient.Model.impl.TencentBaseUIListenner;
 import com.example.newsclient.Model.impl.VideoItemModelImpl;
 import com.example.newsclient.Model.model.VideoItemModel;
 import com.example.newsclient.R;
-import com.example.newsclient.view.activity.VideoItemActivity;
 import com.example.newsclient.view.impl.IVideoItemViewImpl;
 import com.sina.weibo.sdk.api.VideoObject;
 import com.sina.weibo.sdk.api.WeiboMultiMessage;
@@ -68,11 +68,11 @@ public class VideoItemPresenter extends BasePresenter<IVideoItemViewImpl, VideoI
                 if (getView().isVisiable()) {
                     //本地加载之后(在有网情况)，出现空数据，时间戳空，数据过期情况，就去网络加载
                     if (mode == ModelMode.LOCAL &&
-                            getView().checkNetWork()
-                            && (videoItemBean == null ||
+                            getView().checkNetWork() &&
+                            (videoItemBean == null ||
                             videoItemBean.getUpdataTime() == null ||
                             (System.currentTimeMillis() / 1000) - Long.valueOf(videoItemBean.getUpdataTime()) > PAST_TIME)) {
-                        getModel().loadVideoItemData(id, ModelMode.INTERNET, this);
+                        loadVideoData(id, ModelMode.INTERNET);
                     } else {
                         getView().loadVideoItemInform(videoItemBean);
                     }
@@ -127,7 +127,7 @@ public class VideoItemPresenter extends BasePresenter<IVideoItemViewImpl, VideoI
         mWechatAPI.sendReq(req);
     }
 
-    public void prepareShareToWeibo(final VideoItemActivity activity, final IWeiboShareAPI api, VideoItemBean videoData) {
+    public void prepareShareToWeibo(final Activity activity, final IWeiboShareAPI api, VideoItemBean videoData) {
         final VideoObject videoObject = new VideoObject();
         videoObject.identify = Utility.generateGUID();
         videoObject.title = videoData.getTitle();
@@ -167,7 +167,7 @@ public class VideoItemPresenter extends BasePresenter<IVideoItemViewImpl, VideoI
         });
     }
 
-    public void shareToQQ(VideoItemActivity activity, VideoItemBean videoData) {
+    public void shareToQQ(Activity activity, VideoItemBean videoData) {
         Bundle params = new Bundle();
         params.putInt(QQShare.SHARE_TO_QQ_KEY_TYPE, QQShare.SHARE_TO_QQ_TYPE_DEFAULT);
         params.putString(QQShare.SHARE_TO_QQ_TITLE, videoData.getTitle());
@@ -180,7 +180,7 @@ public class VideoItemPresenter extends BasePresenter<IVideoItemViewImpl, VideoI
     }
 
 
-    private void shareToWeibo(VideoItemActivity activity, IWeiboShareAPI api, VideoObject videoObject) {
+    private void shareToWeibo(Activity activity, IWeiboShareAPI api, VideoObject videoObject) {
         WeiboMultiMessage multiMessage = new WeiboMultiMessage();
 
         multiMessage.mediaObject = videoObject;

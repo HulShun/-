@@ -58,7 +58,7 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsBean, NewsViewHolde
                     .error(R.drawable.ic_loading)
                     .into(imageView);
         } else {
-            imageView.setImageResource(R.drawable.ic_launcher);
+            imageView.setImageResource(R.drawable.ic_loading);
         }
        /* //先设置默认显示图片
         imageView.setImageBitmap(getLoadingBitmap());*/

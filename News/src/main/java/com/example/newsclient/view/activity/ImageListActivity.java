@@ -1,28 +1,18 @@
 package com.example.newsclient.view.activity;
 
-import android.os.Bundle;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.Toolbar;
+import android.support.v7.app.ActionBar;
+import android.view.MenuItem;
 
-import com.example.newsclient.Model.bean.image.ImageJsonBean;
 import com.example.newsclient.R;
 import com.example.newsclient.presenter.ImageListPresenter;
-import com.example.newsclient.view.impl.IImageListViewImpl;
-import com.example.newsclient.widget.AutoRecyclerView;
-
-import butterknife.Bind;
 
 /**
  * 相册中图片列表展示页面
  * Created by Administrator on 2016-05-05.
  */
-public class ImageListActivity extends BaseActivity<ImageListPresenter> implements IImageListViewImpl {
-    @Bind(R.id.imagelist_toolbar)
-    Toolbar imagelistToolbar;
-    @Bind(R.id.imagelist_rc)
-    AutoRecyclerView imagelistRc;
-    @Bind(R.id.imagelist_refresh)
-    SwipeRefreshLayout imagelistRefresh;
+public class ImageListActivity extends BaseActivity<ImageListPresenter> {
+
+    int type;
 
     @Override
     protected int getToolBarId() {
@@ -30,14 +20,35 @@ public class ImageListActivity extends BaseActivity<ImageListPresenter> implemen
     }
 
     @Override
-    protected void init() {
-        Bundle bundle = getIntent().getBundleExtra("data");
-        ImageJsonBean data = bundle.getParcelable("data");
-        initRecyclerView(data);
+    public int getStatusBarColor() {
+        return R.color.colorPrimary;
     }
 
-    private void initRecyclerView(ImageJsonBean data) {
+    @Override
+    protected void onCreateBeforView() {
+        type = getIntent().getIntExtra("type", 1001);
+    }
 
+    @Override
+    protected void init() {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            String s = getIntent().getStringExtra("title");
+            actionBar.setTitle(s);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeButtonEnabled(true);
+        }
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -46,50 +57,12 @@ public class ImageListActivity extends BaseActivity<ImageListPresenter> implemen
     }
 
 
-
     @Override
     protected ImageListPresenter initPresenter() {
         return new ImageListPresenter();
     }
 
-    @Override
-    public void onRefreshed(ImageJsonBean data) {
-
+    public int getType() {
+        return type;
     }
-
-    @Override
-    public void onLoadMore(ImageJsonBean data) {
-
-    }
-
-    @Override
-    public void onCompleted() {
-
-    }
-
-    @Override
-    public void showNoNetWork() {
-
-    }
-
-    @Override
-    public boolean isVisiable() {
-        return false;
-    }
-
-    @Override
-    public boolean checkNetWork() {
-        return false;
-    }
-
-    @Override
-    public void showSuccess() {
-
-    }
-
-    @Override
-    public void showFaild(String msg) {
-
-    }
-
 }
