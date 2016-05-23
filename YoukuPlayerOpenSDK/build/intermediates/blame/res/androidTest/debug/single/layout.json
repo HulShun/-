@@ -1,15 +1,15 @@
 [
     {
-        "merged": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\yp_detail_retry.xml",
-        "source": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\layout\\yp_detail_retry.xml"
+        "merged": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\yp_detail_loading_info_page.xml",
+        "source": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\layout\\yp_detail_loading_info_page.xml"
     },
     {
         "merged": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\yp_youku_dialog_password_interact.xml",
         "source": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\layout\\yp_youku_dialog_password_interact.xml"
     },
     {
-        "merged": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\yp_detail_loading_info_page.xml",
-        "source": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\layout\\yp_detail_loading_info_page.xml"
+        "merged": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\yp_detail_retry.xml",
+        "source": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\layout\\yp_detail_retry.xml"
     },
     {
         "merged": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\yp_player_container.xml",

@@ -3,7 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/News/News.iml" filepath="$PROJECT_DIR$/News/News.iml" />
+      <module fileurl="file://$PROJECT_DIR$/News/News.iml" filepath="$PROJECT_DIR$/News/News.iml" />
       <module fileurl="file://$PROJECT_DIR$/NewsClient.iml" filepath="$PROJECT_DIR$/NewsClient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/NewsClient.iml" filepath="$PROJECT_DIR$/NewsClient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/YoukuPlayerOpenSDK/YoukuPlayerOpenSDK.iml" filepath="$PROJECT_DIR$/YoukuPlayerOpenSDK/YoukuPlayerOpenSDK.iml" />
       <module fileurl="file://$PROJECT_DIR$/YoukuPlayerOpenSDK/YoukuPlayerOpenSDK.iml" filepath="$PROJECT_DIR$/YoukuPlayerOpenSDK/YoukuPlayerOpenSDK.iml" />
     </modules>
   </component>
