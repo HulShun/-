@@ -1,9 +1,9 @@
 package com.example.newsclient.view.activity;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -12,9 +12,13 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.widget.SearchView;
 import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -22,6 +26,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.newsclient.Configuration;
 import com.example.newsclient.Model.bean.image.ImageMainTypeBean;
 import com.example.newsclient.Model.bean.video.VideoTypeBean;
 import com.example.newsclient.Model.utils.AppUtil;
@@ -56,12 +61,13 @@ public class MainActivity extends BaseActivity<MainViewPresenter> implements IMa
 
     @Bind(R.id.main_navi)
     NavigationView mainNavi;
-
+    private SearchView searchView;
     LinearLayout login_layout;
 
     //侧边栏
     @Bind(R.id.main_drawer)
     DrawerLayout mainDrawer;
+
 
     /*网络无连接提示条布局*/
     @Bind(R.id.main_messageview)
@@ -109,10 +115,11 @@ public class MainActivity extends BaseActivity<MainViewPresenter> implements IMa
 
     private void initDatas() {
         mFragmentManager = getSupportFragmentManager();
-        loadingBitmap = BitmapFactory.decodeResource(this.getResources(), R.drawable.ic_loading);
         nowMenuItemId = R.id.nav_news;
         mainNavi.setCheckedItem(nowMenuItemId);
-        mPresenter.loadNewsType(this);
+        getPresenter().loadNewsType(this);
+
+
     }
 
     private void initViews() {
@@ -153,21 +160,21 @@ public class MainActivity extends BaseActivity<MainViewPresenter> implements IMa
                     case R.id.nav_news:
                         mainDrawer.closeDrawers();
                         if (nowMenuItemId != id) {
-                            mPresenter.loadNewsType(MainActivity.this);
+                            getPresenter().loadNewsType(MainActivity.this);
                         }
                         break;
                     //图片
                     case R.id.nav_image:
                         mainDrawer.closeDrawers();
                         if (nowMenuItemId != id) {
-                            mPresenter.loadImageTpyes();
+                            getPresenter().loadImageTpyes();
                         }
                         break;
                     //视频
                     case R.id.nav_video:
                         mainDrawer.closeDrawers();
                         if (nowMenuItemId != id) {
-                            mPresenter.loadVideoTypes();
+                            getPresenter().loadVideoTypes();
                         }
                         break;
 
@@ -188,16 +195,6 @@ public class MainActivity extends BaseActivity<MainViewPresenter> implements IMa
         });
     }
 
-
-    @Override
-    public void showFaild(String msg) {
-
-    }
-
-    @Override
-    public void onCompleted() {
-
-    }
 
     @Override
     public void showNoNetWork() {
@@ -271,7 +268,41 @@ public class MainActivity extends BaseActivity<MainViewPresenter> implements IMa
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    public Bitmap loadingBitmap;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        final MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+
+        //获得searchview实例
+        final MenuItem menuItem = menu.findItem(R.id.main_menu_search);
+        searchView = (SearchView) MenuItemCompat.getActionView(menuItem);
+        searchView.setQueryHint("输入新闻关键词");
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                //   menuItem.collapseActionView();
+                //按下键盘上的搜索键
+                Intent intent = new Intent(MainActivity.this, SearchNewsActivity.class);
+                intent.putExtra(Configuration.KEYWORD, query);
+                startActivity(intent);
+                searchView.setQuery("", false);
+                //关闭搜索的编辑框
+                searchView.onActionViewCollapsed();
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                //输入字符时候激活
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
+    }
+
 
     private Handler myHandler = new Handler() {
         @Override

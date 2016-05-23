@@ -1,39 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white">
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/imagelist_toolbar"
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorPrimary"
-        android:clipToPadding="false"
-        android:fitsSystemWindows="true"
-        android:title="@string/app_name"
-        app:layout_scrollFlags="scroll|enterAlways"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:titleTextColor="#ffffff" />
+        android:layout_height="wrap_content">
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/imagelist_refresh"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/imagelist_toolbar"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp">
-
-        <com.example.newsclient.widget.AutoRecyclerView
-            android:id="@+id/imagelist_rc"
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/imagelist_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:overScrollMode="never">
+            android:layout_height="?attr/actionBarSize"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"
+            app:titleTextColor="@color/white" />
+    </android.support.design.widget.AppBarLayout>
 
-        </com.example.newsclient.widget.AutoRecyclerView>
 
-    </android.support.v4.widget.SwipeRefreshLayout>
+    <fragment
+        android:id="@+id/fragment_images"
+        android:name="com.example.newsclient.view.fragment.ImagesFramgent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        tools:layout="@layout/loadinglayout" />
 
-</RelativeLayout>
+</LinearLayout>

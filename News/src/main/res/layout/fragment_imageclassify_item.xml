@@ -20,5 +20,6 @@
         android:gravity="center"
         android:maxLines="1"
         android:text="标题"
+        android:textColor="@color/white"
         android:textSize="15sp" />
 </RelativeLayout>

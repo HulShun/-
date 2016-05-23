@@ -1,7 +1,6 @@
 package com.example.newsclient.presenter;
 
-import com.android.volley.toolbox.ImageLoader;
-import com.example.newsclient.Model.ModelMode;
+import com.example.newsclient.Model.LogUtil;
 import com.example.newsclient.Model.bean.image.ImageJsonBean;
 import com.example.newsclient.Model.impl.ImageListModelImpl;
 import com.example.newsclient.Model.model.ImageListModel;
@@ -21,7 +20,9 @@ public class ImageListPresenter extends BasePresenter<IImageListViewImpl, ImageL
     }
 
 
-    public void getImageDatas(final int mode, Map<String, String> params) {
+    public void getImageDatas(final int mode, Map<String, Integer> params) {
+        final int nowpage = params.get("page");
+
         getModel().getImageDatas(params, new Observer<ImageJsonBean>() {
             @Override
             public void onCompleted() {
@@ -36,6 +37,7 @@ public class ImageListPresenter extends BasePresenter<IImageListViewImpl, ImageL
             public void onError(Throwable e) {
                 if (getView().isVisiable()) {
                     getView().onCompleted();
+                    LogUtil.d("image", "加载图片出错：" + e.getMessage());
                     getView().showFaild(e.getMessage());
                 }
             }
@@ -43,7 +45,7 @@ public class ImageListPresenter extends BasePresenter<IImageListViewImpl, ImageL
             @Override
             public void onNext(ImageJsonBean imageJsonBean) {
                 if (getView().isVisiable()) {
-                    if (mode == ModelMode.REFRESH) {
+                    if (nowpage == 1) {
                         getView().onRefreshed(imageJsonBean);
                     } else {
                         getView().onLoadMore(imageJsonBean);
@@ -54,8 +56,5 @@ public class ImageListPresenter extends BasePresenter<IImageListViewImpl, ImageL
         });
     }
 
-    public void getBitmap(String url, ImageLoader.ImageListener l) {
-        getModel().getBitmap(url, l);
 
-    }
 }

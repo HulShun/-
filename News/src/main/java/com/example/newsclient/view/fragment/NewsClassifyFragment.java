@@ -14,7 +14,7 @@ import com.example.newsclient.Model.ModelMode;
 import com.example.newsclient.Model.bean.NewsBean;
 import com.example.newsclient.Model.bean.NewsListBean;
 import com.example.newsclient.R;
-import com.example.newsclient.presenter.NewsListPresenter;
+import com.example.newsclient.presenter.NewsClassfyPresenter;
 import com.example.newsclient.view.activity.ArticleActivity;
 import com.example.newsclient.view.adapter.NewsAdapter;
 import com.example.newsclient.view.impl.IFragmentViewImpl;
@@ -32,7 +32,7 @@ import butterknife.ButterKnife;
 /**
  * Created by Administrator on 2016-04-11.
  */
-public class NewsClassifyFragment extends BaseFragment<NewsListPresenter> implements IFragmentViewImpl {
+public class NewsClassifyFragment extends BaseFragment<NewsClassfyPresenter> implements IFragmentViewImpl {
 
 
     private String mKeyWord;
@@ -49,8 +49,8 @@ public class NewsClassifyFragment extends BaseFragment<NewsListPresenter> implem
 
 
     @Override
-    protected NewsListPresenter initPresenter() {
-        return new NewsListPresenter();
+    protected NewsClassfyPresenter initPresenter() {
+        return new NewsClassfyPresenter();
     }
 
 
@@ -99,7 +99,7 @@ public class NewsClassifyFragment extends BaseFragment<NewsListPresenter> implem
         newsRc.setItemAnimator(new DefaultItemAnimator());
         newsRc.setLayoutManager(mLayoutManager);
         if (mAdapter == null) {
-            mAdapter = new NewsAdapter(getPresenter());
+            mAdapter = new NewsAdapter();
             mAdapter.setFooterShow(true);
             mAdapter.setOnFooterListener(new View.OnClickListener() {
                 @Override
@@ -130,21 +130,6 @@ public class NewsClassifyFragment extends BaseFragment<NewsListPresenter> implem
             protected void loadMore() {
                 getMore();
             }
-
-            @Override
-            protected void pauseLoadImg() {
-               /* if (mAdapter != null) {
-                    mAdapter.pauseLoading(true);
-                }*/
-            }
-
-            @Override
-            protected void resumeLoadImg(int firstPosition, int lastPositon) {
-                /*if (mAdapter != null) {
-                    mAdapter.pauseLoading(false);
-                    mAdapter.executeTask(firstPosition, lastPositon);
-                }*/
-            }
         });
     }
 
@@ -165,7 +150,7 @@ public class NewsClassifyFragment extends BaseFragment<NewsListPresenter> implem
 
     private void updateDatas(int mode) {
         Map<String, String> map = new HashMap<>();
-        map.put("keyword", mKeyWord);
+        map.put(Configuration.KEYWORD, mKeyWord);
         nextPage = 1;
         map.put("page", String.valueOf(nextPage));
         map.put("count", "20");
@@ -191,7 +176,7 @@ public class NewsClassifyFragment extends BaseFragment<NewsListPresenter> implem
 
 
     @Override
-    public void onRefreshOrLoadMore(NewsListBean datas) {
+    public void onRefresh(NewsListBean datas) {
         if (getLoadingView().isloading()) {
             getLoadingView().showSuccess();
         }
@@ -206,7 +191,12 @@ public class NewsClassifyFragment extends BaseFragment<NewsListPresenter> implem
     }
 
     @Override
-    public void onRefreshComplete() {
+    public void onLoadMore(NewsListBean datas) {
+        mAdapter.addData(datas.getRetData().getData());
+    }
+
+    @Override
+    public void onComplete() {
         if (newsRc != null) {
             newsRc.loadMoreCompleted();
         }

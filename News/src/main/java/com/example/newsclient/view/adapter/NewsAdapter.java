@@ -7,7 +7,6 @@ import android.widget.ImageView;
 import com.example.newsclient.Model.bean.NewsBean;
 import com.example.newsclient.Model.utils.TimeUtil;
 import com.example.newsclient.R;
-import com.example.newsclient.presenter.NewsListPresenter;
 import com.example.newsclient.view.viewholder.NewsViewHolder;
 import com.squareup.picasso.Picasso;
 
@@ -18,11 +17,6 @@ import java.util.List;
  * Created by Administrator on 2016-05-04.
  */
 public class NewsAdapter extends BaseRecyclerViewAdapter<NewsBean, NewsViewHolder> {
-    private NewsListPresenter mPresenter;
-
-    public NewsAdapter(NewsListPresenter presenter) {
-        mPresenter = presenter;
-    }
 
     @Override
     public int getFooterLayoutId() {
@@ -50,7 +44,7 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsBean, NewsViewHolde
         final ImageView imageView = holder.imageView;
         if (s != null) {
             //  imageView.setTag(s);
-            Picasso.with(getContext())
+            Picasso.with(getContext().getApplicationContext())
                     .load(s)
                     .tag(s)
                     .placeholder(R.drawable.ic_loading)
@@ -58,7 +52,7 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsBean, NewsViewHolde
                     .error(R.drawable.ic_loading)
                     .into(imageView);
         } else {
-            imageView.setImageResource(R.drawable.ic_launcher);
+            imageView.setImageResource(R.drawable.ic_loading);
         }
        /* //先设置默认显示图片
         imageView.setImageBitmap(getLoadingBitmap());*/

@@ -1,11 +1,14 @@
 package com.example.newsclient.Model.bean.image;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.List;
 
 /**
  * Created by Administrator on 2016-05-04.
  */
-public class ImageContentBean {
+public class ImageContentBean implements Parcelable {
 
     private String ct;
     private String itemId;
@@ -19,6 +22,29 @@ public class ImageContentBean {
      */
 
     private List<ImageBean> list;
+
+    public ImageContentBean() {
+    }
+
+    protected ImageContentBean(Parcel in) {
+        ct = in.readString();
+        itemId = in.readString();
+        title = in.readString();
+        type = in.readInt();
+        typeName = in.readString();
+    }
+
+    public static final Creator<ImageContentBean> CREATOR = new Creator<ImageContentBean>() {
+        @Override
+        public ImageContentBean createFromParcel(Parcel in) {
+            return new ImageContentBean(in);
+        }
+
+        @Override
+        public ImageContentBean[] newArray(int size) {
+            return new ImageContentBean[size];
+        }
+    };
 
     public String getCt() {
         return ct;
@@ -69,4 +95,17 @@ public class ImageContentBean {
     }
 
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(ct);
+        dest.writeString(itemId);
+        dest.writeString(title);
+        dest.writeInt(type);
+        dest.writeString(typeName);
+    }
 }

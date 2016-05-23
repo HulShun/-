@@ -193,11 +193,12 @@ public class ImagesDao {
                 null,
                 null,
                 ImagesHelper.TYPE);
-        if (c.getColumnCount() == 0) {
+        if (!c.moveToFirst()) {
             c.close();
             closeDatabase();
             return null;
         }
+        c.moveToPrevious();
 
         ImageJsonBean.ShowapiResBodyBean.PagebeanBean pagebean = new ImageJsonBean.ShowapiResBodyBean.PagebeanBean();
         List<ImageContentBean> beans = new ArrayList<>();

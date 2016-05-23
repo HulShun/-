@@ -16,9 +16,7 @@ import com.readystatesoftware.systembartint.SystemBarTintManager;
 import butterknife.ButterKnife;
 
 public abstract class BaseActivity<T extends BasePresenter> extends AppCompatActivity implements IBaseViewImpl {
-    public T mPresenter;
-
-
+    private T mPresenter;
     private Toolbar mToolBar;
 
     @Override

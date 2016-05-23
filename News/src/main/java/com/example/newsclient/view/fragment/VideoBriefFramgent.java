@@ -1,5 +1,7 @@
 package com.example.newsclient.view.fragment;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -7,12 +9,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.newsclient.Model.bean.video.VideoItemBean;
 import com.example.newsclient.Model.bean.video.RecommendJsonVideoBean;
+import com.example.newsclient.Model.bean.video.VideoItemBean;
 import com.example.newsclient.R;
 import com.example.newsclient.presenter.VideoBriefPresenter;
+import com.example.newsclient.view.activity.VideoItemActivity;
+import com.example.newsclient.view.activity.VideoRecommendActivity;
 import com.example.newsclient.view.adapter.RecommendVideoAapter;
 import com.example.newsclient.view.impl.IVideoBriefViewImpl;
+import com.example.newsclient.view.impl.OnItemClickListener;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -96,6 +101,27 @@ public class VideoBriefFramgent extends BaseFragment<VideoBriefPresenter> implem
         briefMoreRv.setItemAnimator(new DefaultItemAnimator());
         mAdapter = new RecommendVideoAapter();
         mAdapter.setFooterShow(false);
+
+        mAdapter.setOnItemClickListenner(new OnItemClickListener() {
+            @Override
+            public void onClick(RecyclerView.ViewHolder viewHolder, int position) {
+                RecommendJsonVideoBean.RecommendVideoBean data;
+                data = (RecommendJsonVideoBean.RecommendVideoBean) viewHolder.itemView.getTag();
+                Activity activity = getActivity();
+                Intent intent;
+                //因为youku播放器需要将activity设置成singleTask，所以交替两个activity来触发推荐视频的播放
+                if (activity instanceof VideoItemActivity) {
+                    intent = new Intent(getContext(), VideoRecommendActivity.class);
+                } else {
+                    intent = new Intent(getContext(), VideoItemActivity.class);
+                }
+                intent.putExtra("id", data.getId());
+                startActivity(intent);
+
+                getActivity().finish();
+
+            }
+        });
         briefMoreRv.setAdapter(mAdapter);
 
     }
@@ -144,9 +170,7 @@ public class VideoBriefFramgent extends BaseFragment<VideoBriefPresenter> implem
         }
         mesureTextDescription(briefText.getMeasuredHeight(), briefText_nolimit.getMeasuredHeight());
         //推荐视频
-        if (mAdapter.getData() != null) {
-            mAdapter.getData().clear();
-        }
+        mAdapter.clearData();
         mAdapter.addData(data.getVideos());
     }
 

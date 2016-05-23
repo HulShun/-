@@ -7,9 +7,11 @@ import com.example.newsclient.Model.bean.NewsListBean;
  */
 public interface IFragmentViewImpl extends IBaseViewImpl {
 
-    void onRefreshOrLoadMore(NewsListBean datas);
+    void onRefresh(NewsListBean datas);
 
-    void onRefreshComplete();
+    void onLoadMore(NewsListBean datas);
+
+    void onComplete();
 
     //  void onLoadMoreComplete();
 

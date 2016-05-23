@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.AttributeSet;
 
 import com.example.newsclient.Model.LogUtil;
@@ -45,7 +46,7 @@ public class AutoRecyclerView extends RecyclerView {
 
             LayoutManager manager = recyclerView.getLayoutManager();
             if (manager instanceof LinearLayoutManager) {
-                int lastPositon = 0, firstPosition = 0;
+                int lastPositon = 0;
                 lastPositon = ((LinearLayoutManager) manager).findLastVisibleItemPosition();
                 int itemCount = recyclerView.getAdapter().getItemCount();
                 //通过isLoadingMore来判断是否正在加载，避免重复加载
@@ -53,50 +54,54 @@ public class AutoRecyclerView extends RecyclerView {
                     isLoadingMore = true;
                     LogUtil.d("footer", "loadMore...");
                     loadMore();
-                } else if (dy <= 10) {
-                    firstPosition = ((LinearLayoutManager) manager).findFirstVisibleItemPosition();
-                    resumeLoadImg(firstPosition, lastPositon);
-                } else {
-                    pauseLoadImg();
                 }
-            }
+            } else if (manager instanceof StaggeredGridLayoutManager) {
+                int last[] = ((StaggeredGridLayoutManager) manager).findLastVisibleItemPositions(null);
+                int lastItem = recyclerView.getAdapter().getItemCount() - 2;
+                if (!isLoadingMore && dy > 0) {
+                    for (int i = 0; i < last.length; i++) {
+                        if (last[i] == lastItem) {
+                            isLoadingMore = true;
+                            loadMore();
+                        }
 
+                    }
+
+
+                }
+
+            }
             super.onScrolled(recyclerView, dx, dy);
         }
 
-
         @Override
         public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-            switch (newState) {
-                case RecyclerView.SCROLL_STATE_IDLE:
-                    int lastPositon = 0, firstPosition = 0;
-                    LayoutManager manager = recyclerView.getLayoutManager();
-                    if (manager instanceof LinearLayoutManager) {
-                        lastPositon = ((LinearLayoutManager) manager).findLastVisibleItemPosition();
-                        firstPosition = ((LinearLayoutManager) manager).findFirstVisibleItemPosition();
-                    }
-                    resumeLoadImg(firstPosition, lastPositon);
-                    break;
-                //正在滑动
-                case RecyclerView.SCROLL_STATE_DRAGGING:
-                    pauseLoadImg();
-                    break;
-                //惯性滑动
-                case RecyclerView.SCROLL_STATE_SETTLING:
-                    pauseLoadImg();
-                    break;
+            RecyclerView.Adapter adapter = recyclerView.getAdapter();
+            if (adapter == null) {
+                return;
             }
-            super.onScrollStateChanged(recyclerView, newState);
+            //滑动停止
+            if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                LayoutManager manager = recyclerView.getLayoutManager();
+                if (manager instanceof LinearLayoutManager) {
+                    int first = ((LinearLayoutManager) manager).findFirstVisibleItemPosition();
+                    int last = ((LinearLayoutManager) manager).findLastVisibleItemPosition();
+                    resumeLoadImage((LinearLayoutManager) manager, first, last);
+                }
+            } else {
+                pauseLoadImage();
+            }
+
+
         }
 
         protected abstract void loadMore();
 
-        protected abstract void pauseLoadImg();
+        protected void resumeLoadImage(LinearLayoutManager manager, int first, int last) {
+        }
 
-        protected abstract void resumeLoadImg(int firstPosition, int lastPositon);
-
-
+        protected void pauseLoadImage() {
+        }
     }
-
 
 }

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    android:fitsSystemWindows="true">
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/imageitem_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:gravity="center_vertical">
+
+        <ImageButton
+            android:id="@+id/activity_imageitem_back_ib"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="@dimen/px18"
+            android:background="@drawable/videoitem_back_selector" />
+
+        <TextView
+            android:id="@+id/activity_imageitem_cout_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="1/4"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+        <ImageButton
+            android:id="@+id/activity_imageitem_more_ib"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/px18"
+            android:background="@drawable/videoitem_share_selector" />
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/activity_imageitem_tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/px130"
+        android:layout_gravity="bottom"
+        android:background="@color/text_bg"
+        android:gravity="left|center"
+        android:maxLines="2"
+        android:padding="@dimen/px18"
+        android:text="标题"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+</FrameLayout>

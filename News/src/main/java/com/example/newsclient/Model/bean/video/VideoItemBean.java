@@ -48,6 +48,17 @@ public class VideoItemBean {
     private String player;
     private String public_type;
     private String copyright_type;
+    /*数据获取的时间*/
+    private String updataTime;
+
+    public String getUpdataTime() {
+        return updataTime;
+    }
+
+    public void setUpdataTime(String updataTime) {
+        this.updataTime = updataTime;
+    }
+
     /**
      * id : 851539726
      * name : 鐢佃鍓ф涔愰

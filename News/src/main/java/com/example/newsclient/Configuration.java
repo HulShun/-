@@ -24,9 +24,13 @@ public class Configuration {
     public static final String YOUKU_SECRET = "52814a350fb11005df8440835488fef9";
 
     public final static String YOUKU_API_BASE_URL = "https://openapi.youku.com/";
-    public static final String VIDEO_TYPE_DB_NAEM = "videos.db";
+    public static final String VIDEO_TYPE_DB_NAEM = "video_type.db";
     public static final String VIDEO_TYPE_TABLE_NAEM = "video_type";
     public static final String VIDEO_TYPE_SUBTITLE_TABLE_NAEM = "video_subtitle_type";
+
+    public static final String VIDEO_DB_NAEM = "video.db";
+    public static final String VIDEOS_TABLE_NAEM = "videos";
+    public static final String VIDEOITEM_TABLE_NAEM = "video_detail";
 
 
     public static final String TENCENT_APPID = "1105409954";

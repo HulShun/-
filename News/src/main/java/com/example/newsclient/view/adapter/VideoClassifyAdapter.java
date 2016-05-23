@@ -1,9 +1,11 @@
 package com.example.newsclient.view.adapter;
 
+import android.graphics.Bitmap;
 import android.view.View;
 
 import com.example.newsclient.Model.bean.video.VideosInFormBean;
 import com.example.newsclient.R;
+import com.example.newsclient.view.utils.VideoThumbTransfromation;
 import com.example.newsclient.view.viewholder.VideoViewHolder;
 import com.squareup.picasso.Picasso;
 
@@ -14,6 +16,9 @@ import java.util.List;
  * Created by Administrator on 2016-05-10.
  */
 public class VideoClassifyAdapter extends BaseRecyclerViewAdapter<VideosInFormBean.VideosBean, VideoViewHolder> {
+    private VideoThumbTransfromation transfromation;
+
+
     @Override
     public int getFooterLayoutId() {
         return R.layout.fragment_rv_footer;
@@ -26,6 +31,9 @@ public class VideoClassifyAdapter extends BaseRecyclerViewAdapter<VideosInFormBe
 
     @Override
     protected VideoViewHolder onCreateMyViewHolder(View view, int viewType) {
+        if (transfromation == null) {
+            transfromation = new VideoThumbTransfromation(view);
+        }
         return new VideoViewHolder(view);
     }
 
@@ -37,13 +45,20 @@ public class VideoClassifyAdapter extends BaseRecyclerViewAdapter<VideosInFormBe
         String img_url = getData().get(position).getBigThumbnail();
 
         holder.title_textView.setTag(getData().get(position).getId());
+        if (img_url != null) {
 
-        Picasso.with(getContext())
-                .load(img_url)
-                .placeholder(R.drawable.ic_loading)
-                .error(R.drawable.ic_loading)
-                .tag(img_url)
-                .into(holder.imageView);
+            holder.imageView.setTag(img_url);
+            Picasso.with(getContext())
+                    .load(img_url)
+                    .resize(320, 320)
+                    .centerInside()
+                    .tag(getContext().getApplicationContext())
+                    .config(Bitmap.Config.RGB_565)
+                    .placeholder(R.drawable.ic_loading)
+                    .error(R.drawable.ic_loading)
+                    .into(holder.imageView);
+        }
+
     }
 
     @Override

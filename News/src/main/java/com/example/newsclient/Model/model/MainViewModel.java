@@ -9,7 +9,7 @@ import com.example.newsclient.Model.impl.ApiService;
 import com.example.newsclient.Model.impl.MainViewModelImpl;
 import com.example.newsclient.Model.utils.RetrofitUtil;
 import com.example.newsclient.dao.ImagesDao;
-import com.example.newsclient.dao.helper.VideoTypeDao;
+import com.example.newsclient.dao.VideoTypeDao;
 
 import java.util.List;
 
