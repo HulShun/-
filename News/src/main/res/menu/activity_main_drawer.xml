@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/first_group"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_news"
+            android:icon="@drawable/icon_video"
+            android:title="新闻阅览" />
+        <item
+            android:id="@+id/nav_image"
+            android:icon="@drawable/icon_pic"
+            android:title="图片欣赏" />
+        <item
+            android:id="@+id/nav_video"
+            android:icon="@drawable/icon_video"
+            android:title="视频欣赏" />
+        <item
+            android:id="@+id/nav_text"
+            android:icon="@drawable/icon_text"
+            android:title="文章阅读" />
+
+    </group>
+
+
+    <group android:id="@+id/seconed_group">
+        <item
+            android:id="@+id/nav_share"
+            android:icon="@drawable/icon_settings"
+            android:title="设  置" />
+        <item
+            android:id="@+id/nav_send"
+            android:icon="@drawable/ic_menu_send"
+            android:title="关  于" />
+    </group>
+
+
+</menu>

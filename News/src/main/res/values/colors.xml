@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#15b083</color>
+    <color name="colorPrimaryDark">#15b083</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="text_bg">#A0646464</color>
+    <color name="tab_unselect">#ececec</color>
+    <color name="tab_selected">#ffffff</color>
+    <color name="white">#ffffff</color>
+
+    <color name="text_color">#323232</color>
+    <color name="text_color2">#969696</color>
+    <color name="text_color3">#646464</color>
+    <color name="text_color4">#101010</color>
+    <color name="line_color1">#dadada</color>
+
+
+    <color name="error_bg">#50FF4081</color>
+    <color name="progressbar_bg">#9ea9a9a9</color>
+    <color name="toolbarcolor">#15b083</color>
+    <color name="tabIndicatorColor">#ffce66</color>
+</resources>
+

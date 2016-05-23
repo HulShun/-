@@ -1,0 +1,23 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/fragment_image_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/px14"
+        android:layout_marginRight="@dimen/px14">
+
+        <com.example.newsclient.widget.AutoRecyclerView
+            android:id="@+id/fragment_image_rc"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never">
+
+        </com.example.newsclient.widget.AutoRecyclerView>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/px266"
+    android:background="@color/colorPrimary"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <ImageView
+        android:id="@+id/header_imageView"
+        android:layout_width="@dimen/px120"
+        android:layout_height="@dimen/px120"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/px50"
+        android:layout_marginLeft="@dimen/px40"
+        android:src="@drawable/default_header" />
+
+    <LinearLayout
+        android:id="@+id/main_header_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/header_imageView"
+        android:layout_marginBottom="@dimen/px6"
+        android:layout_marginLeft="@dimen/px30"
+        android:layout_toRightOf="@id/header_imageView"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/header_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="未登录"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/header_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/px34"
+            android:text="朋友，欢迎您回来"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/px2"
+        android:layout_alignParentBottom="true"
+        android:background="@color/line_color1" />
+</RelativeLayout>
