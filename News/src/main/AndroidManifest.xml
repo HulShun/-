@@ -75,6 +75,7 @@
                 <data android:scheme="tencent1105409954" />
             </intent-filter>
         </activity>
+
         <!--weiboSDK-->
         <activity
             android:name="com.sina.weibo.sdk.component.WeiboSdkBrowser"
