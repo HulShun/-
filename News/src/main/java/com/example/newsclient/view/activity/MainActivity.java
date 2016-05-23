@@ -1,5 +1,7 @@
 package com.example.newsclient.view.activity;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
@@ -10,8 +12,10 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.widget.SearchView;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -22,7 +26,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.newsclient.Model.LogUtil;
 import com.example.newsclient.Model.bean.image.ImageMainTypeBean;
 import com.example.newsclient.Model.bean.video.VideoTypeBean;
 import com.example.newsclient.Model.utils.AppUtil;
@@ -57,12 +60,13 @@ public class MainActivity extends BaseActivity<MainViewPresenter> implements IMa
 
     @Bind(R.id.main_navi)
     NavigationView mainNavi;
-
+    private SearchView searchView;
     LinearLayout login_layout;
 
     //侧边栏
     @Bind(R.id.main_drawer)
     DrawerLayout mainDrawer;
+
 
     /*网络无连接提示条布局*/
     @Bind(R.id.main_messageview)
@@ -113,6 +117,8 @@ public class MainActivity extends BaseActivity<MainViewPresenter> implements IMa
         nowMenuItemId = R.id.nav_news;
         mainNavi.setCheckedItem(nowMenuItemId);
         getPresenter().loadNewsType(this);
+
+
     }
 
     private void initViews() {
@@ -266,18 +272,17 @@ public class MainActivity extends BaseActivity<MainViewPresenter> implements IMa
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
+
+        //获得searchview实例
+        MenuItem menuItem = menu.findItem(R.id.main_menu_search);
+        searchView = (SearchView) MenuItemCompat.getActionView(menuItem);
+        searchView.setQueryHint("输入新闻关键词");
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+
         return super.onCreateOptionsMenu(menu);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.main_menu_search:
-                LogUtil.d(getClass().getName(), "menu is clicked");
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     private Handler myHandler = new Handler() {
         @Override

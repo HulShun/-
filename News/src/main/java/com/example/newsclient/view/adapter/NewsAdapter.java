@@ -7,7 +7,7 @@ import android.widget.ImageView;
 import com.example.newsclient.Model.bean.NewsBean;
 import com.example.newsclient.Model.utils.TimeUtil;
 import com.example.newsclient.R;
-import com.example.newsclient.presenter.NewsListPresenter;
+import com.example.newsclient.presenter.NewsClassfyPresenter;
 import com.example.newsclient.view.viewholder.NewsViewHolder;
 import com.squareup.picasso.Picasso;
 
@@ -18,9 +18,9 @@ import java.util.List;
  * Created by Administrator on 2016-05-04.
  */
 public class NewsAdapter extends BaseRecyclerViewAdapter<NewsBean, NewsViewHolder> {
-    private NewsListPresenter mPresenter;
+    private NewsClassfyPresenter mPresenter;
 
-    public NewsAdapter(NewsListPresenter presenter) {
+    public NewsAdapter(NewsClassfyPresenter presenter) {
         mPresenter = presenter;
     }
 

@@ -39,6 +39,19 @@
             android:launchMode="singleTask" />
         <!--登录-->
         <activity android:name=".view.activity.LoginActivity" />
+
+        <!--新闻搜索-->
+        <activity
+            android:name=".view.activity.SearchNewsActivity"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
+
         <!--网页新闻-->
         <activity android:name=".view.activity.ArticleActivity" />
         <!--图片页面-->

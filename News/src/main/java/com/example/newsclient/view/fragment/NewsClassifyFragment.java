@@ -14,7 +14,7 @@ import com.example.newsclient.Model.ModelMode;
 import com.example.newsclient.Model.bean.NewsBean;
 import com.example.newsclient.Model.bean.NewsListBean;
 import com.example.newsclient.R;
-import com.example.newsclient.presenter.NewsListPresenter;
+import com.example.newsclient.presenter.NewsClassfyPresenter;
 import com.example.newsclient.view.activity.ArticleActivity;
 import com.example.newsclient.view.adapter.NewsAdapter;
 import com.example.newsclient.view.impl.IFragmentViewImpl;
@@ -32,7 +32,7 @@ import butterknife.ButterKnife;
 /**
  * Created by Administrator on 2016-04-11.
  */
-public class NewsClassifyFragment extends BaseFragment<NewsListPresenter> implements IFragmentViewImpl {
+public class NewsClassifyFragment extends BaseFragment<NewsClassfyPresenter> implements IFragmentViewImpl {
 
 
     private String mKeyWord;
@@ -49,8 +49,8 @@ public class NewsClassifyFragment extends BaseFragment<NewsListPresenter> implem
 
 
     @Override
-    protected NewsListPresenter initPresenter() {
-        return new NewsListPresenter();
+    protected NewsClassfyPresenter initPresenter() {
+        return new NewsClassfyPresenter();
     }
 
 
