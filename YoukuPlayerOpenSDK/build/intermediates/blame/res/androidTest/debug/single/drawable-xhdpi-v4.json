@@ -1,7 +1,51 @@
 [
     {
+        "merged": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\plugin_ad_gofull_tudou.png",
+        "source": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\plugin_ad_gofull_tudou.png"
+    },
+    {
+        "merged": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\ic_launcher.png",
+        "source": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\plugin_ad_gosmall_youku.png",
+        "source": "D:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\plugin_ad_gosmall_youku.png"
+    },
+    {
+        "merged": "D:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\plugin_ad_gofull_youku.png",
+        "source": "D:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\plugin_ad_gofull_youku.png"
+    },
+    {
+        "merged": "D:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\tudou_details_big_play_icon.png",
+        "source": "D:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\tudou_details_big_play_icon.png"
+    },
+    {
+        "merged": "D:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\plugin_ad_more_youku.png",
+        "source": "D:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\plugin_ad_more_youku.png"
+    },
+    {
         "merged": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\plugin_ad_gosmall_youku.png",
         "source": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\plugin_ad_gosmall_youku.png"
+    },
+    {
+        "merged": "D:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\ic_launcher.png",
+        "source": "D:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\ic_launcher.png"
+    },
+    {
+        "merged": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\plugin_ad_gofull_youku.png",
+        "source": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\plugin_ad_gofull_youku.png"
+    },
+    {
+        "merged": "D:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\plugin_ad_gosmall_tudou.png",
+        "source": "D:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\plugin_ad_gosmall_tudou.png"
+    },
+    {
+        "merged": "D:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\plugin_ad_gofull_tudou.png",
+        "source": "D:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\plugin_ad_gofull_tudou.png"
+    },
+    {
+        "merged": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\tudou_details_big_play_icon.png",
+        "source": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\tudou_details_big_play_icon.png"
     },
     {
         "merged": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\plugin_ad_more_youku.png",
@@ -10,21 +54,5 @@
     {
         "merged": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\plugin_ad_gosmall_tudou.png",
         "source": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\plugin_ad_gosmall_tudou.png"
-    },
-    {
-        "merged": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\ic_launcher.png",
-        "source": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\ic_launcher.png"
-    },
-    {
-        "merged": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\plugin_ad_gofull_tudou.png",
-        "source": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\plugin_ad_gofull_tudou.png"
-    },
-    {
-        "merged": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\tudou_details_big_play_icon.png",
-        "source": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\tudou_details_big_play_icon.png"
-    },
-    {
-        "merged": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\plugin_ad_gofull_youku.png",
-        "source": "E:\\workspace\\NewsClient\\YoukuPlayerOpenSDK\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\plugin_ad_gofull_youku.png"
     }
 ]
