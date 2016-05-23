@@ -48,9 +48,11 @@ public class ArticleActivity extends BaseActivity {
 
     @Override
     protected void init() {
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
-
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setHomeButtonEnabled(true);
+        }
         Bundle bundle = getIntent().getBundleExtra("article");
         if (bundle == null) {
             return;

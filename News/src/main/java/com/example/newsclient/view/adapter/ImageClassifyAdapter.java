@@ -55,7 +55,6 @@ public class ImageClassifyAdapter extends BaseRecyclerViewAdapter<ImageJsonBean,
                 .placeholder(R.drawable.ic_loading)
                 .error(R.drawable.ic_loading)
                 .into(holder.imageView);
-
     }
 
 

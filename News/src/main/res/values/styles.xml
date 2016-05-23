@@ -18,4 +18,9 @@
         <item name="android:windowFullscreen">true</item>
         <item name="android:background">@color/white</item>
     </style>
+
+    <style name="photosShow" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:background">@android:color/black</item>
+    </style>
+
 </resources>

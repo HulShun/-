@@ -41,8 +41,17 @@
         <activity android:name=".view.activity.LoginActivity" />
         <!--网页新闻-->
         <activity android:name=".view.activity.ArticleActivity" />
-        <activity android:name=".view.activity.ImageListActivity" />
+        <!--图片页面-->
+        <activity
+            android:name=".view.activity.ImageListActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".view.activity.ImageItemActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/photosShow" />
 
+
+        <!--视频播放页面-->
         <activity
             android:name=".view.activity.VideoItemActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -50,7 +59,20 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
+        <!--推荐视频播放页面-->
+        <activity
+            android:name=".view.activity.VideoRecommendActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
                 <category android:name="android.intent.category.DEFAULT" />

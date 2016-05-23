@@ -54,6 +54,7 @@ public class ImageClassifyModel implements ImageClassifyModelImpl {
             final ApiService service = retrofit.create(ApiService.class);
 
             LogUtil.d("type", "需要网络获取type有：\"" + types.length + "\"个数据");
+            //有个问题，flatMap有一个产生了错误，from中之后的数据将不会接着被flatMap
             Observable.from(types)
                     .flatMap(new Func1<String, Observable<ImageJsonBean>>() {
                         @Override

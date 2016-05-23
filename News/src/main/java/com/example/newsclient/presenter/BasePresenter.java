@@ -3,6 +3,8 @@ package com.example.newsclient.presenter;
 import com.example.newsclient.Model.impl.BaseModelImpl;
 import com.example.newsclient.view.impl.IBaseViewImpl;
 
+import java.util.Map;
+
 /**
  * Created by Administrator on 2016-04-11.
  */

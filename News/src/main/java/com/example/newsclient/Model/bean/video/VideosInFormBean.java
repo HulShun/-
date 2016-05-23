@@ -34,6 +34,16 @@ public class VideosInFormBean {
      * tags :
      * day_vv : 2347181
      */
+    /*数据获取时间*/
+    private String updateTime;
+
+    public String getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
+    }
 
     private List<VideosBean> videos;
 

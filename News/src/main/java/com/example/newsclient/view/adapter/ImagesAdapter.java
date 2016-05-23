@@ -7,8 +7,7 @@ import android.widget.ImageView;
 
 import com.example.newsclient.Model.bean.image.ImageContentBean;
 import com.example.newsclient.R;
-import com.example.newsclient.presenter.ImageListPresenter;
-import com.example.newsclient.view.viewholder.ImageViewHolder;
+import com.example.newsclient.view.viewholder.ImagesViewHolder;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -17,13 +16,8 @@ import java.util.List;
 /**
  * Created by Administrator on 2016-05-04.
  */
-public class ImagesAdapter extends BaseRecyclerViewAdapter<ImageContentBean, ImageViewHolder> {
+public class ImagesAdapter extends BaseRecyclerViewAdapter<ImageContentBean, ImagesViewHolder> {
 
-    private ImageListPresenter mPresenter;
-
-    public ImagesAdapter(ImageListPresenter presenter) {
-        mPresenter = presenter;
-    }
 
     @Override
     public int getFooterLayoutId() {
@@ -32,20 +26,20 @@ public class ImagesAdapter extends BaseRecyclerViewAdapter<ImageContentBean, Ima
 
     @Override
     public int getItemLayoutId() {
-        return R.layout.fragment_imageclassify_item;
+        return R.layout.fragment_images_item;
     }
 
     @Override
-    protected ImageViewHolder onCreateMyViewHolder(View view, int viewType) {
-        return new ImageViewHolder(view);
+    protected ImagesViewHolder onCreateMyViewHolder(View view, int viewType) {
+        return new ImagesViewHolder(view);
     }
 
 
     @Override
-    protected void onBindItemViewHolder(final ImageViewHolder holder, int position) {
+    protected void onBindItemViewHolder(final ImagesViewHolder holder, int position) {
         holder.textView.setText(getData().get(position).getTitle());
         //用相册中第一张图片作为该相册的封面图
-        final String s = getData().get(position).getList().get(0).getSmall();
+        final String s = getData().get(position).getList().get(0).getMiddle();
         ImageView imageView = holder.imageView;
         if (!TextUtils.isEmpty(s)) {
             //imageView.setTag(s);

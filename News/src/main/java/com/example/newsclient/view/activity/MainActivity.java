@@ -2,8 +2,6 @@ package com.example.newsclient.view.activity;
 
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -15,6 +13,8 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -22,6 +22,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.newsclient.Model.LogUtil;
 import com.example.newsclient.Model.bean.image.ImageMainTypeBean;
 import com.example.newsclient.Model.bean.video.VideoTypeBean;
 import com.example.newsclient.Model.utils.AppUtil;
@@ -109,10 +110,9 @@ public class MainActivity extends BaseActivity<MainViewPresenter> implements IMa
 
     private void initDatas() {
         mFragmentManager = getSupportFragmentManager();
-        loadingBitmap = BitmapFactory.decodeResource(this.getResources(), R.drawable.ic_loading);
         nowMenuItemId = R.id.nav_news;
         mainNavi.setCheckedItem(nowMenuItemId);
-        mPresenter.loadNewsType(this);
+        getPresenter().loadNewsType(this);
     }
 
     private void initViews() {
@@ -153,21 +153,21 @@ public class MainActivity extends BaseActivity<MainViewPresenter> implements IMa
                     case R.id.nav_news:
                         mainDrawer.closeDrawers();
                         if (nowMenuItemId != id) {
-                            mPresenter.loadNewsType(MainActivity.this);
+                            getPresenter().loadNewsType(MainActivity.this);
                         }
                         break;
                     //图片
                     case R.id.nav_image:
                         mainDrawer.closeDrawers();
                         if (nowMenuItemId != id) {
-                            mPresenter.loadImageTpyes();
+                            getPresenter().loadImageTpyes();
                         }
                         break;
                     //视频
                     case R.id.nav_video:
                         mainDrawer.closeDrawers();
                         if (nowMenuItemId != id) {
-                            mPresenter.loadVideoTypes();
+                            getPresenter().loadVideoTypes();
                         }
                         break;
 
@@ -188,16 +188,6 @@ public class MainActivity extends BaseActivity<MainViewPresenter> implements IMa
         });
     }
 
-
-    @Override
-    public void showFaild(String msg) {
-
-    }
-
-    @Override
-    public void onCompleted() {
-
-    }
 
     @Override
     public void showNoNetWork() {
@@ -271,7 +261,23 @@ public class MainActivity extends BaseActivity<MainViewPresenter> implements IMa
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    public Bitmap loadingBitmap;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.main_menu_search:
+                LogUtil.d(getClass().getName(), "menu is clicked");
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
     private Handler myHandler = new Handler() {
         @Override
