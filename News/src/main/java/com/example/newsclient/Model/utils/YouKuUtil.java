@@ -4,6 +4,7 @@ import android.text.TextUtils;
 
 import com.example.newsclient.Configuration;
 import com.example.newsclient.Model.bean.SysParam;
+import com.example.newsclient.view.utils.AppUtil;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;

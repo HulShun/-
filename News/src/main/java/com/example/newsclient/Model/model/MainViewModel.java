@@ -1,15 +1,27 @@
 package com.example.newsclient.Model.model;
 
+import android.app.Activity;
+
 import com.example.newsclient.Configuration;
 import com.example.newsclient.Model.LogUtil;
+import com.example.newsclient.Model.bean.QQUserInfro;
+import com.example.newsclient.Model.bean.TencentOpenBean;
 import com.example.newsclient.Model.bean.image.ImageMainTypeBean;
 import com.example.newsclient.Model.bean.image.ImageTypeJsonBean;
 import com.example.newsclient.Model.bean.video.VideoTypeBean;
 import com.example.newsclient.Model.impl.ApiService;
 import com.example.newsclient.Model.impl.MainViewModelImpl;
 import com.example.newsclient.Model.utils.RetrofitUtil;
+import com.example.newsclient.Model.utils.TencentUtil;
 import com.example.newsclient.dao.ImagesDao;
 import com.example.newsclient.dao.VideoTypeDao;
+import com.example.newsclient.view.utils.AppUtil;
+import com.google.gson.Gson;
+import com.tencent.connect.UserInfo;
+import com.tencent.tauth.IUiListener;
+import com.tencent.tauth.UiError;
+
+import org.json.JSONObject;
 
 import java.util.List;
 
@@ -20,6 +32,8 @@ import rx.Observable;
 import rx.Observer;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
+import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /**
@@ -128,6 +142,74 @@ public class MainViewModel implements MainViewModelImpl {
         }).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(os);
+    }
+
+    @Override
+    public void saveQQInfo(JSONObject values, final Activity context) {
+
+        Observable.just(values.toString())
+                .map(new Func1<String, TencentOpenBean>() {
+                    @Override
+                    public TencentOpenBean call(String s) {
+                        Gson gson = new Gson();
+                        TencentOpenBean data = gson.fromJson(s, TencentOpenBean.class);
+                        return data;
+                    }
+                }).subscribeOn(Schedulers.newThread())
+                .observeOn(Schedulers.immediate())
+                .subscribe(new Action1<TencentOpenBean>() {
+                    @Override
+                    public void call(TencentOpenBean tencentOpenBean) {
+                        TencentUtil.saveToken(context, tencentOpenBean);
+
+                        AppUtil.getInstance().saveToShareRefence("login", "qq");
+                    }
+                });
+    }
+
+
+    @Override
+    public void getQQUserInfo(final UserInfo userInfo, final Observer<QQUserInfro> observer) {
+        //写一个用户信息储存本地数据库——————————先从本地取用户数据，再联网拿新的用户数据
+
+
+        userInfo.getUserInfo(new IUiListener() {
+            @Override
+            public void onComplete(Object o) {
+                Observable.just(o.toString())
+                        .flatMap(new Func1<String, Observable<QQUserInfro>>() {
+                            @Override
+                            public Observable<QQUserInfro> call(String s) {
+                                Gson gson = new Gson();
+                                QQUserInfro infro = gson.fromJson(s, QQUserInfro.class);
+                                if (infro.getRet() == -1) {
+                                    return Observable.error(new Throwable(infro.getMsg()));
+                                }
+                                return Observable.just(infro);
+                            }
+                        })
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(observer);
+            }
+
+            @Override
+            public void onError(final UiError uiError) {
+                Observable.just(1)
+                        .flatMap(new Func1<Integer, Observable<QQUserInfro>>() {
+                            @Override
+                            public Observable<QQUserInfro> call(Integer integer) {
+                                return Observable.error(new Throwable(uiError.errorMessage));
+                            }
+                        })
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(observer);
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+        });
     }
 
 

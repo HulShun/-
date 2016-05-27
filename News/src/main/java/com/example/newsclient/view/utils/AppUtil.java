@@ -1,14 +1,19 @@
-package com.example.newsclient.Model.utils;
+package com.example.newsclient.view.utils;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Environment;
 import android.util.DisplayMetrics;
 
 import com.example.newsclient.MyApplication;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.nostra13.universalimageloader.core.display.CircleBitmapDisplayer;
 
 /**
  * Created by Administrator on 2016-04-11.
@@ -93,4 +98,27 @@ public class AppUtil {
         return dm.density;
     }
 
+    public DisplayImageOptions getHeadImageOptions() {
+        DisplayImageOptions options = new DisplayImageOptions.Builder()
+                .bitmapConfig(Bitmap.Config.RGB_565)
+                .cacheInMemory(true)
+                .cacheOnDisk(true)
+                .imageScaleType(ImageScaleType.EXACTLY)
+                .displayer(new CircleBitmapDisplayer())
+                .build();
+        return options;
+    }
+
+    public void saveToShareRefence(String name, String value) {
+        SharedPreferences sp = MyApplication.getInstance().getSharedPreferences(name, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString(name, value);
+        editor.apply();
+    }
+
+    public String getFromShareRefence(String name) {
+        SharedPreferences sp = MyApplication.getInstance().getSharedPreferences(name, Context.MODE_PRIVATE);
+        String result = sp.getString(name, "");
+        return result;
+    }
 }

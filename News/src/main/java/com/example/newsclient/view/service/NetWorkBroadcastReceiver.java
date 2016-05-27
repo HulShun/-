@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 
-import com.example.newsclient.Model.utils.AppUtil;
+import com.example.newsclient.view.utils.AppUtil;
 import com.example.newsclient.view.Constant;
 
 public class NetWorkBroadcastReceiver extends BroadcastReceiver {

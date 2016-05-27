@@ -1,5 +1,6 @@
 package com.example.newsclient.view.impl;
 
+import com.example.newsclient.Model.bean.QQUserInfro;
 import com.example.newsclient.Model.bean.image.ImageMainTypeBean;
 import com.example.newsclient.Model.bean.video.VideoTypeBean;
 
@@ -15,8 +16,6 @@ public interface IMainViewImpl extends IBaseViewImpl {
 
     void onNewsTabs(List<String> tabs);
 
-    void onCompleted();
 
-    void showNoNetWork();
-
+    void onQQUserInfoResult(QQUserInfro qqUserInfro);
 }

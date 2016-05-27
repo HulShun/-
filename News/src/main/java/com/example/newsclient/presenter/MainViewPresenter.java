@@ -1,15 +1,28 @@
 package com.example.newsclient.presenter;
 
+import android.app.Activity;
 import android.content.Context;
 
 import com.example.newsclient.Configuration;
+import com.example.newsclient.Model.LogUtil;
+import com.example.newsclient.Model.bean.QQUserInfro;
 import com.example.newsclient.Model.bean.image.ImageMainTypeBean;
 import com.example.newsclient.Model.bean.image.ImageTypeJsonBean;
 import com.example.newsclient.Model.bean.video.VideoTypeBean;
 import com.example.newsclient.Model.impl.MainViewModelImpl;
+import com.example.newsclient.Model.impl.MyWeiboAuthListener;
+import com.example.newsclient.Model.impl.TencentBaseUIListenner;
 import com.example.newsclient.Model.model.MainViewModel;
+import com.example.newsclient.Model.utils.WeiboUtil;
 import com.example.newsclient.R;
 import com.example.newsclient.view.impl.IMainViewImpl;
+import com.sina.weibo.sdk.auth.Oauth2AccessToken;
+import com.sina.weibo.sdk.auth.sso.SsoHandler;
+import com.tencent.connect.UserInfo;
+import com.tencent.tauth.IUiListener;
+import com.tencent.tauth.Tencent;
+
+import org.json.JSONObject;
 
 import java.util.Arrays;
 import java.util.List;
@@ -159,4 +172,65 @@ public class MainViewPresenter extends BasePresenter<IMainViewImpl, MainViewMode
             }
         });
     }
+
+
+    public void qqlogin(final Tencent mTencent, final Activity context) {
+        //QQ登陆回调
+        IUiListener mTencentListener = new TencentBaseUIListenner() {
+            @Override
+            protected void doComplete(JSONObject values) {
+                super.doComplete(values);
+                String s = values.toString();
+                //保存用户信息
+                getModel().saveQQInfo(values, context);
+                //获取用户信息
+                getQQUserInfo(mTencent, context);
+
+            }
+        };
+
+        mTencent.login(context, "all", mTencentListener);
+    }
+
+
+    public void getQQUserInfo(Tencent mTencent, final Activity context) {
+        UserInfo userInfo = new UserInfo(context, mTencent.getQQToken());
+        getModel().getQQUserInfo(userInfo, new Observer<QQUserInfro>() {
+            @Override
+            public void onCompleted() {
+                if (getView().isVisiable()) {
+                    getView().showSuccess();
+                    getView().onCompleted();
+                }
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                if (getView().isVisiable()) {
+                    LogUtil.d(MainViewPresenter.class.getSimpleName(), e.getMessage());
+                    getView().showFaild(e.getMessage());
+                    getView().onCompleted();
+                }
+            }
+
+            @Override
+            public void onNext(QQUserInfro qqUserInfro) {
+                if (getView().isVisiable()) {
+                    getView().onQQUserInfoResult(qqUserInfro);
+                }
+            }
+        });
+
+    }
+
+    public void weiboLogin(SsoHandler mWeiboSsonHandler, final Context context) {
+        mWeiboSsonHandler.authorize(new MyWeiboAuthListener() {
+            @Override
+            protected void doComplete(Oauth2AccessToken oauth2AccessToken) {
+                WeiboUtil.saveToken(context, oauth2AccessToken);
+            }
+        });
+    }
+
+
 }

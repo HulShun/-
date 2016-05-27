@@ -10,7 +10,7 @@ import com.example.newsclient.Model.bean.NewsBean;
 import com.example.newsclient.Model.bean.NewsListBean;
 import com.example.newsclient.Model.impl.ApiService;
 import com.example.newsclient.Model.impl.NewsFragmentModelImpl;
-import com.example.newsclient.Model.utils.AppUtil;
+import com.example.newsclient.view.utils.AppUtil;
 import com.example.newsclient.Model.utils.MyImageLoader;
 import com.example.newsclient.Model.utils.RetrofitUtil;
 import com.example.newsclient.dao.NewsDao;

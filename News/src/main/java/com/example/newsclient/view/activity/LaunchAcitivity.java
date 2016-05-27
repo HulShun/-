@@ -7,23 +7,37 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.example.newsclient.Configuration;
 import com.example.newsclient.Model.model.MainViewModel;
-import com.example.newsclient.Model.utils.AppUtil;
+import com.example.newsclient.MyApplication;
 import com.example.newsclient.R;
+import com.example.newsclient.view.utils.AppUtil;
+
+import pl.droidsonroids.gif.AnimationListener;
+import pl.droidsonroids.gif.GifDrawable;
+import pl.droidsonroids.gif.GifImageView;
 
 public class LaunchAcitivity extends AppCompatActivity {
+
+    GifImageView gifImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launch);
-        final Intent intent = new Intent(this, MainActivity.class);
-        new Handler().postDelayed(new Runnable() {
+        gifImageView = (GifImageView) findViewById(R.id.activity_launch_gif);
+        ((GifDrawable) gifImageView.getDrawable()).addAnimationListener(new AnimationListener() {
             @Override
-            public void run() {
-                startActivity(intent);
-                LaunchAcitivity.this.finish();
+            public void onAnimationCompleted(int loopNumber) {
+                final Intent intent = new Intent(LaunchAcitivity.this, MainActivity.class);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        startActivity(intent);
+                        LaunchAcitivity.this.finish();
+                    }
+                }, 500);
             }
-        }, 2000);
+        });
+
 
         MainViewModel model = new MainViewModel();
         if (AppUtil.getInstance().isNetWorkConnected()) {
@@ -32,5 +46,7 @@ public class LaunchAcitivity extends AppCompatActivity {
             model.getVideoTabsFromNet(Configuration.YOUKU_API_BASE_URL);
         }
 
+        String userType = AppUtil.getInstance().getFromShareRefence("login");
+        MyApplication.getInstance().setUserTpye(userType);
     }
 }

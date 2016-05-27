@@ -5,7 +5,8 @@ import android.app.Application;
 
 import com.example.newsclient.Model.LogUtil;
 import com.example.newsclient.Model.utils.MyImageLoader;
-import com.squareup.leakcanary.LeakCanary;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.youku.player.YoukuPlayerBaseConfiguration;
 
 /**
@@ -14,6 +15,8 @@ import com.youku.player.YoukuPlayerBaseConfiguration;
 public class MyApplication extends Application {
     private static MyApplication myApplication;
     public static YoukuPlayerBaseConfiguration configuration;
+    /*登录用户的类型：qq,weibo*/
+    private String userTpye;
 
 
     public static MyApplication getInstance() {
@@ -26,8 +29,10 @@ public class MyApplication extends Application {
         myApplication = this;
         MyImageLoader.newInstance().init(this);
         LogUtil.setIsLog(true);
-        LeakCanary.install(this);
         //Picasso.with(this).setIndicatorsEnabled(true); //显示图片来源——本地，内存，网络
+
+        ImageLoaderConfiguration config = ImageLoaderConfiguration.createDefault(this);
+        ImageLoader.getInstance().init(config);
 
         //优酷播放器初始化
         configuration = new YoukuPlayerBaseConfiguration(this) {
@@ -66,5 +71,16 @@ public class MyApplication extends Application {
                 return null;
             }
         };
+    }
+
+    /**
+     * @return
+     */
+    public String getUserTpye() {
+        return userTpye;
+    }
+
+    public void setUserTpye(String userTpye) {
+        this.userTpye = userTpye;
     }
 }

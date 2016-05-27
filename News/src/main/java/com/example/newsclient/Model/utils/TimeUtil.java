@@ -1,5 +1,7 @@
 package com.example.newsclient.Model.utils;
 
+import com.example.newsclient.view.utils.AppUtil;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

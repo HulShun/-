@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.example.newsclient.Model.utils.AppUtil;
+import com.example.newsclient.view.utils.AppUtil;
 import com.example.newsclient.presenter.BasePresenter;
 import com.example.newsclient.view.impl.IBaseViewImpl;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
