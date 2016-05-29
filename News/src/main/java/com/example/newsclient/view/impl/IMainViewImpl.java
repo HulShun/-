@@ -1,6 +1,7 @@
 package com.example.newsclient.view.impl;
 
 import com.example.newsclient.Model.bean.QQUserInfro;
+import com.example.newsclient.Model.bean.WeiboUserInfo;
 import com.example.newsclient.Model.bean.image.ImageMainTypeBean;
 import com.example.newsclient.Model.bean.video.VideoTypeBean;
 
@@ -18,4 +19,6 @@ public interface IMainViewImpl extends IBaseViewImpl {
 
 
     void onQQUserInfoResult(QQUserInfro qqUserInfro);
+
+    void onWeiboUserInfoResult(WeiboUserInfo weiboUserInfo);
 }

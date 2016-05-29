@@ -32,11 +32,11 @@ import android.widget.Toast;
 import com.example.newsclient.Configuration;
 import com.example.newsclient.Model.bean.QQUserInfro;
 import com.example.newsclient.Model.bean.TencentOpenBean;
+import com.example.newsclient.Model.bean.WeiboUserInfo;
 import com.example.newsclient.Model.bean.image.ImageMainTypeBean;
 import com.example.newsclient.Model.bean.video.VideoTypeBean;
-import com.example.newsclient.MyApplication;
-import com.example.newsclient.view.utils.AppUtil;
 import com.example.newsclient.Model.utils.TencentUtil;
+import com.example.newsclient.MyApplication;
 import com.example.newsclient.R;
 import com.example.newsclient.presenter.MainViewPresenter;
 import com.example.newsclient.view.Constant;
@@ -46,8 +46,10 @@ import com.example.newsclient.view.fragment.NewsClassifyFragment;
 import com.example.newsclient.view.fragment.VideoClassifyFramgent;
 import com.example.newsclient.view.impl.IMainViewImpl;
 import com.example.newsclient.view.service.NetWorkBroadcastReceiver;
+import com.example.newsclient.view.utils.AppUtil;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.sina.weibo.sdk.auth.AuthInfo;
+import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 import com.sina.weibo.sdk.auth.sso.SsoHandler;
 import com.tencent.connect.common.Constants;
 import com.tencent.tauth.IUiListener;
@@ -136,12 +138,20 @@ public class MainActivity extends BaseActivity<MainViewPresenter> implements IMa
         nowMenuItemId = R.id.nav_news;
         mainNavi.setCheckedItem(nowMenuItemId);
         getPresenter().loadNewsType(this);
-
+        //验证当前登录的信息
         String userType = MyApplication.getInstance().getUserTpye();
-        if (userType.equals("qq")) {
-            initQQLogin();
-            getPresenter().getQQUserInfo(mTencent, MainActivity.this);
+        if (userType != null) {
+            if (userType.equals("qq")) {
+                initQQLogin();
+                getPresenter().getQQUserInfo(mTencent, this);
+            } else {
+                initWeiboLogin();
+                getPresenter().getWeiboUserInfo(weiboToken);
+            }
+
+
         }
+
     }
 
     private void initViews() {
@@ -269,6 +279,9 @@ public class MainActivity extends BaseActivity<MainViewPresenter> implements IMa
     private AuthInfo mWeiBoAuthInfo;
     /*SSO即客户端登陆模式*/
     private SsoHandler mWeiboSsonHandler;
+    /*微博的token登录信息*/
+    private Oauth2AccessToken weiboToken;
+
 
     private ProgressDialog mProgressDialog;
 
@@ -327,9 +340,24 @@ public class MainActivity extends BaseActivity<MainViewPresenter> implements IMa
     }
 
     @Override
+    public void showFaild(String msg) {
+        super.showFaild(msg);
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
     public void onQQUserInfoResult(QQUserInfro qqUserInfro) {
         mUserName_tv.setText(qqUserInfro.getNickname());
         ImageLoader.getInstance().displayImage(qqUserInfro.getFigureurl_qq_2(), mUserhead_iv, AppUtil.getInstance().getHeadImageOptions());
+        login_layout.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onWeiboUserInfoResult(WeiboUserInfo weiboUserInfo) {
+        mUserName_tv.setText(weiboUserInfo.getScreen_name());
+        ImageLoader.getInstance().displayImage(weiboUserInfo.getProfile_image_url(),
+                mUserhead_iv,
+                AppUtil.getInstance().getHeadImageOptions());
         login_layout.setVisibility(View.GONE);
     }
 
@@ -377,6 +405,7 @@ public class MainActivity extends BaseActivity<MainViewPresenter> implements IMa
         //微博登录返回信息
         if (mWeiboSsonHandler != null) {
             mWeiboSsonHandler.authorizeCallBack(requestCode, resultCode, data);
+            mProgressDialog.dismiss();
         }
         super.onActivityResult(requestCode, resultCode, data);
     }

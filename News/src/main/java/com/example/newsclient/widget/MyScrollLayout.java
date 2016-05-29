@@ -1,6 +1,7 @@
 package com.example.newsclient.widget;
 
 import android.content.Context;
+import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
@@ -9,6 +10,7 @@ import android.view.VelocityTracker;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.OverScroller;
 import android.widget.RelativeLayout;
@@ -21,6 +23,8 @@ import com.example.newsclient.R;
 public class MyScrollLayout extends LinearLayout {
     private static final int MOVE_INT = 50;   //下滑可以，切换滑动对象的临界值
     private View briefView_nolimit, briefView_limit;
+    private Button tv_btn;
+
     private View moreBtn;
     private RelativeLayout relativeLayout;
     private RecyclerView recyclerView;
@@ -52,6 +56,7 @@ public class MyScrollLayout extends LinearLayout {
         mTouchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
         mMaxVelocity = ViewConfiguration.get(context).getScaledMaximumFlingVelocity();
         mMinVelocity = ViewConfiguration.get(context).getScaledMinimumFlingVelocity();
+
     }
 
     public MyScrollLayout(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -64,6 +69,7 @@ public class MyScrollLayout extends LinearLayout {
         briefView_limit = findViewById(R.id.brief_text);
         briefView_nolimit = findViewById(R.id.brief_text_nolimit);
         moreBtn = findViewById(R.id.brief_more_btn);
+        tv_btn = (Button) findViewById(R.id.brief_tv_btn);
         relativeLayout = (RelativeLayout) findViewById(R.id.brief_rlayout);
         recyclerView = (RecyclerView) findViewById(R.id.brief_more_rv);
     }
@@ -83,8 +89,22 @@ public class MyScrollLayout extends LinearLayout {
         super.onSizeChanged(w, h, oldw, oldh);
         int textHeight;
         textHeight = briefView_limit.getMeasuredHeight(); //要取得是整个view的高度，getHeight()是取在屏幕上看到的高度
-        topViewHeight = textHeight + moreBtn.getMeasuredHeight();
+        topViewHeight = textHeight + tv_btn.getMeasuredHeight();
 
+    }
+
+    public void notifyTextViewHeighChanged(final int flag) {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (flag == 0) {
+                    topViewHeight = briefView_limit.getMeasuredHeight() + tv_btn.getMeasuredHeight();
+                } else {
+                    topViewHeight = briefView_nolimit.getMeasuredHeight() + tv_btn.getMeasuredHeight();
+                }
+
+            }
+        }, 500);
     }
 
     @Override

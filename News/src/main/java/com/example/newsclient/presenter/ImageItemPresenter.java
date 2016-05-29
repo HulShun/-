@@ -50,8 +50,10 @@ public class ImageItemPresenter extends BasePresenter<ImageItemViewImpl, ImageIt
                     for (ImageContentBean bean : data) {
                         if (bean.getItemId().equals(itemid)) {
                             getView().onImagesResult(bean);
+                            return;
                         }
                     }
+                    onError(new Throwable("加载失败"));
                 }
 
             }

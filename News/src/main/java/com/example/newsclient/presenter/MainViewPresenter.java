@@ -6,6 +6,7 @@ import android.content.Context;
 import com.example.newsclient.Configuration;
 import com.example.newsclient.Model.LogUtil;
 import com.example.newsclient.Model.bean.QQUserInfro;
+import com.example.newsclient.Model.bean.WeiboUserInfo;
 import com.example.newsclient.Model.bean.image.ImageMainTypeBean;
 import com.example.newsclient.Model.bean.image.ImageTypeJsonBean;
 import com.example.newsclient.Model.bean.video.VideoTypeBean;
@@ -37,6 +38,8 @@ public class MainViewPresenter extends BasePresenter<IMainViewImpl, MainViewMode
     private List<ImageMainTypeBean> mImageTpyes;
     private List<VideoTypeBean.VideoCategoriesBean> mVideoTypes;
     private List<String> mNewsTabs;
+
+
 
     public MainViewPresenter() {
         //参数 1 ：表示不刷新ui
@@ -90,6 +93,7 @@ public class MainViewPresenter extends BasePresenter<IMainViewImpl, MainViewMode
             getView().showNoNetWork();
             return;
         }
+        //网络加载后的标签，直接存放到数据库中
         getModel().getVideoTabsFromNet(url);
 
         getVideoTabsFromLocal(0);
@@ -120,6 +124,7 @@ public class MainViewPresenter extends BasePresenter<IMainViewImpl, MainViewMode
             public void onNext(VideoTypeBean videoTypeBean) {
                 if (getView().isVisiable()) {
                     mVideoTypes = videoTypeBean.getCategories();
+                  
                     if (flag == 0) {
                         getView().onVideoTabs(mVideoTypes);
                     }
@@ -165,6 +170,7 @@ public class MainViewPresenter extends BasePresenter<IMainViewImpl, MainViewMode
             public void onNext(ImageTypeJsonBean imageTypeJsonBean) {
                 if (getView() != null) {
                     mImageTpyes = imageTypeJsonBean.getShowapi_res_body().getList();
+
                     if (flag == 0) {
                         getView().onImageTabs(mImageTpyes);
                     }
@@ -228,9 +234,41 @@ public class MainViewPresenter extends BasePresenter<IMainViewImpl, MainViewMode
             @Override
             protected void doComplete(Oauth2AccessToken oauth2AccessToken) {
                 WeiboUtil.saveToken(context, oauth2AccessToken);
+                //去获取用户信息
+                getWeiboUserInfo(oauth2AccessToken);
             }
         });
     }
 
 
+    public void getWeiboUserInfo(final Oauth2AccessToken weiboToken) {
+
+        String token = weiboToken.getToken();
+        String uid = weiboToken.getUid();
+
+        getModel().getWeiboUserInfo(token, uid, new Observer<WeiboUserInfo>() {
+            @Override
+            public void onCompleted() {
+                if (getView().isVisiable()) {
+                    getView().showSuccess();
+                    getView().onCompleted();
+                }
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                if (getView().isVisiable()) {
+                    getView().showFaild(e.getMessage());
+                    getView().onCompleted();
+                }
+            }
+
+            @Override
+            public void onNext(WeiboUserInfo weiboUserInfo) {
+                if (getView().isVisiable()) {
+                    getView().onWeiboUserInfoResult(weiboUserInfo);
+                }
+            }
+        });
+    }
 }

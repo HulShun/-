@@ -17,7 +17,6 @@ public class WeiboUtil {
         editor.putString("token", data.getToken());
         editor.putString("expirestime", String.valueOf(data.getExpiresTime()));
         editor.putString("refresh_token", data.getRefreshToken());
-
         editor.apply();
     }
 

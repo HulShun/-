@@ -6,6 +6,7 @@ import com.example.newsclient.Configuration;
 import com.example.newsclient.Model.LogUtil;
 import com.example.newsclient.Model.bean.QQUserInfro;
 import com.example.newsclient.Model.bean.TencentOpenBean;
+import com.example.newsclient.Model.bean.WeiboUserInfo;
 import com.example.newsclient.Model.bean.image.ImageMainTypeBean;
 import com.example.newsclient.Model.bean.image.ImageTypeJsonBean;
 import com.example.newsclient.Model.bean.video.VideoTypeBean;
@@ -210,6 +211,21 @@ public class MainViewModel implements MainViewModelImpl {
 
             }
         });
+    }
+
+    @Override
+    public void getWeiboUserInfo(String token, String uid, Observer<WeiboUserInfo> observer) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://api.weibo.com")
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        retrofit.create(ApiService.class)
+                .loadWeiboUserInfo(token, uid)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer);
     }
 
 

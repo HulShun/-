@@ -2,6 +2,7 @@ package com.example.newsclient.view.fragment;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,6 +19,7 @@ import com.example.newsclient.view.activity.VideoRecommendActivity;
 import com.example.newsclient.view.adapter.RecommendVideoAapter;
 import com.example.newsclient.view.impl.IVideoBriefViewImpl;
 import com.example.newsclient.view.impl.OnItemClickListener;
+import com.example.newsclient.widget.MyScrollLayout;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -26,7 +28,6 @@ import butterknife.ButterKnife;
  * Created by Administrator on 2016-05-13.
  */
 public class VideoBriefFramgent extends BaseFragment<VideoBriefPresenter> implements IVideoBriefViewImpl {
-
 
     @Override
     protected VideoBriefPresenter initPresenter() {
@@ -54,7 +55,8 @@ public class VideoBriefFramgent extends BaseFragment<VideoBriefPresenter> implem
     Button briefMoreBtn;
     @Bind(R.id.brief_more_rv)
     RecyclerView briefMoreRv;
-
+    @Bind(R.id.brief_scroll_layout)
+    MyScrollLayout scrollLayout;
 
     private String vid;
     private VideoItemBean videoInform;
@@ -81,14 +83,17 @@ public class VideoBriefFramgent extends BaseFragment<VideoBriefPresenter> implem
                 if (isTextOn) {
                     isTextOn = false;
                     briefText.setVisibility(View.VISIBLE);
-                    briefText_nolimit.setVisibility(View.INVISIBLE);
+                    briefText_nolimit.setVisibility(View.GONE);
                     briefMoreText_Btn.setText(R.string.brief_text_on);
+                    scrollLayout.notifyTextViewHeighChanged(0);
+
                 } else {
                     isTextOn = true;
                     //设置成展示全文的状态
-                    briefText.setVisibility(View.INVISIBLE);
+                    briefText.setVisibility(View.GONE);
                     briefText_nolimit.setVisibility(View.VISIBLE);
                     briefMoreText_Btn.setText(R.string.brief_text_off);
+                    scrollLayout.notifyTextViewHeighChanged(1);
                 }
             }
         });
@@ -135,15 +140,17 @@ public class VideoBriefFramgent extends BaseFragment<VideoBriefPresenter> implem
         briefText.setVisibility(View.VISIBLE);
         briefText_nolimit.setVisibility(View.GONE);
         isTextOn = false;
+        boolean flag;
         //文字内容没有超过最大
-        if (shortHeight >= longHeight) {
+       /* if (shortHeight >= longHeight) {
             briefMoreText_Btn.setVisibility(View.GONE);
-            return false;
-        } else {
-            briefMoreText_Btn.setText(R.string.brief_text_on);
-            briefMoreText_Btn.setVisibility(View.VISIBLE);
-            return true;
-        }
+            flag = false;
+        } else {*/
+        briefMoreText_Btn.setText(R.string.brief_text_on);
+        briefMoreText_Btn.setVisibility(View.VISIBLE);
+        flag = true;
+
+        return flag;
     }
 
     @Override
@@ -164,11 +171,21 @@ public class VideoBriefFramgent extends BaseFragment<VideoBriefPresenter> implem
                     "\r\n" +
                     "\t\t\t\t" +
                     description);
-            briefText_nolimit.setText(title + description);
+            briefText_nolimit.setText(title +
+                    "\r\n" +
+                    "\t\t\t\t"
+                    + description);
         } else {
             briefText.setText(title + "无");
         }
-        mesureTextDescription(briefText.getMeasuredHeight(), briefText_nolimit.getMeasuredHeight());
+        scrollLayout.notifyTextViewHeighChanged(0);
+        //延迟，等待高度测量完成
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mesureTextDescription(briefText.getMeasuredHeight(), briefText_nolimit.getMeasuredHeight());
+            }
+        }, 500);
         //推荐视频
         mAdapter.clearData();
         mAdapter.addData(data.getVideos());

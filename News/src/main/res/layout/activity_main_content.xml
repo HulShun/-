@@ -17,7 +17,7 @@
             android:background="?attr/colorPrimary"
             android:fitsSystemWindows="true"
             android:title="@string/app_name"
-            app:layout_scrollFlags="scroll|enterAlways"
+
             app:navigationIcon="@drawable/toolbar_icon"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:titleTextColor="#ffffff">

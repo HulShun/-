@@ -1,6 +1,7 @@
 package com.example.newsclient.Model.impl;
 
 import com.example.newsclient.Model.bean.NewsListBean;
+import com.example.newsclient.Model.bean.WeiboUserInfo;
 import com.example.newsclient.Model.bean.image.ImageJsonBean;
 import com.example.newsclient.Model.bean.image.ImageTypeJsonBean;
 import com.example.newsclient.Model.bean.video.CommentsJsonBean;
@@ -143,4 +144,9 @@ public interface ApiService {
     @GET
     @Headers("Content_Type:iamge/jpeg")
     Observable<ResponseBody> loadImage(@Url String url);
+
+
+    @GET("2/users/show.json")
+    Observable<WeiboUserInfo> loadWeiboUserInfo(@Query("access_token") String token,
+                                                @Query("uid") String uid);
 }

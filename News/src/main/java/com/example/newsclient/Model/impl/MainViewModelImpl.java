@@ -3,6 +3,7 @@ package com.example.newsclient.Model.impl;
 import android.app.Activity;
 
 import com.example.newsclient.Model.bean.QQUserInfro;
+import com.example.newsclient.Model.bean.WeiboUserInfo;
 import com.example.newsclient.Model.bean.image.ImageTypeJsonBean;
 import com.example.newsclient.Model.bean.video.VideoTypeBean;
 import com.tencent.connect.UserInfo;
@@ -26,4 +27,6 @@ public interface MainViewModelImpl extends BaseModelImpl {
     void saveQQInfo(JSONObject values, Activity context);
 
     void getQQUserInfo(UserInfo userInfo, Observer<QQUserInfro> observer);
+
+    void getWeiboUserInfo(String token, String uid, Observer<WeiboUserInfo> observer);
 }

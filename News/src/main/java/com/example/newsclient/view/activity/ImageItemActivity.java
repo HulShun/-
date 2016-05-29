@@ -1,5 +1,6 @@
 package com.example.newsclient.view.activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -36,6 +37,8 @@ public class ImageItemActivity extends BaseActivity<ImageItemPresenter> implemen
     @Bind(R.id.activity_imageitem_tv_title)
     TextView title_tv;
 
+    private ProgressDialog mProgressDialog;
+
     private FragmentManager manager;
     private FragmentPagerAdapter mFragmentAdapter;
 
@@ -50,6 +53,12 @@ public class ImageItemActivity extends BaseActivity<ImageItemPresenter> implemen
 
     @Override
     protected void init() {
+        mProgressDialog = new ProgressDialog(this);
+        mProgressDialog.setMessage("加载中...");
+        mProgressDialog.setIndeterminate(false);
+        mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        mProgressDialog.show();
+
         Intent intent = getIntent();
         String type = intent.getStringExtra("type");
         String itemid = intent.getStringExtra("itemid");
@@ -92,6 +101,11 @@ public class ImageItemActivity extends BaseActivity<ImageItemPresenter> implemen
 
     }
 
+    @Override
+    public void onCompleted() {
+        super.onCompleted();
+        mProgressDialog.dismiss();
+    }
 
     private void initAdapter() {
         if (mData == null) {
