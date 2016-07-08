@@ -5,7 +5,6 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.design.widget.NavigationView;
@@ -17,6 +16,7 @@ import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.SearchView;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -30,12 +30,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.newsclient.Configuration;
+import com.example.newsclient.Model.utils.LoginAndShareManager;
 import com.example.newsclient.Model.bean.QQUserInfro;
-import com.example.newsclient.Model.bean.TencentOpenBean;
 import com.example.newsclient.Model.bean.WeiboUserInfo;
 import com.example.newsclient.Model.bean.image.ImageMainTypeBean;
 import com.example.newsclient.Model.bean.video.VideoTypeBean;
-import com.example.newsclient.Model.utils.TencentUtil;
+import com.example.newsclient.Model.utils.WeiboUtil;
 import com.example.newsclient.MyApplication;
 import com.example.newsclient.R;
 import com.example.newsclient.presenter.MainViewPresenter;
@@ -48,12 +48,12 @@ import com.example.newsclient.view.impl.IMainViewImpl;
 import com.example.newsclient.view.service.NetWorkBroadcastReceiver;
 import com.example.newsclient.view.utils.AppUtil;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.sina.weibo.sdk.auth.AuthInfo;
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 import com.sina.weibo.sdk.auth.sso.SsoHandler;
 import com.tencent.connect.common.Constants;
 import com.tencent.tauth.IUiListener;
 import com.tencent.tauth.Tencent;
+import com.tencent.tauth.UiError;
 
 import java.util.List;
 
@@ -64,7 +64,7 @@ public class MainActivity extends BaseActivity<MainViewPresenter> implements IMa
 
     private FragmentPagerAdapter mFragmentAdapter;
     private FragmentManager mFragmentManager;
-    private List<String> mTab_list;
+    // private List<String> mTab_list;
 
     private NetWorkBroadcastReceiver networkReceiver;
     private int nowMenuItemId;
@@ -140,7 +140,7 @@ public class MainActivity extends BaseActivity<MainViewPresenter> implements IMa
         getPresenter().loadNewsType(this);
         //验证当前登录的信息
         String userType = MyApplication.getInstance().getUserTpye();
-        if (userType != null) {
+        if (!TextUtils.isEmpty(userType)) {
             if (userType.equals("qq")) {
                 initQQLogin();
                 getPresenter().getQQUserInfo(mTencent, this);
@@ -148,8 +148,6 @@ public class MainActivity extends BaseActivity<MainViewPresenter> implements IMa
                 initWeiboLogin();
                 getPresenter().getWeiboUserInfo(weiboToken);
             }
-
-
         }
 
     }
@@ -231,13 +229,6 @@ public class MainActivity extends BaseActivity<MainViewPresenter> implements IMa
         mUserhead_iv = (ImageView) view.findViewById(R.id.header_imageView);
         mUserMessage_tv = (TextView) view.findViewById(R.id.header_msg);
 
-        login_layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                /*Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent);*/
-            }
-        });
         //微博登录
         weibo_login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -246,11 +237,7 @@ public class MainActivity extends BaseActivity<MainViewPresenter> implements IMa
                     initProgressDialog();
                 }
                 mProgressDialog.show();
-
-                if (mWeiBoAuthInfo == null) {
-                    initWeiboLogin();
-                }
-                getPresenter().weiboLogin(mWeiboSsonHandler, MainActivity.this);
+                getPresenter().weiboLogin(MainActivity.this);
 
             }
         });
@@ -275,8 +262,6 @@ public class MainActivity extends BaseActivity<MainViewPresenter> implements IMa
     /*QQ登陆*/
     private Tencent mTencent;
     private IUiListener mTencentListener;
-    /*微博登陆*/
-    private AuthInfo mWeiBoAuthInfo;
     /*SSO即客户端登陆模式*/
     private SsoHandler mWeiboSsonHandler;
     /*微博的token登录信息*/
@@ -293,16 +278,30 @@ public class MainActivity extends BaseActivity<MainViewPresenter> implements IMa
     }
 
     private void initWeiboLogin() {
-        mWeiBoAuthInfo = new AuthInfo(MainActivity.this, Configuration.WEIBO_APPID, Configuration.WEIBO_REDIRECT_URL, "statuses_to_me_read");
-        mWeiboSsonHandler = new SsoHandler(MainActivity.this, mWeiBoAuthInfo);
+        weiboToken = WeiboUtil.getToken(this);
+        mWeiboSsonHandler = LoginAndShareManager.getInstance().getWeiboLoginSsoHandler(MainActivity.this);
     }
 
     private void initQQLogin() {
         //QQ登陆对象实例化
-        mTencent = Tencent.createInstance(Configuration.TENCENT_APPID, this.getApplicationContext());
-        TencentOpenBean data = TencentUtil.getToken(MainActivity.this);
-        mTencent.setOpenId(data.getOpenid());
-        mTencent.setAccessToken(data.getAccess_token(), String.valueOf(data.getExpires_in()));
+        mTencent = LoginAndShareManager.getInstance().getQQLoginTencent(MainActivity.this);
+        //登陆回调
+        mTencentListener = new IUiListener() {
+            @Override
+            public void onComplete(Object o) {
+
+            }
+
+            @Override
+            public void onError(UiError uiError) {
+
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+        };
     }
 
 
@@ -361,6 +360,11 @@ public class MainActivity extends BaseActivity<MainViewPresenter> implements IMa
         login_layout.setVisibility(View.GONE);
     }
 
+    @Override
+    public void onSsoHeandlerResult(SsoHandler ssoHandler) {
+        mWeiboSsonHandler = ssoHandler;
+    }
+
 
     public void setViewpagerAndTablayout() {
 
@@ -374,6 +378,14 @@ public class MainActivity extends BaseActivity<MainViewPresenter> implements IMa
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        if (mProgressDialog != null) {
+            mProgressDialog.dismiss();
+        }
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         unregisterReceiver(networkReceiver);
@@ -382,31 +394,17 @@ public class MainActivity extends BaseActivity<MainViewPresenter> implements IMa
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch (resultCode) {
-            case ArticleActivity.ARTICLE_CODE:
-                //从新闻详情页返回，要将tab显示为当前的新闻所在的tab页
-                Bundle bundle = data.getBundleExtra("article");
-                String key = bundle.getString("key");
-                int position = 0;
-                for (int i = 0; i < mTab_list.size(); i++) {
-                    if (key.equals(mTab_list.get(i))) {
-                        position = i;
-                    }
-                }
-                if (mainViewpager != null) {
-                    mainViewpager.setCurrentItem(position);
-                }
-        }
+
         //QQ登录返回信息
         if (requestCode == Constants.REQUEST_LOGIN) {
             Tencent.onActivityResultData(requestCode, resultCode, data, mTencentListener);
-            mProgressDialog.dismiss();
+
         }
         //微博登录返回信息
         if (mWeiboSsonHandler != null) {
             mWeiboSsonHandler.authorizeCallBack(requestCode, resultCode, data);
-            mProgressDialog.dismiss();
         }
+
         super.onActivityResult(requestCode, resultCode, data);
     }
 

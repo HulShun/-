@@ -23,7 +23,7 @@ public class RecommendVideoAapter extends BaseRecyclerViewAdapter<RecommendJsonV
 
     @Override
     public int getItemLayoutId() {
-        return R.layout.fragment_brief_video_item;
+        return R.layout.fragment_brief_item_video;
     }
 
     @Override

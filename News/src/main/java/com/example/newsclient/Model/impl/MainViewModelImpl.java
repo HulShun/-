@@ -6,11 +6,13 @@ import com.example.newsclient.Model.bean.QQUserInfro;
 import com.example.newsclient.Model.bean.WeiboUserInfo;
 import com.example.newsclient.Model.bean.image.ImageTypeJsonBean;
 import com.example.newsclient.Model.bean.video.VideoTypeBean;
+import com.sina.weibo.sdk.auth.sso.SsoHandler;
 import com.tencent.connect.UserInfo;
 
 import org.json.JSONObject;
 
 import rx.Observer;
+import rx.functions.Action1;
 
 /**
  * Created by Administrator on 2016-05-05.
@@ -29,4 +31,7 @@ public interface MainViewModelImpl extends BaseModelImpl {
     void getQQUserInfo(UserInfo userInfo, Observer<QQUserInfro> observer);
 
     void getWeiboUserInfo(String token, String uid, Observer<WeiboUserInfo> observer);
+
+    void weiboLogin(Activity activity, Action1<SsoHandler> action1);
+
 }

@@ -178,7 +178,6 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
             // ((FooterViewHolder) footerVH).loadingLayout.setVisibility(View.GONE);
             ((FooterViewHolder) footerVH).textView.setText(R.string.footer_btn);
             ((FooterViewHolder) footerVH).imageView.setVisibility(View.GONE);
-            notifyItemChanged(datas.size());
             LogUtil.d("footer", "showFooterBtn");
         }
     }
@@ -189,8 +188,13 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
             ((FooterViewHolder) footerVH).imageView.setImageResource(R.drawable.footer_loading);
             ((FooterViewHolder) footerVH).imageView.setVisibility(View.VISIBLE);
             ((FooterViewHolder) footerVH).textView.setText(R.string.footer_loadmore);
-            notifyItemChanged(datas.size());
             LogUtil.d("footer", "showFooterLoading");
+        }
+    }
+
+    public void showFooterLoadCompleted() {
+        if (footerVH != null) {
+            ((FooterViewHolder) footerVH).loadingLayout.setVisibility(View.GONE);
         }
     }
 

@@ -27,18 +27,15 @@ import android.widget.Toast;
 import com.example.newsclient.Model.LogUtil;
 import com.example.newsclient.Model.ModelMode;
 import com.example.newsclient.Model.bean.video.VideoItemBean;
+import com.example.newsclient.Model.utils.LoginAndShareManager;
 import com.example.newsclient.R;
 import com.example.newsclient.presenter.VideoItemPresenter;
-import com.example.newsclient.view.fragment.VideoBriefFramgent;
+import com.example.newsclient.view.fragment.VideoBriefFramgent2;
 import com.example.newsclient.view.fragment.VideoCommentsFramgent;
 import com.example.newsclient.view.impl.IVideoItemViewImpl;
 import com.sina.weibo.sdk.api.share.BaseRequest;
 import com.sina.weibo.sdk.api.share.IWeiboHandler;
-import com.sina.weibo.sdk.api.share.IWeiboShareAPI;
-import com.sina.weibo.sdk.api.share.WeiboShareSDK;
-import com.tencent.mm.sdk.openapi.IWXAPI;
 import com.tencent.mm.sdk.openapi.SendMessageToWX;
-import com.tencent.mm.sdk.openapi.WXAPIFactory;
 import com.youku.player.base.YoukuBasePlayerManager;
 import com.youku.player.base.YoukuPlayer;
 import com.youku.player.base.YoukuPlayerView;
@@ -48,7 +45,7 @@ import butterknife.Bind;
 /**
  * Created by Administrator on 2016-05-11.
  */
-public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implements IVideoItemViewImpl {
+public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implements IVideoItemViewImpl, View.OnClickListener {
     @Bind(R.id.videoitem_player)
     YoukuPlayerView mPlayerView;
 
@@ -81,7 +78,7 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
         //获取视频信息
         getPresenter().loadVideoData(id, ModelMode.LOCAL);
         //初始化优酷播放器
-         initYoukuPlayer();
+        initYoukuPlayer();
 
         initViewPager();
         //返回按钮
@@ -121,8 +118,6 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
     private CheckedTextView shareQqBtn;
     private CheckedTextView shareWeiboBtn;
 
-    private IWeiboShareAPI mWeiboShareAPI;
-    private IWXAPI mWechatAPI;
 
     private void initPopupWindow() {
         View view = LayoutInflater.from(this).inflate(R.layout.popupwindow_videoitem, null, false);
@@ -137,52 +132,31 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
         mPopupWindow.setOutsideTouchable(true);
 
         //QQ分享
-        shareQqBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                shareToQQ();
-                mPopupWindow.dismiss();
-            }
-        });
-        shareWeiboBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mWeiboShareAPI == null) {
-                    //初始化
-                    mWeiboShareAPI = WeiboShareSDK.createWeiboAPI(VideoItemActivity.this, com.example.newsclient.Configuration.WEIBO_APPID);
-                    mWeiboShareAPI.registerApp();
-                }
-                shareToWeibo();
-                mPopupWindow.dismiss();
-            }
-        });
+        shareQqBtn.setOnClickListener(this);
+        shareWeiboBtn.setOnClickListener(this);
+        shareWechatBtn.setOnClickListener(this);
 
-        shareWechatBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mWechatAPI == null) {
-                    initWechatShare();
-                }
-                shareToWechat(SendMessageToWX.Req.WXSceneSession);
-                mPopupWindow.dismiss();
-            }
-        });
-
-        shareWechatFBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mWechatAPI == null) {
-                    initWechatShare();
-                }
-                shareToWechat(SendMessageToWX.Req.WXSceneTimeline);
-                mPopupWindow.dismiss();
-            }
-        });
     }
 
-    private void initWechatShare() {
-        mWechatAPI = WXAPIFactory.createWXAPI(VideoItemActivity.this, com.example.newsclient.Configuration.WECHAT_APPID, true);
-        mWechatAPI.registerApp(com.example.newsclient.Configuration.WECHAT_APPID);
+
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        switch (id) {
+            case R.id.share_wechat_btn:
+                shareToWechat(SendMessageToWX.Req.WXSceneSession);
+                mPopupWindow.dismiss();
+                break;
+            case R.id.share_qq_btn:
+                shareToQQ();
+                mPopupWindow.dismiss();
+                break;
+            case R.id.share_weibo_btn:
+                shareToWeibo();
+                mPopupWindow.dismiss();
+                break;
+
+        }
     }
 
     /**
@@ -193,7 +167,7 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
             Toast.makeText(VideoItemActivity.this, "视频信息获取失败...", Toast.LENGTH_SHORT).show();
             return;
         }
-        getPresenter().shareToWechat(VideoItemActivity.this, mWechatAPI, videoData, flage);
+        LoginAndShareManager.getInstance().shareToWechat(VideoItemActivity.this, videoData, flage);
     }
 
 
@@ -202,7 +176,7 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
             Toast.makeText(VideoItemActivity.this, "视频信息获取失败...", Toast.LENGTH_SHORT).show();
             return;
         }
-        getPresenter().prepareShareToWeibo(VideoItemActivity.this, mWeiboShareAPI, videoData);
+        LoginAndShareManager.getInstance().shareToWeibo(VideoItemActivity.this, videoData);
     }
 
     private void shareToQQ() {
@@ -210,7 +184,7 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
             Toast.makeText(VideoItemActivity.this, "视频信息获取失败...", Toast.LENGTH_SHORT).show();
             return;
         }
-        getPresenter().shareToQQ(VideoItemActivity.this, videoData);
+        LoginAndShareManager.getInstance().shareToQQ(VideoItemActivity.this, videoData);
     }
 
     @Bind(R.id.video_vp)
@@ -226,7 +200,7 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
                 Bundle bundle = new Bundle();
                 bundle.putCharSequence("vid", id);
                 if (position == 0) {
-                    fragment = new VideoBriefFramgent();
+                    fragment = new VideoBriefFramgent2();
                 } else {
                     fragment = new VideoCommentsFramgent();
                 }
@@ -306,15 +280,14 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        if (mWechatAPI != null) {
-            mWeiboShareAPI.handleWeiboRequest(intent, new IWeiboHandler.Request() {
-                @Override
-                public void onRequest(BaseRequest baseRequest) {
-                    LogUtil.d("weibo", "分享后返回：" + baseRequest.getType());
-                }
-            });
-        }
-
+        LoginAndShareManager.getInstance()
+                .getWeiboShareApi(VideoItemActivity.this)
+                .handleWeiboRequest(intent, new IWeiboHandler.Request() {
+                    @Override
+                    public void onRequest(BaseRequest baseRequest) {
+                        LogUtil.d("weibo", "分享后返回：" + baseRequest.getType());
+                    }
+                });
     }
 
 
@@ -382,6 +355,7 @@ public class VideoItemActivity extends BaseActivity<VideoItemPresenter> implemen
         super.onConfigurationChanged(newConfig);
         mPlayManager.onConfigurationChanged(newConfig);
     }
+
 
     class MyYoukuBasePlayerManager extends YoukuBasePlayerManager {
 

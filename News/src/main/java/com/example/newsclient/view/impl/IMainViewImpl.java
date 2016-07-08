@@ -4,6 +4,7 @@ import com.example.newsclient.Model.bean.QQUserInfro;
 import com.example.newsclient.Model.bean.WeiboUserInfo;
 import com.example.newsclient.Model.bean.image.ImageMainTypeBean;
 import com.example.newsclient.Model.bean.video.VideoTypeBean;
+import com.sina.weibo.sdk.auth.sso.SsoHandler;
 
 import java.util.List;
 
@@ -21,4 +22,7 @@ public interface IMainViewImpl extends IBaseViewImpl {
     void onQQUserInfoResult(QQUserInfro qqUserInfro);
 
     void onWeiboUserInfoResult(WeiboUserInfo weiboUserInfo);
+
+    void onSsoHeandlerResult(SsoHandler ssoHandler);
+
 }

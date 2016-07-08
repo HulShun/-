@@ -54,32 +54,6 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsBean, NewsViewHolde
         } else {
             imageView.setImageResource(R.drawable.ic_loading);
         }
-       /* //先设置默认显示图片
-        imageView.setImageBitmap(getLoadingBitmap());*/
-       /* addTask(new Runnable() {
-            @Override
-            public void run() {
-                //获取图片并显示到imageview上
-                mPresenter.getBitmap(s, new ImageLoader.ImageListener() {
-                    @Override
-                    public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
-
-                        if (s != null && holder.imageView.getTag().equals(s)) {
-                            getTdDrawableArray()[1] = new BitmapDrawable(getContext().getResources(), response.getBitmap());
-                            TransitionDrawable td = new TransitionDrawable(getTdDrawableArray());
-                            holder.imageView.setImageDrawable(td);
-                            td.startTransition(300);
-                        }
-                    }
-
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                    }
-                });
-            }
-
-        });  */
-
 
     }
 

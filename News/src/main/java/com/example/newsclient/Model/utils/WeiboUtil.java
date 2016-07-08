@@ -25,7 +25,7 @@ public class WeiboUtil {
         Oauth2AccessToken data = new Oauth2AccessToken();
         data.setUid(sp.getString("uid", ""));
         data.setToken(sp.getString("token", ""));
-        data.setExpiresTime(Long.parseLong(sp.getString("expirestime", "")));
+        data.setExpiresTime(Long.parseLong(sp.getString("expirestime", "0")));
         data.setRefreshToken(sp.getString("refresh_token", ""));
 
         return data;

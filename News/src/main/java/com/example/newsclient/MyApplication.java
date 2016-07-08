@@ -7,6 +7,7 @@ import com.example.newsclient.Model.LogUtil;
 import com.example.newsclient.Model.utils.MyImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.squareup.leakcanary.LeakCanary;
 import com.youku.player.YoukuPlayerBaseConfiguration;
 
 /**
@@ -29,6 +30,7 @@ public class MyApplication extends Application {
         myApplication = this;
         MyImageLoader.newInstance().init(this);
         LogUtil.setIsLog(true);
+        LeakCanary.install(this);
         //Picasso.with(this).setIndicatorsEnabled(true); //显示图片来源——本地，内存，网络
 
         ImageLoaderConfiguration config = ImageLoaderConfiguration.createDefault(this);

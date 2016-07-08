@@ -1,6 +1,5 @@
 package com.example.newsclient.Model.model;
 
-import com.android.volley.toolbox.ImageLoader;
 import com.example.newsclient.Configuration;
 import com.example.newsclient.Model.LogUtil;
 import com.example.newsclient.Model.ModelMode;
@@ -8,7 +7,6 @@ import com.example.newsclient.Model.bean.image.ImageJsonBean;
 import com.example.newsclient.Model.bean.image.ImageTypeBean;
 import com.example.newsclient.Model.impl.ApiService;
 import com.example.newsclient.Model.impl.ImageClassifyModelImpl;
-import com.example.newsclient.Model.utils.MyImageLoader;
 import com.example.newsclient.Model.utils.RetrofitUtil;
 import com.example.newsclient.dao.ImagesDao;
 
@@ -29,11 +27,6 @@ import rx.schedulers.Schedulers;
  * Created by Administrator on 2016-05-05.
  */
 public class ImageClassifyModel implements ImageClassifyModelImpl {
-
-    @Override
-    public void onLoadBitmap(String url, ImageLoader.ImageListener l) {
-        MyImageLoader.getImageLoader().get(url, l, 500, 500);
-    }
 
 
     @Override
@@ -56,7 +49,7 @@ public class ImageClassifyModel implements ImageClassifyModelImpl {
             LogUtil.d("type", "需要网络获取type有：\"" + types.length + "\"个数据");
             //有个问题，flatMap有一个产生了错误，from中之后的数据将不会接着被flatMap
             Observable.from(types)
-                    .flatMap(new Func1<String, Observable<ImageJsonBean>>() {
+                    .concatMapDelayError(new Func1<String, Observable<ImageJsonBean>>() {
                         @Override
                         public Observable<ImageJsonBean> call(String s) {
                             LogUtil.d("type", "网络获取type为：\"" + s + "\"的数据");

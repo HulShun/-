@@ -1,8 +1,10 @@
 package com.example.newsclient.view.activity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -12,6 +14,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 import android.widget.ProgressBar;
 
 import com.example.newsclient.R;
@@ -81,8 +84,6 @@ public class ArticleActivity extends BaseActivity {
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
                 super.onProgressChanged(view, newProgress);
-
-
                 progressBar.setVisibility(View.VISIBLE);
                 progressBar.setProgress(newProgress);
                 if (newProgress == 100) {
@@ -90,7 +91,7 @@ public class ArticleActivity extends BaseActivity {
                 }
             }
         });
-        articleWebview.loadUrl(mArticle_url);
+
         //阻止系统浏览器或者第三方浏览器启动
         articleWebview.setWebViewClient(new WebViewClient() {
             @Override
@@ -116,6 +117,8 @@ public class ArticleActivity extends BaseActivity {
                 startActivity(intent);
             }
         });
+
+        articleWebview.loadUrl(mArticle_url);
     }
 
     @Override
@@ -137,6 +140,15 @@ public class ArticleActivity extends BaseActivity {
 
     @Override
     public void showFaild(String msg) {
+
+
+        Dialog dialog = new Dialog(this);
+        //加载view，这个view里面就包含了你那里的需要findViewById的button
+        View view = LayoutInflater.from(this).inflate(R.layout.activity_article, null, false);
+        dialog.setContentView(view);
+
+        Button button = (Button) view.findViewById(R.id.share_weibo_btn);
+
 
     }
 

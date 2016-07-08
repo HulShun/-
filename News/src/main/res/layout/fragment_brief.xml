@@ -43,38 +43,7 @@
         android:textColor="@color/text_color2"
         android:textSize="@dimen/px28" />
 
-    <RelativeLayout
-        android:id="@+id/brief_rlayout"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/px40"
-        android:layout_marginTop="@dimen/px50">
-
-        <ImageView
-            android:id="@+id/brief_iv"
-            android:layout_width="@dimen/px6"
-            android:layout_height="match_parent"
-            android:background="@color/colorPrimary" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/px14"
-            android:layout_toRightOf="@id/brief_iv"
-            android:text="推荐视频"
-            android:textColor="@color/colorPrimary"
-            android:textSize="16sp" />
-
-        <Button
-            android:id="@+id/brief_more_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:background="@android:color/transparent"
-            android:text="更多"
-            android:textColor="@color/colorPrimary"
-            android:textSize="16sp" />
-    </RelativeLayout>
+    <include layout="@layout/fragment_brief_item_subtitle" />
 
 
     <android.support.v7.widget.RecyclerView

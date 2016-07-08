@@ -21,7 +21,6 @@ import com.example.newsclient.view.impl.IFragmentViewImpl;
 import com.example.newsclient.view.impl.OnItemClickListener;
 import com.example.newsclient.view.viewholder.NewsViewHolder;
 import com.example.newsclient.widget.AutoRecyclerView;
-import com.example.newsclient.widget.MyScrollLayout;
 
 import java.util.HashMap;
 import java.util.List;
@@ -47,7 +46,6 @@ public class NewsClassifyFragment extends BaseFragment<NewsClassfyPresenter> imp
 
     @Bind(R.id.fragment_refresh)
     SwipeRefreshLayout fragmentRefresh;
-
 
 
     @Override
@@ -130,7 +128,6 @@ public class NewsClassifyFragment extends BaseFragment<NewsClassfyPresenter> imp
         newsRc.addOnScrollListener(new AutoRecyclerView.AutoLoadMoreListener() {
             @Override
             protected void loadMore() {
-                mAdapter.showFooterLoading();
                 getMore();
             }
         });
@@ -144,7 +141,7 @@ public class NewsClassifyFragment extends BaseFragment<NewsClassfyPresenter> imp
             mAdapter.showFooterLoading();
             Map<String, String> map = new HashMap<>();
             map.put("keyword", mKeyWord);
-            map.put("page", String.valueOf(nextPage));
+            map.put("page", String.valueOf(++nextPage));
             map.put("count", "20");
             getPresenter().getNewsList(ModelMode.LOCAL, map);
         }
@@ -190,11 +187,13 @@ public class NewsClassifyFragment extends BaseFragment<NewsClassfyPresenter> imp
             mAdapter.setFooterShow(false);
         }
         mAdapter.addData(list);
-        nextPage++;
     }
 
     @Override
     public void onLoadMore(NewsListBean datas) {
+        if (datas.getRetData().getData() == null) {
+            mAdapter.showFooterLoadCompleted();
+        }
         mAdapter.addData(datas.getRetData().getData());
     }
 

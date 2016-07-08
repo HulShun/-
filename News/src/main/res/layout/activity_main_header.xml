@@ -70,6 +70,7 @@
                 android:id="@+id/main_header_login_weibo_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/px18"
                 android:text="微博登录" />
 
 

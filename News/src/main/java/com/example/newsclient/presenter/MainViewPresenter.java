@@ -14,6 +14,7 @@ import com.example.newsclient.Model.impl.MainViewModelImpl;
 import com.example.newsclient.Model.impl.MyWeiboAuthListener;
 import com.example.newsclient.Model.impl.TencentBaseUIListenner;
 import com.example.newsclient.Model.model.MainViewModel;
+import com.example.newsclient.Model.utils.TencentUtil;
 import com.example.newsclient.Model.utils.WeiboUtil;
 import com.example.newsclient.R;
 import com.example.newsclient.view.impl.IMainViewImpl;
@@ -29,6 +30,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import rx.Observer;
+import rx.functions.Action1;
 
 /**
  * Created by Administrator on 2016-05-05.
@@ -38,7 +40,6 @@ public class MainViewPresenter extends BasePresenter<IMainViewImpl, MainViewMode
     private List<ImageMainTypeBean> mImageTpyes;
     private List<VideoTypeBean.VideoCategoriesBean> mVideoTypes;
     private List<String> mNewsTabs;
-
 
 
     public MainViewPresenter() {
@@ -124,7 +125,7 @@ public class MainViewPresenter extends BasePresenter<IMainViewImpl, MainViewMode
             public void onNext(VideoTypeBean videoTypeBean) {
                 if (getView().isVisiable()) {
                     mVideoTypes = videoTypeBean.getCategories();
-                  
+
                     if (flag == 0) {
                         getView().onVideoTabs(mVideoTypes);
                     }
@@ -189,6 +190,7 @@ public class MainViewPresenter extends BasePresenter<IMainViewImpl, MainViewMode
                 String s = values.toString();
                 //保存用户信息
                 getModel().saveQQInfo(values, context);
+                mTencent.setOpenId(TencentUtil.getToken(context).getOpenid());
                 //获取用户信息
                 getQQUserInfo(mTencent, context);
 
@@ -201,6 +203,7 @@ public class MainViewPresenter extends BasePresenter<IMainViewImpl, MainViewMode
 
     public void getQQUserInfo(Tencent mTencent, final Activity context) {
         UserInfo userInfo = new UserInfo(context, mTencent.getQQToken());
+
         getModel().getQQUserInfo(userInfo, new Observer<QQUserInfro>() {
             @Override
             public void onCompleted() {
@@ -229,15 +232,25 @@ public class MainViewPresenter extends BasePresenter<IMainViewImpl, MainViewMode
 
     }
 
-    public void weiboLogin(SsoHandler mWeiboSsonHandler, final Context context) {
-        mWeiboSsonHandler.authorize(new MyWeiboAuthListener() {
+    public void weiboLogin(final Activity activity) {
+        getModel().weiboLogin(activity, new Action1<SsoHandler>() {
             @Override
-            protected void doComplete(Oauth2AccessToken oauth2AccessToken) {
-                WeiboUtil.saveToken(context, oauth2AccessToken);
-                //去获取用户信息
-                getWeiboUserInfo(oauth2AccessToken);
+            public void call(SsoHandler ssoHandler) {
+                if (getView().isVisiable()) {
+                    getView().onSsoHeandlerResult(ssoHandler);
+                }
+                ssoHandler.authorize(new MyWeiboAuthListener() {
+                    @Override
+                    protected void doComplete(Oauth2AccessToken oauth2AccessToken) {
+                        WeiboUtil.saveToken(activity, oauth2AccessToken);
+                        //去获取用户信息
+                        getWeiboUserInfo(oauth2AccessToken);
+                    }
+                });
+
             }
         });
+
     }
 
 

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:id="@+id/brief_scroll_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+
+    <include layout="@layout/fragment_brief_item_subtitle" />
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/brief_more_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/px12"
+        android:layout_marginRight="@dimen/px12"
+        android:layout_marginTop="@dimen/px24"
+        android:overScrollMode="never" />
+
+</FrameLayout>

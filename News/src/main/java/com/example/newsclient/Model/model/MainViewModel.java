@@ -12,12 +12,14 @@ import com.example.newsclient.Model.bean.image.ImageTypeJsonBean;
 import com.example.newsclient.Model.bean.video.VideoTypeBean;
 import com.example.newsclient.Model.impl.ApiService;
 import com.example.newsclient.Model.impl.MainViewModelImpl;
+import com.example.newsclient.Model.utils.LoginAndShareManager;
 import com.example.newsclient.Model.utils.RetrofitUtil;
 import com.example.newsclient.Model.utils.TencentUtil;
 import com.example.newsclient.dao.ImagesDao;
 import com.example.newsclient.dao.VideoTypeDao;
 import com.example.newsclient.view.utils.AppUtil;
 import com.google.gson.Gson;
+import com.sina.weibo.sdk.auth.sso.SsoHandler;
 import com.tencent.connect.UserInfo;
 import com.tencent.tauth.IUiListener;
 import com.tencent.tauth.UiError;
@@ -226,6 +228,25 @@ public class MainViewModel implements MainViewModelImpl {
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(observer);
+    }
+
+    @Override
+    public void weiboLogin(final Activity activity, Action1<SsoHandler> action1) {
+        Observable.create(new Observable.OnSubscribe<SsoHandler>() {
+            @Override
+            public void call(Subscriber<? super SsoHandler> subscriber) {
+                SsoHandler ssoHandler = LoginAndShareManager.getInstance().getWeiboLoginSsoHandler(activity);
+                subscriber.onNext(ssoHandler);
+                subscriber.onCompleted();
+            }
+        }).subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(action1, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+
+                    }
+                });
     }
 
 
